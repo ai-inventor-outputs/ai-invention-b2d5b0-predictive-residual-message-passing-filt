@@ -1,0 +1,13 @@
+{
+  "id": "eval_id5_it6__opus",
+  "type": "code",
+  "title": "Definitive Cross-Dataset Meta-Analysis and Publication Figures for PRMP",
+  "summary": "Demonstrates a comprehensive cross-dataset meta-analysis of 11 PRMP (Predict-Residual Message Passing) experiments across 5 iterations. The notebook computes DerSimonian-Laird random-effects meta-analysis with Hedges' g effect sizes, validates embedding-space regime theory via Spearman correlation, performs regression-vs-classification moderator analysis (Q_between test), and decomposes the PRMP mechanism into 7 components highlighting predict-subtract contributions. Uses curated experimental results (mini_demo_data.json) covering standard SAGE, PRMP, and ablation variants with RMSE/MAE/R\u00b2 metrics. Generates 6 publication-ready figures including forest plots, scatter plots, and bar charts.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_6/gen_art/eval_id5_it6__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id5_it6__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id5_it6__opus/eval_code_demo.ipynb"
+}

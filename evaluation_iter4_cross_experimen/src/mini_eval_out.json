@@ -1,0 +1,466 @@
+{
+  "metadata": {
+    "title": "Cross-Experiment PRMP Meta-Analysis: Effect Sizes, Forest Plots & Moderator Analysis",
+    "description": "Comprehensive meta-analysis pooling PRMP vs baseline results across 5 experiments (4 datasets, 8+ tasks). Includes Hedges' g effect sizes, DerSimonian-Laird random-effects pooling, subgroup analysis, meta-regression, and ablation validation.",
+    "conclusion": "PARTIALLY_CONFIRMED",
+    "conclusion_text": "Hypothesis PARTIALLY CONFIRMED: PRMP shows positive pooled effect (g=+0.430, p=0.4572), but pooled effect is not significant. PRMP tends to help, especially on regression tasks, but the specific regime prediction (high cardinality AND high predictability) is not validated.",
+    "random_effects_meta_analysis": {
+      "pooled_g": 0.429970469762398,
+      "se": 0.5783918405650005,
+      "ci_lower": -0.7036775377450029,
+      "ci_upper": 1.563618477269799,
+      "p_value": 0.45724584860075446,
+      "z": 0.7433895840272963,
+      "Q": 11.047938836829184,
+      "Q_p_value": 0.050437738672715726,
+      "I2": 54.742689348242024,
+      "tau2": 1.0824520321744673,
+      "k": 6
+    },
+    "subgroup_analysis": {
+      "regression_pooled_g": 1.0254573454082938,
+      "regression_ci": [
+        -0.9017039071354775,
+        2.952618597952065
+      ],
+      "regression_p": 0.296980206493745,
+      "regression_tasks": [
+        "amazon-rating",
+        "rel-f1-driver-position",
+        "rel-hm-item-sales"
+      ],
+      "classification_pooled_g": -0.049020165009160774,
+      "classification_ci": [
+        -1.5760500380046154,
+        1.4780097079862937
+      ],
+      "classification_p": 0.9498308324842031,
+      "classification_tasks": [
+        "rel-f1-driver-dnf",
+        "rel-f1-driver-top3",
+        "rel-hm-user-churn"
+      ],
+      "Q_between": 1.0278072815150097,
+      "Q_between_p": 0.3106742311314743,
+      "subgroup_difference_significant": false
+    },
+    "meta_regression": {
+      "moderator_names": [
+        "intercept",
+        "card_x_r2_interaction",
+        "task_type_reg"
+      ],
+      "coefficients": {
+        "intercept": -0.002826,
+        "card_x_r2_interaction": -2.084703,
+        "task_type_reg": 0.802329
+      },
+      "standard_errors": {
+        "intercept": 1.050256,
+        "card_x_r2_interaction": 21.681352,
+        "task_type_reg": 1.423
+      },
+      "p_values": {
+        "intercept": 0.997853,
+        "card_x_r2_interaction": 0.9234,
+        "task_type_reg": 0.57287
+      },
+      "n_tasks": 6,
+      "n_predictors": 3
+    },
+    "ablation_validation": [
+      {
+        "task": "amazon-rating",
+        "random_vs_baseline_g": 1.6192,
+        "random_vs_baseline_se": 0.9972,
+        "random_vs_baseline_p": 0.104421,
+        "random_vs_baseline_significant": false,
+        "prmp_vs_random_g": 1.4154,
+        "prmp_vs_random_se": 0.9577,
+        "prmp_vs_random_p": 0.139398,
+        "prmp_vs_random_significant": false,
+        "learned_predictions_necessary": false
+      },
+      {
+        "task": "rel-f1-driver-dnf",
+        "random_vs_baseline_g": -1.2316,
+        "random_vs_baseline_se": 0.9253,
+        "random_vs_baseline_p": 0.183216,
+        "random_vs_baseline_significant": false,
+        "prmp_vs_random_g": 0.2982,
+        "prmp_vs_random_se": 0.8233,
+        "prmp_vs_random_p": 0.717224,
+        "prmp_vs_random_significant": false,
+        "learned_predictions_necessary": true
+      },
+      {
+        "task": "rel-f1-driver-top3",
+        "random_vs_baseline_g": -2.9237,
+        "random_vs_baseline_se": 1.3173,
+        "random_vs_baseline_p": 0.026451,
+        "random_vs_baseline_significant": true,
+        "prmp_vs_random_g": 0.4385,
+        "prmp_vs_random_se": 0.8311,
+        "prmp_vs_random_p": 0.59778,
+        "prmp_vs_random_significant": false,
+        "learned_predictions_necessary": true
+      },
+      {
+        "task": "rel-f1-driver-position",
+        "random_vs_baseline_g": -0.8374,
+        "random_vs_baseline_se": 0.8685,
+        "random_vs_baseline_p": 0.334935,
+        "random_vs_baseline_significant": false,
+        "prmp_vs_random_g": 1.987,
+        "prmp_vs_random_se": 1.0771,
+        "prmp_vs_random_p": 0.065073,
+        "prmp_vs_random_significant": false,
+        "learned_predictions_necessary": true
+      },
+      {
+        "task": "rel-hm-user-churn",
+        "random_vs_baseline_g": 0.4619,
+        "random_vs_baseline_se": 0.8327,
+        "random_vs_baseline_p": 0.5791,
+        "random_vs_baseline_significant": false,
+        "prmp_vs_random_g": 0.2309,
+        "prmp_vs_random_se": 0.8206,
+        "prmp_vs_random_p": 0.778374,
+        "prmp_vs_random_significant": false,
+        "learned_predictions_necessary": false
+      },
+      {
+        "task": "rel-hm-item-sales",
+        "random_vs_baseline_g": -0.8292,
+        "random_vs_baseline_se": 0.8675,
+        "random_vs_baseline_p": 0.33919,
+        "random_vs_baseline_significant": false,
+        "prmp_vs_random_g": 0.0374,
+        "prmp_vs_random_se": 0.8166,
+        "prmp_vs_random_p": 0.963508,
+        "prmp_vs_random_significant": false,
+        "learned_predictions_necessary": true
+      }
+    ],
+    "win_loss_draw": {
+      "all_tasks": {
+        "wins": 1,
+        "losses": 0,
+        "draws": 5,
+        "total": 6
+      },
+      "non_saturated_only": {
+        "wins": 1,
+        "losses": 0,
+        "draws": 4,
+        "total": 5
+      }
+    },
+    "figures": [
+      "forest_plot.png",
+      "funnel_plot.png",
+      "summary_table.png"
+    ],
+    "all_task_effects": [
+      {
+        "task": "amazon-rating",
+        "dataset": "Amazon Video Games",
+        "metric": "RMSE",
+        "task_type": "regression",
+        "n_seeds": 3,
+        "baseline_mean": 0.578326,
+        "baseline_std": 0.001339,
+        "prmp_mean": 0.534305,
+        "prmp_std": 0.016328,
+        "delta": -0.04402099999999998,
+        "hedges_g": 3.0400201389515153,
+        "g_se": 1.3497710814506716,
+        "g_ci_lower": 0.3944688193081989,
+        "g_ci_upper": 5.685571458594832,
+        "p_value": 0.024306561176764774,
+        "significant": true,
+        "is_saturated": false,
+        "higher_is_better": false
+      },
+      {
+        "task": "rel-f1-driver-dnf",
+        "dataset": "rel-f1",
+        "metric": "AP",
+        "task_type": "classification",
+        "n_seeds": 3,
+        "baseline_mean": 0.9987017318384307,
+        "baseline_std": 0.0005615785078865761,
+        "prmp_mean": 0.9956158449551825,
+        "prmp_std": 0.0023271120665457916,
+        "delta": -0.003085886883248179,
+        "hedges_g": -1.45839969829208,
+        "g_se": 0.9656774185326953,
+        "g_ci_lower": -3.351127438616163,
+        "g_ci_upper": 0.4343280420320028,
+        "p_value": 0.13098350725077612,
+        "significant": false,
+        "is_saturated": true,
+        "higher_is_better": true
+      },
+      {
+        "task": "rel-f1-driver-top3",
+        "dataset": "rel-f1",
+        "metric": "AP",
+        "task_type": "classification",
+        "n_seeds": 3,
+        "baseline_mean": 0.9580886460675075,
+        "baseline_std": 0.00015497752325822705,
+        "prmp_mean": 0.9572514038756436,
+        "prmp_std": 0.010803689877848703,
+        "delta": -0.000837242191863985,
+        "hedges_g": -0.08766763740166099,
+        "g_se": 0.8170846764550265,
+        "g_ci_lower": -1.6891536032535128,
+        "g_ci_upper": 1.513818328450191,
+        "p_value": 0.9145563714497931,
+        "significant": false,
+        "is_saturated": false,
+        "higher_is_better": true
+      },
+      {
+        "task": "rel-f1-driver-position",
+        "dataset": "rel-f1",
+        "metric": "MAE",
+        "task_type": "regression",
+        "n_seeds": 3,
+        "baseline_mean": 4.347035566965739,
+        "baseline_std": 0.17580655127582187,
+        "prmp_mean": 4.003660360972087,
+        "prmp_std": 0.26191260446244197,
+        "delta": -0.34337520599365234,
+        "hedges_g": 1.2315411945933665,
+        "g_se": 0.9253396030183857,
+        "g_ci_lower": -0.5821244273226693,
+        "g_ci_upper": 3.0452068165094026,
+        "p_value": 0.18321952847563017,
+        "significant": false,
+        "is_saturated": false,
+        "higher_is_better": false
+      },
+      {
+        "task": "rel-hm-user-churn",
+        "dataset": "rel-hm",
+        "metric": "AUROC",
+        "task_type": "classification",
+        "n_seeds": 3,
+        "baseline_mean": 0.5208333333333334,
+        "baseline_std": 0.018042195912175808,
+        "prmp_mean": 0.5520833333333334,
+        "prmp_std": 0.018042195912175808,
+        "delta": 0.03125,
+        "hedges_g": 1.3856406460551016,
+        "g_se": 0.9521904571390466,
+        "g_ci_lower": -0.48065264993742973,
+        "g_ci_upper": 3.251933942047633,
+        "p_value": 0.14561009539686687,
+        "significant": false,
+        "is_saturated": false,
+        "higher_is_better": true
+      },
+      {
+        "task": "rel-hm-item-sales",
+        "dataset": "rel-hm",
+        "metric": "MAE",
+        "task_type": "regression",
+        "n_seeds": 3,
+        "baseline_mean": 4.738628722222222,
+        "baseline_std": 0.15588656348949742,
+        "prmp_mean": 4.8488921666666664,
+        "prmp_std": 0.1526497567913049,
+        "delta": 0.11026344444444458,
+        "hedges_g": -0.5717699733622673,
+        "g_se": 0.8411490827858654,
+        "g_ci_lower": -2.2204221756225637,
+        "g_ci_upper": 1.0768822288980289,
+        "p_value": 0.4966636107869635,
+        "significant": false,
+        "is_saturated": false,
+        "higher_is_better": false
+      },
+      {
+        "task": "rel-stack-user-engagement",
+        "dataset": "rel-stack",
+        "metric": "AUROC",
+        "task_type": "classification",
+        "n_seeds": 1,
+        "baseline_mean": 0.8956013779319647,
+        "baseline_std": 0.0,
+        "prmp_mean": 0.8912261532607825,
+        "prmp_std": 0.0,
+        "delta": -0.004375224671182232,
+        "hedges_g": 0.0,
+        "g_se": Infinity,
+        "g_ci_lower": -Infinity,
+        "g_ci_upper": Infinity,
+        "p_value": 1.0,
+        "significant": false,
+        "is_saturated": false,
+        "higher_is_better": true
+      },
+      {
+        "task": "rel-stack-post-votes",
+        "dataset": "rel-stack",
+        "metric": "MAE",
+        "task_type": "regression",
+        "n_seeds": 1,
+        "baseline_mean": 0.0679042637348175,
+        "baseline_std": 0.0,
+        "prmp_mean": 0.0679042637348175,
+        "prmp_std": 0.0,
+        "delta": 0.0,
+        "hedges_g": 0.0,
+        "g_se": Infinity,
+        "g_ci_lower": -Infinity,
+        "g_ci_upper": Infinity,
+        "p_value": 1.0,
+        "significant": false,
+        "is_saturated": false,
+        "higher_is_better": false
+      },
+      {
+        "task": "rel-hm-fk-link-classification",
+        "dataset": "rel-hm (FK-link)",
+        "metric": "AUROC",
+        "task_type": "classification",
+        "n_seeds": 1,
+        "baseline_mean": 0.9994860000000001,
+        "baseline_std": 0.0005430580079512621,
+        "prmp_mean": 0.982785,
+        "prmp_std": 0.023938392970289418,
+        "delta": -0.016701000000000077,
+        "hedges_g": 0.0,
+        "g_se": Infinity,
+        "g_ci_lower": -Infinity,
+        "g_ci_upper": Infinity,
+        "p_value": 1.0,
+        "significant": false,
+        "is_saturated": true,
+        "higher_is_better": true
+      }
+    ]
+  },
+  "metrics_agg": {
+    "pooled_hedges_g": 0.43,
+    "pooled_g_ci_lower": -0.7037,
+    "pooled_g_ci_upper": 1.5636,
+    "pooled_p_value": 0.457246,
+    "pooled_z": 0.7434,
+    "I_squared": 54.74,
+    "tau_squared": 1.082452,
+    "Q_statistic": 11.0479,
+    "Q_p_value": 0.050438,
+    "n_tasks_in_meta": 6,
+    "n_tasks_total": 9,
+    "n_wins": 1,
+    "n_losses": 0,
+    "n_draws": 5,
+    "n_wins_nonsat": 1,
+    "n_losses_nonsat": 0,
+    "n_draws_nonsat": 4,
+    "regression_subgroup_g": 1.0255,
+    "regression_subgroup_p": 0.29698,
+    "classification_subgroup_g": -0.049,
+    "classification_subgroup_p": 0.949831
+  },
+  "datasets": [
+    {
+      "dataset": "prmp_meta_analysis_tasks",
+      "examples": [
+        {
+          "input": "{\"task\": \"amazon-rating\", \"dataset\": \"Amazon Video Games\", \"metric\": \"RMSE\", \"task_type\": \"regression\", \"n_seeds\": 3, \"higher_is_better\": false, \"is_saturated\": false}",
+          "output": "{\"hedges_g\": 3.04, \"ci\": [0.3945, 5.6856], \"p_value\": 0.024307, \"significant\": true, \"direction\": \"PRMP better\"}",
+          "predict_baseline": "0.578326",
+          "predict_prmp": "0.534305",
+          "eval_hedges_g": 3.04,
+          "eval_g_se": 1.3498,
+          "eval_g_ci_lower": 0.3945,
+          "eval_g_ci_upper": 5.6856,
+          "eval_p_value": 0.024307,
+          "metadata_dataset": "Amazon Video Games",
+          "metadata_task": "amazon-rating",
+          "metadata_metric": "RMSE",
+          "metadata_task_type": "regression",
+          "metadata_n_seeds": 3,
+          "metadata_is_saturated": false
+        },
+        {
+          "input": "{\"task\": \"rel-f1-driver-dnf\", \"dataset\": \"rel-f1\", \"metric\": \"AP\", \"task_type\": \"classification\", \"n_seeds\": 3, \"higher_is_better\": true, \"is_saturated\": true}",
+          "output": "{\"hedges_g\": -1.4584, \"ci\": [-3.3511, 0.4343], \"p_value\": 0.130984, \"significant\": false, \"direction\": \"Baseline better\"}",
+          "predict_baseline": "0.998702",
+          "predict_prmp": "0.995616",
+          "eval_hedges_g": -1.4584,
+          "eval_g_se": 0.9657,
+          "eval_g_ci_lower": -3.3511,
+          "eval_g_ci_upper": 0.4343,
+          "eval_p_value": 0.130984,
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "rel-f1-driver-dnf",
+          "metadata_metric": "AP",
+          "metadata_task_type": "classification",
+          "metadata_n_seeds": 3,
+          "metadata_is_saturated": true
+        },
+        {
+          "input": "{\"task\": \"rel-f1-driver-top3\", \"dataset\": \"rel-f1\", \"metric\": \"AP\", \"task_type\": \"classification\", \"n_seeds\": 3, \"higher_is_better\": true, \"is_saturated\": false}",
+          "output": "{\"hedges_g\": -0.0877, \"ci\": [-1.6892, 1.5138], \"p_value\": 0.914556, \"significant\": false, \"direction\": \"Baseline better\"}",
+          "predict_baseline": "0.958089",
+          "predict_prmp": "0.957251",
+          "eval_hedges_g": -0.0877,
+          "eval_g_se": 0.8171,
+          "eval_g_ci_lower": -1.6892,
+          "eval_g_ci_upper": 1.5138,
+          "eval_p_value": 0.914556,
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "rel-f1-driver-top3",
+          "metadata_metric": "AP",
+          "metadata_task_type": "classification",
+          "metadata_n_seeds": 3,
+          "metadata_is_saturated": false
+        }
+      ]
+    },
+    {
+      "dataset": "ablation_validation",
+      "examples": [
+        {
+          "input": "{\"task\": \"amazon-rating\", \"analysis\": \"ablation_random_predictions\"}",
+          "output": "{\"random_vs_baseline_g\": 1.6192, \"prmp_vs_random_g\": 1.4154, \"learned_predictions_necessary\": false}",
+          "predict_random_vs_baseline": "1.6192",
+          "predict_prmp_vs_random": "1.4154",
+          "eval_random_vs_baseline_g": 1.6192,
+          "eval_random_vs_baseline_p": 0.104421,
+          "eval_prmp_vs_random_g": 1.4154,
+          "eval_prmp_vs_random_p": 0.139398,
+          "metadata_task": "amazon-rating"
+        },
+        {
+          "input": "{\"task\": \"rel-f1-driver-dnf\", \"analysis\": \"ablation_random_predictions\"}",
+          "output": "{\"random_vs_baseline_g\": -1.2316, \"prmp_vs_random_g\": 0.2982, \"learned_predictions_necessary\": true}",
+          "predict_random_vs_baseline": "-1.2316",
+          "predict_prmp_vs_random": "0.2982",
+          "eval_random_vs_baseline_g": -1.2316,
+          "eval_random_vs_baseline_p": 0.183216,
+          "eval_prmp_vs_random_g": 0.2982,
+          "eval_prmp_vs_random_p": 0.717224,
+          "metadata_task": "rel-f1-driver-dnf"
+        },
+        {
+          "input": "{\"task\": \"rel-f1-driver-top3\", \"analysis\": \"ablation_random_predictions\"}",
+          "output": "{\"random_vs_baseline_g\": -2.9237, \"prmp_vs_random_g\": 0.4385, \"learned_predictions_necessary\": true}",
+          "predict_random_vs_baseline": "-2.9237",
+          "predict_prmp_vs_random": "0.4385",
+          "eval_random_vs_baseline_g": -2.9237,
+          "eval_random_vs_baseline_p": 0.026451,
+          "eval_prmp_vs_random_g": 0.4385,
+          "eval_prmp_vs_random_p": 0.59778,
+          "metadata_task": "rel-f1-driver-top3"
+        }
+      ]
+    }
+  ]
+}

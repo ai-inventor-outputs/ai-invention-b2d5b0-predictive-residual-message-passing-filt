@@ -1,0 +1,13 @@
+{
+  "id": "eval_id5_it4__opus",
+  "type": "code",
+  "title": "Cross-Experiment PRMP Meta-Analysis: Effect Sizes, Forest Plots & Moderator Analysis",
+  "summary": "Demo notebook performing a cross-experiment meta-analysis of PRMP (Predictive Residual Message Passing) vs baseline across 9 tasks from 4 datasets. Computes Hedges' g effect sizes, DerSimonian-Laird random-effects pooling (pooled g=+0.43, p=0.46, I\u00b2=54.7%), regression vs classification subgroup analysis, WLS meta-regression with cardinality\u00d7predictability interaction, ablation validation with random predictions, and win/loss/draw tally. Produces forest plot, funnel plot, and summary table. Data: 9 pre-extracted task results with baseline/PRMP means, standard deviations, and FK diagnostic features loaded from mini_demo_data.json. Conclusion: PARTIALLY_CONFIRMED \u2014 positive pooled effect but not statistically significant.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_4/gen_art/eval_id5_it4__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id5_it4__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id5_it4__opus/eval_code_demo.ipynb"
+}

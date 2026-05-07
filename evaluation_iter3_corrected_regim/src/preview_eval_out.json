@@ -1,0 +1,232 @@
+{
+  "metadata": {
+    "evaluation_name": "PRMP Corrected Regime Analysis, Statistical Significance, and Mechanism Investigation",
+    "description": "Rigorous re-evaluation of PRMP results removing confounds (degenerate R²=1.0, parent_dim=1), testing statistical significance via bootstrap, and investigating mechanisms (information filtering, implic...",
+    "blocks": [
+      "Block 1: Corrected Regime Analysis",
+      "Block 2: Statistical Significance of Amazon PRMP Improvement",
+      "Block 3: Mechanism Investigation"
+    ],
+    "figure_files": [
+      "fig1_diagnostic_space_cleaned.png",
+      "fig2_regime_vs_improvement.png",
+      "fig3_amazon_ablation_barchart.png"
+    ],
+    "sensitivity_analysis": {
+      "original_exp3_rho": -0.8467,
+      "original_exp3_p": 0.00398,
+      "original_exp3_N": 9,
+      "no_degenerate_rho": -0.668153104781061,
+      "no_degenerate_p": 0.10089734568700688,
+      "no_degenerate_N": 7,
+      "no_degenerate_no_dim1_N": 0,
+      "no_degenerate_no_dim1_note": "N=0 for rel-stack alone: all links are either degenerate or parent_dim=1",
+      "nonzero_r2_rho": -1.0,
+      "nonzero_r2_p": 0.0,
+      "nonzero_r2_N": 3
+    },
+    "detailed_decomposition": {
+      "param_effect": 0.4131891597192254,
+      "subtraction_effect": 0.12462233933804306,
+      "learned_pred_effect": 0.5868108402807746,
+      "nonlinear_effect": 0.13416324027168783,
+      "component_rmse": {
+        "standard": 0.578326,
+        "random_pred": 0.560137,
+        "no_subtraction": 0.539791,
+        "linear_pred": 0.540211,
+        "prmp": 0.534305
+      }
+    },
+    "detailed_gradient_enrichment": {
+      "standard_rmse": 0.578326,
+      "prmp_rmse": 0.534305,
+      "random_pred_rmse": 0.560137,
+      "total_improvement": 0.04402099999999998,
+      "improvement_from_params": 0.01818900000000001,
+      "improvement_from_learned_pred": 0.025831999999999966,
+      "param_fraction": 0.4131891597192254,
+      "learned_pred_fraction": 0.5868108402807746,
+      "interpretation": "~41% of PRMP improvement from extra params/architecture, ~59% from learned predictions"
+    },
+    "per_feature_r2_analysis": {
+      "product_to_review": {
+        "per_feature_r2": [
+          0.014383,
+          0.006053,
+          0.002043
+        ],
+        "mean_r2": 0.01212357142857143,
+        "max_r2": 0.089544,
+        "n_features": 21,
+        "n_high_r2_features": 0,
+        "high_r2_feature_indices": [],
+        "high_r2_values": []
+      },
+      "customer_to_review": {
+        "per_feature_r2": [
+          0.178173,
+          0.006548,
+          0.005066
+        ],
+        "mean_r2": 0.04454071428571429,
+        "max_r2": 0.367252,
+        "n_features": 21,
+        "n_high_r2_features": 3,
+        "high_r2_feature_indices": [
+          0,
+          19,
+          20
+        ],
+        "high_r2_values": [
+          0.178173,
+          0.313596,
+          0.367252
+        ]
+      },
+      "anomaly_analysis": {
+        "customer_mean_r2": 0.04454071428571429,
+        "product_mean_r2": 0.01212357142857143,
+        "customer_cardinality": 4.5994,
+        "product_cardinality": 14.7059,
+        "customer_improvement_pct": 5.360298516753531,
+        "product_improvement_pct": 3.8898475946092623,
+        "consistent_with_predictability": true,
+        "consistent_with_cardinality": false,
+        "interpretation": "CONSISTENT with predictability theory (higher R² → more improvement) but INCONSISTENT with cardinality theory (higher cardinality does NOT → more improvement)"
+      }
+    }
+  },
+  "metrics_agg": {
+    "n_total_fk_links": 13,
+    "n_degenerate_links": 2,
+    "n_dim1_links": 7,
+    "n_valid_links": 4,
+    "original_spearman_rho": -0.8467,
+    "original_spearman_p": 0.00398,
+    "amazon_prmp_rmse_mean": 0.5366140266169485,
+    "amazon_standard_rmse_mean": 0.5953166278567906,
+    "amazon_prmp_improvement_pct": 9.860736034062812,
+    "bootstrap_mean_diff": 0.058677649913017146,
+    "bootstrap_ci_lower": 0.05059616363666264,
+    "bootstrap_ci_upper": 0.06680903884302192,
+    "bootstrap_p_value": 0.0,
+    "paired_ttest_p_one_sided": 0.0001092909994875324,
+    "paired_ttest_p_two_sided": 0.0002185819989750648,
+    "cohens_d_std_vs_prmp": 1.8360555597726322,
+    "filtering_efficiency_product": -0.882393,
+    "filtering_efficiency_customer": -1.2881209999999998,
+    "filtering_theory_supported": 0,
+    "regularization_supported": 0,
+    "prmp_gen_gap": 0.05511746803919474,
+    "standard_gen_gap": 0.038837273915608726,
+    "param_effect_fraction": 0.4131891597192254,
+    "subtraction_effect_fraction": 0.12462233933804306,
+    "learned_pred_effect_fraction": 0.5868108402807746,
+    "nonlinear_effect_fraction": 0.13416324027168783,
+    "n_hypotheses_supported": 1,
+    "n_hypotheses_partial": 2,
+    "n_hypotheses_not_supported": 3
+  },
+  "datasets": [
+    {
+      "dataset": "block1_corrected_regime_table",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"rel-hm\", \"link\": \"customer->transaction\", \"fk_column\": \"customer_id\", \"parent_dim\": 5, \"child_dim\": 3, \"mean_cardinality\": 4.17, \"R2_ridge\": 0.0076837749088472995, \"R2_rf\": 0.000823945303...",
+          "output": "{\"PRMP_improvement_pct\": -3.3273879944189932, \"is_degenerate\": false, \"is_dim1\": false, \"regime_quadrant\": \"high_card_high_pred\"}",
+          "predict_result": "{\"PRMP_improvement_pct\": -3.3273879944189932, \"regime_quadrant\": \"high_card_high_pred\"}",
+          "metadata_dataset": "rel-hm",
+          "metadata_link": "customer->transaction(customer_id)",
+          "metadata_is_degenerate": false,
+          "metadata_is_dim1": false,
+          "eval_PRMP_improvement_pct": -3.3273879944189932
+        },
+        {
+          "input": "{\"dataset\": \"rel-hm\", \"link\": \"article->transaction\", \"fk_column\": \"article_id\", \"parent_dim\": 21, \"child_dim\": 3, \"mean_cardinality\": 20.0465, \"R2_ridge\": 0.06859819434591406, \"R2_rf\": 0.246894653413...",
+          "output": "{\"PRMP_improvement_pct\": -0.015802054267053865, \"is_degenerate\": false, \"is_dim1\": false, \"regime_quadrant\": \"high_card_high_pred\"}",
+          "predict_result": "{\"PRMP_improvement_pct\": -0.015802054267053865, \"regime_quadrant\": \"high_card_high_pred\"}",
+          "metadata_dataset": "rel-hm",
+          "metadata_link": "article->transaction(article_id)",
+          "metadata_is_degenerate": false,
+          "metadata_is_dim1": false,
+          "eval_PRMP_improvement_pct": -0.015802054267053865
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"link\": \"users->badges\", \"fk_column\": \"UserId\", \"parent_dim\": 1, \"child_dim\": 2, \"mean_cardinality\": 3.27034159627991, \"R2_ridge\": 0.0, \"R2_rf\": 0.0, \"mutual_info_mean\": 0.003...",
+          "output": "{\"PRMP_improvement_pct\": -0.6124692212002738, \"is_degenerate\": false, \"is_dim1\": true, \"regime_quadrant\": \"low_card_low_pred\"}",
+          "predict_result": "{\"PRMP_improvement_pct\": -0.6124692212002738, \"regime_quadrant\": \"low_card_low_pred\"}",
+          "metadata_dataset": "rel-stack",
+          "metadata_link": "users->badges(UserId)",
+          "metadata_is_degenerate": false,
+          "metadata_is_dim1": true,
+          "eval_PRMP_improvement_pct": -0.6124692212002738
+        }
+      ]
+    },
+    {
+      "dataset": "block1_block4_correlation_summary",
+      "examples": [
+        {
+          "input": "{\"subset\": \"all_13_links\", \"predictor\": \"log_cardinality\", \"n\": 13}",
+          "output": "{\"spearman_rho\": 0.35714285714285715, \"p_value\": 0.2309298623020339, \"significant_at_0_05\": false}",
+          "predict_result": "{\"spearman_rho\": 0.35714285714285715, \"p_value\": 0.2309298623020339}",
+          "metadata_subset": "all_13_links",
+          "metadata_predictor": "log_cardinality",
+          "eval_spearman_rho": 0.35714285714285715,
+          "eval_p_value": 0.2309298623020339,
+          "eval_n_links": 13
+        },
+        {
+          "input": "{\"subset\": \"all_13_links\", \"predictor\": \"R2_ridge\", \"n\": 13}",
+          "output": "{\"spearman_rho\": 0.3814391714867179, \"p_value\": 0.19843661224259565, \"significant_at_0_05\": false}",
+          "predict_result": "{\"spearman_rho\": 0.3814391714867179, \"p_value\": 0.19843661224259565}",
+          "metadata_subset": "all_13_links",
+          "metadata_predictor": "R2_ridge",
+          "eval_spearman_rho": 0.3814391714867179,
+          "eval_p_value": 0.19843661224259565,
+          "eval_n_links": 13
+        },
+        {
+          "input": "{\"subset\": \"all_13_links\", \"predictor\": \"R2_rf\", \"n\": 13}",
+          "output": "{\"spearman_rho\": 0.2889690693081196, \"p_value\": 0.3382868881149968, \"significant_at_0_05\": false}",
+          "predict_result": "{\"spearman_rho\": 0.2889690693081196, \"p_value\": 0.3382868881149968}",
+          "metadata_subset": "all_13_links",
+          "metadata_predictor": "R2_rf",
+          "eval_spearman_rho": 0.2889690693081196,
+          "eval_p_value": 0.3382868881149968,
+          "eval_n_links": 13
+        }
+      ]
+    },
+    {
+      "dataset": "block2_amazon_per_fold_rmse",
+      "examples": [
+        {
+          "input": "{\"variant\": \"standard_sage\", \"fold\": 0}",
+          "output": "0.5524131277044635",
+          "predict_rmse": "0.5524131277044635",
+          "metadata_variant": "standard_sage",
+          "metadata_fold": 0,
+          "eval_rmse": 0.5524131277044635
+        },
+        {
+          "input": "{\"variant\": \"prmp\", \"fold\": 0}",
+          "output": "0.49468819289747995",
+          "predict_rmse": "0.49468819289747995",
+          "metadata_variant": "prmp",
+          "metadata_fold": 0,
+          "eval_rmse": 0.49468819289747995
+        },
+        {
+          "input": "{\"variant\": \"prmp_product_only\", \"fold\": 0}",
+          "output": "0.5298546882436627",
+          "predict_rmse": "0.5298546882436627",
+          "metadata_variant": "prmp_product_only",
+          "metadata_fold": 0,
+          "eval_rmse": 0.5298546882436627
+        }
+      ]
+    }
+  ]
+}

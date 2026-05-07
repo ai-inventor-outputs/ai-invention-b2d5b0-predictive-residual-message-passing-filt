@@ -1,0 +1,658 @@
+{
+  "metadata": {
+    "dataset_name": "rel-avito",
+    "source": "RelBench (Stanford SNAP)",
+    "domain": "e-commerce/advertising",
+    "description": "Avito online advertisement platform dataset from RelBench. 8 tables, ~20.7M rows. Each example is one aligned (parent, child) row pair joined on a foreign key, for downstream R-squared computation.",
+    "citation": "@misc{robinson2024relbenchbenchmarkdeeplearning, title={RelBench: A Benchmark for Deep Learning on Relational Databases}, author={Joshua Robinson and Rishabh Ranjan and Weihua Hu and Kexin Huang and Jiaqi Han and Alejandro Dobles and Matthias Fey and Jan Eric Lenssen and Yiwen Yuan and Zecheng Zhang and Xinwei He and Jure Leskovec}, year={2024}, eprint={2407.20060}, archivePrefix={arXiv}}",
+    "tables": {
+      "Category": {
+        "num_rows": 68,
+        "num_cols": 4,
+        "columns": [
+          {
+            "name": "CategoryID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "Level",
+            "dtype": "int64"
+          },
+          {
+            "name": "ParentCategoryID",
+            "dtype": "int64"
+          },
+          {
+            "name": "SubcategoryID",
+            "dtype": "int64"
+          }
+        ],
+        "pkey_col": "CategoryID",
+        "time_col": null,
+        "fkey_col_to_pkey_table": {}
+      },
+      "PhoneRequestsStream": {
+        "num_rows": 244435,
+        "num_cols": 4,
+        "columns": [
+          {
+            "name": "UserID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "IPID",
+            "dtype": "float64"
+          },
+          {
+            "name": "AdID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "PhoneRequestDate",
+            "dtype": "datetime64[ns]"
+          }
+        ],
+        "pkey_col": null,
+        "time_col": "PhoneRequestDate",
+        "fkey_col_to_pkey_table": {
+          "UserID": "UserInfo",
+          "AdID": "AdsInfo"
+        }
+      },
+      "VisitStream": {
+        "num_rows": 5277861,
+        "num_cols": 4,
+        "columns": [
+          {
+            "name": "UserID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "IPID",
+            "dtype": "float64"
+          },
+          {
+            "name": "AdID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "ViewDate",
+            "dtype": "datetime64[ns]"
+          }
+        ],
+        "pkey_col": null,
+        "time_col": "ViewDate",
+        "fkey_col_to_pkey_table": {
+          "UserID": "UserInfo",
+          "AdID": "AdsInfo"
+        }
+      },
+      "SearchStream": {
+        "num_rows": 7107277,
+        "num_cols": 7,
+        "columns": [
+          {
+            "name": "SearchID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "AdID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "Position",
+            "dtype": "float64"
+          },
+          {
+            "name": "ObjectType",
+            "dtype": "float64"
+          },
+          {
+            "name": "HistCTR",
+            "dtype": "float64"
+          },
+          {
+            "name": "IsClick",
+            "dtype": "float64"
+          },
+          {
+            "name": "SearchDate",
+            "dtype": "datetime64[ns]"
+          }
+        ],
+        "pkey_col": null,
+        "time_col": "SearchDate",
+        "fkey_col_to_pkey_table": {
+          "SearchID": "SearchInfo",
+          "AdID": "AdsInfo"
+        }
+      },
+      "Location": {
+        "num_rows": 3512,
+        "num_cols": 4,
+        "columns": [
+          {
+            "name": "LocationID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "Level",
+            "dtype": "float64"
+          },
+          {
+            "name": "RegionID",
+            "dtype": "float64"
+          },
+          {
+            "name": "CityID",
+            "dtype": "float64"
+          }
+        ],
+        "pkey_col": "LocationID",
+        "time_col": null,
+        "fkey_col_to_pkey_table": {}
+      },
+      "UserInfo": {
+        "num_rows": 98250,
+        "num_cols": 5,
+        "columns": [
+          {
+            "name": "UserID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "UserAgentID",
+            "dtype": "float64"
+          },
+          {
+            "name": "UserAgentOSID",
+            "dtype": "float64"
+          },
+          {
+            "name": "UserDeviceID",
+            "dtype": "float64"
+          },
+          {
+            "name": "UserAgentFamilyID",
+            "dtype": "float64"
+          }
+        ],
+        "pkey_col": "UserID",
+        "time_col": null,
+        "fkey_col_to_pkey_table": {}
+      },
+      "SearchInfo": {
+        "num_rows": 1987156,
+        "num_cols": 8,
+        "columns": [
+          {
+            "name": "UserID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "SearchID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "SearchDate",
+            "dtype": "datetime64[ns]"
+          },
+          {
+            "name": "IPID",
+            "dtype": "float64"
+          },
+          {
+            "name": "IsUserLoggedOn",
+            "dtype": "float64"
+          },
+          {
+            "name": "SearchQuery",
+            "dtype": "object"
+          },
+          {
+            "name": "LocationID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "CategoryID",
+            "dtype": "Int64"
+          }
+        ],
+        "pkey_col": "SearchID",
+        "time_col": "SearchDate",
+        "fkey_col_to_pkey_table": {
+          "UserID": "UserInfo",
+          "LocationID": "Location",
+          "CategoryID": "Category"
+        }
+      },
+      "AdsInfo": {
+        "num_rows": 5960558,
+        "num_cols": 6,
+        "columns": [
+          {
+            "name": "AdID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "LocationID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "CategoryID",
+            "dtype": "Int64"
+          },
+          {
+            "name": "Price",
+            "dtype": "float64"
+          },
+          {
+            "name": "Title",
+            "dtype": "object"
+          },
+          {
+            "name": "IsContext",
+            "dtype": "float64"
+          }
+        ],
+        "pkey_col": "AdID",
+        "time_col": null,
+        "fkey_col_to_pkey_table": {
+          "LocationID": "Location",
+          "CategoryID": "Category"
+        }
+      }
+    },
+    "tasks": [
+      {
+        "task_name": "ad-ctr",
+        "task_type": "TaskType.REGRESSION",
+        "entity_table": "AdsInfo",
+        "entity_col": "AdID",
+        "target_col": "num_click",
+        "timedelta": "4 days 00:00:00",
+        "metrics": [
+          "r2",
+          "mae",
+          "rmse"
+        ],
+        "num_eval_timestamps": 1
+      },
+      {
+        "task_name": "user-visits",
+        "task_type": "TaskType.BINARY_CLASSIFICATION",
+        "entity_table": "UserInfo",
+        "entity_col": "UserID",
+        "target_col": "num_click",
+        "timedelta": "4 days 00:00:00",
+        "metrics": [
+          "average_precision",
+          "accuracy",
+          "f1",
+          "roc_auc"
+        ],
+        "num_eval_timestamps": 1
+      },
+      {
+        "task_name": "user-clicks",
+        "task_type": "TaskType.BINARY_CLASSIFICATION",
+        "entity_table": "UserInfo",
+        "entity_col": "UserID",
+        "target_col": "num_click",
+        "timedelta": "4 days 00:00:00",
+        "metrics": [
+          "average_precision",
+          "accuracy",
+          "f1",
+          "roc_auc"
+        ],
+        "num_eval_timestamps": 1
+      },
+      {
+        "task_name": "user-ad-visit",
+        "task_type": "TaskType.LINK_PREDICTION",
+        "timedelta": "4 days 00:00:00",
+        "metrics": [
+          "link_prediction_precision",
+          "link_prediction_recall",
+          "link_prediction_map"
+        ],
+        "num_eval_timestamps": 1
+      },
+      {
+        "task_name": "searchstream-click",
+        "task_type": "TaskType.BINARY_CLASSIFICATION",
+        "entity_table": "SearchStream",
+        "entity_col": "primary_key",
+        "target_col": "IsClick",
+        "timedelta": "0 days 00:00:01",
+        "metrics": [
+          "average_precision",
+          "accuracy",
+          "f1",
+          "roc_auc"
+        ],
+        "num_eval_timestamps": 1
+      },
+      {
+        "task_name": "searchinfo-isuserloggedon",
+        "task_type": "TaskType.BINARY_CLASSIFICATION",
+        "entity_table": "SearchInfo",
+        "entity_col": "SearchID",
+        "target_col": "IsUserLoggedOn",
+        "timedelta": "0 days 00:00:01",
+        "metrics": [
+          "average_precision",
+          "accuracy",
+          "f1",
+          "roc_auc"
+        ],
+        "num_eval_timestamps": 1
+      }
+    ],
+    "fk_links": {
+      "PhoneRequestsStream__UserID__UserInfo": {
+        "fk_link": "UserInfo->PhoneRequestsStream",
+        "parent_table": "UserInfo",
+        "child_table": "PhoneRequestsStream",
+        "fk_column": "UserID",
+        "parent_pk_column": "UserID",
+        "parent_feature_cols": [
+          "UserAgentID",
+          "UserAgentOSID",
+          "UserDeviceID",
+          "UserAgentFamilyID"
+        ],
+        "child_feature_cols": [
+          "IPID"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 8.058765105115047,
+        "cardinality_median": 3.0,
+        "cardinality_max": 1123,
+        "cardinality_p95": 29.0,
+        "cardinality_std": 21.31126774333357,
+        "num_child_rows": 244435,
+        "num_parent_rows": 98250,
+        "num_valid_fk": 243415
+      },
+      "PhoneRequestsStream__AdID__AdsInfo": {
+        "fk_link": "AdsInfo->PhoneRequestsStream",
+        "parent_table": "AdsInfo",
+        "child_table": "PhoneRequestsStream",
+        "fk_column": "AdID",
+        "parent_pk_column": "AdID",
+        "parent_feature_cols": [
+          "Price",
+          "IsContext"
+        ],
+        "child_feature_cols": [
+          "IPID"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 1.1793874668678779,
+        "cardinality_median": 1.0,
+        "cardinality_max": 83,
+        "cardinality_p95": 2.0,
+        "cardinality_std": 0.6633840103361855,
+        "num_child_rows": 244435,
+        "num_parent_rows": 5960558,
+        "num_valid_fk": 243836
+      },
+      "VisitStream__UserID__UserInfo": {
+        "fk_link": "UserInfo->VisitStream",
+        "parent_table": "UserInfo",
+        "child_table": "VisitStream",
+        "fk_column": "UserID",
+        "parent_pk_column": "UserID",
+        "parent_feature_cols": [
+          "UserAgentID",
+          "UserAgentOSID",
+          "UserDeviceID",
+          "UserAgentFamilyID"
+        ],
+        "child_feature_cols": [
+          "IPID"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 89.71674918900462,
+        "cardinality_median": 31.0,
+        "cardinality_max": 6493,
+        "cardinality_p95": 371.0,
+        "cardinality_std": 180.98716215139302,
+        "num_child_rows": 5277861,
+        "num_parent_rows": 98250,
+        "num_valid_fk": 5254710
+      },
+      "VisitStream__AdID__AdsInfo": {
+        "fk_link": "AdsInfo->VisitStream",
+        "parent_table": "AdsInfo",
+        "child_table": "VisitStream",
+        "fk_column": "AdID",
+        "parent_pk_column": "AdID",
+        "parent_feature_cols": [
+          "Price",
+          "IsContext"
+        ],
+        "child_feature_cols": [
+          "IPID"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 1.6664257162840894,
+        "cardinality_median": 1.0,
+        "cardinality_max": 367,
+        "cardinality_p95": 4.0,
+        "cardinality_std": 1.7246657118221658,
+        "num_child_rows": 5277861,
+        "num_parent_rows": 5960558,
+        "num_valid_fk": 5265422
+      },
+      "SearchStream__SearchID__SearchInfo": {
+        "fk_link": "SearchInfo->SearchStream",
+        "parent_table": "SearchInfo",
+        "child_table": "SearchStream",
+        "fk_column": "SearchID",
+        "parent_pk_column": "SearchID",
+        "parent_feature_cols": [
+          "IPID",
+          "IsUserLoggedOn"
+        ],
+        "child_feature_cols": [
+          "Position",
+          "ObjectType",
+          "HistCTR",
+          "IsClick"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 3.6226693994098538,
+        "cardinality_median": 4.0,
+        "cardinality_max": 6,
+        "cardinality_p95": 5.0,
+        "cardinality_std": 1.4142099046253118,
+        "num_child_rows": 7107277,
+        "num_parent_rows": 1987156,
+        "num_valid_fk": 7107268
+      },
+      "SearchStream__AdID__AdsInfo": {
+        "fk_link": "AdsInfo->SearchStream",
+        "parent_table": "AdsInfo",
+        "child_table": "SearchStream",
+        "fk_column": "AdID",
+        "parent_pk_column": "AdID",
+        "parent_feature_cols": [
+          "Price",
+          "IsContext"
+        ],
+        "child_feature_cols": [
+          "Position",
+          "ObjectType",
+          "HistCTR",
+          "IsClick"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 3.489904366459713,
+        "cardinality_median": 1.0,
+        "cardinality_max": 23775,
+        "cardinality_p95": 5.0,
+        "cardinality_std": 69.22172146155542,
+        "num_child_rows": 7107277,
+        "num_parent_rows": 5960558,
+        "num_valid_fk": 7107274
+      },
+      "SearchInfo__UserID__UserInfo": {
+        "fk_link": "UserInfo->SearchInfo",
+        "parent_table": "UserInfo",
+        "child_table": "SearchInfo",
+        "fk_column": "UserID",
+        "parent_pk_column": "UserID",
+        "parent_feature_cols": [
+          "UserAgentID",
+          "UserAgentOSID",
+          "UserDeviceID",
+          "UserAgentFamilyID"
+        ],
+        "child_feature_cols": [
+          "IPID",
+          "IsUserLoggedOn"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 35.35468175592878,
+        "cardinality_median": 8.0,
+        "cardinality_max": 3325,
+        "cardinality_p95": 146.4499999999971,
+        "cardinality_std": 104.04549250461294,
+        "num_child_rows": 1987156,
+        "num_parent_rows": 98250,
+        "num_valid_fk": 1961902
+      },
+      "SearchInfo__LocationID__Location": {
+        "fk_link": "Location->SearchInfo",
+        "parent_table": "Location",
+        "child_table": "SearchInfo",
+        "fk_column": "LocationID",
+        "parent_pk_column": "LocationID",
+        "parent_feature_cols": [
+          "Level",
+          "RegionID",
+          "CityID"
+        ],
+        "child_feature_cols": [
+          "IPID",
+          "IsUserLoggedOn"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 1093.0440044004401,
+        "cardinality_median": 17.0,
+        "cardinality_max": 261154,
+        "cardinality_p95": 4467.949999999995,
+        "cardinality_std": 8309.626541649384,
+        "num_child_rows": 1987156,
+        "num_parent_rows": 3512,
+        "num_valid_fk": 1987154
+      },
+      "SearchInfo__CategoryID__Category": {
+        "fk_link": "Category->SearchInfo",
+        "parent_table": "Category",
+        "child_table": "SearchInfo",
+        "fk_column": "CategoryID",
+        "parent_pk_column": "CategoryID",
+        "parent_feature_cols": [
+          "Level",
+          "ParentCategoryID",
+          "SubcategoryID"
+        ],
+        "child_feature_cols": [
+          "IPID",
+          "IsUserLoggedOn"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 50952.717948717946,
+        "cardinality_median": 19622.0,
+        "cardinality_max": 222683,
+        "cardinality_p95": 188393.90000000005,
+        "cardinality_std": 61802.66505109917,
+        "num_child_rows": 1987156,
+        "num_parent_rows": 68,
+        "num_valid_fk": 1987156
+      },
+      "AdsInfo__LocationID__Location": {
+        "fk_link": "Location->AdsInfo",
+        "parent_table": "Location",
+        "child_table": "AdsInfo",
+        "fk_column": "LocationID",
+        "parent_pk_column": "LocationID",
+        "parent_feature_cols": [
+          "Level",
+          "RegionID",
+          "CityID"
+        ],
+        "child_feature_cols": [
+          "Price",
+          "IsContext"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 1765.0336009515313,
+        "cardinality_median": 31.0,
+        "cardinality_max": 929887,
+        "cardinality_p95": 3237.6999999999953,
+        "cardinality_std": 20527.957998874856,
+        "num_child_rows": 5960558,
+        "num_parent_rows": 3512,
+        "num_valid_fk": 5935808
+      },
+      "AdsInfo__CategoryID__Category": {
+        "fk_link": "Category->AdsInfo",
+        "parent_table": "Category",
+        "child_table": "AdsInfo",
+        "fk_column": "CategoryID",
+        "parent_pk_column": "CategoryID",
+        "parent_feature_cols": [
+          "Level",
+          "ParentCategoryID",
+          "SubcategoryID"
+        ],
+        "child_feature_cols": [
+          "Price",
+          "IsContext"
+        ],
+        "num_aligned_pairs": 5000,
+        "cardinality_mean": 114625.5,
+        "cardinality_median": 47661.0,
+        "cardinality_max": 741045,
+        "cardinality_p95": 433438.04999999923,
+        "cardinality_std": 159697.01859513993,
+        "num_child_rows": 5960558,
+        "num_parent_rows": 68,
+        "num_valid_fk": 5960526
+      }
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "rel-avito",
+      "examples": [
+        {
+          "input": "[2061.0, 43.0, 2014.0, 62.0]",
+          "output": "[741197.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": 0
+        },
+        {
+          "input": "[48490.0, 43.0, 2014.0, 64.0]",
+          "output": "[1464815.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": 1
+        },
+        {
+          "input": "[54958.0, 7.0, 2014.0, 15.0]",
+          "output": "[1469031.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": 2
+        }
+      ]
+    }
+  ]
+}

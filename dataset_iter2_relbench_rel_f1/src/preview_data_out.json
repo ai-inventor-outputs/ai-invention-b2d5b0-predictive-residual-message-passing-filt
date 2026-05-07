@@ -1,0 +1,337 @@
+{
+  "datasets": [
+    {
+      "dataset": "rel-f1",
+      "examples": [
+        {
+          "input": "{\"fk_link\":{\"child_table\":\"results\",\"child_fk_col\":\"raceId\",\"parent_table\":\"races\",\"parent_pk_col\":\"raceId\"},\"child_table_info\":{\"row_count\":25420,\"col_count\":18,\"feature_dim\":13},\"parent_table_info\":...",
+          "output": "{\"cardinality_stats\":{\"mean\":24.03,\"median\":22.0,\"max\":55,\"p95\":34.0,\"std\":4.89,\"num_parents\":1058,\"num_children\":25420},\"aligned_features_file\":\"results__races__raceId_features.parquet\",\"aligned_feat...",
+          "metadata_fk_index": 0,
+          "metadata_child_table": "results",
+          "metadata_parent_table": "races",
+          "metadata_child_fk_col": "raceId",
+          "metadata_cardinality_mean": 24.03,
+          "metadata_cardinality_max": 55,
+          "metadata_cardinality_p95": 34.0,
+          "metadata_cardinality_std": 4.89,
+          "metadata_num_parents": 1058,
+          "metadata_num_children": 25420,
+          "metadata_parent_feature_dim": 6,
+          "metadata_child_feature_dim": 13,
+          "metadata_aligned_rows": 884,
+          "metadata_task_type": "relational_predictability"
+        },
+        {
+          "input": "{\"fk_link\":{\"child_table\":\"results\",\"child_fk_col\":\"driverId\",\"parent_table\":\"drivers\",\"parent_pk_col\":\"driverId\"},\"child_table_info\":{\"row_count\":25420,\"col_count\":18,\"feature_dim\":13},\"parent_table_...",
+          "output": "{\"cardinality_stats\":{\"mean\":29.77,\"median\":6.5,\"max\":352,\"p95\":147.7,\"std\":53.08,\"num_parents\":854,\"num_children\":25420},\"aligned_features_file\":\"results__drivers__driverId_features.parquet\",\"aligned...",
+          "metadata_fk_index": 1,
+          "metadata_child_table": "results",
+          "metadata_parent_table": "drivers",
+          "metadata_child_fk_col": "driverId",
+          "metadata_cardinality_mean": 29.77,
+          "metadata_cardinality_max": 352,
+          "metadata_cardinality_p95": 147.7,
+          "metadata_cardinality_std": 53.08,
+          "metadata_num_parents": 854,
+          "metadata_num_children": 25420,
+          "metadata_parent_feature_dim": 8,
+          "metadata_child_feature_dim": 13,
+          "metadata_aligned_rows": 25420,
+          "metadata_task_type": "relational_predictability"
+        },
+        {
+          "input": "{\"fk_link\":{\"child_table\":\"results\",\"child_fk_col\":\"constructorId\",\"parent_table\":\"constructors\",\"parent_pk_col\":\"constructorId\"},\"child_table_info\":{\"row_count\":25420,\"col_count\":18,\"feature_dim\":13}...",
+          "output": "{\"cardinality_stats\":{\"mean\":121.05,\"median\":18.5,\"max\":2305,\"p95\":601.55,\"std\":276.93,\"num_parents\":210,\"num_children\":25420},\"aligned_features_file\":\"results__constructors__constructorId_features.pa...",
+          "metadata_fk_index": 2,
+          "metadata_child_table": "results",
+          "metadata_parent_table": "constructors",
+          "metadata_child_fk_col": "constructorId",
+          "metadata_cardinality_mean": 121.05,
+          "metadata_cardinality_max": 2305,
+          "metadata_cardinality_p95": 601.55,
+          "metadata_cardinality_std": 276.93,
+          "metadata_num_parents": 210,
+          "metadata_num_children": 25420,
+          "metadata_parent_feature_dim": 4,
+          "metadata_child_feature_dim": 13,
+          "metadata_aligned_rows": 25420,
+          "metadata_task_type": "relational_predictability"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "dataset_name": "rel-f1",
+    "source": "ergast_f1_database",
+    "description": "Formula 1 relational database from Ergast Motor Racing Data (as used in RelBench). Contains 14 tables with ~74K total rows, 22 FK links with cardinality stats, and aligned parent-child feature matrice...",
+    "tables": [
+      {
+        "name": "circuits",
+        "row_count": 79,
+        "col_count": 9,
+        "feature_dim": 8,
+        "columns": [
+          {
+            "name": "circuitId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "circuitRef",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "name",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "circuitId": "1",
+            "circuitRef": "albert_park",
+            "name": "Albert Park Grand Prix Circuit",
+            "location": "Melbourne",
+            "country": "Australia",
+            "lat": "-37.8497",
+            "lng": "144.968",
+            "alt": "10.0",
+            "url": "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit"
+          },
+          {
+            "circuitId": "2",
+            "circuitRef": "sepang",
+            "name": "Sepang International Circuit",
+            "location": "Kuala Lumpur",
+            "country": "Malaysia",
+            "lat": "2.76083",
+            "lng": "101.738",
+            "alt": "18.0",
+            "url": "http://en.wikipedia.org/wiki/Sepang_International_Circuit"
+          },
+          {
+            "circuitId": "3",
+            "circuitRef": "bahrain",
+            "name": "Bahrain International Circuit",
+            "location": "Sakhir",
+            "country": "Bahrain",
+            "lat": "26.0325",
+            "lng": "50.5106",
+            "alt": "7.0",
+            "url": "http://en.wikipedia.org/wiki/Bahrain_International_Circuit"
+          }
+        ]
+      },
+      {
+        "name": "constructor_results",
+        "row_count": 11960,
+        "col_count": 5,
+        "feature_dim": 2,
+        "columns": [
+          {
+            "name": "constructorResultsId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "raceId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "constructorId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          }
+        ],
+        "sample_rows": [
+          {
+            "constructorResultsId": "1",
+            "raceId": "18",
+            "constructorId": "1",
+            "points": "14.0",
+            "status": null
+          },
+          {
+            "constructorResultsId": "2",
+            "raceId": "18",
+            "constructorId": "2",
+            "points": "8.0",
+            "status": null
+          },
+          {
+            "constructorResultsId": "3",
+            "raceId": "18",
+            "constructorId": "3",
+            "points": "9.0",
+            "status": null
+          }
+        ]
+      },
+      {
+        "name": "constructor_standings",
+        "row_count": 12721,
+        "col_count": 7,
+        "feature_dim": 4,
+        "columns": [
+          {
+            "name": "constructorStandingsId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "raceId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "constructorId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          }
+        ],
+        "sample_rows": [
+          {
+            "constructorStandingsId": "1",
+            "raceId": "18",
+            "constructorId": "1",
+            "points": "14.0",
+            "position": "1",
+            "positionText": "1",
+            "wins": "1"
+          },
+          {
+            "constructorStandingsId": "2",
+            "raceId": "18",
+            "constructorId": "2",
+            "points": "8.0",
+            "position": "3",
+            "positionText": "3",
+            "wins": "0"
+          },
+          {
+            "constructorStandingsId": "3",
+            "raceId": "18",
+            "constructorId": "3",
+            "points": "9.0",
+            "position": "2",
+            "positionText": "2",
+            "wins": "0"
+          }
+        ]
+      }
+    ],
+    "fk_links": [
+      {
+        "child_table": "results",
+        "child_fk_col": "raceId",
+        "parent_table": "races",
+        "parent_pk_col": "raceId",
+        "cardinality_stats": {
+          "mean": 24.03,
+          "median": 22.0,
+          "max": 55,
+          "p95": 34.0,
+          "std": 4.89,
+          "num_parents": 1058,
+          "num_children": 25420
+        },
+        "num_parents": 1058,
+        "num_children": 25420,
+        "aligned_features_file": "results__races__raceId_features.parquet",
+        "aligned_features_num_rows": 884,
+        "parent_feature_dim": 6,
+        "child_feature_dim": 13
+      },
+      {
+        "child_table": "results",
+        "child_fk_col": "driverId",
+        "parent_table": "drivers",
+        "parent_pk_col": "driverId",
+        "cardinality_stats": {
+          "mean": 29.77,
+          "median": 6.5,
+          "max": 352,
+          "p95": 147.7,
+          "std": 53.08,
+          "num_parents": 854,
+          "num_children": 25420
+        },
+        "num_parents": 854,
+        "num_children": 25420,
+        "aligned_features_file": "results__drivers__driverId_features.parquet",
+        "aligned_features_num_rows": 25420,
+        "parent_feature_dim": 8,
+        "child_feature_dim": 13
+      },
+      {
+        "child_table": "results",
+        "child_fk_col": "constructorId",
+        "parent_table": "constructors",
+        "parent_pk_col": "constructorId",
+        "cardinality_stats": {
+          "mean": 121.05,
+          "median": 18.5,
+          "max": 2305,
+          "p95": 601.55,
+          "std": 276.93,
+          "num_parents": 210,
+          "num_children": 25420
+        },
+        "num_parents": 210,
+        "num_children": 25420,
+        "aligned_features_file": "results__constructors__constructorId_features.parquet",
+        "aligned_features_num_rows": 25420,
+        "parent_feature_dim": 4,
+        "child_feature_dim": 13
+      }
+    ],
+    "tasks": [
+      {
+        "name": "driver-dnf",
+        "task_type": "binary_classification",
+        "target_table": "drivers",
+        "time_horizon": "1 race",
+        "metrics": [
+          "average_precision"
+        ],
+        "description": "Predict whether a driver will DNF (did not finish) in an upcoming race"
+      },
+      {
+        "name": "driver-top3",
+        "task_type": "binary_classification",
+        "target_table": "drivers",
+        "time_horizon": "1 race",
+        "metrics": [
+          "average_precision"
+        ],
+        "description": "Predict whether a driver will finish in the top 3 in an upcoming race"
+      },
+      {
+        "name": "driver-position",
+        "task_type": "regression",
+        "target_table": "drivers",
+        "time_horizon": "1 race",
+        "metrics": [
+          "mean_absolute_error"
+        ],
+        "description": "Predict a driver's finishing position in an upcoming race"
+      }
+    ],
+    "total_tables": 14,
+    "total_fk_links": 22,
+    "total_rows_across_tables": 619786,
+    "license": "CC-BY-4.0",
+    "data_source": "Ergast API (final 2024 release)"
+  }
+}

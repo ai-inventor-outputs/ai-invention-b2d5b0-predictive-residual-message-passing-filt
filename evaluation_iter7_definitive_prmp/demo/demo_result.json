@@ -1,0 +1,13 @@
+{
+  "id": "eval_id1_it7__opus",
+  "type": "code",
+  "title": "Definitive PRMP Meta-Analysis: Pooled Effects, Embedding Regime Theory, and 8 Publication Figures",
+  "summary": "Demo notebook for the definitive PRMP meta-analysis across 12 experiments from 5 datasets (Amazon, F1, Stack, HM, Avito). Loads pre-extracted per-task effect sizes from mini_demo_data.json, then runs DerSimonian-Laird random-effects meta-analysis (pooled Cohen's d=0.237), task-type moderator analysis (regression d=0.334 vs classification d=0.088), embedding-space regime theory (Spearman \u03c1=0.949), Egger's test for publication bias, and generates 8 publication-quality matplotlib figures: forest plot, regime scatter, R\u00b2 trajectories, ablation bar chart, subgroup forest, funnel plot, loss-swap results, and cross-dataset summary table. All 41 cells execute without errors.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_7/gen_art/eval_id1_it7__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id1_it7__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id1_it7__opus/eval_code_demo.ipynb"
+}

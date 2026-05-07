@@ -1,0 +1,13 @@
+{
+  "id": "data_id4_it4__opus",
+  "type": "code",
+  "title": "RelBench rel-avito Dataset: FK Links, Cardinality Stats & Parent-Child Feature Matrices",
+  "summary": "Demo notebook that loads pre-computed aligned parent-child feature pairs from the RelBench rel-avito dataset (NeurIPS 2024 benchmark). Explores 8 tables (~20.7M rows) from the Avito ad platform, analyzes 11 FK links with cardinality statistics (mean/median/max/p95/std), parses parent-child feature vectors, computes R\u00b2 scores, and visualizes cardinality distributions, table sizes, feature dimensionality, and cross-link correlations. Uses 88 curated examples across all 11 FK links.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_4/gen_art/data_id4_it4__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/data_id4_it4__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/data_id4_it4__opus/data_code_demo.ipynb"
+}

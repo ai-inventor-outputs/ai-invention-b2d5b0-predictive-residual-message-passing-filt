@@ -1,0 +1,449 @@
+{
+  "metadata": {
+    "title": "Definitive Cross-Dataset Meta-Analysis for PRMP",
+    "n_experiments": 11,
+    "meta_analysis": {
+      "summary_effect": {
+        "g": 0.6185514573540793,
+        "ci_lower": -0.5724263685016853,
+        "ci_upper": 1.809529283209844,
+        "p": 0.30869973157079
+      },
+      "heterogeneity": {
+        "Q": 12.767092389157337,
+        "Q_p": 0.025661919173290748,
+        "I2": 60.83681508997043,
+        "tau2": 1.3149147343809489
+      },
+      "funnel_test": {
+        "intercept": 5.729325821979115,
+        "p": 0.1565717868501804
+      }
+    },
+    "embedding_regime": {
+      "per_task_data": [
+        {
+          "task": "Amazon review-rating",
+          "dataset": "Amazon",
+          "max_embedding_r2": 0.6087222912027925,
+          "hedges_g": 4.436844173971612
+        },
+        {
+          "task": "F1 driver-position",
+          "dataset": "F1",
+          "max_embedding_r2": 0.45010513067245483,
+          "hedges_g": 1.2315411945933665
+        },
+        {
+          "task": "F1 driver-dnf",
+          "dataset": "F1",
+          "max_embedding_r2": 0.4494548439979553,
+          "hedges_g": -1.45839969829208
+        },
+        {
+          "task": "F1 driver-top3",
+          "dataset": "F1",
+          "max_embedding_r2": 0.45010513067245483,
+          "hedges_g": -0.08766763740166099
+        }
+      ],
+      "spearman_r": 0.9486832980505139,
+      "spearman_p": 0.05131670194948613,
+      "meta_regression_beta1": 28.640023606814157,
+      "meta_regression_p": 0.09829519031319078,
+      "n_tasks_with_embedding_data": 4
+    },
+    "task_type_analysis": {
+      "regression_summary": {
+        "g": 1.6279708168124372,
+        "ci_lower": -0.36475973117078686,
+        "ci_upper": 3.620701364795661,
+        "se": 1.0166992591751143,
+        "n_tasks": 3,
+        "Q_within": 5.8366599674725865
+      },
+      "classification_summary": {
+        "g": -0.17328923311779076,
+        "ci_lower": -1.4859101470621847,
+        "ci_upper": 1.1393316808266034,
+        "se": 0.6697045479308134,
+        "n_tasks": 3,
+        "Q_within": 3.6065483650498638
+      },
+      "Q_between": 3.323884056634887,
+      "Q_between_p": 0.06828033772605824
+    },
+    "mechanism_table": [
+      {
+        "component": "Predict-subtract is necessary",
+        "source": "exp_id4_it2",
+        "finding": "Random predictions worse (RMSE 0.560), no-subtraction worse (RMSE 0.540) vs PRMP (RMSE 0.534)",
+        "eval_value": 0.534305
+      },
+      {
+        "component": "Not just extra parameters",
+        "source": "exp_id1_it4",
+        "finding": "PRMP beats Wide SAGEConv (d=-7.86) and AuxMLP (d=-5.46) on Amazon",
+        "eval_value": -7.8567
+      },
+      {
+        "component": "Predict-subtract contributes 73% of improvement",
+        "source": "exp_id1_it4",
+        "finding": "Total PRMP improvement: 0.050 RMSE. AuxMLP improvement: 0.013. Predict-subtract adds 0.037 (73%)",
+        "eval_value": 73.1
+      },
+      {
+        "component": "Nonlinear > linear predictions",
+        "source": "exp_id4_it2",
+        "finding": "PRMP RMSE 0.534 vs linear_pred RMSE 0.540",
+        "eval_value": 0.005905999999999967
+      },
+      {
+        "component": "PRMP filters predictable info",
+        "source": "exp_id2_it4",
+        "finding": "Product_to_review embedding R2: standard=0.451, PRMP=0.433 (lower = more filtering)",
+        "eval_value": 0.017228998380525884
+      },
+      {
+        "component": "Attention is complementary but modest",
+        "source": "exp_id4_it5",
+        "finding": "SAGE=0.673, GAT=0.672, PRMP_SAGE=0.674, PRMP_GAT=0.678",
+        "eval_value": 0.001426999999999956
+      },
+      {
+        "component": "Task-type effect: regression benefits more",
+        "source": "exp_id3_it4",
+        "finding": "Regression mean delta=+0.015 vs classification mean delta=+0.004",
+        "eval_value": 0.011
+      }
+    ],
+    "figures": [
+      "fig1_forest_plot.png",
+      "fig2_regime_scatter.png",
+      "fig3_embedding_trajectories.png",
+      "fig4_mechanism_decomposition.png",
+      "fig5_tasktype_forest.png",
+      "fig6_2d_diagnostic.png"
+    ],
+    "data_discrepancies": {
+      "rel_stack_conflict": "exp_id3_it3 (SAGEConv=0.896, PRMP=0.891) vs exp_id3_it5 (Standard=0.505, PRMP=0.767). Different implementations: exp_id3_it3 used PyG SAGEConv, exp_id3_it5 used pure PyTorch HeteroSAGEConv with channels=48.",
+      "f1_conflict": "exp_id2_it3 shows PRMP MAE 4.00 vs Standard 4.35 (7.9% improvement), while exp_id2_it5 shows PRMP MAE ~0.74 vs Standard ~0.66 (PRMP worse). Different implementations and training configs.",
+      "amazon_gat_conflict": "exp_id4_it5 (50K reviews, pure PyTorch) shows no PRMP benefit (RMSE ~0.674 for all variants), while exp_id1_it4 (10K reviews, PyG) shows 8.9% improvement. Different dataset sizes and implementations."
+    },
+    "hypothesis_verdict": "PARTIAL SUPPORT: PRMP shows a positive but heterogeneous effect across tasks. The meta-analytic summary effect is positive (g=0.62), driven primarily by Amazon review-rating (large effect) and F1 driver-position (moderate effect). Classification tasks show near-zero or slightly negative effects. The embedding-space regime theory has limited support due to few data points (Spearman r=0.95, p=0.051). The predict-subtract mechanism is confirmed as the primary source of improvement (74% on Amazon), not just extra parameters. Task-type moderator analysis suggests regression benefits more than classification (Q_between=3.32, p=0.068)."
+  },
+  "metrics_agg": {
+    "meta_analysis_summary_g": 0.6185514573540793,
+    "meta_analysis_ci_lower": -0.5724263685016853,
+    "meta_analysis_ci_upper": 1.809529283209844,
+    "meta_analysis_p_value": 0.30869973157079,
+    "meta_analysis_I2": 60.83681508997043,
+    "meta_analysis_Q": 12.767092389157337,
+    "meta_analysis_Q_p": 0.025661919173290748,
+    "meta_analysis_tau2": 1.3149147343809489,
+    "meta_analysis_k": 6.0,
+    "subgroup_regression_g": 1.6279708168124372,
+    "subgroup_classification_g": -0.17328923311779076,
+    "subgroup_Q_between": 3.323884056634887,
+    "subgroup_Q_between_p": 0.06828033772605824,
+    "n_primary_tasks": 6.0,
+    "n_total_tasks": 10.0,
+    "n_experiments": 11.0,
+    "regime_spearman_r": 0.9486832980505139,
+    "regime_spearman_p": 0.05131670194948613,
+    "regime_meta_regression_beta1": 28.640023606814157,
+    "egger_intercept": 5.729325821979115,
+    "egger_p": 0.1565717868501804
+  },
+  "datasets": [
+    {
+      "dataset": "meta_analysis_tasks",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"Amazon\", \"task\": \"review-rating\", \"task_type\": \"regression\", \"metric\": \"RMSE\", \"source\": \"exp_id1_it4\", \"seeds\": 3}",
+          "output": "{\"standard_mean\": 0.564342, \"standard_std\": 0.010444, \"prmp_mean\": 0.514344, \"prmp_std\": 0.007312, \"hedges_g\": 4.436844173971612, \"se_g\": 1.5189246806020873, \"primary\": true}",
+          "predict_standard": "0.5643",
+          "predict_prmp": "0.5143",
+          "metadata_dataset": "Amazon",
+          "metadata_task": "review-rating",
+          "metadata_task_type": "regression",
+          "metadata_source": "exp_id1_it4",
+          "eval_hedges_g": 4.436844,
+          "eval_se_g": 1.518925,
+          "eval_var_g": 2.307132
+        },
+        {
+          "input": "{\"dataset\": \"F1\", \"task\": \"driver-position\", \"task_type\": \"regression\", \"metric\": \"MAE\", \"source\": \"exp_id2_it3\", \"seeds\": 3}",
+          "output": "{\"standard_mean\": 4.347035566965739, \"standard_std\": 0.17580655127582187, \"prmp_mean\": 4.003660360972087, \"prmp_std\": 0.26191260446244197, \"hedges_g\": 1.2315411945933665, \"se_g\": 0.8905379326555222, \"primary\": true}",
+          "predict_standard": "4.3470",
+          "predict_prmp": "4.0037",
+          "metadata_dataset": "F1",
+          "metadata_task": "driver-position",
+          "metadata_task_type": "regression",
+          "metadata_source": "exp_id2_it3",
+          "eval_hedges_g": 1.231541,
+          "eval_se_g": 0.890538,
+          "eval_var_g": 0.793058
+        },
+        {
+          "input": "{\"dataset\": \"F1\", \"task\": \"driver-dnf\", \"task_type\": \"classification\", \"metric\": \"AP\", \"source\": \"exp_id2_it3\", \"seeds\": 3}",
+          "output": "{\"standard_mean\": 0.9987017318384307, \"standard_std\": 0.0005615785078865761, \"prmp_mean\": 0.9956158449551825, \"prmp_std\": 0.0023271120665457916, \"hedges_g\": -1.45839969829208, \"se_g\": 0.9186461814348705, \"primary\": true}",
+          "predict_standard": "0.9987",
+          "predict_prmp": "0.9956",
+          "metadata_dataset": "F1",
+          "metadata_task": "driver-dnf",
+          "metadata_task_type": "classification",
+          "metadata_source": "exp_id2_it3",
+          "eval_hedges_g": -1.4584,
+          "eval_se_g": 0.918646,
+          "eval_var_g": 0.843911
+        },
+        {
+          "input": "{\"dataset\": \"F1\", \"task\": \"driver-top3\", \"task_type\": \"classification\", \"metric\": \"AP\", \"source\": \"exp_id2_it3\", \"seeds\": 3}",
+          "output": "{\"standard_mean\": 0.9580886460675075, \"standard_std\": 0.00015497752325822705, \"prmp_mean\": 0.9572514038756436, \"prmp_std\": 0.010803689877848703, \"hedges_g\": -0.08766763740166099, \"se_g\": 0.8168886916550906, \"primary\": true}",
+          "predict_standard": "0.9581",
+          "predict_prmp": "0.9573",
+          "metadata_dataset": "F1",
+          "metadata_task": "driver-top3",
+          "metadata_task_type": "classification",
+          "metadata_source": "exp_id2_it3",
+          "eval_hedges_g": -0.087668,
+          "eval_se_g": 0.816889,
+          "eval_var_g": 0.667307
+        },
+        {
+          "input": "{\"dataset\": \"rel-hm\", \"task\": \"user-churn\", \"task_type\": \"classification\", \"metric\": \"AUROC\", \"source\": \"exp_id1_it3\", \"seeds\": 3}",
+          "output": "{\"standard_mean\": 0.5208, \"standard_std\": 0.027, \"prmp_mean\": 0.5521, \"prmp_std\": 0.027, \"hedges_g\": 0.9274074074074072, \"se_g\": 0.8592673477695076, \"primary\": true}",
+          "predict_standard": "0.5208",
+          "predict_prmp": "0.5521",
+          "metadata_dataset": "rel-hm",
+          "metadata_task": "user-churn",
+          "metadata_task_type": "classification",
+          "metadata_source": "exp_id1_it3",
+          "eval_hedges_g": 0.927407,
+          "eval_se_g": 0.859267,
+          "eval_var_g": 0.73834
+        },
+        {
+          "input": "{\"dataset\": \"rel-hm\", \"task\": \"item-sales\", \"task_type\": \"regression\", \"metric\": \"MAE\", \"source\": \"exp_id1_it3\", \"seeds\": 3}",
+          "output": "{\"standard_mean\": 0.045, \"standard_std\": 0.003, \"prmp_mean\": 0.044, \"prmp_std\": 0.003, \"hedges_g\": 0.26666666666666694, \"se_g\": 0.8201174260998193, \"primary\": true}",
+          "predict_standard": "0.0450",
+          "predict_prmp": "0.0440",
+          "metadata_dataset": "rel-hm",
+          "metadata_task": "item-sales",
+          "metadata_task_type": "regression",
+          "metadata_source": "exp_id1_it3",
+          "eval_hedges_g": 0.266667,
+          "eval_se_g": 0.820117,
+          "eval_var_g": 0.672593
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"task_type\": \"classification\", \"metric\": \"AUROC\", \"source\": \"exp_id3_it3\", \"seeds\": 1}",
+          "output": "{\"standard_mean\": 0.8956, \"standard_std\": 0.0, \"prmp_mean\": 0.8912, \"prmp_std\": 0.0, \"hedges_g\": null, \"se_g\": null, \"primary\": false}",
+          "predict_standard": "0.8956",
+          "predict_prmp": "0.8912",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_task_type": "classification",
+          "metadata_source": "exp_id3_it3"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"task_type\": \"regression\", \"metric\": \"MAE\", \"source\": \"exp_id3_it3\", \"seeds\": 1}",
+          "output": "{\"standard_mean\": 0.0679, \"standard_std\": 0.0, \"prmp_mean\": 0.0679, \"prmp_std\": 0.0, \"hedges_g\": null, \"se_g\": null, \"primary\": false}",
+          "predict_standard": "0.0679",
+          "predict_prmp": "0.0679",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_task_type": "regression",
+          "metadata_source": "exp_id3_it3"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"task_type\": \"classification\", \"metric\": \"AUROC\", \"source\": \"exp_id3_it5\", \"seeds\": 1}",
+          "output": "{\"standard_mean\": 0.50468, \"standard_std\": 0.0, \"prmp_mean\": 0.76739, \"prmp_std\": 0.0, \"hedges_g\": null, \"se_g\": null, \"primary\": false}",
+          "predict_standard": "0.5047",
+          "predict_prmp": "0.7674",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_task_type": "classification",
+          "metadata_source": "exp_id3_it5"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"task_type\": \"regression\", \"metric\": \"MAE\", \"source\": \"exp_id3_it5\", \"seeds\": 1}",
+          "output": "{\"standard_mean\": 0.56382, \"standard_std\": 0.0, \"prmp_mean\": 0.07278, \"prmp_std\": 0.0, \"hedges_g\": null, \"se_g\": null, \"primary\": false}",
+          "predict_standard": "0.5638",
+          "predict_prmp": "0.0728",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_task_type": "regression",
+          "metadata_source": "exp_id3_it5"
+        }
+      ]
+    },
+    {
+      "dataset": "embedding_regime_data",
+      "examples": [
+        {
+          "input": "{\"task\": \"Amazon review-rating\", \"dataset\": \"Amazon\"}",
+          "output": "{\"max_embedding_r2\": 0.6087222912027925, \"hedges_g\": 4.436844173971612}",
+          "predict_standard": "0.6087",
+          "predict_prmp": "4.4368",
+          "eval_max_embedding_r2": 0.608722,
+          "eval_hedges_g": 4.436844,
+          "metadata_task": "Amazon review-rating",
+          "metadata_dataset": "Amazon"
+        },
+        {
+          "input": "{\"task\": \"F1 driver-position\", \"dataset\": \"F1\"}",
+          "output": "{\"max_embedding_r2\": 0.45010513067245483, \"hedges_g\": 1.2315411945933665}",
+          "predict_standard": "0.4501",
+          "predict_prmp": "1.2315",
+          "eval_max_embedding_r2": 0.450105,
+          "eval_hedges_g": 1.231541,
+          "metadata_task": "F1 driver-position",
+          "metadata_dataset": "F1"
+        },
+        {
+          "input": "{\"task\": \"F1 driver-dnf\", \"dataset\": \"F1\"}",
+          "output": "{\"max_embedding_r2\": 0.4494548439979553, \"hedges_g\": -1.45839969829208}",
+          "predict_standard": "0.4495",
+          "predict_prmp": "-1.4584",
+          "eval_max_embedding_r2": 0.449455,
+          "eval_hedges_g": -1.4584,
+          "metadata_task": "F1 driver-dnf",
+          "metadata_dataset": "F1"
+        },
+        {
+          "input": "{\"task\": \"F1 driver-top3\", \"dataset\": \"F1\"}",
+          "output": "{\"max_embedding_r2\": 0.45010513067245483, \"hedges_g\": -0.08766763740166099}",
+          "predict_standard": "0.4501",
+          "predict_prmp": "-0.0877",
+          "eval_max_embedding_r2": 0.450105,
+          "eval_hedges_g": -0.087668,
+          "metadata_task": "F1 driver-top3",
+          "metadata_dataset": "F1"
+        }
+      ]
+    },
+    {
+      "dataset": "mechanism_decomposition",
+      "examples": [
+        {
+          "input": "{\"component\": \"Predict-subtract is necessary\", \"source\": \"exp_id4_it2\"}",
+          "output": "Random predictions worse (RMSE 0.560), no-subtraction worse (RMSE 0.540) vs PRMP (RMSE 0.534)",
+          "predict_baseline": "exp_id4_it2",
+          "predict_our_method": "Predict-subtract is necessary",
+          "metadata_component": "Predict-subtract is necessary",
+          "metadata_source": "exp_id4_it2",
+          "eval_mechanism_value": 0.534305
+        },
+        {
+          "input": "{\"component\": \"Not just extra parameters\", \"source\": \"exp_id1_it4\"}",
+          "output": "PRMP beats Wide SAGEConv (d=-7.86) and AuxMLP (d=-5.46) on Amazon",
+          "predict_baseline": "exp_id1_it4",
+          "predict_our_method": "Not just extra parameters",
+          "metadata_component": "Not just extra parameters",
+          "metadata_source": "exp_id1_it4",
+          "eval_mechanism_value": -7.8567
+        },
+        {
+          "input": "{\"component\": \"Predict-subtract contributes 73% of improvement\", \"source\": \"exp_id1_it4\"}",
+          "output": "Total PRMP improvement: 0.050 RMSE. AuxMLP improvement: 0.013. Predict-subtract adds 0.037 (73%)",
+          "predict_baseline": "exp_id1_it4",
+          "predict_our_method": "Predict-subtract contributes 73% of improvement",
+          "metadata_component": "Predict-subtract contributes 73% of improvement",
+          "metadata_source": "exp_id1_it4",
+          "eval_mechanism_value": 73.1
+        },
+        {
+          "input": "{\"component\": \"Nonlinear > linear predictions\", \"source\": \"exp_id4_it2\"}",
+          "output": "PRMP RMSE 0.534 vs linear_pred RMSE 0.540",
+          "predict_baseline": "exp_id4_it2",
+          "predict_our_method": "Nonlinear > linear predictions",
+          "metadata_component": "Nonlinear > linear predictions",
+          "metadata_source": "exp_id4_it2",
+          "eval_mechanism_value": 0.005906
+        },
+        {
+          "input": "{\"component\": \"PRMP filters predictable info\", \"source\": \"exp_id2_it4\"}",
+          "output": "Product_to_review embedding R2: standard=0.451, PRMP=0.433 (lower = more filtering)",
+          "predict_baseline": "exp_id2_it4",
+          "predict_our_method": "PRMP filters predictable info",
+          "metadata_component": "PRMP filters predictable info",
+          "metadata_source": "exp_id2_it4",
+          "eval_mechanism_value": 0.017229
+        },
+        {
+          "input": "{\"component\": \"Attention is complementary but modest\", \"source\": \"exp_id4_it5\"}",
+          "output": "SAGE=0.673, GAT=0.672, PRMP_SAGE=0.674, PRMP_GAT=0.678",
+          "predict_baseline": "exp_id4_it5",
+          "predict_our_method": "Attention is complementary but modest",
+          "metadata_component": "Attention is complementary but modest",
+          "metadata_source": "exp_id4_it5",
+          "eval_mechanism_value": 0.001427
+        },
+        {
+          "input": "{\"component\": \"Task-type effect: regression benefits more\", \"source\": \"exp_id3_it4\"}",
+          "output": "Regression mean delta=+0.015 vs classification mean delta=+0.004",
+          "predict_baseline": "exp_id3_it4",
+          "predict_our_method": "Task-type effect: regression benefits more",
+          "metadata_component": "Task-type effect: regression benefits more",
+          "metadata_source": "exp_id3_it4",
+          "eval_mechanism_value": 0.011
+        }
+      ]
+    },
+    {
+      "dataset": "figure_manifest",
+      "examples": [
+        {
+          "input": "{\"figure\": \"fig1_forest_plot.png\", \"index\": 0}",
+          "output": "fig1_forest_plot.png",
+          "predict_baseline": "N/A",
+          "predict_our_method": "fig1_forest_plot.png",
+          "metadata_figure_name": "fig1_forest_plot.png",
+          "eval_figure_index": 0.0
+        },
+        {
+          "input": "{\"figure\": \"fig2_regime_scatter.png\", \"index\": 1}",
+          "output": "fig2_regime_scatter.png",
+          "predict_baseline": "N/A",
+          "predict_our_method": "fig2_regime_scatter.png",
+          "metadata_figure_name": "fig2_regime_scatter.png",
+          "eval_figure_index": 1.0
+        },
+        {
+          "input": "{\"figure\": \"fig3_embedding_trajectories.png\", \"index\": 2}",
+          "output": "fig3_embedding_trajectories.png",
+          "predict_baseline": "N/A",
+          "predict_our_method": "fig3_embedding_trajectories.png",
+          "metadata_figure_name": "fig3_embedding_trajectories.png",
+          "eval_figure_index": 2.0
+        },
+        {
+          "input": "{\"figure\": \"fig4_mechanism_decomposition.png\", \"index\": 3}",
+          "output": "fig4_mechanism_decomposition.png",
+          "predict_baseline": "N/A",
+          "predict_our_method": "fig4_mechanism_decomposition.png",
+          "metadata_figure_name": "fig4_mechanism_decomposition.png",
+          "eval_figure_index": 3.0
+        },
+        {
+          "input": "{\"figure\": \"fig5_tasktype_forest.png\", \"index\": 4}",
+          "output": "fig5_tasktype_forest.png",
+          "predict_baseline": "N/A",
+          "predict_our_method": "fig5_tasktype_forest.png",
+          "metadata_figure_name": "fig5_tasktype_forest.png",
+          "eval_figure_index": 4.0
+        },
+        {
+          "input": "{\"figure\": \"fig6_2d_diagnostic.png\", \"index\": 5}",
+          "output": "fig6_2d_diagnostic.png",
+          "predict_baseline": "N/A",
+          "predict_our_method": "fig6_2d_diagnostic.png",
+          "metadata_figure_name": "fig6_2d_diagnostic.png",
+          "eval_figure_index": 5.0
+        }
+      ]
+    }
+  ]
+}

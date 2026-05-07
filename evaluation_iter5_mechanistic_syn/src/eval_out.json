@@ -1,0 +1,807 @@
+{
+  "metadata": {
+    "evaluation_name": "PRMP Mechanistic Synthesis",
+    "description": "Synthesizes evidence from 4 prior experiments into unified mechanistic narrative. Produces mechanism decomposition, gradient analysis, embedding rank analysis, R\u00b2 correlation, and 4 publication figures.",
+    "experiments_used": [
+      "exp_id1_it4__opus (parameter-matched controls)",
+      "exp_id2_it4__opus (embedding R\u00b2 trajectories)",
+      "exp_id3_it4__opus (task-type instrumented comparison)",
+      "exp_id4_it2__opus (per-link PRMP ablation)"
+    ],
+    "mechanism_decomposition": {
+      "rmse": {
+        "total_improvement": 0.0499980000000001,
+        "standard_mean": 0.5643423333333334,
+        "prmp_mean": 0.5143443333333333,
+        "extra_params_frac": 0.1493726415723308,
+        "extra_params_ci": [
+          0.027437861314083354,
+          0.31522815447299607
+        ],
+        "aux_mlp_frac": 0.2692574369641451,
+        "aux_mlp_ci": [
+          -0.027790004988702953,
+          0.400597373504537
+        ],
+        "skip_frac": 0.07544968465405356,
+        "skip_ci": [
+          -0.20706048067611427,
+          0.29144684512117974
+        ],
+        "predict_subtract_residual_frac": 0.7307425630358548,
+        "predict_subtract_ci": [
+          0.599402626495463,
+          0.9725621386859167
+        ],
+        "variant_means": {
+          "standard": 0.5643423333333334,
+          "wide": 0.556874,
+          "aux_mlp": 0.55088,
+          "skip_residual": 0.56057,
+          "prmp": 0.5143443333333333
+        }
+      },
+      "mae": {
+        "total_improvement": 0.05694466666666664,
+        "standard_mean": 0.39951766666666666,
+        "prmp_mean": 0.342573,
+        "extra_params_frac": 0.10711567954856674,
+        "extra_params_ci": [
+          -0.08345958589161126,
+          0.24568552595833507
+        ],
+        "aux_mlp_frac": 0.3381645339920622,
+        "aux_mlp_ci": [
+          0.059777263907716115,
+          0.41933685068416776
+        ],
+        "skip_frac": 0.002370722455716206,
+        "skip_ci": [
+          -0.2872710841772319,
+          0.17535280744648896
+        ],
+        "predict_subtract_residual_frac": 0.6618354660079377,
+        "predict_subtract_ci": [
+          0.5806631493158323,
+          0.9402227360922839
+        ],
+        "variant_means": {
+          "standard": 0.39951766666666666,
+          "wide": 0.39341800000000005,
+          "aux_mlp": 0.380261,
+          "skip_residual": 0.3993826666666667,
+          "prmp": 0.342573
+        }
+      },
+      "r2": {
+        "total_improvement": 0.039456333333333427,
+        "standard_mean": 0.7671079999999999,
+        "prmp_mean": 0.8065643333333333,
+        "extra_params_frac": 0.1564514357644336,
+        "extra_params_ci": [
+          0.028313836524848444,
+          0.3274275008145981
+        ],
+        "aux_mlp_frac": 0.27908489553852933,
+        "aux_mlp_ci": [
+          -0.02868638700543687,
+          0.4141617790811346
+        ],
+        "skip_frac": 0.07991112537911273,
+        "skip_ci": [
+          -0.21492437225244085,
+          0.30311176278917984
+        ],
+        "predict_subtract_residual_frac": 0.7209151044614707,
+        "predict_subtract_ci": [
+          0.5858382209188654,
+          0.9716861634751516
+        ],
+        "variant_means": {
+          "standard": 0.7671079999999999,
+          "wide": 0.773281,
+          "aux_mlp": 0.7781196666666667,
+          "skip_residual": 0.770261,
+          "prmp": 0.8065643333333333
+        }
+      }
+    },
+    "gradient_analysis": {
+      "task_mean_gradient_ratios": {
+        "driver-position": 5.813183544941967,
+        "driver-dnf": 4.7469045878787215,
+        "driver-top3": 3.1096945039506347,
+        "user-engagement": 7.117382802033455,
+        "post-votes": 4.9680834856138905
+      },
+      "regression_mean_ratio": 5.269904935373918,
+      "classification_mean_ratio": 5.80967082267649,
+      "regression_n_edges": 784,
+      "classification_n_edges": 878,
+      "mann_whitney_U": 385940.5,
+      "mann_whitney_p": 1.90248943832903e-05
+    },
+    "embedding_rank_analysis": {
+      "delta_ranks": {
+        "driver-position": 0.6536,
+        "driver-dnf": 3.6556999999999995,
+        "driver-top3": 3.0771000000000006,
+        "user-engagement": 1.8733000000000004,
+        "post-votes": -1.9040999999999997
+      },
+      "final_ranks": {
+        "driver-position": {
+          "standard": 6.5273,
+          "standard_epoch": 19,
+          "prmp": 7.1809,
+          "prmp_epoch": 19
+        },
+        "driver-dnf": {
+          "standard": 12.1964,
+          "standard_epoch": 10,
+          "prmp": 15.8521,
+          "prmp_epoch": 15
+        },
+        "driver-top3": {
+          "standard": 6.5615,
+          "standard_epoch": 10,
+          "prmp": 9.6386,
+          "prmp_epoch": 10
+        },
+        "user-engagement": {
+          "standard": 17.2328,
+          "standard_epoch": 10,
+          "prmp": 19.1061,
+          "prmp_epoch": 19
+        },
+        "post-votes": {
+          "standard": 10.5362,
+          "standard_epoch": 10,
+          "prmp": 8.6321,
+          "prmp_epoch": 15
+        }
+      },
+      "task_deltas": {
+        "driver-position": 0.02774399999999977,
+        "driver-dnf": -0.0011069999999999691,
+        "driver-top3": 0.0013609999999999456,
+        "user-engagement": 0.010386000000000006,
+        "post-votes": 0.002139000000000002
+      },
+      "spearman_rho": -0.7,
+      "spearman_p": 0.1881204043741873,
+      "regression_delta_ranks": [
+        0.6536,
+        -1.9040999999999997
+      ],
+      "classification_delta_ranks": [
+        3.6556999999999995,
+        3.0771000000000006,
+        1.8733000000000004
+      ],
+      "regression_mean_delta_rank": -0.6252499999999999,
+      "classification_mean_delta_rank": 2.8687000000000005,
+      "task_types": {
+        "driver-position": "regression",
+        "driver-dnf": "classification",
+        "driver-top3": "classification",
+        "user-engagement": "classification",
+        "post-votes": "regression"
+      }
+    },
+    "embedding_r2_correlation": {
+      "standard_product_r2": 0.4506990865443701,
+      "standard_customer_r2": 0.6087222912027925,
+      "prmp_product_r2": 0.4334700881638442,
+      "prmp_customer_r2": 0.6569876139983958,
+      "product_link_improvement": 0.02249599999999996,
+      "customer_link_improvement": 0.031000000000000028,
+      "product_r2_reduction": 0.017228998380525884,
+      "customer_r2_reduction": -0.04826532279560325,
+      "higher_r2_link": "customer",
+      "larger_improvement_link": "customer",
+      "r2_predicts_improvement": true
+    },
+    "cross_experiment_summary": {
+      "regression_deltas": {
+        "amazon_per_seed": [
+          0.06160299999999996,
+          0.05431399999999997,
+          0.034077000000000024
+        ],
+        "driver_position": 0.02774399999999977,
+        "post_votes": 0.002139000000000002,
+        "all_values": [
+          0.06160299999999996,
+          0.05431399999999997,
+          0.034077000000000024,
+          0.02774399999999977,
+          0.002139000000000002
+        ],
+        "mean": 0.03597539999999995,
+        "ci_95": [
+          0.01769499999999995,
+          0.05318219999999998
+        ]
+      },
+      "classification_deltas": {
+        "driver_dnf": -0.0011069999999999691,
+        "driver_top3": 0.0013609999999999456,
+        "user_engagement": 0.010386000000000006,
+        "all_values": [
+          -0.0011069999999999691,
+          0.0013609999999999456,
+          0.010386000000000006
+        ],
+        "mean": 0.003546666666666661,
+        "ci_95": [
+          -0.0011069999999999691,
+          0.010386000000000006
+        ]
+      },
+      "regression_vs_classification_cohens_d": 1.662629347161094,
+      "task_deltas": {
+        "driver-position": 0.02774399999999977,
+        "driver-dnf": -0.0011069999999999691,
+        "driver-top3": 0.0013609999999999456,
+        "user-engagement": 0.010386000000000006,
+        "post-votes": 0.002139000000000002
+      },
+      "task_types": {
+        "driver-position": "regression",
+        "driver-dnf": "classification",
+        "driver-top3": "classification",
+        "user-engagement": "classification",
+        "post-votes": "regression"
+      }
+    },
+    "figures": [
+      "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_5/gen_art/eval_id5_it5__opus/figures/fig1_mechanism_decomposition.png",
+      "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_5/gen_art/eval_id5_it5__opus/figures/fig2_gradient_ratio_trajectories.png",
+      "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_5/gen_art/eval_id5_it5__opus/figures/fig3_embedding_rank_comparison.png",
+      "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_5/gen_art/eval_id5_it5__opus/figures/fig4_embedding_r2_vs_improvement.png"
+    ]
+  },
+  "metrics_agg": {
+    "decomp_extra_params_frac": 0.1494,
+    "decomp_aux_mlp_frac": 0.2693,
+    "decomp_skip_frac": 0.0754,
+    "decomp_predict_subtract_frac": 0.7307,
+    "grad_regression_mean_ratio": 5.2699,
+    "grad_classification_mean_ratio": 5.8097,
+    "grad_mann_whitney_p": 1.9e-05,
+    "rank_spearman_rho": -0.7,
+    "rank_regression_mean_delta": -0.6252,
+    "rank_classification_mean_delta": 2.8687,
+    "r2_predicts_improvement": 1,
+    "r2_product_link_improvement": 0.0225,
+    "r2_customer_link_improvement": 0.031,
+    "summary_regression_mean_delta": 0.036,
+    "summary_classification_mean_delta": 0.0035,
+    "summary_reg_vs_cls_cohens_d": 1.6626
+  },
+  "datasets": [
+    {
+      "dataset": "prmp_mechanistic_synthesis",
+      "examples": [
+        {
+          "input": "{\"experiment\": \"exp_id1_mechanism_decomposition\", \"dataset\": \"amazon_video_games\", \"seed_index\": 0}",
+          "output": "{\"A_standard_sage\": {\"rmse\": 0.575958, \"mae\": 0.408849, \"r2\": 0.757478}, \"B_prmp\": {\"rmse\": 0.514355, \"mae\": 0.33891, \"r2\": 0.806582}, \"C_wide_sage\": {\"rmse\": 0.556539, \"mae\": 0.391666, \"r2\": 0.773556}, \"D_aux_mlp\": {\"rmse\": 0.55128, \"mae\": 0.379521, \"r2\": 0.777815}, \"E_skip_residual\": {\"rmse\": 0.558004, \"mae\": 0.396585, \"r2\": 0.772362}}",
+          "eval_seed_prmp_rmse": 0.514355,
+          "eval_seed_standard_rmse": 0.575958,
+          "eval_seed_rmse_delta": 0.06160299999999996,
+          "metadata_experiment": "exp_id1_mechanism_decomposition",
+          "metadata_seed_index": 0
+        },
+        {
+          "input": "{\"experiment\": \"exp_id1_mechanism_decomposition\", \"dataset\": \"amazon_video_games\", \"seed_index\": 1}",
+          "output": "{\"A_standard_sage\": {\"rmse\": 0.561341, \"mae\": 0.399786, \"r2\": 0.769631}, \"B_prmp\": {\"rmse\": 0.507027, \"mae\": 0.336514, \"r2\": 0.812054}, \"C_wide_sage\": {\"rmse\": 0.55929, \"mae\": 0.39553, \"r2\": 0.771312}, \"D_aux_mlp\": {\"rmse\": 0.544685, \"mae\": 0.373593, \"r2\": 0.783099}, \"E_skip_residual\": {\"rmse\": 0.560922, \"mae\": 0.400837, \"r2\": 0.769975}}",
+          "eval_seed_prmp_rmse": 0.507027,
+          "eval_seed_standard_rmse": 0.561341,
+          "eval_seed_rmse_delta": 0.05431399999999997,
+          "metadata_experiment": "exp_id1_mechanism_decomposition",
+          "metadata_seed_index": 1
+        },
+        {
+          "input": "{\"experiment\": \"exp_id1_mechanism_decomposition\", \"dataset\": \"amazon_video_games\", \"seed_index\": 2}",
+          "output": "{\"A_standard_sage\": {\"rmse\": 0.555728, \"mae\": 0.389918, \"r2\": 0.774215}, \"B_prmp\": {\"rmse\": 0.521651, \"mae\": 0.352295, \"r2\": 0.801057}, \"C_wide_sage\": {\"rmse\": 0.554793, \"mae\": 0.393058, \"r2\": 0.774975}, \"D_aux_mlp\": {\"rmse\": 0.556675, \"mae\": 0.387669, \"r2\": 0.773445}, \"E_skip_residual\": {\"rmse\": 0.562784, \"mae\": 0.400726, \"r2\": 0.768446}}",
+          "eval_seed_prmp_rmse": 0.521651,
+          "eval_seed_standard_rmse": 0.555728,
+          "eval_seed_rmse_delta": 0.034077000000000024,
+          "metadata_experiment": "exp_id1_mechanism_decomposition",
+          "metadata_seed_index": 2
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"epoch\": 0}",
+          "output": "{\"val_metric\": 8.440052, \"train_loss\": 11.827667}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 0,
+          "eval_val_metric": 8.440052,
+          "eval_effective_rank": 3.3276
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"epoch\": 5}",
+          "output": "{\"val_metric\": 5.928389, \"train_loss\": 8.955528}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 5,
+          "eval_val_metric": 5.928389,
+          "eval_effective_rank": 2.053
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"epoch\": 10}",
+          "output": "{\"val_metric\": 4.076882, \"train_loss\": 6.534358}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 10,
+          "eval_val_metric": 4.076882,
+          "eval_effective_rank": 1.8589
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"epoch\": 15}",
+          "output": "{\"val_metric\": 3.248827, \"train_loss\": 5.131248}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 15,
+          "eval_val_metric": 3.248827,
+          "eval_effective_rank": 4.5467
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"epoch\": 19}",
+          "output": "{\"val_metric\": 2.85769, \"train_loss\": 4.768194}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 19,
+          "eval_val_metric": 2.85769,
+          "eval_effective_rank": 6.5273
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"epoch\": 0}",
+          "output": "{\"val_metric\": 8.437699, \"train_loss\": 11.85658}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 0,
+          "eval_val_metric": 8.437699,
+          "eval_effective_rank": 4.7318,
+          "eval_mean_grad_ratio": 4.533
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"epoch\": 5}",
+          "output": "{\"val_metric\": 5.961912, \"train_loss\": 9.12664}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 5,
+          "eval_val_metric": 5.961912,
+          "eval_effective_rank": 2.8309,
+          "eval_mean_grad_ratio": 6.4795
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"epoch\": 10}",
+          "output": "{\"val_metric\": 4.131211, \"train_loss\": 6.763043}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 10,
+          "eval_val_metric": 4.131211,
+          "eval_effective_rank": 2.5907,
+          "eval_mean_grad_ratio": 6.6424
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"epoch\": 15}",
+          "output": "{\"val_metric\": 2.960844, \"train_loss\": 5.296728}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 15,
+          "eval_val_metric": 2.960844,
+          "eval_effective_rank": 5.6848,
+          "eval_mean_grad_ratio": 6.9065
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"epoch\": 19}",
+          "output": "{\"val_metric\": 2.817219, \"train_loss\": 4.807513}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 19,
+          "eval_val_metric": 2.817219,
+          "eval_effective_rank": 7.1809,
+          "eval_mean_grad_ratio": 6.1563
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\", \"epoch\": 0}",
+          "output": "{\"val_metric\": 0.798549, \"train_loss\": 0.364767}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "eval_val_metric": 0.798549,
+          "eval_effective_rank": 7.8924
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\", \"epoch\": 5}",
+          "output": "{\"val_metric\": 0.804771, \"train_loss\": 0.286508}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 5,
+          "eval_val_metric": 0.804771,
+          "eval_effective_rank": 9.144
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\", \"epoch\": 10}",
+          "output": "{\"val_metric\": 0.799964, \"train_loss\": 0.279031}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 10,
+          "eval_val_metric": 0.799964,
+          "eval_effective_rank": 12.1964
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\", \"epoch\": 12}",
+          "output": "{\"val_metric\": 0.799819, \"train_loss\": 0.2755}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 12,
+          "eval_val_metric": 0.799819
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 0}",
+          "output": "{\"val_metric\": 0.781079, \"train_loss\": 0.373688}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "eval_val_metric": 0.781079,
+          "eval_effective_rank": 7.6885,
+          "eval_mean_grad_ratio": 4.0982
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 5}",
+          "output": "{\"val_metric\": 0.792472, \"train_loss\": 0.287697}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 5,
+          "eval_val_metric": 0.792472,
+          "eval_effective_rank": 9.5458,
+          "eval_mean_grad_ratio": 5.2996
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 10}",
+          "output": "{\"val_metric\": 0.800798, \"train_loss\": 0.281007}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 10,
+          "eval_val_metric": 0.800798,
+          "eval_effective_rank": 11.2463,
+          "eval_mean_grad_ratio": 5.0908
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 15}",
+          "output": "{\"val_metric\": 0.801723, \"train_loss\": 0.27307}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 15,
+          "eval_val_metric": 0.801723,
+          "eval_effective_rank": 15.8521,
+          "eval_mean_grad_ratio": 4.8466
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"standard\", \"task_type\": \"classification\", \"epoch\": 0}",
+          "output": "{\"val_metric\": 0.840874, \"train_loss\": 0.570458}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "eval_val_metric": 0.840874,
+          "eval_effective_rank": 13.7727
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"standard\", \"task_type\": \"classification\", \"epoch\": 5}",
+          "output": "{\"val_metric\": 0.905019, \"train_loss\": 0.31388}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 5,
+          "eval_val_metric": 0.905019,
+          "eval_effective_rank": 7.7614
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"standard\", \"task_type\": \"classification\", \"epoch\": 10}",
+          "output": "{\"val_metric\": 0.891079, \"train_loss\": 0.276721}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 10,
+          "eval_val_metric": 0.891079,
+          "eval_effective_rank": 6.5615
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 0}",
+          "output": "{\"val_metric\": 0.897637, \"train_loss\": 0.556282}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "eval_val_metric": 0.897637,
+          "eval_effective_rank": 16.4979,
+          "eval_mean_grad_ratio": 2.6702
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 5}",
+          "output": "{\"val_metric\": 0.907778, \"train_loss\": 0.295661}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 5,
+          "eval_val_metric": 0.907778,
+          "eval_effective_rank": 8.6648,
+          "eval_mean_grad_ratio": 3.7786
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 10}",
+          "output": "{\"val_metric\": 0.901113, \"train_loss\": 0.263537}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 10,
+          "eval_val_metric": 0.901113,
+          "eval_effective_rank": 9.6386,
+          "eval_mean_grad_ratio": 4.0867
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"epoch\": 0}",
+          "output": "{\"val_metric\": 0.812605, \"train_loss\": 0.217986}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "eval_val_metric": 0.812605,
+          "eval_effective_rank": 9.1165
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"epoch\": 5}",
+          "output": "{\"val_metric\": 0.809232, \"train_loss\": 0.174629}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 5,
+          "eval_val_metric": 0.809232,
+          "eval_effective_rank": 15.227
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"epoch\": 10}",
+          "output": "{\"val_metric\": 0.81682, \"train_loss\": 0.17272}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 10,
+          "eval_val_metric": 0.81682,
+          "eval_effective_rank": 17.2328
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 0}",
+          "output": "{\"val_metric\": 0.81703, \"train_loss\": 0.208913}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "eval_val_metric": 0.81703,
+          "eval_effective_rank": 11.2917,
+          "eval_mean_grad_ratio": 2.94
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 5}",
+          "output": "{\"val_metric\": 0.822748, \"train_loss\": 0.170527}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 5,
+          "eval_val_metric": 0.822748,
+          "eval_effective_rank": 14.1646,
+          "eval_mean_grad_ratio": 4.3281
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 10}",
+          "output": "{\"val_metric\": 0.829601, \"train_loss\": 0.171328}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 10,
+          "eval_val_metric": 0.829601,
+          "eval_effective_rank": 17.4967,
+          "eval_mean_grad_ratio": 4.1728
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 15}",
+          "output": "{\"val_metric\": 0.830829, \"train_loss\": 0.179395}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 15,
+          "eval_val_metric": 0.830829,
+          "eval_effective_rank": 17.9648,
+          "eval_mean_grad_ratio": 3.9336
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"epoch\": 19}",
+          "output": "{\"val_metric\": 0.838437, \"train_loss\": 0.164335}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 19,
+          "eval_val_metric": 0.838437,
+          "eval_effective_rank": 19.1061,
+          "eval_mean_grad_ratio": 3.6909
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"epoch\": 0}",
+          "output": "{\"val_metric\": 0.08274, \"train_loss\": 0.180743}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 0,
+          "eval_val_metric": 0.08274,
+          "eval_effective_rank": 11.8908
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"epoch\": 5}",
+          "output": "{\"val_metric\": 0.078231, \"train_loss\": 0.095876}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 5,
+          "eval_val_metric": 0.078231,
+          "eval_effective_rank": 10.4727
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"epoch\": 10}",
+          "output": "{\"val_metric\": 0.081626, \"train_loss\": 0.095315}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 10,
+          "eval_val_metric": 0.081626,
+          "eval_effective_rank": 10.5362
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"epoch\": 11}",
+          "output": "{\"val_metric\": 0.080072, \"train_loss\": 0.098365}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 11,
+          "eval_val_metric": 0.080072
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"epoch\": 0}",
+          "output": "{\"val_metric\": 0.087942, \"train_loss\": 0.169669}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 0,
+          "eval_val_metric": 0.087942,
+          "eval_effective_rank": 11.8393,
+          "eval_mean_grad_ratio": 2.6607
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"epoch\": 5}",
+          "output": "{\"val_metric\": 0.07944, \"train_loss\": 0.092651}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 5,
+          "eval_val_metric": 0.07944,
+          "eval_effective_rank": 9.2166,
+          "eval_mean_grad_ratio": 4.083
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"epoch\": 10}",
+          "output": "{\"val_metric\": 0.075773, \"train_loss\": 0.099631}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 10,
+          "eval_val_metric": 0.075773,
+          "eval_effective_rank": 9.03,
+          "eval_mean_grad_ratio": 4.1792
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"epoch\": 15}",
+          "output": "{\"val_metric\": 0.077719, \"train_loss\": 0.096352}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 15,
+          "eval_val_metric": 0.077719,
+          "eval_effective_rank": 8.6321,
+          "eval_mean_grad_ratio": 4.1942
+        },
+        {
+          "input": "{\"experiment\": \"exp_id3_task_type_effect\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"epoch\": 17}",
+          "output": "{\"val_metric\": 0.07854, \"train_loss\": 0.097932}",
+          "metadata_experiment": "exp_id3_task_type_effect",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 17,
+          "eval_val_metric": 0.07854,
+          "eval_mean_grad_ratio": 4.2019
+        },
+        {
+          "input": "{\"experiment\": \"exp_id2_x_exp_id4_r2_correlation\", \"link\": \"product_to_review\"}",
+          "output": "{\"standard_embedding_r2\": 0.4506990865443701, \"prmp_embedding_r2\": 0.4334700881638442, \"per_link_improvement\": 0.02249599999999996}",
+          "eval_standard_r2": 0.4507,
+          "eval_prmp_r2": 0.4335,
+          "eval_per_link_improvement": 0.0225,
+          "eval_r2_reduction": 0.0172,
+          "metadata_experiment": "exp_id2_x_exp_id4_r2_correlation",
+          "metadata_link": "product_to_review"
+        },
+        {
+          "input": "{\"experiment\": \"exp_id2_x_exp_id4_r2_correlation\", \"link\": \"customer_to_review\"}",
+          "output": "{\"standard_embedding_r2\": 0.6087222912027925, \"prmp_embedding_r2\": 0.6569876139983958, \"per_link_improvement\": 0.031000000000000028}",
+          "eval_standard_r2": 0.6087,
+          "eval_prmp_r2": 0.657,
+          "eval_per_link_improvement": 0.031,
+          "eval_r2_reduction": -0.0483,
+          "metadata_experiment": "exp_id2_x_exp_id4_r2_correlation",
+          "metadata_link": "customer_to_review"
+        }
+      ]
+    }
+  ]
+}

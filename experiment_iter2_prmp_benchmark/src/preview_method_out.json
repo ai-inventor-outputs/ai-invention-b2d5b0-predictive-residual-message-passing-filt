@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "method_name": "PRMP Benchmark on rel-hm",
+    "description": "Benchmarks PRMPConv vs SAGEConv on RelBench rel-hm FK links with random-prediction and no-subtraction ablations",
+    "variants": [
+      "standard",
+      "prmp",
+      "random"
+    ],
+    "hidden_dim": 64,
+    "num_layers": 2,
+    "epochs": 50,
+    "learning_rate": 0.001,
+    "seed": 42
+  },
+  "datasets": [
+    {
+      "dataset": "rel_hm_fashion",
+      "examples": [
+        {
+          "input": "{\"fk_link\": \"customer_to_transaction\", \"parent_table\": \"customer\", \"child_table\": \"transaction\", \"num_parents\": 629, \"num_children\": 200000, \"parent_feat_dim\": 5, \"child_feat_dim\": 3, \"mean_cardinalit...",
+          "output": "{\"task\": \"binary_classification\", \"target\": \"mean_child_price_above_median\", \"metric\": \"AUROC\", \"positive_rate\": 0.4992, \"fk_link_stats\": {\"mean_cardinality\": 317.965, \"median_cardinality\": 11.0, \"max...",
+          "metadata_fk_link": "customer_to_transaction",
+          "metadata_mean_cardinality": 317.965,
+          "metadata_cross_table_r2": 0.009082,
+          "predict_standard": "{\"variant\": \"standard\", \"link_name\": \"customer_to_transaction\", \"test_metrics\": {\"auroc\": 0.999102, \"accuracy\": 0.968421, \"loss\": 0.110733}, \"best_val_metrics\": {\"auroc\": 1.0, \"epoch\": 30}, \"training_...",
+          "predict_prmp": "{\"variant\": \"prmp\", \"link_name\": \"customer_to_transaction\", \"test_metrics\": {\"auroc\": 0.965858, \"accuracy\": 0.873684, \"loss\": 0.31431}, \"best_val_metrics\": {\"auroc\": 0.991204, \"epoch\": 49}, \"training_...",
+          "predict_random": "{\"variant\": \"random\", \"link_name\": \"customer_to_transaction\", \"test_metrics\": {\"auroc\": 0.9708, \"accuracy\": 0.905263, \"loss\": 0.223182}, \"best_val_metrics\": {\"auroc\": 0.991667, \"epoch\": 45}, \"training...",
+          "predict_no_subtract": "{\"variant\": \"no_subtract\", \"link_name\": \"customer_to_transaction\", \"test_metrics\": {\"auroc\": 0.998652, \"accuracy\": 0.926316, \"loss\": 0.191441}, \"best_val_metrics\": {\"auroc\": 1.0, \"epoch\": 20}, \"traini..."
+        },
+        {
+          "input": "{\"fk_link\": \"article_to_transaction\", \"parent_table\": \"article\", \"child_table\": \"transaction\", \"num_parents\": 11467, \"num_children\": 200000, \"parent_feat_dim\": 21, \"child_feat_dim\": 3, \"mean_cardinali...",
+          "output": "{\"task\": \"binary_classification\", \"target\": \"mean_child_price_above_median\", \"metric\": \"AUROC\", \"positive_rate\": 0.4823, \"fk_link_stats\": {\"mean_cardinality\": 17.4414, \"median_cardinality\": 4.0, \"max_...",
+          "metadata_fk_link": "article_to_transaction",
+          "metadata_mean_cardinality": 17.4414,
+          "metadata_cross_table_r2": 0.072123,
+          "predict_standard": "{\"variant\": \"standard\", \"link_name\": \"article_to_transaction\", \"test_metrics\": {\"auroc\": 0.99987, \"accuracy\": 0.992446, \"loss\": 0.024207}, \"best_val_metrics\": {\"auroc\": 0.999889, \"epoch\": 49}, \"traini...",
+          "predict_prmp": "{\"variant\": \"prmp\", \"link_name\": \"article_to_transaction\", \"test_metrics\": {\"auroc\": 0.999712, \"accuracy\": 0.99477, \"loss\": 0.021513}, \"best_val_metrics\": {\"auroc\": 0.999797, \"epoch\": 50}, \"training_c...",
+          "predict_random": "{\"variant\": \"random\", \"link_name\": \"article_to_transaction\", \"test_metrics\": {\"auroc\": 0.999782, \"accuracy\": 0.991284, \"loss\": 0.02598}, \"best_val_metrics\": {\"auroc\": 0.999809, \"epoch\": 50}, \"training...",
+          "predict_no_subtract": "{\"variant\": \"no_subtract\", \"link_name\": \"article_to_transaction\", \"test_metrics\": {\"auroc\": 0.999922, \"accuracy\": 0.993027, \"loss\": 0.019557}, \"best_val_metrics\": {\"auroc\": 0.999893, \"epoch\": 50}, \"tr..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "exp_id1_it2__opus",
+  "type": "code",
+  "title": "2D Diagnostic: Cross-Table Predictability (R\u00b2) and Cardinality for All FK Links",
+  "summary": "Interactive demo notebook that computes cross-table predictability (R\u00b2, Ridge 5-fold CV) and mutual information for foreign-key links across relational datasets (rel-hm, rel-stack, rel-amazon). Loads aligned parent/child feature matrices for 8 FK links, runs Ridge and Random Forest regression, generates 2D diagnostic scatter plots (cardinality vs R\u00b2, Ridge vs RF), and classifies FK links into 4 regimes. Mini data file contains synthetic aligned feature arrays for all 8 FK links with parent/child matrices and cardinality statistics.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_2/gen_art/exp_id1_it2__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id1_it2__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id1_it2__opus/method_code_demo.ipynb"
+}

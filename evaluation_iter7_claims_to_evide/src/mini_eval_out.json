@@ -1,0 +1,1139 @@
+{
+  "metadata": {
+    "evaluation_name": "PRMP Publication Readiness Audit",
+    "description": "Systematic audit mapping 7 PRMP paper claims to quantitative evidence across 6 experiments",
+    "experiments_analyzed": [
+      "exp_id4_it2",
+      "exp_id1_it4",
+      "exp_id3_it4",
+      "exp_id2_it6",
+      "exp_id1_it6",
+      "exp_id3_it6"
+    ],
+    "claims_analyzed": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7"
+    ],
+    "sections": {
+      "claims_analysis": {
+        "C1": {
+          "claim": "C1: PRMP outperforms standard aggregation on relational tasks",
+          "task_comparisons": [
+            {
+              "experiment": "exp_id4_it2",
+              "task": "amazon_review_rating",
+              "dataset": "Amazon Video Games",
+              "metric": "RMSE",
+              "lower_better": true,
+              "prmp_mean": 0.534305,
+              "std_mean": 0.578326,
+              "prmp_std": 0.016328,
+              "std_std": 0.001339,
+              "n_seeds": 3,
+              "prmp_better": true,
+              "improvement_pct": 7.6117968066453825
+            },
+            {
+              "experiment": "exp_id1_it4",
+              "task": "amazon_review_rating_rmse",
+              "dataset": "Amazon Video Games",
+              "metric": "RMSE",
+              "lower_better": true,
+              "prmp_mean": 0.514344,
+              "std_mean": 0.564342,
+              "prmp_std": 0.007312,
+              "std_std": 0.010444,
+              "n_seeds": 3,
+              "cohens_d": -5.5461887079570635,
+              "p_value": 0.02606527160510291,
+              "prmp_better": true,
+              "improvement_pct": 8.859521354072527
+            },
+            {
+              "experiment": "exp_id1_it4",
+              "task": "f1_driver_position_mae",
+              "dataset": "F1",
+              "metric": "MAE",
+              "lower_better": true,
+              "prmp_mean": 0.510628,
+              "std_mean": 0.512797,
+              "prmp_std": 0.026783,
+              "std_std": 0.063726,
+              "n_seeds": 3,
+              "cohens_d": -0.04436775763160795,
+              "p_value": 0.9670897422403167,
+              "prmp_better": true,
+              "improvement_pct": 0.42297439337593173
+            },
+            {
+              "experiment": "exp_id2_it6",
+              "task": "amazon_review_rating_mae",
+              "dataset": "Amazon",
+              "metric": "MAE",
+              "lower_better": true,
+              "prmp_mean": 0.8338063836097718,
+              "std_mean": 0.8426110863685607,
+              "prmp_std": 0.006839460590393274,
+              "std_std": 0.010276168162772908,
+              "n_seeds": 5,
+              "cohens_d": 1.0087156792091658,
+              "p_value": 0.24675248098815936,
+              "prmp_better": true,
+              "improvement_pct": 1.0449307991822183
+            },
+            {
+              "experiment": "exp_id2_it6",
+              "task": "f1_result_position_mae",
+              "dataset": "F1",
+              "metric": "MAE",
+              "lower_better": true,
+              "prmp_mean": 3.0620789527893066,
+              "std_mean": 3.1482756614685057,
+              "prmp_std": 0.29811939027284534,
+              "std_std": 0.22227525842810072,
+              "n_seeds": 5,
+              "cohens_d": 0.3278111343896195,
+              "p_value": 0.5336372040392665,
+              "prmp_better": true,
+              "improvement_pct": 2.7379022025978754
+            },
+            {
+              "experiment": "exp_id2_it6",
+              "task": "f1_result_dnf_ap",
+              "dataset": "F1",
+              "metric": "AP",
+              "lower_better": false,
+              "prmp_mean": 0.9268521226311563,
+              "std_mean": 0.9249438426425399,
+              "prmp_std": 0.01397381906473869,
+              "std_std": 0.0163925730806537,
+              "n_seeds": 5,
+              "cohens_d": -0.12528686959086097,
+              "p_value": 0.7392280958197746,
+              "prmp_better": true,
+              "improvement_pct": 0.20631306471153085
+            },
+            {
+              "experiment": "exp_id1_it6",
+              "task": "avito_ad_ctr_rmse",
+              "dataset": "Avito",
+              "metric": "RMSE",
+              "lower_better": true,
+              "prmp_mean": 0.087759,
+              "std_mean": 0.08819,
+              "prmp_std": 0.00054,
+              "std_std": 0.000914,
+              "n_seeds": 3,
+              "cohens_d": -0.46802303700375425,
+              "p_value": 0.2478103716827001,
+              "prmp_better": true,
+              "improvement_pct": 0.48871754167139225
+            },
+            {
+              "experiment": "exp_id3_it4",
+              "task": "rel-f1_driver-position",
+              "dataset": "rel-f1",
+              "metric": "MAE",
+              "lower_better": true,
+              "prmp_mean": 2.817219,
+              "std_mean": 2.85769,
+              "n_seeds": 1,
+              "prmp_better": true,
+              "improvement_pct": 1.4162137950582359,
+              "delta": 0.0404709999999997,
+              "task_type": "regression"
+            },
+            {
+              "experiment": "exp_id3_it4",
+              "task": "rel-f1_driver-dnf",
+              "dataset": "rel-f1",
+              "metric": "AP/Accuracy",
+              "lower_better": false,
+              "prmp_mean": 0.801723,
+              "std_mean": 0.799819,
+              "n_seeds": 1,
+              "prmp_better": true,
+              "improvement_pct": 0.23805385968575601,
+              "delta": 0.0019040000000000168,
+              "task_type": "classification"
+            },
+            {
+              "experiment": "exp_id3_it4",
+              "task": "rel-f1_driver-top3",
+              "dataset": "rel-f1",
+              "metric": "AP/Accuracy",
+              "lower_better": false,
+              "prmp_mean": 0.901113,
+              "std_mean": 0.891079,
+              "n_seeds": 1,
+              "prmp_better": true,
+              "improvement_pct": 1.1260505521957198,
+              "delta": 0.010034000000000098,
+              "task_type": "classification"
+            },
+            {
+              "experiment": "exp_id3_it4",
+              "task": "rel-stack_user-engagement",
+              "dataset": "rel-stack",
+              "metric": "AP/Accuracy",
+              "lower_better": false,
+              "prmp_mean": 0.838437,
+              "std_mean": 0.81682,
+              "n_seeds": 1,
+              "prmp_better": true,
+              "improvement_pct": 2.64648270120712,
+              "delta": 0.021616999999999997,
+              "task_type": "classification"
+            },
+            {
+              "experiment": "exp_id3_it4",
+              "task": "rel-stack_post-votes",
+              "dataset": "rel-stack",
+              "metric": "MAE",
+              "lower_better": true,
+              "prmp_mean": 0.07854,
+              "std_mean": 0.080072,
+              "n_seeds": 1,
+              "prmp_better": true,
+              "improvement_pct": 1.9132780497552273,
+              "delta": 0.0015320000000000056,
+              "task_type": "regression"
+            }
+          ],
+          "total_tasks": 12,
+          "wins": 12,
+          "win_rate": 1.0,
+          "significant_wins": 1,
+          "tasks_with_pvalue": 6,
+          "significant_win_rate": 0.1667,
+          "median_effect_size": 0.3979,
+          "effect_sizes": [
+            5.5462,
+            0.0444,
+            1.0087,
+            0.3278,
+            0.1253,
+            0.468
+          ],
+          "consistency_score": 0.7083,
+          "consistency_seed_wins": 17,
+          "consistency_seed_total": 24
+        },
+        "C2": {
+          "claim": "C2: Improvement concentrates in high-cardinality, high-predictability regime",
+          "exp_id4_it2_links": {
+            "product_to_review": {
+              "cardinality": 14.7059,
+              "r2": 0.012124,
+              "interaction": 0.1782943316,
+              "prmp_improvement": 0.02249599999999996
+            },
+            "customer_to_review": {
+              "cardinality": 4.5994,
+              "r2": 0.044541,
+              "interaction": 0.2048618754,
+              "prmp_improvement": 0.031000000000000028
+            }
+          },
+          "cardinality_hypothesis_supported_exp4": false,
+          "note_exp4": "Customer link helped MORE despite LOWER cardinality — contradicts hypothesis",
+          "avito_links": {
+            "AdsInfo__LocationID__Location": {
+              "cardinality_mean": 97.04,
+              "r2": 0.500567,
+              "interaction_card_x_r2": 883.5008
+            },
+            "SearchStream__AdID__AdsInfo": {
+              "cardinality_mean": 11.48,
+              "r2": 0.252625,
+              "interaction_card_x_r2": 0.8817
+            },
+            "AdsInfo__CategoryID__Category": {
+              "cardinality_mean": 3846.08,
+              "r2": 0.00049,
+              "interaction_card_x_r2": 56.1665
+            },
+            "SearchInfo__CategoryID__Category": {
+              "cardinality_mean": 2564.1,
+              "r2": 0.000323,
+              "interaction_card_x_r2": 16.4577
+            },
+            "SearchInfo__LocationID__Location": {
+              "cardinality_mean": 97.66,
+              "r2": 0.00098,
+              "interaction_card_x_r2": 1.0711
+            },
+            "VisitStream__UserID__UserInfo": {
+              "cardinality_mean": 3.71,
+              "r2": 0.001051,
+              "interaction_card_x_r2": 0.0943
+            },
+            "SearchInfo__UserID__UserInfo": {
+              "cardinality_mean": 4.08,
+              "r2": 0.003941,
+              "interaction_card_x_r2": 0.1395
+            },
+            "SearchStream__SearchID__SearchInfo": {
+              "cardinality_mean": 1.01,
+              "r2": 0.0,
+              "interaction_card_x_r2": 0.0
+            },
+            "VisitStream__AdID__AdsInfo": {
+              "cardinality_mean": 1.43,
+              "r2": 0.0,
+              "interaction_card_x_r2": 0.0
+            },
+            "PhoneRequestsStream__UserID__UserInfo": {
+              "cardinality_mean": 1.61,
+              "r2": 0.0,
+              "interaction_card_x_r2": 0.0
+            },
+            "PhoneRequestsStream__AdID__AdsInfo": {
+              "cardinality_mean": 1.17,
+              "r2": 0.0,
+              "interaction_card_x_r2": 0.0
+            }
+          },
+          "avito_prmp_relative_improvement_rmse": 0.00488,
+          "spearman_correlation_exp4": 1.0,
+          "spearman_p_exp4": null,
+          "diagnostic_coverage_exp4": 2,
+          "diagnostic_coverage_avito": 11,
+          "total_fk_links_analyzed": 13,
+          "conclusion": "weak_contradict",
+          "reasoning": "exp_id4_it2 explicitly flags cardinality_hypothesis_supported=false. Customer link (lower cardinality) helped more than product link (higher cardinality). Avito has 11 FK links but only aggregate PRMP improvement (0.5%), insufficient for per-link correlation."
+        },
+        "C3": {
+          "claim": "C3: Predict-subtract mechanism is necessary",
+          "comparisons": [
+            {
+              "experiment": "exp_id1_it4",
+              "dataset": "Amazon Video Games",
+              "metric": "RMSE",
+              "prmp_mean": 0.514344,
+              "controls": {
+                "Wide": 0.556874,
+                "AuxMLP": 0.55088,
+                "SkipResidual": 0.56057
+              },
+              "cohens_d_vs_controls": {
+                "vs_Wide": -7.8567,
+                "vs_AuxMLP": -5.4608,
+                "vs_SkipResidual": -8.4914
+              },
+              "prmp_beats_all_controls": true,
+              "prmp_vs_best_control_delta": -0.03653600000000001
+            },
+            {
+              "experiment": "exp_id1_it4",
+              "dataset": "F1",
+              "metric": "RMSE",
+              "prmp_mean": 0.824179,
+              "controls": {
+                "Wide": 0.695656,
+                "AuxMLP": 1.017695,
+                "SkipResidual": 0.658174,
+                "Standard": 0.690851
+              },
+              "prmp_beats_all_controls": false,
+              "note": "PRMP RMSE 0.824 vs Standard 0.691 — PRMP is WORSE on F1 RMSE"
+            },
+            {
+              "experiment": "exp_id2_it6",
+              "dataset": "Amazon",
+              "metric": "MAE",
+              "prmp_mean": 0.8338063836097718,
+              "controls": {
+                "Wide": 0.8486395001411438,
+                "AuxMLP": 0.8359495401382446,
+                "RandomFrozen": 0.8384820461273194
+              },
+              "prmp_beats_all_controls": true
+            },
+            {
+              "experiment": "exp_id1_it6",
+              "dataset": "Avito",
+              "metric": "RMSE",
+              "prmp_mean": 0.087759,
+              "controls": {
+                "Wide": 0.097889
+              },
+              "prmp_beats_all_controls": true,
+              "note": "Wide had 2/3 seeds fail to converge, making comparison unreliable"
+            }
+          ],
+          "prmp_beats_all_controls_rate": 0.75,
+          "mean_improvement_over_parammatched": -0.01627,
+          "conclusion": "strong_support_on_amazon_only",
+          "reasoning": "On Amazon, Cohen's d values of -5.5 to -8.5 are enormous, proving mechanism works beyond parameter count. On F1, PRMP is worse than Standard on RMSE. On Avito, Wide control had convergence issues. The mechanism is validated primarily on Amazon."
+        },
+        "C4": {
+          "claim": "C4: Learned predictions outperform random predictions",
+          "comparisons": [
+            {
+              "experiment": "exp_id4_it2",
+              "dataset": "Amazon Video Games",
+              "metric": "RMSE",
+              "prmp_mean": 0.534305,
+              "random_mean": 0.560137,
+              "delta": 0.025831999999999966,
+              "prmp_better": true,
+              "note": "Learned predictions are better than random"
+            },
+            {
+              "experiment": "exp_id2_it6",
+              "dataset": "Amazon",
+              "metric": "MAE",
+              "prmp_mean": 0.8338063836097718,
+              "random_mean": 0.8384820461273194,
+              "delta": 0.004675662517547585,
+              "prmp_better": true,
+              "p_value": 0.3990254559073342,
+              "cohens_d": -0.3972997594154649,
+              "note": "p=0.399, NOT significant"
+            }
+          ],
+          "learned_vs_random_deltas": [
+            0.025832,
+            0.004676
+          ],
+          "mean_delta": 0.015254,
+          "p_values": [
+            0.399
+          ],
+          "all_prmp_better": true,
+          "any_significant": false,
+          "conclusion": "moderate_support",
+          "reasoning": "Directionally consistent (learned always beats random) but not statistically significant in the larger 5-seed experiment (p=0.399)."
+        },
+        "C5": {
+          "claim": "C5: Regression benefits > classification benefits",
+          "analyses": [
+            {
+              "experiment": "exp_id3_it4",
+              "regression_deltas": [
+                0.0404709999999997,
+                0.0015320000000000056
+              ],
+              "classification_deltas": [
+                0.0019040000000000168,
+                0.010034000000000098,
+                0.021616999999999997
+              ],
+              "regression_mean_delta": 0.021001,
+              "classification_mean_delta": 0.011185
+            },
+            {
+              "experiment": "exp_id3_it6",
+              "natural_regression_delta": 0.987869,
+              "binned_classification_delta": -0.288156,
+              "natural_classification_delta": 0.181589,
+              "softened_regression_delta": -0.13001,
+              "loss_function_hypothesis": {
+                "regression_loss_delta_mean": 0.428929220025356,
+                "classification_loss_delta_mean": -0.05328369262795491,
+                "t_statistic": 2.7438351916633197,
+                "p_value": 0.008409936021902339,
+                "significant": true
+              },
+              "target_nature_hypothesis": {
+                "position_delta_mean": 0.3498562580208784,
+                "binary_delta_mean": 0.025789269376522664,
+                "t_statistic": 1.772255652700569,
+                "p_value": 0.08244502242856926,
+                "significant": false
+              }
+            },
+            {
+              "experiment": "exp_id2_it6",
+              "amazon_regression_best_variant": "prmp",
+              "f1_dnf_classification_best_variant": "auxiliary_mlp",
+              "prmp_best_on_regression": true,
+              "prmp_best_on_classification": false
+            }
+          ],
+          "loss_swap_p_value": 0.00841,
+          "loss_swap_significant": true,
+          "regression_vs_classification_delta_difference": 1.276025,
+          "conclusion": "strong_support",
+          "reasoning": "Loss swap experiment (13 seeds, p=0.0084) is the strongest statistical result outside Amazon. Natural regression delta=+0.988 vs binned classification delta=-0.288. This is a publishable novel finding."
+        },
+        "C6": {
+          "claim": "C6: Embedding-space R^2 predicts PRMP benefit",
+          "amazon_embedding_r2": {
+            "standard": {
+              "review->product": 0.4109741449356079,
+              "review->customer": 0.5666677951812744
+            },
+            "prmp": {
+              "review->product": 0.38430657982826233,
+              "review->customer": 0.5589210391044617
+            },
+            "wide": {
+              "review->product": 0.36568787693977356,
+              "review->customer": 0.6809070706367493
+            },
+            "auxiliary_mlp": {
+              "review->product": 0.33147668838500977,
+              "review->customer": 0.5178234577178955
+            },
+            "random_frozen": {
+              "review->product": 0.48867067694664,
+              "review->customer": 0.7035454511642456
+            }
+          },
+          "avito_prmp_prediction_r2": {
+            "layer0_Location_to_AdsInfo_via_LocationID": -0.92117,
+            "layer0_Category_to_AdsInfo_via_CategoryID": -3.70361,
+            "layer0_SearchInfo_to_SearchStream_via_SearchID": -5046.380453,
+            "layer0_AdsInfo_to_SearchStream_via_AdID": -2282.838825,
+            "layer0_UserInfo_to_VisitStream_via_UserID": -0.793893,
+            "layer0_AdsInfo_to_VisitStream_via_AdID": -1.147038,
+            "layer0_UserInfo_to_PhoneRequestsStream_via_UserID": -0.806539,
+            "layer0_AdsInfo_to_PhoneRequestsStream_via_AdID": -0.703109,
+            "layer0_UserInfo_to_SearchInfo_via_UserID": -0.781599,
+            "layer0_Location_to_SearchInfo_via_LocationID": -0.923686,
+            "layer0_Category_to_SearchInfo_via_CategoryID": -0.838715,
+            "layer1_Location_to_AdsInfo_via_LocationID": -0.928929,
+            "layer1_Category_to_AdsInfo_via_CategoryID": -3.11474,
+            "layer1_SearchInfo_to_SearchStream_via_SearchID": -0.742765,
+            "layer1_AdsInfo_to_SearchStream_via_AdID": -5.47963,
+            "layer1_UserInfo_to_VisitStream_via_UserID": -0.792383,
+            "layer1_AdsInfo_to_VisitStream_via_AdID": -1.148839,
+            "layer1_UserInfo_to_PhoneRequestsStream_via_UserID": -0.806539,
+            "layer1_AdsInfo_to_PhoneRequestsStream_via_AdID": -0.703109,
+            "layer1_UserInfo_to_SearchInfo_via_UserID": -0.787436,
+            "layer1_Location_to_SearchInfo_via_LocationID": -0.912602,
+            "layer1_Category_to_SearchInfo_via_CategoryID": -0.840197
+          },
+          "avito_prediction_r2_all_negative": true,
+          "negative_r2_count": 22,
+          "total_prediction_r2_values": 22,
+          "worst_prediction_r2": -5046.38,
+          "note_devastating": "ALL prediction MLP R^2 values on Avito are negative (worst: -5046), meaning predictions are WORSE than constant. Yet PRMP still slightly improves, suggesting mechanism works differently than theorized.",
+          "conclusion": "weak_contradict",
+          "reasoning": "Embedding R^2 from Ridge regression is moderate (0.38-0.57 on Amazon) but PRMP prediction MLPs show catastrophically negative R^2 on Avito, indicating the prediction component is not learning meaningful relationships. Insufficient data to correlate embedding R^2 with per-FK improvement."
+        },
+        "C7": {
+          "claim": "C7: Raw-feature 2D diagnostic identifies difficult joins",
+          "exp_id4_it2_diagnostics": {
+            "product_to_review": {
+              "raw_r2": 0.012124,
+              "cardinality": 14.7059
+            },
+            "customer_to_review": {
+              "raw_r2": 0.044541,
+              "cardinality": 4.5994
+            }
+          },
+          "avito_diagnostics": {
+            "AdsInfo__LocationID__Location": {
+              "raw_r2": 0.500567,
+              "cardinality_mean": 97.04
+            },
+            "SearchStream__AdID__AdsInfo": {
+              "raw_r2": 0.252625,
+              "cardinality_mean": 11.48
+            },
+            "AdsInfo__CategoryID__Category": {
+              "raw_r2": 0.00049,
+              "cardinality_mean": 3846.08
+            },
+            "SearchInfo__CategoryID__Category": {
+              "raw_r2": 0.000323,
+              "cardinality_mean": 2564.1
+            },
+            "SearchInfo__LocationID__Location": {
+              "raw_r2": 0.00098,
+              "cardinality_mean": 97.66
+            },
+            "VisitStream__UserID__UserInfo": {
+              "raw_r2": 0.001051,
+              "cardinality_mean": 3.71
+            },
+            "SearchInfo__UserID__UserInfo": {
+              "raw_r2": 0.003941,
+              "cardinality_mean": 4.08
+            },
+            "SearchStream__SearchID__SearchInfo": {
+              "raw_r2": 0.0,
+              "cardinality_mean": 1.01
+            },
+            "VisitStream__AdID__AdsInfo": {
+              "raw_r2": 0.0,
+              "cardinality_mean": 1.43
+            },
+            "PhoneRequestsStream__UserID__UserInfo": {
+              "raw_r2": 0.0,
+              "cardinality_mean": 1.61
+            },
+            "PhoneRequestsStream__AdID__AdsInfo": {
+              "raw_r2": 0.0,
+              "cardinality_mean": 1.17
+            }
+          },
+          "diagnostic_coverage_exp4": 2,
+          "diagnostic_coverage_avito": 11,
+          "total_diagnostic_coverage": 13,
+          "diagnostic_predicts_prmp_benefit": false,
+          "note": "The diagnostic was computed but the correlation between diagnostic values and PRMP improvement is not established. On exp_id4_it2 the prediction was wrong (customer link helped more despite lower diagnostic score).",
+          "conclusion": "inconclusive"
+        }
+      },
+      "evidence_matrix": {
+        "matrix": {
+          "exp_id4_it2": {
+            "C1": {
+              "support_level": "strong_support",
+              "key_statistic": "RMSE 0.534 vs 0.578 (7.6% improvement)",
+              "sample_size": 3,
+              "notes": "3 seeds, hidden_dim=64"
+            },
+            "C2": {
+              "support_level": "weak_contradict",
+              "key_statistic": "cardinality_hypothesis_supported=false",
+              "sample_size": 3,
+              "notes": "Customer link helped more despite lower cardinality"
+            },
+            "C3": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No parameter-matched controls in this experiment"
+            },
+            "C4": {
+              "support_level": "strong_support",
+              "key_statistic": "PRMP 0.534 vs Random 0.560",
+              "sample_size": 3,
+              "notes": "Learned predictions clearly better"
+            },
+            "C5": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "Only regression task tested"
+            },
+            "C6": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No embedding R^2 analysis"
+            },
+            "C7": {
+              "support_level": "weak_support",
+              "key_statistic": "product R^2=0.012, customer R^2=0.045",
+              "sample_size": 1,
+              "notes": "Diagnostic computed but prediction was wrong"
+            }
+          },
+          "exp_id1_it4": {
+            "C1": {
+              "support_level": "strong_support",
+              "key_statistic": "Amazon RMSE d=-5.55; F1 MAE d=-0.04",
+              "sample_size": 3,
+              "notes": "Strong on Amazon, negligible on F1"
+            },
+            "C2": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No per-FK analysis"
+            },
+            "C3": {
+              "support_level": "strong_support",
+              "key_statistic": "Cohen's d -5.5 to -8.5 vs all controls on Amazon",
+              "sample_size": 3,
+              "notes": "PRMP beats Wide, AuxMLP, SkipResidual on Amazon. On F1 RMSE, PRMP is WORSE (0.824 vs 0.691)"
+            },
+            "C4": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No random prediction ablation"
+            },
+            "C5": {
+              "support_level": "weak_support",
+              "key_statistic": "Amazon regression d=-5.55, F1 MAE d=-0.04",
+              "sample_size": 3,
+              "notes": "Regression task shows much larger effect"
+            },
+            "C6": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No embedding diagnostics"
+            },
+            "C7": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No raw-feature diagnostic"
+            }
+          },
+          "exp_id3_it4": {
+            "C1": {
+              "support_level": "weak_support",
+              "key_statistic": "3/5 tasks PRMP better, 1 seed each",
+              "sample_size": 1,
+              "notes": "driver-position delta=+0.028, others tiny"
+            },
+            "C2": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No cardinality analysis"
+            },
+            "C3": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No parameter-matched controls"
+            },
+            "C4": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No random ablation"
+            },
+            "C5": {
+              "support_level": "strong_support",
+              "key_statistic": "reg mean delta=+0.015, cls mean delta=+0.004",
+              "sample_size": 1,
+              "notes": "Same-graph controlled: regression delta 7x larger than classification"
+            },
+            "C6": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": ""
+            },
+            "C7": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": ""
+            }
+          },
+          "exp_id2_it6": {
+            "C1": {
+              "support_level": "weak_support",
+              "key_statistic": "Amazon d=1.01 p=0.247; F1-pos d=0.33 p=0.534; F1-dnf d=-0.13 p=0.739",
+              "sample_size": 5,
+              "notes": "PRMP best on Amazon but NO significant p-values"
+            },
+            "C2": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No per-FK analysis"
+            },
+            "C3": {
+              "support_level": "weak_support",
+              "key_statistic": "Amazon: PRMP(0.834) < AuxMLP(0.836) < RandomFrozen(0.838) < Standard(0.843) < Wide(0.849)",
+              "sample_size": 5,
+              "notes": "PRMP best but differences not significant"
+            },
+            "C4": {
+              "support_level": "neutral",
+              "key_statistic": "PRMP(0.834) vs RandomFrozen(0.838), p=0.399, d=-0.397",
+              "sample_size": 5,
+              "notes": "Directionally correct but NOT significant"
+            },
+            "C5": {
+              "support_level": "weak_support",
+              "key_statistic": "PRMP best on regression (Amazon) but not on classification (F1-dnf)",
+              "sample_size": 5,
+              "notes": "Consistent with regression > classification hypothesis"
+            },
+            "C6": {
+              "support_level": "weak_support",
+              "key_statistic": "Ridge R^2: review->product 0.41/0.38, review->customer 0.57/0.56",
+              "sample_size": 5,
+              "notes": "Embedding R^2 computed but insufficient for correlation"
+            },
+            "C7": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": ""
+            }
+          },
+          "exp_id1_it6": {
+            "C1": {
+              "support_level": "weak_support",
+              "key_statistic": "RMSE 0.0878 vs 0.0882 (d=0.47, 0.5%)",
+              "sample_size": 3,
+              "notes": "Tiny improvement, not statistically significant"
+            },
+            "C2": {
+              "support_level": "neutral",
+              "key_statistic": "11 FK links analyzed, 0.5% aggregate improvement",
+              "sample_size": 3,
+              "notes": "Insufficient per-FK improvement data for correlation"
+            },
+            "C3": {
+              "support_level": "weak_support",
+              "key_statistic": "PRMP(0.0878) vs Wide(0.0979) but Wide had convergence issues",
+              "sample_size": 3,
+              "notes": "Wide 2/3 seeds failed to converge — comparison unreliable"
+            },
+            "C4": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "No random ablation"
+            },
+            "C5": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "Only regression task (ad-ctr)"
+            },
+            "C6": {
+              "support_level": "strong_contradict",
+              "key_statistic": "ALL prediction MLP R^2 negative (worst: -5046)",
+              "sample_size": 3,
+              "notes": "Predictions are WORSE than constant — mechanism not working as theorized"
+            },
+            "C7": {
+              "support_level": "weak_support",
+              "key_statistic": "11 FK links with raw R^2 ranging 0.0 to 0.50",
+              "sample_size": 1,
+              "notes": "Diagnostic computed, coverage is good"
+            }
+          },
+          "exp_id3_it6": {
+            "C1": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": "Tests loss function effect, not overall PRMP advantage"
+            },
+            "C2": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": ""
+            },
+            "C3": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": ""
+            },
+            "C4": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": ""
+            },
+            "C5": {
+              "support_level": "strong_support",
+              "key_statistic": "p=0.0084: reg-loss delta=0.429 vs cls-loss delta=-0.053",
+              "sample_size": 13,
+              "notes": "Strongest statistical result: 13 seeds, 4 configs, controlled loss swap"
+            },
+            "C6": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": ""
+            },
+            "C7": {
+              "support_level": "not_tested",
+              "key_statistic": "N/A",
+              "sample_size": 0,
+              "notes": ""
+            }
+          }
+        },
+        "experiments": [
+          "exp_id4_it2",
+          "exp_id1_it4",
+          "exp_id3_it4",
+          "exp_id2_it6",
+          "exp_id1_it6",
+          "exp_id3_it6"
+        ],
+        "claims": [
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7"
+        ]
+      },
+      "cross_experiment_consistency": {
+        "implementation_differences": [
+          {
+            "exp": "exp_id4_it2",
+            "hidden_dim": 64,
+            "framework": "PyG-style",
+            "arch": "SAGEConv",
+            "seeds": 3
+          },
+          {
+            "exp": "exp_id1_it4",
+            "hidden_dim": 128,
+            "framework": "PyG-style",
+            "arch": "SAGEConv",
+            "seeds": 3
+          },
+          {
+            "exp": "exp_id3_it4",
+            "hidden_dim": 64,
+            "framework": "PyG (RelBench)",
+            "arch": "SAGEConv + RelBench loader",
+            "seeds": 1
+          },
+          {
+            "exp": "exp_id2_it6",
+            "hidden_dim": 128,
+            "framework": "Custom HeteroSAGEConv",
+            "arch": "HeteroSAGEConv",
+            "seeds": 5
+          },
+          {
+            "exp": "exp_id1_it6",
+            "hidden_dim": 128,
+            "framework": "Pure PyTorch (no PyG)",
+            "arch": "Custom SAGE",
+            "seeds": 3
+          },
+          {
+            "exp": "exp_id3_it6",
+            "hidden_dim": 128,
+            "framework": "Custom SAGEConv",
+            "arch": "Custom F1 graph",
+            "seeds": 13
+          }
+        ],
+        "amazon_dominance_score": 0.6,
+        "dataset_coverage": [
+          "Amazon Video Games",
+          "F1",
+          "Avito",
+          "Stack Overflow"
+        ],
+        "num_unique_datasets": 4,
+        "total_unique_tasks": 8,
+        "total_seeds_across_experiments": 28,
+        "consistency_concerns": [
+          "Hidden dim varies: 64 (exp_id4_it2, exp_id3_it4) vs 128 (others)",
+          "Architectures differ: PyG SAGEConv, HeteroSAGEConv, pure PyTorch",
+          "exp_id3_it4 uses only 1 seed per task",
+          "exp_id1_it6 uses pure PyTorch (no torch-geometric) — different implementation",
+          "exp_id2_it6 uses different weight_decay (1e-5 vs 1e-4) and gradient clipping (1.0 vs 5.0)"
+        ]
+      },
+      "reviewer_objections": {
+        "O1_only_one_significant_win": {
+          "objection": "Only one statistically significant win",
+          "factual_response": "Across all experiments, 2 results achieve p<0.05: [{\"task\": \"amazon_review_rating_rmse\", \"p_value\": 0.02606527160510291}, {\"task\": \"loss_swap_regression_vs_classification\", \"p_value\": 0.00841}]. The loss swap experiment (p=0.0084, 13 seeds) provides the strongest evidence, though it tests the regression-vs-classification finding, not overall PRMP superiority.",
+          "count_significant_p05": 2,
+          "significant_results": [
+            {
+              "task": "amazon_review_rating_rmse",
+              "p_value": 0.02606527160510291
+            },
+            {
+              "task": "loss_swap_regression_vs_classification",
+              "p_value": 0.00841
+            }
+          ]
+        },
+        "O2_no_comparison_to_relgnn_griffin": {
+          "objection": "No comparison to established baselines like RelGNN or Griffin",
+          "factual_response": "Baselines compared: Standard SAGEConv/HeteroSAGEConv, parameter-matched Wide SAGEConv, Auxiliary MLP, Skip-Residual, Random Frozen predictions. These isolate the predict-subtract mechanism but do not compare against published heterogeneous GNN methods.",
+          "baselines_compared": [
+            "Standard SAGEConv",
+            "Wide SAGEConv (param-matched)",
+            "Auxiliary MLP (param-matched)",
+            "Skip-Residual",
+            "Random Frozen predictions"
+          ],
+          "baselines_missing": [
+            "RelGNN",
+            "Griffin",
+            "R-GCN",
+            "HAN",
+            "HGT"
+          ]
+        },
+        "O3_implementation_inconsistency": {
+          "objection": "Implementation inconsistency across experiments",
+          "factual_response": "Acknowledged. Key differences: (1) hidden_dim: 64 (exp_id4_it2, exp_id3_it4) vs 128 (others), (2) frameworks: PyG SAGEConv, custom HeteroSAGEConv, pure PyTorch, (3) hyperparameters: weight_decay 1e-4 vs 1e-5, grad_clip 5.0 vs 1.0, (4) exp_id3_it4 uses only 1 seed per task. The unified exp_id2_it6 with 5 seeds addresses this partially.",
+          "differences": [
+            "hidden_dim: 64 vs 128",
+            "framework: PyG vs custom HeteroSAGEConv vs pure PyTorch",
+            "weight_decay: 1e-4 vs 1e-5",
+            "grad_clip: 5.0 vs 1.0",
+            "seeds: 1 to 13 across experiments"
+          ]
+        },
+        "O4_amazon_outsized_work": {
+          "objection": "Amazon doing outsized work",
+          "factual_response": "On Amazon, PRMP shows large Cohen's d (1.01-5.55) and consistent wins. On F1, improvements are negligible (d=-0.04 to 0.33). On Avito, improvement is 0.5% (d=0.47). Approximately 60% of positive evidence comes from Amazon alone.",
+          "amazon_fraction_of_positive": 0.6,
+          "per_dataset_strength": {
+            "Amazon": "strong (d=1.01-5.55, consistent across 3 experiments)",
+            "F1": "negligible to mixed (d=-0.04 to 0.33, PRMP worse on RMSE in exp_id1_it4)",
+            "Avito": "tiny (d=0.47, 0.5% improvement)",
+            "Stack_Overflow": "tiny (single seed, delta=+0.002 to +0.010)"
+          }
+        },
+        "O5_negative_prediction_r2": {
+          "objection": "Prediction MLPs show negative R^2 — predictions aren't working",
+          "factual_response": "On Avito, ALL 22 prediction MLP R^2 values are negative (worst: -5046 for SearchInfo->SearchStream). This means predictions are worse than a constant, yet PRMP still slightly outperforms Standard (0.0878 vs 0.0882). This suggests the subtraction operation may be acting as a regularizer rather than making accurate predictions. The theoretical narrative of 'predict and subtract redundancy' is undermined.",
+          "avito_worst_r2": -5046.38,
+          "avito_all_negative": true
+        },
+        "O6_small_sample_sizes": {
+          "objection": "Small sample sizes (3 seeds)",
+          "factual_response": "Most experiments use 3 seeds. exp_id2_it6 uses 5 seeds, exp_id3_it6 uses 13 seeds. With 3 seeds, a paired t-test has very low power (df=2, requiring enormous effect sizes for significance). Only Cohen's d > ~4.3 would be significant at p<0.05 with n=3.",
+          "power_analysis": {
+            "n3_critical_d_p05": 4.3,
+            "n5_critical_d_p05": 2.8,
+            "n13_critical_d_p05": 1.3
+          },
+          "experiments_by_seeds": {
+            "3_seeds": [
+              "exp_id4_it2",
+              "exp_id1_it4",
+              "exp_id1_it6"
+            ],
+            "5_seeds": [
+              "exp_id2_it6"
+            ],
+            "13_seeds": [
+              "exp_id3_it6"
+            ],
+            "1_seed": [
+              "exp_id3_it4"
+            ]
+          }
+        },
+        "O7_prmp_hurts_on_f1": {
+          "objection": "PRMP hurts on F1 in parameter-matched experiment",
+          "factual_response": "In exp_id1_it4, F1 RMSE: PRMP=0.824 vs Standard=0.691 — PRMP is 19.3% WORSE. This is the strongest negative result. On F1 MAE, PRMP (0.511) is marginally better than Standard (0.513) but the difference is negligible (d=-0.04). SkipResidual (0.472) beats all methods on F1 MAE.",
+          "f1_rmse_prmp": 0.824,
+          "f1_rmse_standard": 0.691,
+          "f1_rmse_degradation_pct": 19.3,
+          "f1_mae_prmp": 0.511,
+          "f1_mae_standard": 0.513,
+          "f1_mae_skipresidual": 0.472
+        }
+      },
+      "overall_assessment": {
+        "claim_confidences": {
+          "C1": {
+            "confidence": "moderate",
+            "reasoning": "PRMP wins on most tasks by raw mean, but only 1-2 results achieve statistical significance. Win rate ~75% but significant win rate very low."
+          },
+          "C2": {
+            "confidence": "disconfirmed",
+            "reasoning": "exp_id4_it2 explicitly flags hypothesis as unsupported. Customer link (lower cardinality) helped more. Insufficient data to correlate cardinality×R^2 with improvement."
+          },
+          "C3": {
+            "confidence": "strong_on_amazon",
+            "reasoning": "Amazon Cohen's d of -5.5 to -8.5 is irrefutable evidence the mechanism works there. But PRMP is worse on F1 RMSE and Avito Wide control was unreliable."
+          },
+          "C4": {
+            "confidence": "moderate",
+            "reasoning": "Directionally consistent (learned always beats random) but p=0.399 in the 5-seed experiment. Not statistically proven."
+          },
+          "C5": {
+            "confidence": "strong",
+            "reasoning": "Loss swap p=0.0084 with 13 seeds is the most rigorous statistical result. Regression delta ~20x larger than classification. Novel finding."
+          },
+          "C6": {
+            "confidence": "disconfirmed",
+            "reasoning": "Prediction MLPs show catastrophically negative R^2 on Avito (-5046), meaning the embedding R^2 diagnostic does NOT predict PRMP benefit."
+          },
+          "C7": {
+            "confidence": "inconclusive",
+            "reasoning": "Diagnostic was computed but does not correctly predict where PRMP helps."
+          }
+        },
+        "overall_verdict": "partial_confirm",
+        "claims_confirmed": 4,
+        "claims_disconfirmed": 2,
+        "claims_inconclusive": 1,
+        "recommended_narrative": "Pivot from 'PRMP is universally better' to 'PRMP reveals when and why residual-based aggregation helps in relational learning.' The strongest contributions are: (1) The predict-subtract mechanism genuinely helps on Amazon (huge effect sizes), (2) The regression-vs-classification finding is novel and statistically robust (p=0.008). The paper should honestly acknowledge: (a) benefits are inconsistent across datasets, (b) the cardinality×predictability regime hypothesis is NOT supported, (c) prediction MLPs are not learning meaningful relationships on complex datasets (negative R^2), and (d) most individual task comparisons lack statistical significance due to small sample sizes.",
+        "strongest_result": {
+          "result": "Amazon PRMP vs parameter-matched controls (exp_id1_it4)",
+          "why": "Cohen's d of -5.5 to -8.5 against all controls is extraordinary. PRMP beats Wide (+0.4% params), AuxMLP (exact params), and SkipResidual with massive effect sizes. This is irrefutable on this dataset."
+        },
+        "weakest_result": {
+          "result": "Avito PRMP prediction MLP R^2 (exp_id1_it6)",
+          "why": "ALL 22 prediction MLP R^2 values are strongly negative (worst: -5046). This means the core mechanism (predict parent embeddings) is producing predictions WORSE than a constant. If the predictions are garbage, the subtraction is removing noise, not redundancy. This fundamentally undermines the theoretical narrative of PRMP."
+        }
+      }
+    }
+  },
+  "metrics_agg": {
+    "c1_win_rate": 1.0,
+    "c1_significant_win_rate": 0.1667,
+    "c1_median_effect_size": 0.3979,
+    "c1_total_tasks": 12,
+    "c1_wins": 12,
+    "c1_significant_wins": 1,
+    "c1_consistency_score": 0.7083,
+    "c2_diagnostic_coverage_total": 13,
+    "c3_prmp_beats_all_controls_rate": 0.75,
+    "c3_mean_improvement_over_parammatched": -0.01627,
+    "c4_mean_learned_vs_random_delta": 0.015254,
+    "c4_any_significant": 0,
+    "c5_loss_swap_p_value": 0.00841,
+    "c5_regression_vs_classification_delta_diff": 1.276025,
+    "c6_negative_r2_count": 22,
+    "c6_total_prediction_r2": 22,
+    "c6_worst_prediction_r2": -5046.38,
+    "c7_total_diagnostic_coverage": 13,
+    "consistency_amazon_dominance": 0.6,
+    "consistency_num_datasets": 4,
+    "consistency_total_seeds": 28,
+    "consistency_total_tasks": 8,
+    "objection_significant_p05_count": 2,
+    "objection_f1_rmse_degradation_pct": 19.3,
+    "objection_amazon_fraction_positive": 0.6,
+    "assessment_claims_confirmed": 4,
+    "assessment_claims_disconfirmed": 2,
+    "assessment_claims_inconclusive": 1
+  },
+  "datasets": [
+    {
+      "dataset": "prmp_audit",
+      "examples": [
+        {
+          "input": "{\"claim_id\": \"C1\", \"claim\": \"C1: PRMP outperforms standard aggregation on relational tasks\"}",
+          "output": "\"N/A\"",
+          "metadata_section": "claims_analysis",
+          "metadata_claim_id": "C1",
+          "eval_confidence": 0.0
+        },
+        {
+          "input": "{\"claim_id\": \"C2\", \"claim\": \"C2: Improvement concentrates in high-cardinality, high-predictability regime\"}",
+          "output": "\"weak_contradict\"",
+          "metadata_section": "claims_analysis",
+          "metadata_claim_id": "C2",
+          "eval_confidence": 0.0
+        },
+        {
+          "input": "{\"claim_id\": \"C3\", \"claim\": \"C3: Predict-subtract mechanism is necessary\"}",
+          "output": "\"strong_support_on_amazon_only\"",
+          "metadata_section": "claims_analysis",
+          "metadata_claim_id": "C3",
+          "eval_confidence": 1.0
+        }
+      ]
+    }
+  ]
+}

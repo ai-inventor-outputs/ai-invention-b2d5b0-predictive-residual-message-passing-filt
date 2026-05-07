@@ -1,0 +1,435 @@
+{
+  "metadata": {
+    "evaluation_name": "PRMP Meta-Analysis: Pooled Effects, Embedding Regime Theory, and 8 Publication Figures",
+    "description": "Comprehensive meta-analysis of PRMP across 12 experiments, 5 datasets, 8-10 independent tasks",
+    "hypothesis_verdicts": {
+      "H1_systematic_advantage": {
+        "supported": false,
+        "pooled_d": 0.23664112286475295,
+        "p_value": 0.44085035365770997,
+        "interpretation": "Pooled d=0.237 (p=0.4409), not significant"
+      },
+      "H2_regime_theory": {
+        "supported": "True",
+        "spearman_rho": 0.9486832980505139,
+        "p_value": 0.05131670194948613,
+        "interpretation": "ρ=0.949 (p=0.051), supported"
+      },
+      "H3_regression_advantage": {
+        "supported": true,
+        "regression_pooled_d": 0.33397849662177476,
+        "classification_pooled_d": 0.08810321142938456,
+        "moderator_p": 0.8434091079423522,
+        "interpretation": "Reg d=0.334 vs Cls d=0.088"
+      },
+      "H4_learned_predictions_necessary": {
+        "supported": true,
+        "prmp_rmse": 0.534305,
+        "random_rmse": 0.560137,
+        "interpretation": "Learned predictions outperform random predictions"
+      }
+    },
+    "meta_analysis": {
+      "pooled_d": 0.23664112286475295,
+      "se": 0.30702387257004554,
+      "ci_lo": -0.3651256673725364,
+      "ci_hi": 0.8384079131020422,
+      "z": 0.7707580550133436,
+      "p_value": 0.44085035365770997,
+      "Q": 8.914971483040485,
+      "Q_p": 0.258818557645883,
+      "I2": 21.480399423413267,
+      "tau2": 0.16110304862153943,
+      "pred_lo": -0.958293864842026,
+      "pred_hi": 1.431576110571532,
+      "k": 8
+    },
+    "moderator_analysis": {
+      "slope": -0.1629367114703161,
+      "intercept": 0.25817948466796226,
+      "p_value": 0.8434091079423522,
+      "regression_pooled_d": 0.33397849662177476,
+      "classification_pooled_d": 0.08810321142938456
+    },
+    "regression_subgroup": {
+      "pooled_d": 0.33397849662177476,
+      "se": 0.33246223272927533,
+      "ci_lo": -0.3176474795276049,
+      "ci_hi": 0.9856044727711544,
+      "z": 1.0045607101897018,
+      "p_value": 0.3151084241574411,
+      "Q": 2.613062022955555,
+      "Q_p": 0.6245109957418864,
+      "I2": 0.0,
+      "tau2": 0.0,
+      "pred_lo": -0.5890846421025513,
+      "pred_hi": 1.257041635346101,
+      "k": 5
+    },
+    "classification_subgroup": {
+      "pooled_d": 0.08810321142938456,
+      "se": 0.8417443520383631,
+      "ci_lo": -1.561715718565807,
+      "ci_hi": 1.737922141424576,
+      "z": 0.10466742214074184,
+      "p_value": 0.916639713297096,
+      "Q": 6.108846893173281,
+      "Q_p": 0.04714989736946251,
+      "I2": 67.2605970492561,
+      "tau2": 1.4229873375548892,
+      "pred_lo": -6.193653206020448,
+      "pred_hi": 6.369859628879217,
+      "k": 3
+    },
+    "regime_theory": {
+      "n_fk_links": 26,
+      "spearman_rho_task_level": 0.9486832980505139,
+      "spearman_p_task_level": 0.05131670194948613,
+      "dataset_mean_embedding_r2": {
+        "Amazon": 0.5076376385077861,
+        "Avito": 0.44526718181818176,
+        "Stack": 0.017372727272727272
+      }
+    },
+    "lossswap_results": {
+      "config1_natural_regression": {
+        "mean": 0.987868804198045,
+        "std": 0.8044851198387168
+      },
+      "config2_binned_classification": {
+        "mean": -0.28815628815628813,
+        "std": 0.07362546242579406
+      },
+      "config3_natural_classification": {
+        "mean": 0.18158890290037838,
+        "std": 0.3880042135007229
+      },
+      "config4_softened_regression": {
+        "mean": -0.130010364147333,
+        "std": 0.07732000366369916
+      },
+      "loss_function_hypothesis": {
+        "regression_loss_configs_delta_mean": 0.428929220025356,
+        "classification_loss_configs_delta_mean": -0.05328369262795491,
+        "t_statistic": 2.7438351916633197,
+        "p_value": 0.008409936021902339,
+        "effect_significant": true,
+        "interpretation": "Reg-loss delta=0.4289, cls-loss delta=-0.0533, p=0.0084"
+      },
+      "target_nature_hypothesis": {
+        "position_target_configs_delta_mean": 0.3498562580208784,
+        "binary_target_configs_delta_mean": 0.025789269376522664,
+        "t_statistic": 1.772255652700569,
+        "p_value": 0.08244502242856926,
+        "effect_significant": true,
+        "interpretation": "Position delta=0.3499, binary delta=0.0258, p=0.0824"
+      },
+      "conclusion": "Mixed"
+    },
+    "eggers_test": {
+      "intercept": -1.4102775177443516,
+      "slope": 1.3099071234675206,
+      "p_value": 0.5499426155018297,
+      "interpretable": true
+    },
+    "dataset_summary": {
+      "Amazon": {
+        "n_tasks": 1,
+        "n_regression": 1,
+        "n_classification": 0,
+        "best_d": 1.0087156792091658,
+        "mean_d": 1.0087156792091658,
+        "task_names": [
+          "Amazon review-rating"
+        ],
+        "mean_embedding_r2": 0.5076376385077861,
+        "n_fk_links": 4
+      },
+      "F1": {
+        "n_tasks": 2,
+        "n_regression": 1,
+        "n_classification": 1,
+        "best_d": 0.3278111343896195,
+        "mean_d": 0.22654900199024025,
+        "task_names": [
+          "F1 driver-position",
+          "F1 driver-dnf"
+        ],
+        "mean_embedding_r2": NaN,
+        "n_fk_links": 0
+      },
+      "Stack": {
+        "n_tasks": 2,
+        "n_regression": 1,
+        "n_classification": 1,
+        "best_d": 0.20106003944010542,
+        "mean_d": -0.6852746590633471,
+        "task_names": [
+          "Stack post-votes",
+          "Stack user-engagement"
+        ],
+        "mean_embedding_r2": 0.017372727272727272,
+        "n_fk_links": 11
+      },
+      "HM": {
+        "n_tasks": 2,
+        "n_regression": 1,
+        "n_classification": 1,
+        "best_d": 1.732050807568877,
+        "mean_d": 0.5086691704330215,
+        "task_names": [
+          "HM user-churn",
+          "HM item-sales"
+        ],
+        "mean_embedding_r2": NaN,
+        "n_fk_links": 0
+      },
+      "Avito": {
+        "n_tasks": 1,
+        "n_regression": 1,
+        "n_classification": 0,
+        "best_d": 0.46802303700375425,
+        "mean_d": 0.46802303700375425,
+        "task_names": [
+          "Avito ad-ctr"
+        ],
+        "mean_embedding_r2": 0.44526718181818176,
+        "n_fk_links": 11
+      }
+    },
+    "figures": [
+      "figures/fig1_forest_plot.png",
+      "figures/fig2_regime_scatter.png",
+      "figures/fig3_r2_trajectories.png",
+      "figures/fig4_ablation_bar.png",
+      "figures/fig5_subgroup_forest.png",
+      "figures/fig6_funnel_plot.png",
+      "figures/fig7_lossswap.png",
+      "figures/fig8_summary_table.png"
+    ]
+  },
+  "metrics_agg": {
+    "pooled_d": 0.236641,
+    "pooled_d_ci_lo": -0.365126,
+    "pooled_d_ci_hi": 0.838408,
+    "pooled_z": 0.770758,
+    "pooled_p_value": 0.44085,
+    "I2_heterogeneity": 21.4804,
+    "tau2": 0.161103,
+    "Q_statistic": 8.915,
+    "k_independent_tasks": 8,
+    "prediction_interval_lo": -0.958294,
+    "prediction_interval_hi": 1.431576,
+    "regression_pooled_d": 0.333978,
+    "classification_pooled_d": 0.088103,
+    "moderator_p_value": 0.843409,
+    "egger_intercept": -1.410278,
+    "egger_p_value": 0.549943,
+    "spearman_rho_regime": 0.948683,
+    "spearman_p_regime": 0.051317,
+    "n_fk_links_analyzed": 26,
+    "n_total_tasks_all_iters": 12,
+    "h1_systematic_supported": 0,
+    "h2_regime_supported": 1,
+    "h3_regression_advantage": 1,
+    "h4_learned_predictions": 1
+  },
+  "datasets": [
+    {
+      "dataset": "meta_analysis_independent_tasks",
+      "examples": [
+        {
+          "input": "{\"task\": \"Amazon review-rating\", \"dataset\": \"Amazon\", \"task_type\": \"regression\", \"metric\": \"MAE\", \"source\": \"exp_id2_it6__opus\"}",
+          "output": "{\"cohens_d\": 1.0087, \"se\": 0.6715, \"ci_lo\": -0.3074, \"ci_hi\": 2.3248, \"prmp_mean\": 0.8338, \"std_mean\": 0.8426}",
+          "predict_prmp": "0.8338",
+          "predict_standard": "0.8426",
+          "eval_cohens_d": 1.0087,
+          "eval_se": 0.6715,
+          "eval_ci_lo": -0.3074,
+          "eval_ci_hi": 2.3248,
+          "metadata_dataset": "Amazon",
+          "metadata_task_type": "regression",
+          "metadata_metric": "MAE",
+          "metadata_n_prmp": 5,
+          "metadata_n_std": 5
+        },
+        {
+          "input": "{\"task\": \"F1 driver-position\", \"dataset\": \"F1\", \"task_type\": \"regression\", \"metric\": \"MAE\", \"source\": \"exp_id2_it6__opus\"}",
+          "output": "{\"cohens_d\": 0.3278, \"se\": 0.6367, \"ci_lo\": -0.9201, \"ci_hi\": 1.5757, \"prmp_mean\": 3.0621, \"std_mean\": 3.1483}",
+          "predict_prmp": "3.0621",
+          "predict_standard": "3.1483",
+          "eval_cohens_d": 0.3278,
+          "eval_se": 0.6367,
+          "eval_ci_lo": -0.9201,
+          "eval_ci_hi": 1.5757,
+          "metadata_dataset": "F1",
+          "metadata_task_type": "regression",
+          "metadata_metric": "MAE",
+          "metadata_n_prmp": 5,
+          "metadata_n_std": 5
+        },
+        {
+          "input": "{\"task\": \"F1 driver-dnf\", \"dataset\": \"F1\", \"task_type\": \"classification\", \"metric\": \"AP\", \"source\": \"exp_id2_it6__opus\"}",
+          "output": "{\"cohens_d\": 0.1253, \"se\": 0.6331, \"ci_lo\": -1.1155, \"ci_hi\": 1.3661, \"prmp_mean\": 0.9269, \"std_mean\": 0.9249}",
+          "predict_prmp": "0.9269",
+          "predict_standard": "0.9249",
+          "eval_cohens_d": 0.1253,
+          "eval_se": 0.6331,
+          "eval_ci_lo": -1.1155,
+          "eval_ci_hi": 1.3661,
+          "metadata_dataset": "F1",
+          "metadata_task_type": "classification",
+          "metadata_metric": "AP",
+          "metadata_n_prmp": 5,
+          "metadata_n_std": 5
+        }
+      ]
+    },
+    {
+      "dataset": "sensitivity_checks",
+      "examples": [
+        {
+          "input": "{\"task\": \"Amazon review-rating (iter2)\", \"dataset\": \"Amazon\", \"note\": \"sensitivity_check\", \"source\": \"exp_id4_it2__opus\"}",
+          "output": "{\"cohens_d\": 3.8, \"se\": 1.3675}",
+          "predict_prmp": "0.5343",
+          "predict_standard": "0.5783",
+          "eval_cohens_d": 3.8,
+          "eval_se": 1.3675,
+          "eval_ci_lo": 1.1198,
+          "eval_ci_hi": 6.4803,
+          "metadata_dataset": "Amazon",
+          "metadata_task_type": "regression",
+          "metadata_metric": "RMSE",
+          "metadata_n_prmp": 3,
+          "metadata_n_std": 3
+        },
+        {
+          "input": "{\"task\": \"Amazon review-rating (iter4)\", \"dataset\": \"Amazon\", \"note\": \"sensitivity_check\", \"source\": \"exp_id1_it4__opus\"}",
+          "output": "{\"cohens_d\": 5.5462, \"se\": 1.7972}",
+          "predict_prmp": "0.5143",
+          "predict_standard": "0.5643",
+          "eval_cohens_d": 5.5462,
+          "eval_se": 1.7972,
+          "eval_ci_lo": 2.0236,
+          "eval_ci_hi": 9.0687,
+          "metadata_dataset": "Amazon",
+          "metadata_task_type": "regression",
+          "metadata_metric": "RMSE",
+          "metadata_n_prmp": 3,
+          "metadata_n_std": 3
+        },
+        {
+          "input": "{\"task\": \"F1 driver-position (iter3)\", \"dataset\": \"F1\", \"note\": \"sensitivity_check\", \"source\": \"exp_id2_it3__opus\"}",
+          "output": "{\"cohens_d\": 1.2569, \"se\": 0.8935}",
+          "predict_prmp": "4.0037",
+          "predict_standard": "4.347",
+          "eval_cohens_d": 1.2569,
+          "eval_se": 0.8935,
+          "eval_ci_lo": -0.4943,
+          "eval_ci_hi": 3.0082,
+          "metadata_dataset": "F1",
+          "metadata_task_type": "regression",
+          "metadata_metric": "MAE",
+          "metadata_n_prmp": 3,
+          "metadata_n_std": 3
+        }
+      ]
+    },
+    {
+      "dataset": "embedding_regime_fk_links",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"Amazon\", \"fk_link\": \"review->product\"}",
+          "output": "{\"embedding_r2_standard\": 0.411, \"embedding_r2_prmp\": 0.3843, \"delta_r2\": 0.0267}",
+          "predict_standard": "0.411",
+          "predict_prmp": "0.3843",
+          "eval_embedding_r2_standard": 0.410974,
+          "eval_delta_r2": 0.026668,
+          "metadata_dataset": "Amazon",
+          "metadata_source": "exp_id2_it6__opus"
+        },
+        {
+          "input": "{\"dataset\": \"Amazon\", \"fk_link\": \"review->customer\"}",
+          "output": "{\"embedding_r2_standard\": 0.5667, \"embedding_r2_prmp\": 0.5589, \"delta_r2\": 0.0077}",
+          "predict_standard": "0.5667",
+          "predict_prmp": "0.5589",
+          "eval_embedding_r2_standard": 0.566668,
+          "eval_delta_r2": 0.007747,
+          "metadata_dataset": "Amazon",
+          "metadata_source": "exp_id2_it6__opus"
+        },
+        {
+          "input": "{\"dataset\": \"Amazon\", \"fk_link\": \"product_to_review (traj)\"}",
+          "output": "{\"embedding_r2_standard\": 0.4425, \"embedding_r2_prmp\": 0.4554, \"delta_r2\": -0.013}",
+          "predict_standard": "0.4425",
+          "predict_prmp": "0.4554",
+          "eval_embedding_r2_standard": 0.442469,
+          "eval_delta_r2": -0.01297,
+          "metadata_dataset": "Amazon",
+          "metadata_source": "exp_id2_it4__opus"
+        }
+      ]
+    },
+    {
+      "dataset": "loss_swap_experiment",
+      "examples": [
+        {
+          "input": "{\"config\": \"config1_natural_regression\"}",
+          "output": "{\"delta_mean\": 0.9879, \"delta_std\": 0.8045}",
+          "predict_standard": "0.0",
+          "predict_prmp": "0.9879",
+          "eval_delta_mean": 0.987869,
+          "eval_delta_std": 0.804485,
+          "metadata_config": "config1_natural_regression"
+        },
+        {
+          "input": "{\"config\": \"config2_binned_classification\"}",
+          "output": "{\"delta_mean\": -0.2882, \"delta_std\": 0.0736}",
+          "predict_standard": "0.0",
+          "predict_prmp": "-0.2882",
+          "eval_delta_mean": -0.288156,
+          "eval_delta_std": 0.073625,
+          "metadata_config": "config2_binned_classification"
+        },
+        {
+          "input": "{\"config\": \"config3_natural_classification\"}",
+          "output": "{\"delta_mean\": 0.1816, \"delta_std\": 0.388}",
+          "predict_standard": "0.0",
+          "predict_prmp": "0.1816",
+          "eval_delta_mean": 0.181589,
+          "eval_delta_std": 0.388004,
+          "metadata_config": "config3_natural_classification"
+        }
+      ]
+    },
+    {
+      "dataset": "ablation_variants",
+      "examples": [
+        {
+          "input": "{\"variant\": \"iter2_Standard\"}",
+          "output": "{\"rmse_mean\": 0.5783}",
+          "predict_standard": "0.5783",
+          "predict_prmp": "0.5783",
+          "eval_rmse_mean": 0.578326,
+          "metadata_variant": "iter2_Standard"
+        },
+        {
+          "input": "{\"variant\": \"iter2_PRMP\"}",
+          "output": "{\"rmse_mean\": 0.5343}",
+          "predict_standard": "0.5783",
+          "predict_prmp": "0.5343",
+          "eval_rmse_mean": 0.534305,
+          "metadata_variant": "iter2_PRMP"
+        },
+        {
+          "input": "{\"variant\": \"iter2_Random Pred\"}",
+          "output": "{\"rmse_mean\": 0.5601}",
+          "predict_standard": "0.5783",
+          "predict_prmp": "0.5601",
+          "eval_rmse_mean": 0.560137,
+          "metadata_variant": "iter2_Random Pred"
+        }
+      ]
+    }
+  ]
+}

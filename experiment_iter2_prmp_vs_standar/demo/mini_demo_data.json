@@ -1,0 +1,2003 @@
+{
+  "metadata": {
+    "source": "RelBench (Stanford SNAP)",
+    "domain": "social/Q&A platform",
+    "description": "Stack Exchange Stats site Q&A dataset from RelBench. Contains users, posts, votes, badges, comments, and postHistory tables with rich FK relationships. Derived from the stats.stackexchange.com data dump (2023-09-12). Part of the RelBench benchmark (NeurIPS 2024 Datasets and Benchmarks track).",
+    "license": "CC BY-SA 4.0",
+    "citation": "@misc{robinson2024relbenchbenchmarkdeeplearning, title={RelBench: A Benchmark for Deep Learning on Relational Databases}, author={Joshua Robinson and Rishabh Ranjan and Weihua Hu and Kexin Huang and Jiaqi Han and Alejandro Dobles and Matthias Fey and Jan Eric Lenssen and Yiwen Yuan and Zecheng Zhang and Xinwei He and Jure Leskovec}, year={2024}, eprint={2407.20060}, archivePrefix={arXiv}}",
+    "num_tables": 7,
+    "num_fk_links": 11,
+    "num_tasks": 6,
+    "task_names": [
+      "user-engagement",
+      "post-votes",
+      "user-badge",
+      "user-post-comment",
+      "post-post-related",
+      "badges-class"
+    ],
+    "table_names": [
+      "comments",
+      "badges",
+      "postLinks",
+      "postHistory",
+      "votes",
+      "users",
+      "posts"
+    ],
+    "schema_topology": {
+      "comments": [
+        "posts",
+        "users"
+      ],
+      "users": [
+        "badges",
+        "comments",
+        "postHistory",
+        "posts",
+        "votes"
+      ],
+      "posts": [
+        "comments",
+        "postHistory",
+        "postLinks",
+        "posts",
+        "users",
+        "votes"
+      ],
+      "badges": [
+        "users"
+      ],
+      "postLinks": [
+        "posts"
+      ],
+      "postHistory": [
+        "posts",
+        "users"
+      ],
+      "votes": [
+        "posts",
+        "users"
+      ]
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "rel-stack/badges__UserId__users",
+      "examples": [
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 3,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 5,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 6,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 7,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 8,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 9,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 10,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.554969454887218
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/postLinks__PostId__posts",
+      "examples": [
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 3,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 5,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 6,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 7,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 3.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 8,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 9,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 10,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.11326981997226657
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/postLinks__RelatedPostId__posts",
+      "examples": [
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 3.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 3.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 3.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 3,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 3.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 5,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 6,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 7,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 8,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 9,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 10,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.07444301018589788
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/postHistory__PostId__posts",
+      "examples": [
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostHistoryTypeId\": 1.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostHistoryTypeId\": 5.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostHistoryTypeId\": 5.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostHistoryTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 3,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"PostHistoryTypeId\": 5.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostHistoryTypeId\": 1.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 5,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostHistoryTypeId\": 3.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 6,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"PostHistoryTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 7,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"PostHistoryTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 8,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"PostHistoryTypeId\": 24.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 9,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"PostHistoryTypeId\": 5.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 10,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.520193594954072,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 1.0
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/postHistory__UserId__users",
+      "examples": [
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 1.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 5.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 3,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 6.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 3.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 5,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 1.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 6,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 7,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 3.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 8,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 3.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 9,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostHistoryTypeId\": 3.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 10,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postHistory",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "PostHistoryTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 12.947024622192929,
+          "metadata_cardinality_median": 3.0,
+          "metadata_coverage": 0.3327224310776942
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/votes__PostId__posts",
+      "examples": [
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 16.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 3,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 5,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 6,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 1.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 7,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 8,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 1.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 9,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 10,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/votes__UserId__users",
+      "examples": [
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 3,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 5,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 6,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 7,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 8,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 9,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"VoteTypeId\": 8.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 10,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "VoteTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 1.986963190184049,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.010213032581453634
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/posts__OwnerUserId__users",
+      "examples": [
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 1.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 1.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 3,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 5,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 6,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 7,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 8,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 1.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 9,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"PostTypeId\": 1.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 10,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "OwnerUserId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.904110239961986,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3296522556390977
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/posts__ParentId__posts",
+      "examples": [
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 3,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 5,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 6,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 7,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 8,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 9,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"PostTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 10,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "posts",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "ParentId",
+          "metadata_child_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.4506817610499034,
+          "metadata_cardinality_median": 1.0,
+          "metadata_coverage": 0.3455088905727284
+        }
+      ]
+    }
+  ]
+}

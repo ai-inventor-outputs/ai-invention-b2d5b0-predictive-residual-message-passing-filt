@@ -1,0 +1,19 @@
+[project]
+name = "prmp-benchmark"
+version = "0.1.0"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "torch==2.1.0",
+    "torch-geometric==2.7.0",
+    "torch-scatter==2.1.2",
+    "torch-sparse==0.6.18",
+    "numpy==1.26.4",
+    "pandas==3.0.1",
+    "scikit-learn==1.8.0",
+    "scipy==1.17.1",
+    "loguru==0.7.3",
+    "pyarrow==23.0.1",
+    "psutil==7.2.2",
+    "setuptools==69.5.1",
+    "tqdm==4.67.3",
+]

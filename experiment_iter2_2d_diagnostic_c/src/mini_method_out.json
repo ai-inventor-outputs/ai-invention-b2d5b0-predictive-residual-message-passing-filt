@@ -1,0 +1,379 @@
+{
+  "metadata": {
+    "description": "2D FK diagnostic: cross-table predictability and cardinality for 13 FK links across 3 RelBench datasets",
+    "datasets_analyzed": [
+      "rel-hm",
+      "rel-stack",
+      "rel-amazon"
+    ],
+    "num_fk_links": 13,
+    "methods": [
+      "Ridge regression (5-fold CV)",
+      "Random Forest (5-fold CV, baseline)",
+      "Mutual information (sklearn)"
+    ],
+    "figure_files": [
+      "fk_diagnostic_2d_scatter.png",
+      "fk_diagnostic_mi_scatter.png",
+      "fk_diagnostic_ridge_vs_rf.png"
+    ],
+    "correlations": {
+      "pearson_logcard_r2": {
+        "r": 0.5762280212619295,
+        "p": 0.039284371277051644
+      },
+      "spearman_card_r2": {
+        "rho": 0.679077312874081,
+        "p": 0.010694723062592644
+      },
+      "pearson_r2_mi": {
+        "r": 0.35816559871285675,
+        "p": 0.22950078190788842
+      },
+      "pearson_ridge_rf": {
+        "r": 0.8732645326625722,
+        "p": 9.672920946885861e-05
+      }
+    },
+    "summary_statistics": {
+      "R2_range": [
+        0.0,
+        0.06859819434591406
+      ],
+      "R2_mean": 0.010387873135423513,
+      "R2_rf_mean": 0.02935207151760045,
+      "cardinality_range": [
+        1.4506817610499034,
+        20.0465
+      ],
+      "MI_range": [
+        0.0,
+        0.18115825618992165
+      ],
+      "spans_meaningful_range": false
+    },
+    "regime_classification": {
+      "card_threshold": 3.904110239961986,
+      "r2_threshold": 0.00015235390245522674,
+      "high_card_high_pred": [
+        "rel-hm/customer->transaction",
+        "rel-hm/article->transaction",
+        "rel-stack/posts->votes",
+        "rel-amazon/product->review",
+        "rel-amazon/customer->review"
+      ],
+      "high_card_low_pred": [
+        "rel-stack/users->postHistory",
+        "rel-stack/users->posts"
+      ],
+      "low_card_high_pred": [
+        "rel-stack/posts->postLinks",
+        "rel-stack/posts->postHistory"
+      ],
+      "low_card_low_pred": [
+        "rel-stack/users->badges",
+        "rel-stack/posts->postLinks",
+        "rel-stack/users->votes",
+        "rel-stack/posts->posts"
+      ]
+    },
+    "fk_link_table": [
+      {
+        "dataset": "rel-hm",
+        "parent_table": "customer",
+        "child_table": "transaction",
+        "fk_column": "customer_id",
+        "mean_cardinality": 4.17,
+        "median_cardinality": 3.0,
+        "max_cardinality": 169,
+        "parent_dim": 5,
+        "child_dim": 3,
+        "n_samples": 20000,
+        "R2_ridge": 0.0076837749088472995,
+        "R2_ridge_multi": 0.00782762347873119,
+        "R2_std": 0.0014979250980738275,
+        "R2_rf": 0.0008239453030533936,
+        "mutual_info_mean": 0.003032988617173871,
+        "log_mean_cardinality": 0.6201360549737575,
+        "runtime_seconds": 2.0280239582061768
+      },
+      {
+        "dataset": "rel-hm",
+        "parent_table": "article",
+        "child_table": "transaction",
+        "fk_column": "article_id",
+        "mean_cardinality": 20.0465,
+        "median_cardinality": 6.0,
+        "max_cardinality": 1241,
+        "parent_dim": 21,
+        "child_dim": 3,
+        "n_samples": 20000,
+        "R2_ridge": 0.06859819434591406,
+        "R2_ridge_multi": 0.06853615071483939,
+        "R2_std": 0.005949512818965094,
+        "R2_rf": 0.2468946534131594,
+        "mutual_info_mean": 0.07310591832505557,
+        "log_mean_cardinality": 1.3020385583341008,
+        "runtime_seconds": 8.097644805908203
+      },
+      {
+        "dataset": "rel-stack",
+        "parent_table": "users",
+        "child_table": "badges",
+        "fk_column": "UserId",
+        "mean_cardinality": 3.27034159627991,
+        "median_cardinality": 2.0,
+        "max_cardinality": null,
+        "parent_dim": 1,
+        "child_dim": 2,
+        "n_samples": 5000,
+        "R2_ridge": 0.0,
+        "R2_ridge_multi": 0.0,
+        "R2_std": 0.0,
+        "R2_rf": 0.0,
+        "mutual_info_mean": 0.0037552918391676737,
+        "log_mean_cardinality": 0.5145931182967302,
+        "runtime_seconds": 0.2776975631713867
+      },
+      {
+        "dataset": "rel-stack",
+        "parent_table": "posts",
+        "child_table": "postLinks",
+        "fk_column": "PostId",
+        "mean_cardinality": 1.6174246430460073,
+        "median_cardinality": 1.0,
+        "max_cardinality": null,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "n_samples": 5000,
+        "R2_ridge": 0.0,
+        "R2_ridge_multi": 0.0,
+        "R2_std": 0.0,
+        "R2_rf": 0.0,
+        "mutual_info_mean": 0.0049940745007646115,
+        "log_mean_cardinality": 0.20882405572610444,
+        "runtime_seconds": 0.14313173294067383
+      },
+      {
+        "dataset": "rel-stack",
+        "parent_table": "posts",
+        "child_table": "postLinks",
+        "fk_column": "RelatedPostId",
+        "mean_cardinality": 3.0410363694882525,
+        "median_cardinality": 1.0,
+        "max_cardinality": null,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "n_samples": 5000,
+        "R2_ridge": 0.00015235390245522674,
+        "R2_ridge_multi": 0.00012140813172833997,
+        "R2_std": 0.0001391480222483799,
+        "R2_rf": 0.00016388257464909904,
+        "mutual_info_mean": 0.004580235044804759,
+        "log_mean_cardinality": 0.4830216141505795,
+        "runtime_seconds": 0.1477363109588623
+      },
+      {
+        "dataset": "rel-stack",
+        "parent_table": "posts",
+        "child_table": "postHistory",
+        "fk_column": "PostId",
+        "mean_cardinality": 3.520193594954072,
+        "median_cardinality": 3.0,
+        "max_cardinality": null,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "n_samples": 5000,
+        "R2_ridge": 0.008954565406781079,
+        "R2_ridge_multi": 0.009238102785557922,
+        "R2_std": 0.004318441946067098,
+        "R2_rf": 0.012873644572637422,
+        "mutual_info_mean": 0.18115825618992165,
+        "log_mean_cardinality": 0.5465665483952615,
+        "runtime_seconds": 0.152754545211792
+      },
+      {
+        "dataset": "rel-stack",
+        "parent_table": "users",
+        "child_table": "postHistory",
+        "fk_column": "UserId",
+        "mean_cardinality": 12.947024622192929,
+        "median_cardinality": 3.0,
+        "max_cardinality": null,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "n_samples": 5000,
+        "R2_ridge": 0.0,
+        "R2_ridge_multi": 0.0,
+        "R2_std": 0.0,
+        "R2_rf": 0.0,
+        "mutual_info_mean": 0.0,
+        "log_mean_cardinality": 1.1121699739283109,
+        "runtime_seconds": 0.14270925521850586
+      },
+      {
+        "dataset": "rel-stack",
+        "parent_table": "posts",
+        "child_table": "votes",
+        "fk_column": "PostId",
+        "mean_cardinality": 4.3367960298269015,
+        "median_cardinality": 2.0,
+        "max_cardinality": null,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "n_samples": 5000,
+        "R2_ridge": 0.002466405486885104,
+        "R2_ridge_multi": 0.0016973141785645574,
+        "R2_std": 0.0029414849693147195,
+        "R2_rf": 0.07923049149925994,
+        "mutual_info_mean": 0.037124711361313345,
+        "log_mean_cardinality": 0.6371689966925116,
+        "runtime_seconds": 0.15871357917785645
+      },
+      {
+        "dataset": "rel-stack",
+        "parent_table": "users",
+        "child_table": "votes",
+        "fk_column": "UserId",
+        "mean_cardinality": 1.986963190184049,
+        "median_cardinality": 1.0,
+        "max_cardinality": null,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "n_samples": 5000,
+        "R2_ridge": 0.0,
+        "R2_ridge_multi": 1.0,
+        "R2_std": 0.0,
+        "R2_rf": 0.0,
+        "mutual_info_mean": 0.0,
+        "log_mean_cardinality": 0.2981898215899234,
+        "runtime_seconds": 0.007162332534790039
+      },
+      {
+        "dataset": "rel-stack",
+        "parent_table": "users",
+        "child_table": "posts",
+        "fk_column": "OwnerUserId",
+        "mean_cardinality": 3.904110239961986,
+        "median_cardinality": 1.0,
+        "max_cardinality": null,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "n_samples": 5000,
+        "R2_ridge": 0.0,
+        "R2_ridge_multi": 0.0,
+        "R2_std": 0.0,
+        "R2_rf": 0.0,
+        "mutual_info_mean": 0.0,
+        "log_mean_cardinality": 0.59152207229671,
+        "runtime_seconds": 0.14065265655517578
+      },
+      {
+        "dataset": "rel-stack",
+        "parent_table": "posts",
+        "child_table": "posts",
+        "fk_column": "ParentId",
+        "mean_cardinality": 1.4506817610499034,
+        "median_cardinality": 1.0,
+        "max_cardinality": null,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "n_samples": 5000,
+        "R2_ridge": 0.0,
+        "R2_ridge_multi": 1.0,
+        "R2_std": 0.0,
+        "R2_rf": 0.0,
+        "mutual_info_mean": 0.0,
+        "log_mean_cardinality": 0.1615721508398839,
+        "runtime_seconds": 0.007476806640625
+      },
+      {
+        "dataset": "rel-amazon",
+        "parent_table": "product",
+        "child_table": "review",
+        "fk_column": "asin",
+        "mean_cardinality": 14.7059,
+        "median_cardinality": 8.0,
+        "max_cardinality": 371,
+        "parent_dim": 5,
+        "child_dim": 21,
+        "n_samples": 2000,
+        "R2_ridge": 0.009093558735150432,
+        "R2_ridge_multi": 0.005739971875038967,
+        "R2_std": 0.004058182554946289,
+        "R2_rf": 0.0020447035242128204,
+        "mutual_info_mean": 0.01284340044143543,
+        "log_mean_cardinality": 1.1674916084468292,
+        "runtime_seconds": 16.374290227890015
+      },
+      {
+        "dataset": "rel-amazon",
+        "parent_table": "customer",
+        "child_table": "review",
+        "fk_column": "reviewerID",
+        "mean_cardinality": 4.5994,
+        "median_cardinality": 3.0,
+        "max_cardinality": 239,
+        "parent_dim": 5,
+        "child_dim": 21,
+        "n_samples": 2000,
+        "R2_ridge": 0.038093497974472465,
+        "R2_ridge_multi": 0.03576788729865299,
+        "R2_std": 0.014246932674783013,
+        "R2_rf": 0.0395456088418338,
+        "mutual_info_mean": 0.03357031114361233,
+        "log_mean_cardinality": 0.6627011808805411,
+        "runtime_seconds": 14.277509927749634
+      }
+    ]
+  },
+  "datasets": [
+    {
+      "dataset": "fk_diagnostic_2d",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"rel-hm\", \"parent_table\": \"customer\", \"child_table\": \"transaction\", \"fk_column\": \"customer_id\", \"mean_cardinality\": 4.17, \"median_cardinality\": 3.0, \"max_cardinality\": 169, \"parent_dim\": 5, \"child_dim\": 3, \"n_samples\": 20000}",
+          "output": "{\"R2_ridge\": 0.0076837749088472995, \"R2_ridge_multi\": 0.00782762347873119, \"R2_std\": 0.0014979250980738275, \"R2_rf\": 0.0008239453030533936, \"mutual_info_mean\": 0.003032988617173871, \"log_mean_cardinality\": 0.6201360549737575}",
+          "predict_ridge_r2": "0.0076837749088472995",
+          "predict_rf_r2": "0.0008239453030533936",
+          "metadata_dataset": "rel-hm",
+          "metadata_parent_table": "customer",
+          "metadata_child_table": "transaction",
+          "metadata_fk_column": "customer_id",
+          "metadata_mean_cardinality": 4.17,
+          "metadata_R2_ridge": 0.0076837749088472995,
+          "metadata_R2_rf": 0.0008239453030533936,
+          "metadata_mutual_info": 0.003032988617173871
+        },
+        {
+          "input": "{\"dataset\": \"rel-hm\", \"parent_table\": \"article\", \"child_table\": \"transaction\", \"fk_column\": \"article_id\", \"mean_cardinality\": 20.0465, \"median_cardinality\": 6.0, \"max_cardinality\": 1241, \"parent_dim\": 21, \"child_dim\": 3, \"n_samples\": 20000}",
+          "output": "{\"R2_ridge\": 0.06859819434591406, \"R2_ridge_multi\": 0.06853615071483939, \"R2_std\": 0.005949512818965094, \"R2_rf\": 0.2468946534131594, \"mutual_info_mean\": 0.07310591832505557, \"log_mean_cardinality\": 1.3020385583341008}",
+          "predict_ridge_r2": "0.06859819434591406",
+          "predict_rf_r2": "0.2468946534131594",
+          "metadata_dataset": "rel-hm",
+          "metadata_parent_table": "article",
+          "metadata_child_table": "transaction",
+          "metadata_fk_column": "article_id",
+          "metadata_mean_cardinality": 20.0465,
+          "metadata_R2_ridge": 0.06859819434591406,
+          "metadata_R2_rf": 0.2468946534131594,
+          "metadata_mutual_info": 0.07310591832505557
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"parent_table\": \"users\", \"child_table\": \"badges\", \"fk_column\": \"UserId\", \"mean_cardinality\": 3.27034159627991, \"median_cardinality\": 2.0, \"max_cardinality\": null, \"parent_dim\": 1, \"child_dim\": 2, \"n_samples\": 5000}",
+          "output": "{\"R2_ridge\": 0.0, \"R2_ridge_multi\": 0.0, \"R2_std\": 0.0, \"R2_rf\": 0.0, \"mutual_info_mean\": 0.0037552918391676737, \"log_mean_cardinality\": 0.5145931182967302}",
+          "predict_ridge_r2": "0.0",
+          "predict_rf_r2": "0.0",
+          "metadata_dataset": "rel-stack",
+          "metadata_parent_table": "users",
+          "metadata_child_table": "badges",
+          "metadata_fk_column": "UserId",
+          "metadata_mean_cardinality": 3.27034159627991,
+          "metadata_R2_ridge": 0.0,
+          "metadata_R2_rf": 0.0,
+          "metadata_mutual_info": 0.0037552918391676737
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "eval_id5_it5__opus",
+  "type": "code",
+  "title": "Mechanistic Synthesis: PRMP Improvement Decomposition, Gradient/Embedding Analysis, and Publication Figures",
+  "summary": "Demo notebook that synthesizes evidence from 4 prior PRMP experiments into unified mechanistic evaluation. Computes mechanism decomposition (73.1% irreducible residual), gradient norm ratio analysis with Mann-Whitney test, embedding effective rank with Spearman correlation, embedding R\u00b2 correlation with per-link improvement, and cross-experiment summary with Cohen's d. Produces 4 publication-ready figures and a results summary table. Uses pre-computed data from mini_demo_data.json with bootstrap CI computation (N_BOOT=100).",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_5/gen_art/eval_id5_it5__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id5_it5__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id5_it5__opus/eval_code_demo.ipynb"
+}

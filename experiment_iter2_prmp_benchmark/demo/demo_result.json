@@ -1,0 +1,13 @@
+{
+  "id": "exp_id2_it2__opus",
+  "type": "code",
+  "title": "PRMP Benchmark on RelBench rel-hm: PRMPConv vs Standard Aggregation with Ablations",
+  "summary": "Demo notebook benchmarking Predictive Residual Message Passing (PRMPConv) against standard SAGEConv on synthetic bipartite graphs. Tests 4 variants: standard baseline, PRMP with learned predictions, random-frozen prediction ablation, and no-subtraction (concat) ablation. Generates synthetic graph data, trains all variants, and compares AUROC metrics against reference results from full-scale RelBench rel-hm experiments. Includes training curve visualizations and PRMP diagnostics.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_2/gen_art/exp_id2_it2__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id2_it2__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id2_it2__opus/method_code_demo.ipynb"
+}

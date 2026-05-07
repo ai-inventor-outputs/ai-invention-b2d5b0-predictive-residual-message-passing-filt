@@ -1,0 +1,186 @@
+{
+  "metadata": {
+    "description": "2D FK diagnostic: cross-table predictability and cardinality for 13 FK links across 3 RelBench datasets",
+    "datasets_analyzed": [
+      "rel-hm",
+      "rel-stack",
+      "rel-amazon"
+    ],
+    "num_fk_links": 13,
+    "methods": [
+      "Ridge regression (5-fold CV)",
+      "Random Forest (5-fold CV, baseline)",
+      "Mutual information (sklearn)"
+    ],
+    "figure_files": [
+      "fk_diagnostic_2d_scatter.png",
+      "fk_diagnostic_mi_scatter.png",
+      "fk_diagnostic_ridge_vs_rf.png"
+    ],
+    "correlations": {
+      "pearson_logcard_r2": {
+        "r": 0.5762280212619295,
+        "p": 0.039284371277051644
+      },
+      "spearman_card_r2": {
+        "rho": 0.679077312874081,
+        "p": 0.010694723062592644
+      },
+      "pearson_r2_mi": {
+        "r": 0.35816559871285675,
+        "p": 0.22950078190788842
+      },
+      "pearson_ridge_rf": {
+        "r": 0.8732645326625722,
+        "p": 9.672920946885861e-05
+      }
+    },
+    "summary_statistics": {
+      "R2_range": [
+        0.0,
+        0.06859819434591406
+      ],
+      "R2_mean": 0.010387873135423513,
+      "R2_rf_mean": 0.02935207151760045,
+      "cardinality_range": [
+        1.4506817610499034,
+        20.0465
+      ],
+      "MI_range": [
+        0.0,
+        0.18115825618992165
+      ],
+      "spans_meaningful_range": false
+    },
+    "regime_classification": {
+      "card_threshold": 3.904110239961986,
+      "r2_threshold": 0.00015235390245522674,
+      "high_card_high_pred": [
+        "rel-hm/customer->transaction",
+        "rel-hm/article->transaction",
+        "rel-stack/posts->votes"
+      ],
+      "high_card_low_pred": [
+        "rel-stack/users->postHistory",
+        "rel-stack/users->posts"
+      ],
+      "low_card_high_pred": [
+        "rel-stack/posts->postLinks",
+        "rel-stack/posts->postHistory"
+      ],
+      "low_card_low_pred": [
+        "rel-stack/users->badges",
+        "rel-stack/posts->postLinks",
+        "rel-stack/users->votes"
+      ]
+    },
+    "fk_link_table": [
+      {
+        "dataset": "rel-hm",
+        "parent_table": "customer",
+        "child_table": "transaction",
+        "fk_column": "customer_id",
+        "mean_cardinality": 4.17,
+        "median_cardinality": 3.0,
+        "max_cardinality": 169,
+        "parent_dim": 5,
+        "child_dim": 3,
+        "n_samples": 20000,
+        "R2_ridge": 0.0076837749088472995,
+        "R2_ridge_multi": 0.00782762347873119,
+        "R2_std": 0.0014979250980738275,
+        "R2_rf": 0.0008239453030533936,
+        "mutual_info_mean": 0.003032988617173871,
+        "log_mean_cardinality": 0.6201360549737575,
+        "runtime_seconds": 2.0280239582061768
+      },
+      {
+        "dataset": "rel-hm",
+        "parent_table": "article",
+        "child_table": "transaction",
+        "fk_column": "article_id",
+        "mean_cardinality": 20.0465,
+        "median_cardinality": 6.0,
+        "max_cardinality": 1241,
+        "parent_dim": 21,
+        "child_dim": 3,
+        "n_samples": 20000,
+        "R2_ridge": 0.06859819434591406,
+        "R2_ridge_multi": 0.06853615071483939,
+        "R2_std": 0.005949512818965094,
+        "R2_rf": 0.2468946534131594,
+        "mutual_info_mean": 0.07310591832505557,
+        "log_mean_cardinality": 1.3020385583341008,
+        "runtime_seconds": 8.097644805908203
+      },
+      {
+        "dataset": "rel-stack",
+        "parent_table": "users",
+        "child_table": "badges",
+        "fk_column": "UserId",
+        "mean_cardinality": 3.27034159627991,
+        "median_cardinality": 2.0,
+        "max_cardinality": null,
+        "parent_dim": 1,
+        "child_dim": 2,
+        "n_samples": 5000,
+        "R2_ridge": 0.0,
+        "R2_ridge_multi": 0.0,
+        "R2_std": 0.0,
+        "R2_rf": 0.0,
+        "mutual_info_mean": 0.0037552918391676737,
+        "log_mean_cardinality": 0.5145931182967302,
+        "runtime_seconds": 0.2776975631713867
+      }
+    ]
+  },
+  "datasets": [
+    {
+      "dataset": "fk_diagnostic_2d",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"rel-hm\", \"parent_table\": \"customer\", \"child_table\": \"transaction\", \"fk_column\": \"customer_id\", \"mean_cardinality\": 4.17, \"median_cardinality\": 3.0, \"max_cardinality\": 169, \"parent_dim\": 5...",
+          "output": "{\"R2_ridge\": 0.0076837749088472995, \"R2_ridge_multi\": 0.00782762347873119, \"R2_std\": 0.0014979250980738275, \"R2_rf\": 0.0008239453030533936, \"mutual_info_mean\": 0.003032988617173871, \"log_mean_cardinal...",
+          "predict_ridge_r2": "0.0076837749088472995",
+          "predict_rf_r2": "0.0008239453030533936",
+          "metadata_dataset": "rel-hm",
+          "metadata_parent_table": "customer",
+          "metadata_child_table": "transaction",
+          "metadata_fk_column": "customer_id",
+          "metadata_mean_cardinality": 4.17,
+          "metadata_R2_ridge": 0.0076837749088472995,
+          "metadata_R2_rf": 0.0008239453030533936,
+          "metadata_mutual_info": 0.003032988617173871
+        },
+        {
+          "input": "{\"dataset\": \"rel-hm\", \"parent_table\": \"article\", \"child_table\": \"transaction\", \"fk_column\": \"article_id\", \"mean_cardinality\": 20.0465, \"median_cardinality\": 6.0, \"max_cardinality\": 1241, \"parent_dim\":...",
+          "output": "{\"R2_ridge\": 0.06859819434591406, \"R2_ridge_multi\": 0.06853615071483939, \"R2_std\": 0.005949512818965094, \"R2_rf\": 0.2468946534131594, \"mutual_info_mean\": 0.07310591832505557, \"log_mean_cardinality\": 1...",
+          "predict_ridge_r2": "0.06859819434591406",
+          "predict_rf_r2": "0.2468946534131594",
+          "metadata_dataset": "rel-hm",
+          "metadata_parent_table": "article",
+          "metadata_child_table": "transaction",
+          "metadata_fk_column": "article_id",
+          "metadata_mean_cardinality": 20.0465,
+          "metadata_R2_ridge": 0.06859819434591406,
+          "metadata_R2_rf": 0.2468946534131594,
+          "metadata_mutual_info": 0.07310591832505557
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"parent_table\": \"users\", \"child_table\": \"badges\", \"fk_column\": \"UserId\", \"mean_cardinality\": 3.27034159627991, \"median_cardinality\": 2.0, \"max_cardinality\": null, \"parent_dim\"...",
+          "output": "{\"R2_ridge\": 0.0, \"R2_ridge_multi\": 0.0, \"R2_std\": 0.0, \"R2_rf\": 0.0, \"mutual_info_mean\": 0.0037552918391676737, \"log_mean_cardinality\": 0.5145931182967302}",
+          "predict_ridge_r2": "0.0",
+          "predict_rf_r2": "0.0",
+          "metadata_dataset": "rel-stack",
+          "metadata_parent_table": "users",
+          "metadata_child_table": "badges",
+          "metadata_fk_column": "UserId",
+          "metadata_mean_cardinality": 3.27034159627991,
+          "metadata_R2_ridge": 0.0,
+          "metadata_R2_rf": 0.0,
+          "metadata_mutual_info": 0.0037552918391676737
+        }
+      ]
+    }
+  ]
+}

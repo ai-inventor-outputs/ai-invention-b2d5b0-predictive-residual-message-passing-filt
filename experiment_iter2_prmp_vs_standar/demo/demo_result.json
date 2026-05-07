@@ -1,0 +1,13 @@
+{
+  "id": "exp_id3_it2__opus",
+  "type": "code",
+  "title": "PRMP vs Standard Aggregation on RelBench rel-stack (user-engagement, post-votes)",
+  "summary": "Demo notebook implementing Predictive Residual Message Passing (PRMP) vs standard baselines (Linear Regression, MLP) on RelBench rel-stack FK-link cross-table prediction datasets. Loads 9 FK links with 99 total examples from mini_demo_data.json. Computes 2D diagnostic (cardinality \u00d7 predictability R\u00b2), trains PRMP with zero-init final layer and dual-loss training, performs regime analysis correlating cardinality\u00d7predictability with PRMP improvement. Includes visualization with R\u00b2 comparison bars, improvement chart, and regime scatter plot.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_2/gen_art/exp_id3_it2__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it2__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it2__opus/method_code_demo.ipynb"
+}

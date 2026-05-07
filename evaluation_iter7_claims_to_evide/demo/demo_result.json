@@ -1,0 +1,13 @@
+{
+  "id": "eval_id5_it7__opus",
+  "type": "code",
+  "title": "Claims-to-Evidence Audit: PRMP Publication Readiness Assessment",
+  "summary": "Demo notebook for the PRMP publication readiness audit that maps 7 paper claims (C1\u2013C7) to quantitative evidence across 6 experiments. Loads pre-computed audit data from mini_demo_data.json, demonstrates statistical helper functions (Cohen's d, paired t-tests), displays claims analysis with conclusions, builds a 6\u00d77 evidence matrix (experiments \u00d7 claims), shows cross-experiment consistency and reviewer objections, computes overall confidence assessment (verdict: partial_confirm \u2014 4 confirmed, 2 disconfirmed, 1 inconclusive), and produces a 4-panel visualization with evidence heatmap, claim confidence bars, key metrics, and verdict summary. Uses scipy.stats for statistical computations and matplotlib for visualization.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_7/gen_art/eval_id5_it7__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id5_it7__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id5_it7__opus/eval_code_demo.ipynb"
+}

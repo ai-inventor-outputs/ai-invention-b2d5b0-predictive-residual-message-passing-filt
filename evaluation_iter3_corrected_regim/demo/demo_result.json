@@ -1,0 +1,13 @@
+{
+  "id": "eval_id4_it3__opus",
+  "type": "code",
+  "title": "Corrected Regime Analysis, Statistical Significance, and Mechanism Investigation for PRMP",
+  "summary": "Demo notebook that loads pre-computed PRMP evaluation results (122 examples across 7 datasets) and re-runs statistical analyses: corrected regime analysis identifying degenerate/confounded FK links, bootstrap CI and paired t-tests for Amazon PRMP improvement (9.86% RMSE, Cohen's d=1.84), mechanism investigation (information filtering, implicit regularization, benefit decomposition), and hypothesis verdicts. Generates 4 publication-quality figures: diagnostic space, regime predictor vs improvement, ablation bar chart with bootstrap CIs, and mechanism decomposition. Uses pre-computed data from mini_demo_data.json loaded via GitHub URL with local fallback.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_3/gen_art/eval_id4_it3__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id4_it3__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/eval_id4_it3__opus/eval_code_demo.ipynb"
+}

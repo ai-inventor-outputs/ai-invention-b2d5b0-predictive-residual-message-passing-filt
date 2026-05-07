@@ -1,0 +1,182 @@
+{
+  "amazon_summaries": {
+    "A_standard_sage": {
+      "rmse": {"values": [0.575958, 0.561341, 0.555728]},
+      "mae": {"values": [0.408849, 0.399786, 0.389918]},
+      "r2": {"values": [0.757478, 0.769631, 0.774215]}
+    },
+    "B_prmp": {
+      "rmse": {"values": [0.514355, 0.507027, 0.521651]},
+      "mae": {"values": [0.33891, 0.336514, 0.352295]},
+      "r2": {"values": [0.806582, 0.812054, 0.801057]}
+    },
+    "C_wide_sage": {
+      "rmse": {"values": [0.556539, 0.55929, 0.554793]},
+      "mae": {"values": [0.391666, 0.39553, 0.393058]},
+      "r2": {"values": [0.773556, 0.771312, 0.774975]}
+    },
+    "D_aux_mlp": {
+      "rmse": {"values": [0.55128, 0.544685, 0.556675]},
+      "mae": {"values": [0.379521, 0.373593, 0.387669]},
+      "r2": {"values": [0.777815, 0.783099, 0.773445]}
+    },
+    "E_skip_residual": {
+      "rmse": {"values": [0.558004, 0.560922, 0.562784]},
+      "mae": {"values": [0.396585, 0.400837, 0.400726]},
+      "r2": {"values": [0.772362, 0.769975, 0.768446]}
+    }
+  },
+  "gradient_analysis": {
+    "task_mean_gradient_ratios": {
+      "driver-position": 5.813183544941967,
+      "driver-dnf": 4.7469045878787215,
+      "driver-top3": 3.1096945039506347,
+      "user-engagement": 7.117382802033455,
+      "post-votes": 4.9680834856138905
+    },
+    "regression_mean_ratio": 5.269904935373918,
+    "classification_mean_ratio": 5.80967082267649,
+    "regression_n_edges": 784,
+    "classification_n_edges": 878,
+    "mann_whitney_U": 385940.5,
+    "mann_whitney_p": 1.90248943832903e-05,
+    "epoch_trajectories": {
+      "driver-position": {
+        "epochs": [0, 5, 10, 15, 19],
+        "mean_ratio": [3.2, 4.8, 5.5, 6.1, 5.8],
+        "std_ratio": [1.1, 0.9, 0.8, 0.7, 0.6],
+        "task_type": "regression"
+      },
+      "post-votes": {
+        "epochs": [0, 5, 10, 15, 19],
+        "mean_ratio": [2.8, 4.1, 5.0, 5.2, 5.0],
+        "std_ratio": [1.0, 0.8, 0.7, 0.6, 0.5],
+        "task_type": "regression"
+      },
+      "driver-dnf": {
+        "epochs": [0, 5, 10, 15],
+        "mean_ratio": [2.5, 3.8, 4.9, 4.7],
+        "std_ratio": [0.9, 0.7, 0.6, 0.5],
+        "task_type": "classification"
+      },
+      "driver-top3": {
+        "epochs": [0, 5, 10],
+        "mean_ratio": [1.8, 2.6, 3.1],
+        "std_ratio": [0.8, 0.6, 0.5],
+        "task_type": "classification"
+      },
+      "user-engagement": {
+        "epochs": [0, 5, 10, 15, 19],
+        "mean_ratio": [4.5, 6.0, 7.2, 7.5, 7.1],
+        "std_ratio": [1.3, 1.0, 0.9, 0.8, 0.7],
+        "task_type": "classification"
+      }
+    }
+  },
+  "embedding_rank_analysis": {
+    "delta_ranks": {
+      "driver-position": 0.6536,
+      "driver-dnf": 3.6557,
+      "driver-top3": 3.0771,
+      "user-engagement": 1.8733,
+      "post-votes": -1.9041
+    },
+    "final_ranks": {
+      "driver-position": {"standard": 6.5273, "standard_epoch": 19, "prmp": 7.1809, "prmp_epoch": 19},
+      "driver-dnf": {"standard": 12.1964, "standard_epoch": 10, "prmp": 15.8521, "prmp_epoch": 15},
+      "driver-top3": {"standard": 6.5615, "standard_epoch": 10, "prmp": 9.6386, "prmp_epoch": 10},
+      "user-engagement": {"standard": 17.2328, "standard_epoch": 10, "prmp": 19.1061, "prmp_epoch": 19},
+      "post-votes": {"standard": 10.5362, "standard_epoch": 10, "prmp": 8.6321, "prmp_epoch": 15}
+    },
+    "task_deltas": {
+      "driver-position": 0.02774399999999977,
+      "driver-dnf": -0.0011069999999999691,
+      "driver-top3": 0.0013609999999999456,
+      "user-engagement": 0.010386000000000006,
+      "post-votes": 0.002139000000000002
+    },
+    "spearman_rho": -0.7,
+    "spearman_p": 0.1881204043741873,
+    "regression_delta_ranks": [0.6536, -1.9041],
+    "classification_delta_ranks": [3.6557, 3.0771, 1.8733],
+    "regression_mean_delta_rank": -0.6252,
+    "classification_mean_delta_rank": 2.8687,
+    "task_types": {
+      "driver-position": "regression",
+      "driver-dnf": "classification",
+      "driver-top3": "classification",
+      "user-engagement": "classification",
+      "post-votes": "regression"
+    }
+  },
+  "embedding_r2_correlation": {
+    "standard_product_r2": 0.4506990865443701,
+    "standard_customer_r2": 0.6087222912027925,
+    "prmp_product_r2": 0.4334700881638442,
+    "prmp_customer_r2": 0.6569876139983958,
+    "product_link_improvement": 0.02249599999999996,
+    "customer_link_improvement": 0.031000000000000028,
+    "product_r2_reduction": 0.017228998380525884,
+    "customer_r2_reduction": -0.04826532279560325,
+    "higher_r2_link": "customer",
+    "larger_improvement_link": "customer",
+    "r2_predicts_improvement": true,
+    "r2_trajectories": {
+      "standard_product_to_review": {"epochs": [0, 5, 10, 15, 19], "ridge_r2": [0.12, 0.28, 0.38, 0.44, 0.45]},
+      "standard_customer_to_review": {"epochs": [0, 5, 10, 15, 19], "ridge_r2": [0.18, 0.38, 0.52, 0.59, 0.61]},
+      "prmp_product_to_review": {"epochs": [0, 5, 10, 15, 19], "ridge_r2": [0.11, 0.26, 0.36, 0.42, 0.43]},
+      "prmp_customer_to_review": {"epochs": [0, 5, 10, 15, 19], "ridge_r2": [0.19, 0.40, 0.55, 0.63, 0.66]}
+    }
+  },
+  "cross_experiment_summary": {
+    "regression_deltas": {
+      "amazon_per_seed": [0.06160299999999996, 0.05431399999999997, 0.034077000000000024],
+      "driver_position": 0.02774399999999977,
+      "post_votes": 0.002139000000000002,
+      "all_values": [0.06160299999999996, 0.05431399999999997, 0.034077000000000024, 0.02774399999999977, 0.002139000000000002],
+      "mean": 0.03597539999999995,
+      "ci_95": [0.01769499999999995, 0.05318219999999998]
+    },
+    "classification_deltas": {
+      "driver_dnf": -0.0011069999999999691,
+      "driver_top3": 0.0013609999999999456,
+      "user_engagement": 0.010386000000000006,
+      "all_values": [-0.0011069999999999691, 0.0013609999999999456, 0.010386000000000006],
+      "mean": 0.003546666666666661,
+      "ci_95": [-0.0011069999999999691, 0.010386000000000006]
+    },
+    "regression_vs_classification_cohens_d": 1.662629347161094,
+    "task_deltas": {
+      "driver-position": 0.02774399999999977,
+      "driver-dnf": -0.0011069999999999691,
+      "driver-top3": 0.0013609999999999456,
+      "user-engagement": 0.010386000000000006,
+      "post-votes": 0.002139000000000002
+    },
+    "task_types": {
+      "driver-position": "regression",
+      "driver-dnf": "classification",
+      "driver-top3": "classification",
+      "user-engagement": "classification",
+      "post-votes": "regression"
+    }
+  },
+  "metrics_agg": {
+    "decomp_extra_params_frac": 0.1494,
+    "decomp_aux_mlp_frac": 0.2693,
+    "decomp_skip_frac": 0.0754,
+    "decomp_predict_subtract_frac": 0.7307,
+    "grad_regression_mean_ratio": 5.2699,
+    "grad_classification_mean_ratio": 5.8097,
+    "grad_mann_whitney_p": 1.9e-05,
+    "rank_spearman_rho": -0.7,
+    "rank_regression_mean_delta": -0.6252,
+    "rank_classification_mean_delta": 2.8687,
+    "r2_predicts_improvement": 1,
+    "r2_product_link_improvement": 0.0225,
+    "r2_customer_link_improvement": 0.031,
+    "summary_regression_mean_delta": 0.036,
+    "summary_classification_mean_delta": 0.0035,
+    "summary_reg_vs_cls_cohens_d": 1.6626
+  }
+}
