@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "description": "PRMP vs Attention (GATConv) comparison on Amazon Video Games",
+    "dataset": "amazon_video_games",
+    "num_reviews": 50000,
+    "num_products": 3400,
+    "num_customers": 10871,
+    "fk_cardinality": {
+      "product_to_review_mean": 14.7059,
+      "customer_to_review_mean": 4.5994
+    },
+    "training_config": {
+      "hidden_dim": 128,
+      "num_layers": 2,
+      "dropout": 0.3,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "max_epochs": 200,
+      "patience": 20,
+      "seeds": [
+        42,
+        123,
+        456
+      ],
+      "split": "80/10/10",
+      "loss": "MSE",
+      "gat_heads": 4,
+      "gat_dim_per_head": 32
+    },
+    "parameter_counts": {
+      "SAGE": {
+        "total": 268673,
+        "trainable": 268673
+      },
+      "GAT": {
+        "total": 400769,
+        "trainable": 400769
+      },
+      "PRMP_SAGE": {
+        "total": 400769,
+        "trainable": 400769
+      },
+      "PRMP_GAT": {
+        "total": 598401,
+        "trainable": 598401
+      }
+    },
+    "results_summary": {
+      "SAGE": {
+        "per_seed": [
+          {
+            "seed": 42,
+            "rmse": 0.673526,
+            "mae": 0.477185,
+            "r2": 0.654318,
+            "best_epoch": 192,
+            "train_time_s": 9.5
+          },
+          {
+            "seed": 123,
+            "rmse": 0.672449,
+            "mae": 0.472966,
+            "r2": 0.655422,
+            "best_epoch": 189,
+            "train_time_s": 5.5
+          },
+          {
+            "seed": 456,
+            "rmse": 0.674511,
+            "mae": 0.471902,
+            "r2": 0.653306,
+            "best_epoch": 194,
+            "train_time_s": 4.8
+          }
+        ],
+        "mean_rmse": 0.673495,
+        "std_rmse": 0.000842,
+        "mean_mae": 0.474018,
+        "std_mae": 0.002281,
+        "mean_r2": 0.654349,
+        "std_r2": 0.000864,
+        "param_count": {
+          "total": 268673,
+          "trainable": 268673
+        }
+      },
+      "GAT": {
+        "per_seed": [
+          {
+            "seed": 42,
+            "rmse": 0.668334,
+            "mae": 0.46618,
+            "r2": 0.659627,
+            "best_epoch": 190,
+            "train_time_s": 9.2
+          },
+          {
+            "seed": 123,
+            "rmse": 0.67262,
+            "mae": 0.476065,
+            "r2": 0.655247,
+            "best_epoch": 198,
+            "train_time_s": 9.4
+          },
+          {
+            "seed": 456,
+            "rmse": 0.67525,
+            "mae": 0.481462,
+            "r2": 0.652546,
+            "best_epoch": 172,
+            "train_time_s": 9.1
+          }
+        ],
+        "mean_rmse": 0.672068,
+        "std_rmse": 0.00285,
+        "mean_mae": 0.474569,
+        "std_mae": 0.006328,
+        "mean_r2": 0.655807,
+        "std_r2": 0.002918,
+        "param_count": {
+          "total": 400769,
+          "trainable": 400769
+        }
+      },
+      "PRMP_SAGE": {
+        "per_seed": [
+          {
+            "seed": 42,
+            "rmse": 0.672734,
+            "mae": 0.467351,
+            "r2": 0.65513,
+            "best_epoch": 177,
+            "train_time_s": 5.7
+          },
+          {
+            "seed": 123,
+            "rmse": 0.673512,
+            "mae": 0.47592,
+            "r2": 0.654333,
+            "best_epoch": 196,
+            "train_time_s": 5.9
+          },
+          {
+            "seed": 456,
+            "rmse": 0.676003,
+            "mae": 0.472548,
+            "r2": 0.651771,
+            "best_epoch": 191,
+            "train_time_s": 6.2
+          }
+        ],
+        "mean_rmse": 0.674083,
+        "std_rmse": 0.001394,
+        "mean_mae": 0.47194,
+        "std_mae": 0.003525,
+        "mean_r2": 0.653745,
+        "std_r2": 0.001433,
+        "param_count": {
+          "total": 400769,
+          "trainable": 400769
+        }
+      },
+      "PRMP_GAT": {
+        "per_seed": [
+          {
+            "seed": 42,
+            "rmse": 0.681786,
+            "mae": 0.477379,
+            "r2": 0.645787,
+            "best_epoch": 131,
+            "train_time_s": 8.5
+          },
+          {
+            "seed": 123,
+            "rmse": 0.674689,
+            "mae": 0.473699,
+            "r2": 0.653124,
+            "best_epoch": 194,
+            "train_time_s": 10.3
+          },
+          {
+            "seed": 456,
+            "rmse": 0.676969,
+            "mae": 0.471218,
+            "r2": 0.650775,
+            "best_epoch": 162,
+            "train_time_s": 9.6
+          }
+        ],
+        "mean_rmse": 0.677815,
+        "std_rmse": 0.002958,
+        "mean_mae": 0.474099,
+        "std_mae": 0.002531,
+        "mean_r2": 0.649895,
+        "std_r2": 0.003059,
+        "param_count": {
+          "total": 598401,
+          "trainable": 598401
+        }
+      }
+    },
+    "pairwise_cohens_d": {
+      "SAGE_vs_GAT": 0.5545,
+      "SAGE_vs_PRMP_SAGE": -0.4166,
+      "SAGE_vs_PRMP_GAT": -1.6215,
+      "GAT_vs_PRMP_SAGE": -0.7333,
+      "GAT_vs_PRMP_GAT": -1.6153,
+      "PRMP_SAGE_vs_PRMP_GAT": -1.3175
+    },
+    "interpretation": {
+      "key_comparisons": {
+        "PRMP_SAGE_vs_GAT": "If PRMP_SAGE < GAT RMSE: predict-subtract is superior to attention",
+        "PRMP_GAT_vs_GAT": "If PRMP_GAT < GAT: mechanisms are complementary",
+        "PRMP_GAT_vs_PRMP_SAGE": "If PRMP_GAT < PRMP_SAGE: attention on residuals helps further",
+        "GAT_vs_SAGE": "Attention improvement over mean aggregation baseline"
+      }
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "amazon_video_games_reviews",
+      "examples": [
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": -0.425, \"time_dayofweek\": 1.04, \"summary_h0\": 0.333, \"summary_h1\": 0.0, \"summary_h2\": 0.667, \"summary_h3\": 0.333, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\":...",
+          "output": "3.0",
+          "metadata_fold": 4,
+          "metadata_row_index": 4,
+          "metadata_task_type": "regression",
+          "metadata_feature_names": [
+            "time_year",
+            "time_month",
+            "time_dayofweek"
+          ],
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "A2UTRVO4FDCBH6",
+          "predict_SAGE": "0.6735",
+          "predict_GAT": "0.6721",
+          "predict_PRMP_SAGE": "0.6741",
+          "predict_PRMP_GAT": "0.6778"
+        },
+        {
+          "input": "{\"time_year\": 1.464, \"time_month\": 1.256, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.333, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.33...",
+          "output": "0.0",
+          "metadata_fold": 1,
+          "metadata_row_index": 6,
+          "metadata_task_type": "regression",
+          "metadata_feature_names": [
+            "time_year",
+            "time_month",
+            "time_dayofweek"
+          ],
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "AQTC623NCESZW",
+          "predict_SAGE": "0.6735",
+          "predict_GAT": "0.6721",
+          "predict_PRMP_SAGE": "0.6741",
+          "predict_PRMP_GAT": "0.6778"
+        },
+        {
+          "input": "{\"time_year\": 1.464, \"time_month\": 1.256, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.258, \"summary_h2\": 0.0, \"summary_h3\": 0.258, \"summary_h4\": 0.258, \"summary_h5\": 0.0, \"summary_h6\"...",
+          "output": "3.0",
+          "metadata_fold": 2,
+          "metadata_row_index": 7,
+          "metadata_task_type": "regression",
+          "metadata_feature_names": [
+            "time_year",
+            "time_month",
+            "time_dayofweek"
+          ],
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "A1QJJU33VNC4S7",
+          "predict_SAGE": "0.6735",
+          "predict_GAT": "0.6721",
+          "predict_PRMP_SAGE": "0.6741",
+          "predict_PRMP_GAT": "0.6778"
+        }
+      ]
+    }
+  ]
+}

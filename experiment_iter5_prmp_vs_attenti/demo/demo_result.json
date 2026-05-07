@@ -1,0 +1,13 @@
+{
+  "id": "exp_id4_it5__opus",
+  "type": "code",
+  "title": "PRMP vs Attention-Based Aggregation (GATConv) Comparison on Amazon Video Games",
+  "summary": "Demo notebook comparing 4 heterogeneous GNN variants (HeteroSAGE, HeteroGAT, PRMP+SAGE, PRMP+GAT) on Amazon Video Games review-rating regression. Implements all GNN layers in pure PyTorch (no torch-geometric). The notebook defines scatter-based message passing layers, builds synthetic heterogeneous graphs for forward pass and training demos, and visualizes pre-computed experiment results (50K reviews, 3 seeds \u00d7 200 epochs) including RMSE/MAE/R2 metrics, parameter counts, per-seed distributions, and pairwise Cohen's d effect size heatmaps. Uses 50 curated examples from the full experiment output.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_5/gen_art/exp_id4_it5__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id4_it5__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id4_it5__opus/method_code_demo.ipynb"
+}

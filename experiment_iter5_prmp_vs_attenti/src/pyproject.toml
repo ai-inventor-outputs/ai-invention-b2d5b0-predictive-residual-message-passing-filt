@@ -1,0 +1,14 @@
+[project]
+name = "prmp-vs-gat-experiment"
+version = "0.1.0"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "torch==2.10.0",
+    "numpy==1.26.4",
+    "pandas==3.0.1",
+    "scikit-learn==1.8.0",
+    "scipy==1.17.1",
+    "loguru==0.7.3",
+    "psutil==7.2.2",
+    "tqdm==4.67.3",
+]

@@ -1,0 +1,696 @@
+{
+  "metadata": {
+    "fk_links": {
+      "PhoneRequestsStream__UserID__UserInfo": {
+        "cardinality_mean": 8.058765105115047,
+        "parent_table": "UserInfo",
+        "child_table": "PhoneRequestsStream",
+        "fk_column": "UserID"
+      },
+      "PhoneRequestsStream__AdID__AdsInfo": {
+        "cardinality_mean": 1.1793874668678779,
+        "parent_table": "AdsInfo",
+        "child_table": "PhoneRequestsStream",
+        "fk_column": "AdID"
+      },
+      "VisitStream__UserID__UserInfo": {
+        "cardinality_mean": 89.71674918900462,
+        "parent_table": "UserInfo",
+        "child_table": "VisitStream",
+        "fk_column": "UserID"
+      },
+      "VisitStream__AdID__AdsInfo": {
+        "cardinality_mean": 1.6664257162840894,
+        "parent_table": "AdsInfo",
+        "child_table": "VisitStream",
+        "fk_column": "AdID"
+      },
+      "SearchStream__SearchID__SearchInfo": {
+        "cardinality_mean": 3.6226693994098538,
+        "parent_table": "SearchInfo",
+        "child_table": "SearchStream",
+        "fk_column": "SearchID"
+      },
+      "SearchStream__AdID__AdsInfo": {
+        "cardinality_mean": 3.489904366459713,
+        "parent_table": "AdsInfo",
+        "child_table": "SearchStream",
+        "fk_column": "AdID"
+      },
+      "SearchInfo__UserID__UserInfo": {
+        "cardinality_mean": 35.35468175592878,
+        "parent_table": "UserInfo",
+        "child_table": "SearchInfo",
+        "fk_column": "UserID"
+      },
+      "SearchInfo__LocationID__Location": {
+        "cardinality_mean": 1093.0440044004401,
+        "parent_table": "Location",
+        "child_table": "SearchInfo",
+        "fk_column": "LocationID"
+      },
+      "SearchInfo__CategoryID__Category": {
+        "cardinality_mean": 50952.717948717946,
+        "parent_table": "Category",
+        "child_table": "SearchInfo",
+        "fk_column": "CategoryID"
+      },
+      "AdsInfo__LocationID__Location": {
+        "cardinality_mean": 1765.0336009515313,
+        "parent_table": "Location",
+        "child_table": "AdsInfo",
+        "fk_column": "LocationID"
+      },
+      "AdsInfo__CategoryID__Category": {
+        "cardinality_mean": 114625.5,
+        "parent_table": "Category",
+        "child_table": "AdsInfo",
+        "fk_column": "CategoryID"
+      }
+    },
+    "description": "PRMP cross-table R\u00b2 diagnostic data for RelBench rel-avito FK links"
+  },
+  "datasets": [
+    {
+      "dataset": "rel-avito",
+      "examples": [
+        {
+          "input": "[3.0, 9.0, 23.0]",
+          "output": "[2600.0, 0.0]",
+          "metadata_fk_link": "Category->AdsInfo",
+          "metadata_link_id": "AdsInfo__CategoryID__Category",
+          "metadata_row_index": "204"
+        },
+        {
+          "input": "[3.0, 6.0, 7.0]",
+          "output": "[10000.0, 0.0]",
+          "metadata_fk_link": "Category->AdsInfo",
+          "metadata_link_id": "AdsInfo__CategoryID__Category",
+          "metadata_row_index": "839"
+        },
+        {
+          "input": "[3.0, 9.0, 41.0]",
+          "output": "[36800.0, 0.0]",
+          "metadata_fk_link": "Category->AdsInfo",
+          "metadata_link_id": "AdsInfo__CategoryID__Category",
+          "metadata_row_index": "912"
+        },
+        {
+          "input": "[3.0, 4.0, 17.0]",
+          "output": "[2500000.0, 0.0]",
+          "metadata_fk_link": "Category->AdsInfo",
+          "metadata_link_id": "AdsInfo__CategoryID__Category",
+          "metadata_row_index": "1143"
+        },
+        {
+          "input": "[3.0, 3.0, 43.0]",
+          "output": "[3800.0, 0.0]",
+          "metadata_fk_link": "Category->AdsInfo",
+          "metadata_link_id": "AdsInfo__CategoryID__Category",
+          "metadata_row_index": "1828"
+        },
+        {
+          "input": "[3.0, 6.0, 13.0]",
+          "output": "[250000.0, 0.0]",
+          "metadata_fk_link": "Category->AdsInfo",
+          "metadata_link_id": "AdsInfo__CategoryID__Category",
+          "metadata_row_index": "2006"
+        },
+        {
+          "input": "[3.0, 11.0, 8.0]",
+          "output": "[65000.0, 0.0]",
+          "metadata_fk_link": "Category->AdsInfo",
+          "metadata_link_id": "AdsInfo__CategoryID__Category",
+          "metadata_row_index": "2253"
+        },
+        {
+          "input": "[3.0, 2.0, 35.0]",
+          "output": "[1600.0, 0.0]",
+          "metadata_fk_link": "Category->AdsInfo",
+          "metadata_link_id": "AdsInfo__CategoryID__Category",
+          "metadata_row_index": "4467"
+        },
+        {
+          "input": "[3.0, 13.0, 2355.0]",
+          "output": "[400.0, 0.0]",
+          "metadata_fk_link": "Location->AdsInfo",
+          "metadata_link_id": "AdsInfo__LocationID__Location",
+          "metadata_row_index": "244"
+        },
+        {
+          "input": "[3.0, 16.0, 3581.0]",
+          "output": "[1800000.0, 0.0]",
+          "metadata_fk_link": "Location->AdsInfo",
+          "metadata_link_id": "AdsInfo__LocationID__Location",
+          "metadata_row_index": "260"
+        },
+        {
+          "input": "[3.0, 84.0, 915.0]",
+          "output": "[349000.0, 0.0]",
+          "metadata_fk_link": "Location->AdsInfo",
+          "metadata_link_id": "AdsInfo__LocationID__Location",
+          "metadata_row_index": "712"
+        },
+        {
+          "input": "[3.0, 1.0, 3347.0]",
+          "output": "[400.0, 0.0]",
+          "metadata_fk_link": "Location->AdsInfo",
+          "metadata_link_id": "AdsInfo__LocationID__Location",
+          "metadata_row_index": "767"
+        },
+        {
+          "input": "[3.0, 17.0, 1838.0]",
+          "output": "[45.0, 0.0]",
+          "metadata_fk_link": "Location->AdsInfo",
+          "metadata_link_id": "AdsInfo__LocationID__Location",
+          "metadata_row_index": "1791"
+        },
+        {
+          "input": "[3.0, 29.0, 2217.0]",
+          "output": "[173000.0, 0.0]",
+          "metadata_fk_link": "Location->AdsInfo",
+          "metadata_link_id": "AdsInfo__LocationID__Location",
+          "metadata_row_index": "1905"
+        },
+        {
+          "input": "[3.0, 38.0, 1392.0]",
+          "output": "[350.0, 0.0]",
+          "metadata_fk_link": "Location->AdsInfo",
+          "metadata_link_id": "AdsInfo__LocationID__Location",
+          "metadata_row_index": "3456"
+        },
+        {
+          "input": "[3.0, 64.0, 539.0]",
+          "output": "[400.0, 0.0]",
+          "metadata_fk_link": "Location->AdsInfo",
+          "metadata_link_id": "AdsInfo__LocationID__Location",
+          "metadata_row_index": "4837"
+        },
+        {
+          "input": "[0.0, 0.0]",
+          "output": "[1064503.0]",
+          "metadata_fk_link": "AdsInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__AdID__AdsInfo",
+          "metadata_row_index": "217"
+        },
+        {
+          "input": "[0.0, 0.0]",
+          "output": "[1932545.0]",
+          "metadata_fk_link": "AdsInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__AdID__AdsInfo",
+          "metadata_row_index": "1628"
+        },
+        {
+          "input": "[15000.0, 0.0]",
+          "output": "[45613.0]",
+          "metadata_fk_link": "AdsInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__AdID__AdsInfo",
+          "metadata_row_index": "1805"
+        },
+        {
+          "input": "[13000.0, 0.0]",
+          "output": "[9002.0]",
+          "metadata_fk_link": "AdsInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__AdID__AdsInfo",
+          "metadata_row_index": "3436"
+        },
+        {
+          "input": "[700.0, 0.0]",
+          "output": "[266150.0]",
+          "metadata_fk_link": "AdsInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__AdID__AdsInfo",
+          "metadata_row_index": "4139"
+        },
+        {
+          "input": "[500.0, 0.0]",
+          "output": "[611525.0]",
+          "metadata_fk_link": "AdsInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__AdID__AdsInfo",
+          "metadata_row_index": "4464"
+        },
+        {
+          "input": "[30000.0, 0.0]",
+          "output": "[57807.0]",
+          "metadata_fk_link": "AdsInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__AdID__AdsInfo",
+          "metadata_row_index": "4597"
+        },
+        {
+          "input": "[380000.0, 0.0]",
+          "output": "[1388940.0]",
+          "metadata_fk_link": "AdsInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__AdID__AdsInfo",
+          "metadata_row_index": "4931"
+        },
+        {
+          "input": "[15661.0, 14.0, 2014.0, 85.0]",
+          "output": "[1896156.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "53"
+        },
+        {
+          "input": "[57201.0, 20.0, 2014.0, 85.0]",
+          "output": "[2069178.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "1307"
+        },
+        {
+          "input": "[9230.0, 7.0, 2014.0, 62.0]",
+          "output": "[204013.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "2276"
+        },
+        {
+          "input": "[30518.0, 7.0, 2014.0, 25.0]",
+          "output": "[1102510.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "2278"
+        },
+        {
+          "input": "[22293.0, 20.0, 2014.0, 25.0]",
+          "output": "[179926.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "2787"
+        },
+        {
+          "input": "[16208.0, 9.0, 2014.0, 25.0]",
+          "output": "[2229576.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "3462"
+        },
+        {
+          "input": "[57029.0, 7.0, 2014.0, 25.0]",
+          "output": "[71404.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "3679"
+        },
+        {
+          "input": "[22293.0, 20.0, 2014.0, 25.0]",
+          "output": "[280798.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "4827"
+        },
+        {
+          "input": "[1.0, 10.0, 45.0]",
+          "output": "[1411881.0, 0.0]",
+          "metadata_fk_link": "Category->SearchInfo",
+          "metadata_link_id": "SearchInfo__CategoryID__Category",
+          "metadata_row_index": "759"
+        },
+        {
+          "input": "[3.0, 6.0, 7.0]",
+          "output": "[1419308.0, 0.0]",
+          "metadata_fk_link": "Category->SearchInfo",
+          "metadata_link_id": "SearchInfo__CategoryID__Category",
+          "metadata_row_index": "792"
+        },
+        {
+          "input": "[3.0, 2.0, 39.0]",
+          "output": "[1791298.0, 0.0]",
+          "metadata_fk_link": "Category->SearchInfo",
+          "metadata_link_id": "SearchInfo__CategoryID__Category",
+          "metadata_row_index": "837"
+        },
+        {
+          "input": "[2.0, 6.0, 45.0]",
+          "output": "[944769.0, 0.0]",
+          "metadata_fk_link": "Category->SearchInfo",
+          "metadata_link_id": "SearchInfo__CategoryID__Category",
+          "metadata_row_index": "1273"
+        },
+        {
+          "input": "[3.0, 12.0, 42.0]",
+          "output": "[381343.0, 1.0]",
+          "metadata_fk_link": "Category->SearchInfo",
+          "metadata_link_id": "SearchInfo__CategoryID__Category",
+          "metadata_row_index": "1763"
+        },
+        {
+          "input": "[3.0, 3.0, 28.0]",
+          "output": "[1844032.0, 0.0]",
+          "metadata_fk_link": "Category->SearchInfo",
+          "metadata_link_id": "SearchInfo__CategoryID__Category",
+          "metadata_row_index": "2757"
+        },
+        {
+          "input": "[3.0, 9.0, 50.0]",
+          "output": "[1798185.0, 0.0]",
+          "metadata_fk_link": "Category->SearchInfo",
+          "metadata_link_id": "SearchInfo__CategoryID__Category",
+          "metadata_row_index": "2940"
+        },
+        {
+          "input": "[3.0, 9.0, 44.0]",
+          "output": "[706994.0, 0.0]",
+          "metadata_fk_link": "Category->SearchInfo",
+          "metadata_link_id": "SearchInfo__CategoryID__Category",
+          "metadata_row_index": "3112"
+        },
+        {
+          "input": "[2.0, 33.0, 1405.0]",
+          "output": "[808998.0, 0.0]",
+          "metadata_fk_link": "Location->SearchInfo",
+          "metadata_link_id": "SearchInfo__LocationID__Location",
+          "metadata_row_index": "355"
+        },
+        {
+          "input": "[2.0, 18.0, 623.0]",
+          "output": "[1358010.0, 0.0]",
+          "metadata_fk_link": "Location->SearchInfo",
+          "metadata_link_id": "SearchInfo__LocationID__Location",
+          "metadata_row_index": "1022"
+        },
+        {
+          "input": "[3.0, 51.0, 3191.0]",
+          "output": "[1387771.0, 0.0]",
+          "metadata_fk_link": "Location->SearchInfo",
+          "metadata_link_id": "SearchInfo__LocationID__Location",
+          "metadata_row_index": "2166"
+        },
+        {
+          "input": "[2.0, 20.0, 672.0]",
+          "output": "[1178889.0, 1.0]",
+          "metadata_fk_link": "Location->SearchInfo",
+          "metadata_link_id": "SearchInfo__LocationID__Location",
+          "metadata_row_index": "2817"
+        },
+        {
+          "input": "[3.0, 13.0, 2823.0]",
+          "output": "[1330527.0, 0.0]",
+          "metadata_fk_link": "Location->SearchInfo",
+          "metadata_link_id": "SearchInfo__LocationID__Location",
+          "metadata_row_index": "3100"
+        },
+        {
+          "input": "[2.0, 47.0, 1974.0]",
+          "output": "[279953.0, 1.0]",
+          "metadata_fk_link": "Location->SearchInfo",
+          "metadata_link_id": "SearchInfo__LocationID__Location",
+          "metadata_row_index": "3763"
+        },
+        {
+          "input": "[3.0, 53.0, 1159.0]",
+          "output": "[1547583.0, 0.0]",
+          "metadata_fk_link": "Location->SearchInfo",
+          "metadata_link_id": "SearchInfo__LocationID__Location",
+          "metadata_row_index": "4392"
+        },
+        {
+          "input": "[2.0, 52.0, 2092.0]",
+          "output": "[2086976.0, 0.0]",
+          "metadata_fk_link": "Location->SearchInfo",
+          "metadata_link_id": "SearchInfo__LocationID__Location",
+          "metadata_row_index": "4945"
+        },
+        {
+          "input": "[48490.0, 43.0, 2014.0, 64.0]",
+          "output": "[889842.0, 0.0]",
+          "metadata_fk_link": "UserInfo->SearchInfo",
+          "metadata_link_id": "SearchInfo__UserID__UserInfo",
+          "metadata_row_index": "375"
+        },
+        {
+          "input": "[33236.0, 20.0, 2014.0, 62.0]",
+          "output": "[628708.0, 1.0]",
+          "metadata_fk_link": "UserInfo->SearchInfo",
+          "metadata_link_id": "SearchInfo__UserID__UserInfo",
+          "metadata_row_index": "569"
+        },
+        {
+          "input": "[48490.0, 43.0, 2014.0, 64.0]",
+          "output": "[1823504.0, 0.0]",
+          "metadata_fk_link": "UserInfo->SearchInfo",
+          "metadata_link_id": "SearchInfo__UserID__UserInfo",
+          "metadata_row_index": "645"
+        },
+        {
+          "input": "[52907.0, 35.0, 1201.0, 85.0]",
+          "output": "[3087.0, 0.0]",
+          "metadata_fk_link": "UserInfo->SearchInfo",
+          "metadata_link_id": "SearchInfo__UserID__UserInfo",
+          "metadata_row_index": "1575"
+        },
+        {
+          "input": "[21171.0, 43.0, 2014.0, 25.0]",
+          "output": "[2217070.0, 0.0]",
+          "metadata_fk_link": "UserInfo->SearchInfo",
+          "metadata_link_id": "SearchInfo__UserID__UserInfo",
+          "metadata_row_index": "2401"
+        },
+        {
+          "input": "[9230.0, 7.0, 2014.0, 62.0]",
+          "output": "[63047.0, 0.0]",
+          "metadata_fk_link": "UserInfo->SearchInfo",
+          "metadata_link_id": "SearchInfo__UserID__UserInfo",
+          "metadata_row_index": "2962"
+        },
+        {
+          "input": "[55731.0, 20.0, 2014.0, 64.0]",
+          "output": "[1924168.0, 0.0]",
+          "metadata_fk_link": "UserInfo->SearchInfo",
+          "metadata_link_id": "SearchInfo__UserID__UserInfo",
+          "metadata_row_index": "4522"
+        },
+        {
+          "input": "[43996.0, 20.0, 2014.0, 85.0]",
+          "output": "[1468996.0, 0.0]",
+          "metadata_fk_link": "UserInfo->SearchInfo",
+          "metadata_link_id": "SearchInfo__UserID__UserInfo",
+          "metadata_row_index": "4729"
+        },
+        {
+          "input": "[0.0, 0.0]",
+          "output": "[6.0, 1.0, 0.005, 0.0]",
+          "metadata_fk_link": "AdsInfo->SearchStream",
+          "metadata_link_id": "SearchStream__AdID__AdsInfo",
+          "metadata_row_index": "653"
+        },
+        {
+          "input": "[15275.0, 1.0]",
+          "output": "[1.0, 3.0, 0.0045, 0.0]",
+          "metadata_fk_link": "AdsInfo->SearchStream",
+          "metadata_link_id": "SearchStream__AdID__AdsInfo",
+          "metadata_row_index": "827"
+        },
+        {
+          "input": "[6290.0, 1.0]",
+          "output": "[1.0, 3.0, 0.0347, 0.0]",
+          "metadata_fk_link": "AdsInfo->SearchStream",
+          "metadata_link_id": "SearchStream__AdID__AdsInfo",
+          "metadata_row_index": "1866"
+        },
+        {
+          "input": "[1500.0, 0.0]",
+          "output": "[6.0, 1.0, 0.005, 0.0]",
+          "metadata_fk_link": "AdsInfo->SearchStream",
+          "metadata_link_id": "SearchStream__AdID__AdsInfo",
+          "metadata_row_index": "1907"
+        },
+        {
+          "input": "[11150.0, 1.0]",
+          "output": "[1.0, 3.0, 0.0132, 0.0]",
+          "metadata_fk_link": "AdsInfo->SearchStream",
+          "metadata_link_id": "SearchStream__AdID__AdsInfo",
+          "metadata_row_index": "2277"
+        },
+        {
+          "input": "[1200.0, 0.0]",
+          "output": "[8.0, 1.0, 0.005, 0.0]",
+          "metadata_fk_link": "AdsInfo->SearchStream",
+          "metadata_link_id": "SearchStream__AdID__AdsInfo",
+          "metadata_row_index": "2370"
+        },
+        {
+          "input": "[24440.0, 1.0]",
+          "output": "[7.0, 3.0, 0.0045, 0.0]",
+          "metadata_fk_link": "AdsInfo->SearchStream",
+          "metadata_link_id": "SearchStream__AdID__AdsInfo",
+          "metadata_row_index": "3113"
+        },
+        {
+          "input": "[8290.0, 1.0]",
+          "output": "[1.0, 3.0, 0.0153, 0.0]",
+          "metadata_fk_link": "AdsInfo->SearchStream",
+          "metadata_link_id": "SearchStream__AdID__AdsInfo",
+          "metadata_row_index": "3714"
+        },
+        {
+          "input": "[436196.0, 0.0]",
+          "output": "[7.0, 1.0, 0.0053, 0.0]",
+          "metadata_fk_link": "SearchInfo->SearchStream",
+          "metadata_link_id": "SearchStream__SearchID__SearchInfo",
+          "metadata_row_index": "584"
+        },
+        {
+          "input": "[993564.0, 0.0]",
+          "output": "[2.0, 2.0, 0.0053, 0.0]",
+          "metadata_fk_link": "SearchInfo->SearchStream",
+          "metadata_link_id": "SearchStream__SearchID__SearchInfo",
+          "metadata_row_index": "1332"
+        },
+        {
+          "input": "[1176117.0, 0.0]",
+          "output": "[2.0, 1.0, 0.0053, 0.0]",
+          "metadata_fk_link": "SearchInfo->SearchStream",
+          "metadata_link_id": "SearchStream__SearchID__SearchInfo",
+          "metadata_row_index": "1716"
+        },
+        {
+          "input": "[2140119.0, 1.0]",
+          "output": "[1.0, 3.0, 0.0158, 0.0]",
+          "metadata_fk_link": "SearchInfo->SearchStream",
+          "metadata_link_id": "SearchStream__SearchID__SearchInfo",
+          "metadata_row_index": "2187"
+        },
+        {
+          "input": "[1501405.0, 1.0]",
+          "output": "[7.0, 3.0, 0.0019, 0.0]",
+          "metadata_fk_link": "SearchInfo->SearchStream",
+          "metadata_link_id": "SearchStream__SearchID__SearchInfo",
+          "metadata_row_index": "2910"
+        },
+        {
+          "input": "[480630.0, 1.0]",
+          "output": "[2.0, 2.0, 0.0053, 0.0]",
+          "metadata_fk_link": "SearchInfo->SearchStream",
+          "metadata_link_id": "SearchStream__SearchID__SearchInfo",
+          "metadata_row_index": "2988"
+        },
+        {
+          "input": "[1733436.0, 1.0]",
+          "output": "[2.0, 1.0, 0.0053, 0.0]",
+          "metadata_fk_link": "SearchInfo->SearchStream",
+          "metadata_link_id": "SearchStream__SearchID__SearchInfo",
+          "metadata_row_index": "3032"
+        },
+        {
+          "input": "[874260.0, 0.0]",
+          "output": "[8.0, 1.0, 0.0053, 0.0]",
+          "metadata_fk_link": "SearchInfo->SearchStream",
+          "metadata_link_id": "SearchStream__SearchID__SearchInfo",
+          "metadata_row_index": "4990"
+        },
+        {
+          "input": "[350000.0, 0.0]",
+          "output": "[1349265.0]",
+          "metadata_fk_link": "AdsInfo->VisitStream",
+          "metadata_link_id": "VisitStream__AdID__AdsInfo",
+          "metadata_row_index": "1338"
+        },
+        {
+          "input": "[1310000.0, 0.0]",
+          "output": "[1328218.0]",
+          "metadata_fk_link": "AdsInfo->VisitStream",
+          "metadata_link_id": "VisitStream__AdID__AdsInfo",
+          "metadata_row_index": "1401"
+        },
+        {
+          "input": "[2750.0, 0.0]",
+          "output": "[1927434.0]",
+          "metadata_fk_link": "AdsInfo->VisitStream",
+          "metadata_link_id": "VisitStream__AdID__AdsInfo",
+          "metadata_row_index": "2005"
+        },
+        {
+          "input": "[4246000.0, 0.0]",
+          "output": "[130940.0]",
+          "metadata_fk_link": "AdsInfo->VisitStream",
+          "metadata_link_id": "VisitStream__AdID__AdsInfo",
+          "metadata_row_index": "2211"
+        },
+        {
+          "input": "[3200.0, 0.0]",
+          "output": "[1398093.0]",
+          "metadata_fk_link": "AdsInfo->VisitStream",
+          "metadata_link_id": "VisitStream__AdID__AdsInfo",
+          "metadata_row_index": "3108"
+        },
+        {
+          "input": "[8500000.0, 0.0]",
+          "output": "[1412244.0]",
+          "metadata_fk_link": "AdsInfo->VisitStream",
+          "metadata_link_id": "VisitStream__AdID__AdsInfo",
+          "metadata_row_index": "3786"
+        },
+        {
+          "input": "[1250.0, 0.0]",
+          "output": "[1758638.0]",
+          "metadata_fk_link": "AdsInfo->VisitStream",
+          "metadata_link_id": "VisitStream__AdID__AdsInfo",
+          "metadata_row_index": "4375"
+        },
+        {
+          "input": "[100000.0, 0.0]",
+          "output": "[1682439.0]",
+          "metadata_fk_link": "AdsInfo->VisitStream",
+          "metadata_link_id": "VisitStream__AdID__AdsInfo",
+          "metadata_row_index": "4562"
+        },
+        {
+          "input": "[24873.0, 43.0, 2014.0, 85.0]",
+          "output": "[1793988.0]",
+          "metadata_fk_link": "UserInfo->VisitStream",
+          "metadata_link_id": "VisitStream__UserID__UserInfo",
+          "metadata_row_index": "262"
+        },
+        {
+          "input": "[55731.0, 20.0, 2014.0, 64.0]",
+          "output": "[1075043.0]",
+          "metadata_fk_link": "UserInfo->VisitStream",
+          "metadata_link_id": "VisitStream__UserID__UserInfo",
+          "metadata_row_index": "458"
+        },
+        {
+          "input": "[14941.0, 7.0, 2014.0, 64.0]",
+          "output": "[652211.0]",
+          "metadata_fk_link": "UserInfo->VisitStream",
+          "metadata_link_id": "VisitStream__UserID__UserInfo",
+          "metadata_row_index": "1799"
+        },
+        {
+          "input": "[57133.0, 20.0, 2014.0, 25.0]",
+          "output": "[35035.0]",
+          "metadata_fk_link": "UserInfo->VisitStream",
+          "metadata_link_id": "VisitStream__UserID__UserInfo",
+          "metadata_row_index": "1876"
+        },
+        {
+          "input": "[12505.0, 20.0, 2014.0, 85.0]",
+          "output": "[1770659.0]",
+          "metadata_fk_link": "UserInfo->VisitStream",
+          "metadata_link_id": "VisitStream__UserID__UserInfo",
+          "metadata_row_index": "2193"
+        },
+        {
+          "input": "[55731.0, 20.0, 2014.0, 64.0]",
+          "output": "[1126538.0]",
+          "metadata_fk_link": "UserInfo->VisitStream",
+          "metadata_link_id": "VisitStream__UserID__UserInfo",
+          "metadata_row_index": "2584"
+        },
+        {
+          "input": "[22293.0, 20.0, 2014.0, 25.0]",
+          "output": "[2081059.0]",
+          "metadata_fk_link": "UserInfo->VisitStream",
+          "metadata_link_id": "VisitStream__UserID__UserInfo",
+          "metadata_row_index": "2656"
+        },
+        {
+          "input": "[33726.0, 20.0, 2014.0, 62.0]",
+          "output": "[2009894.0]",
+          "metadata_fk_link": "UserInfo->VisitStream",
+          "metadata_link_id": "VisitStream__UserID__UserInfo",
+          "metadata_row_index": "3286"
+        }
+      ]
+    }
+  ]
+}

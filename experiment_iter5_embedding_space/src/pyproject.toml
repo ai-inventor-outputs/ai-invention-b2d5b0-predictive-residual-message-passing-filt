@@ -1,0 +1,27 @@
+[project]
+name = "exp-id3-it5-opus"
+version = "0.1.0"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "torch==2.10.0",
+    "torch-geometric==2.7.0",
+    "pytorch-frame==0.3.0",
+    "relbench==2.1.1",
+    "scikit-learn==1.6.1",
+    "numpy==2.2.6",
+    "loguru==0.7.3",
+    "psutil==5.2.2",
+    "pandas==2.3.3",
+    "scipy==1.15.3",
+    "tensorboard==2.20.0",
+    "torchvision==0.25.0",
+    "datasets==4.7.0",
+    "huggingface_hub==1.6.0",
+    "tabulate==0.10.0",
+    "networkx==3.4.2",
+    "joblib==1.5.3",
+    "pyarrow==23.0.1",
+    "duckdb==1.5.0",
+    "pooch==1.9.0",
+    "tqdm==4.67.3",
+]

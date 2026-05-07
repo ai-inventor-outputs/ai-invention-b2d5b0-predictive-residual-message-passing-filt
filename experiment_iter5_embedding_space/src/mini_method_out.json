@@ -1,0 +1,2697 @@
+{
+  "metadata": {
+    "method_name": "Embedding_Space_Cross_Table_Predictability_RelStack",
+    "description": "Embedding-space cross-table predictability on rel-stack. Trains Standard and PRMP HeteroGNN, measures R² trajectories. Tests revised regime theory: low embedding R² -> PRMP doesn't help.",
+    "dataset": "rel-stack",
+    "model_config": {
+      "channels": 48,
+      "num_layers": 2,
+      "num_epochs": 30,
+      "lr": 0.003,
+      "checkpoint_every": 15
+    },
+    "gpu_used": true,
+    "device": "cuda",
+    "raw_feature_baseline": {
+      "rel-stack/badges__UserId__users": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 2,
+        "parent_table": "users",
+        "child_table": "badges",
+        "cardinality_mean": 3.2703
+      },
+      "rel-stack/postLinks__PostId__posts": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "posts",
+        "child_table": "postLinks",
+        "cardinality_mean": 1.6174
+      },
+      "rel-stack/postLinks__RelatedPostId__posts": {
+        "ridge_r2": 0.000104,
+        "rf_r2": 2.9e-05,
+        "mi": 0.004282,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "posts",
+        "child_table": "postLinks",
+        "cardinality_mean": 3.041
+      },
+      "rel-stack/postHistory__PostId__posts": {
+        "ridge_r2": 0.0062,
+        "rf_r2": 0.006631,
+        "mi": 0.202308,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "posts",
+        "child_table": "postHistory",
+        "cardinality_mean": 3.5202
+      },
+      "rel-stack/postHistory__UserId__users": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "users",
+        "child_table": "postHistory",
+        "cardinality_mean": 12.947
+      },
+      "rel-stack/votes__PostId__posts": {
+        "ridge_r2": -0.006537,
+        "rf_r2": 0.093963,
+        "mi": 0.02941,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "posts",
+        "child_table": "votes",
+        "cardinality_mean": 4.3368
+      },
+      "rel-stack/votes__UserId__users": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "users",
+        "child_table": "votes",
+        "cardinality_mean": 1.987
+      },
+      "rel-stack/posts__OwnerUserId__users": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "users",
+        "child_table": "posts",
+        "cardinality_mean": 3.9041
+      },
+      "rel-stack/posts__ParentId__posts": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "posts",
+        "child_table": "posts",
+        "cardinality_mean": 1.4507
+      }
+    },
+    "embedding_predictability": {
+      "post-votes/standard": {
+        "users_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -8.804357
+            ],
+            "rf_r2": [
+              0.040587
+            ],
+            "mi": [
+              0.001259
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -40.766945
+            ],
+            "rf_r2": [
+              0.039919
+            ],
+            "mi": [
+              0.001337
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              -0.201322,
+              -16.81914,
+              -1.027504
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.035789
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.001291
+            ]
+          }
+        },
+        "comments_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.315389
+            ],
+            "rf_r2": [
+              0.179584
+            ],
+            "mi": [
+              0.013203
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.027224
+            ],
+            "rf_r2": [
+              0.066237
+            ],
+            "mi": [
+              0.00438
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.017509,
+              0.000339,
+              0.001805
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.004444
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.001128
+            ]
+          }
+        },
+        "comments_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_badges": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -0.905804
+            ],
+            "rf_r2": [
+              0.007756
+            ],
+            "mi": [
+              0.019041
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -1.315694
+            ],
+            "rf_r2": [
+              0.00926
+            ],
+            "mi": [
+              0.018513
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              -0.404515,
+              -1.020687,
+              -0.065062
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.012133
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.018059
+            ]
+          }
+        },
+        "badges_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postLinks": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.036163
+            ],
+            "rf_r2": [
+              -0.000458
+            ],
+            "mi": [
+              0.004178
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.006491
+            ],
+            "rf_r2": [
+              0.000471
+            ],
+            "mi": [
+              0.00359
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.006204,
+              -0.008502,
+              -0.006946
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              -0.014993
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.002553
+            ]
+          }
+        },
+        "postLinks_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.539042
+            ],
+            "rf_r2": [
+              0.310564
+            ],
+            "mi": [
+              0.049837
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.045472
+            ],
+            "rf_r2": [
+              0.098135
+            ],
+            "mi": [
+              0.009266
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.016593,
+              -0.000101,
+              0.009401
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.031677
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.004766
+            ]
+          }
+        },
+        "postHistory_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -482.916316
+            ],
+            "rf_r2": [
+              0.099148
+            ],
+            "mi": [
+              0.044607
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -12.926652
+            ],
+            "rf_r2": [
+              0.09661
+            ],
+            "mi": [
+              0.042196
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              -169.241002,
+              -6.909068,
+              -0.162093
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.09955
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.043678
+            ]
+          }
+        },
+        "postHistory_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.143805
+            ],
+            "rf_r2": [
+              0.049269
+            ],
+            "mi": [
+              0.037484
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.012777
+            ],
+            "rf_r2": [
+              0.005847
+            ],
+            "mi": [
+              0.05967
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.025491,
+              -0.00842,
+              -0.001784
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              -0.009701
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.067307
+            ]
+          }
+        },
+        "votes_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -89.212482
+            ],
+            "rf_r2": [
+              0.133358
+            ],
+            "mi": [
+              0.075524
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -318.901103
+            ],
+            "rf_r2": [
+              0.133147
+            ],
+            "mi": [
+              0.076482
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              -6.49912,
+              -207.136964,
+              -2.216401
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.134569
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.076808
+            ]
+          }
+        },
+        "votes_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_posts": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -727.025106
+            ],
+            "rf_r2": [
+              0.051995
+            ],
+            "mi": [
+              0.001903
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -5.314745
+            ],
+            "rf_r2": [
+              -0.015358
+            ],
+            "mi": [
+              0.018652
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              -2.288197,
+              -0.355535,
+              -4.677728
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.212083
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.019539
+            ]
+          }
+        },
+        "posts_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        }
+      },
+      "post-votes/prmp": {
+        "users_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -3.819802
+            ],
+            "rf_r2": [
+              0.061097
+            ],
+            "mi": [
+              0.002235
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.036839
+            ],
+            "rf_r2": [
+              0.069152
+            ],
+            "mi": [
+              0.004983
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.002505,
+              0.016878,
+              0.030367
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.044205
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.0033
+            ]
+          }
+        },
+        "comments_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.51949
+            ],
+            "rf_r2": [
+              0.27752
+            ],
+            "mi": [
+              0.022455
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.179014
+            ],
+            "rf_r2": [
+              0.139897
+            ],
+            "mi": [
+              0.012545
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.092595,
+              0.04998,
+              0.056494
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.094801
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.008573
+            ]
+          }
+        },
+        "comments_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_badges": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -0.905804
+            ],
+            "rf_r2": [
+              0.007756
+            ],
+            "mi": [
+              0.019041
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.115791
+            ],
+            "rf_r2": [
+              0.121398
+            ],
+            "mi": [
+              0.02978
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.033923,
+              0.043423,
+              0.058974
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.084135
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.021219
+            ]
+          }
+        },
+        "badges_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postLinks": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.018016
+            ],
+            "rf_r2": [
+              -0.006869
+            ],
+            "mi": [
+              0.003323
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.011931
+            ],
+            "rf_r2": [
+              -0.00546
+            ],
+            "mi": [
+              0.00558
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.054771,
+              0.024227,
+              0.02536
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.002679
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.003193
+            ]
+          }
+        },
+        "postLinks_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.472147
+            ],
+            "rf_r2": [
+              0.33366
+            ],
+            "mi": [
+              0.04955
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.153379
+            ],
+            "rf_r2": [
+              0.122842
+            ],
+            "mi": [
+              0.012431
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.055842,
+              0.061943,
+              0.05869
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.072215
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.011673
+            ]
+          }
+        },
+        "postHistory_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -5.287655
+            ],
+            "rf_r2": [
+              0.089928
+            ],
+            "mi": [
+              0.048382
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.079534
+            ],
+            "rf_r2": [
+              0.123185
+            ],
+            "mi": [
+              0.0574
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.069705,
+              0.086231,
+              0.074258
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.074668
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.04323
+            ]
+          }
+        },
+        "postHistory_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.200296
+            ],
+            "rf_r2": [
+              0.097584
+            ],
+            "mi": [
+              0.043386
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.045358
+            ],
+            "rf_r2": [
+              0.017544
+            ],
+            "mi": [
+              0.050662
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.007204,
+              0.012012,
+              0.015204
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.022492
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.051078
+            ]
+          }
+        },
+        "votes_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -56.849274
+            ],
+            "rf_r2": [
+              0.124699
+            ],
+            "mi": [
+              0.097058
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.081217
+            ],
+            "rf_r2": [
+              0.132101
+            ],
+            "mi": [
+              0.060758
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.039565,
+              0.07195,
+              0.094259
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.078155
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.060587
+            ]
+          }
+        },
+        "votes_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_posts": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -647.03875
+            ],
+            "rf_r2": [
+              0.041063
+            ],
+            "mi": [
+              0.008205
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.00556
+            ],
+            "rf_r2": [
+              -0.006922
+            ],
+            "mi": [
+              0.039576
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.256736,
+              0.224701,
+              0.177592
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.16604
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.121968
+            ]
+          }
+        },
+        "posts_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        }
+      },
+      "user-engagement/standard": {
+        "users_to_comments": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              -0.074763,
+              -123.177944
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "comments_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_comments": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              0.027723,
+              0.130242
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "comments_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_badges": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              -0.292207,
+              -1.728799
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "badges_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postLinks": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              0.018092,
+              0.016461
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "postLinks_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postHistory": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              0.08704,
+              0.084031
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "postHistory_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_postHistory": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              -0.127997,
+              -27.03478
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "postHistory_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_votes": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              0.026782,
+              -0.015598
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "votes_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_votes": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              -3.303419,
+              -61.683956
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "votes_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              -0.414068,
+              -11.661657
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "posts_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        }
+      },
+      "user-engagement/prmp": {
+        "users_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -2.509572
+            ],
+            "rf_r2": [
+              0.047538
+            ],
+            "mi": [
+              0.003812
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.033316
+            ],
+            "rf_r2": [
+              0.056116
+            ],
+            "mi": [
+              0.003494
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.008311,
+              0.01444,
+              0.010743
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.028163
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.002002
+            ]
+          }
+        },
+        "comments_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.483005
+            ],
+            "rf_r2": [
+              0.249142
+            ],
+            "mi": [
+              0.012636
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.108404
+            ],
+            "rf_r2": [
+              0.12183
+            ],
+            "mi": [
+              0.00686
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.095221,
+              0.143729,
+              0.132337
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.108583
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.007459
+            ]
+          }
+        },
+        "comments_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_badges": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -0.266047
+            ],
+            "rf_r2": [
+              0.004365
+            ],
+            "mi": [
+              0.010101
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.112734
+            ],
+            "rf_r2": [
+              0.112046
+            ],
+            "mi": [
+              0.028774
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.028168,
+              0.032442,
+              0.02719
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.070856
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.017741
+            ]
+          }
+        },
+        "badges_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postLinks": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.019344
+            ],
+            "rf_r2": [
+              -0.008849
+            ],
+            "mi": [
+              0.004887
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.047517
+            ],
+            "rf_r2": [
+              0.016733
+            ],
+            "mi": [
+              0.005847
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.041395,
+              0.050767,
+              0.056635
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.00272
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.005518
+            ]
+          }
+        },
+        "postLinks_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.52721
+            ],
+            "rf_r2": [
+              0.334628
+            ],
+            "mi": [
+              0.049303
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.085958
+            ],
+            "rf_r2": [
+              0.104537
+            ],
+            "mi": [
+              0.007343
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.061783,
+              0.083466,
+              0.094752
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.077381
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.01436
+            ]
+          }
+        },
+        "postHistory_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -189.360503
+            ],
+            "rf_r2": [
+              0.083631
+            ],
+            "mi": [
+              0.03503
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.074089
+            ],
+            "rf_r2": [
+              0.107701
+            ],
+            "mi": [
+              0.047874
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.068124,
+              0.09975,
+              0.069873
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.06413
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.025101
+            ]
+          }
+        },
+        "postHistory_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.226231
+            ],
+            "rf_r2": [
+              0.153162
+            ],
+            "mi": [
+              0.037215
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.009615
+            ],
+            "rf_r2": [
+              0.018626
+            ],
+            "mi": [
+              0.052066
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.004682,
+              0.011214,
+              0.01296
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.003988
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.037506
+            ]
+          }
+        },
+        "votes_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -69.802448
+            ],
+            "rf_r2": [
+              0.103775
+            ],
+            "mi": [
+              0.079522
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.056048
+            ],
+            "rf_r2": [
+              0.101738
+            ],
+            "mi": [
+              0.056246
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.041388,
+              0.036159,
+              0.037854
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.038067
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.080932
+            ]
+          }
+        },
+        "votes_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_posts": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -1027.718695
+            ],
+            "rf_r2": [
+              0.0587
+            ],
+            "mi": [
+              0.00627
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.007084
+            ],
+            "rf_r2": [
+              -0.009525
+            ],
+            "mi": [
+              0.035748
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.242712,
+              0.175263,
+              0.173082
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.206221
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.144319
+            ]
+          }
+        },
+        "posts_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        }
+      }
+    },
+    "task_performance": {
+      "post-votes": {
+        "standard": 0.563823,
+        "prmp": 0.072779,
+        "delta": 0.491044,
+        "prmp_better": true
+      },
+      "user-engagement": {
+        "standard": 0.50468,
+        "prmp": 0.767385,
+        "delta": 0.262705,
+        "prmp_better": true
+      }
+    },
+    "comparison_with_amazon": {
+      "amazon": {
+        "embedding_r2_range": "0.2-0.6",
+        "prmp_helps": true
+      },
+      "rel_stack": {
+        "embedding_r2_mean": -6.444769,
+        "prmp_helps_regression": true,
+        "prmp_helps_classification": true
+      }
+    },
+    "parent_dim_confound_analysis": {
+      "raw_parent_dims": {
+        "rel-stack/badges__UserId__users": 1,
+        "rel-stack/postLinks__PostId__posts": 1,
+        "rel-stack/postLinks__RelatedPostId__posts": 1,
+        "rel-stack/postHistory__PostId__posts": 1,
+        "rel-stack/postHistory__UserId__users": 1,
+        "rel-stack/votes__PostId__posts": 1,
+        "rel-stack/votes__UserId__users": 1,
+        "rel-stack/posts__OwnerUserId__users": 1,
+        "rel-stack/posts__ParentId__posts": 1
+      },
+      "embedding_dims": 48,
+      "raw_r2_mean": -2.6e-05,
+      "embedding_r2_mean": -6.444769,
+      "confound_resolved": false
+    },
+    "key_findings": {
+      "prmp_helps_post_votes": true,
+      "prmp_helps_user_engagement": true,
+      "embedding_r2_mean": -6.444769,
+      "raw_r2_mean": -2.6e-05,
+      "parent_dim1_resolved": false
+    },
+    "runtime_seconds": 727.3
+  },
+  "datasets": [
+    {
+      "dataset": "rel_stack_embedding_r2",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 27.340267, \"val_metric\": 155.463928, \"prmp_r2\": {}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_2\": {\"ridge_r2\": -0.201322, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.017509, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_badges\": {\"layer_2\": {\"ridge_r2\": -0.404515, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postLinks\": {\"layer_2\": {\"ridge_r2\": 0.006204, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.016593, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_postHistory\": {\"layer_2\": {\"ridge_r2\": -169.241002, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.025491, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_votes\": {\"layer_2\": {\"ridge_r2\": -6.49912, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_posts\": {\"layer_2\": {\"ridge_r2\": -2.288197, \"rf_r2\": 0.0, \"mi\": 0.0}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 0,
+          "predict_baseline": "155.463928",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 1}",
+          "output": "{\"train_loss\": 161.296753, \"val_metric\": 69.198448, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 1,
+          "predict_baseline": "69.198448",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 2}",
+          "output": "{\"train_loss\": 71.680367, \"val_metric\": 33.412136, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 2,
+          "predict_baseline": "33.412136",
+          "predict_our_method": ""
+        }
+      ]
+    }
+  ]
+}

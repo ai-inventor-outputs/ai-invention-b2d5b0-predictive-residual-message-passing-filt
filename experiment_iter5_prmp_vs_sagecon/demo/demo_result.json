@@ -1,0 +1,13 @@
+{
+  "id": "exp_id1_it5__opus",
+  "type": "code",
+  "title": "PRMP vs SAGEConv Benchmark on RelBench rel-avito (ad-ctr & user-visits)",
+  "summary": "Demo notebook benchmarking Predictive Residual Message Passing (PRMP) against SAGEConv on the RelBench rel-avito dataset. It computes cross-table R\u00b2 diagnostics across all 11 foreign-key links, ranks links by cardinality \u00d7 predictability, generates linear baseline and PRMP residual predictions, and visualizes R\u00b2 scores, cardinality, and their product via bar charts. The mini data JSON contains per-FK-link metadata (cardinality, parent/child tables) and sampled feature rows for reproducible offline exploration.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_5/gen_art/exp_id1_it5__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id1_it5__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id1_it5__opus/method_code_demo.ipynb"
+}
