@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "method_name": "PRMP Mechanism Analysis (Instrumented)",
+    "description": "Per-epoch instrumented training measuring information-theoretic mechanism of PRMP",
+    "dataset": "amazon_video_games",
+    "variants": [
+      "standard",
+      "prmp",
+      "no_subtract"
+    ],
+    "seeds": [
+      42,
+      123,
+      7
+    ],
+    "epochs": 100,
+    "hidden_dim": 64
+  },
+  "datasets": [
+    {
+      "dataset": "amazon_video_games_instrumented",
+      "examples": [
+        {
+          "input": "{\"time_year\": 0.0221, \"time_month\": -0.1448, \"time_dayofweek\": 0.5403, \"summary_h0\": 0.378, \"summary_h1\": 0.378, \"summary_h2\": 0.378, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.378, \"summary_h7\": 0.378, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.378, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.378, \"summary_h15\": 0.0, \"helpful_up\": -0.3061, \"helpful_total\": -0.3861}",
+          "output": "2.0",
+          "predict_standard": "2.3812",
+          "predict_prmp": "2.301",
+          "predict_no_subtract": "2.1385",
+          "metadata_seed": 42,
+          "metadata_task_type": "regression",
+          "metadata_review_index": 487
+        },
+        {
+          "input": "{\"time_year\": -0.6991, \"time_month\": -0.7052, \"time_dayofweek\": 1.0397, \"summary_h0\": 0.0, \"summary_h1\": 0.5774, \"summary_h2\": 0.2887, \"summary_h3\": 0.2887, \"summary_h4\": 0.2887, \"summary_h5\": 0.0, \"summary_h6\": 0.2887, \"summary_h7\": 0.5774, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.0209, \"helpful_total\": 0.0421}",
+          "output": "1.0",
+          "predict_standard": "2.4837",
+          "predict_prmp": "2.4079",
+          "predict_no_subtract": "2.493",
+          "metadata_seed": 42,
+          "metadata_task_type": "regression",
+          "metadata_review_index": 2968
+        },
+        {
+          "input": "{\"time_year\": -0.9395, \"time_month\": 1.2563, \"time_dayofweek\": 1.0397, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.5774, \"summary_h8\": 0.0, \"summary_h9\": 0.5774, \"summary_h10\": 0.0, \"summary_h11\": 0.5774, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.1971, \"helpful_total\": -0.3005}",
+          "output": "0.0",
+          "predict_standard": "0.4915",
+          "predict_prmp": "0.6112",
+          "predict_no_subtract": "0.887",
+          "metadata_seed": 42,
+          "metadata_task_type": "regression",
+          "metadata_review_index": 3219
+        }
+      ]
+    }
+  ]
+}

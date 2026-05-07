@@ -1,0 +1,13 @@
+{
+  "id": "exp_id3_it3__opus",
+  "type": "code",
+  "title": "PRMP Benchmark on RelBench rel-stack: user-engagement (AUROC) & post-votes (MAE)",
+  "summary": "Demo notebook benchmarking Predictive Residual Message Passing (PRMP) against standard methods on RelBench rel-stack. Runs cross-table FK-link prediction comparing Linear Regression, MLP, and PRMP-style predictors on 50 examples from the votes\u2192posts relationship. Visualizes pre-computed results across all 9 FK-link sub-datasets and GNN task results (user-engagement AUROC, post-votes MAE) for SAGEConv vs Full PRMP vs Selective PRMP. Includes PRMP diagnostics scatter plot of residual ratio vs FK cardinality. Uses original 300-epoch training; total runtime ~21 seconds.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_3/gen_art/exp_id3_it3__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it3__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it3__opus/method_code_demo.ipynb"
+}

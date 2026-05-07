@@ -1,0 +1,2150 @@
+{
+  "metadata": {
+    "experiment": "PRMP_RelBench_rel-stack",
+    "method_name": "Predictive Residual Message Passing (PRMP)",
+    "description": "Benchmarks PRMP against standard SAGEConv on RelBench rel-stack. Three variants: SAGEConv baseline, Full PRMP, Selective PRMP. Cross-table prediction on FK links + GNN training on official tasks.",
+    "reference_baselines": {
+      "user-engagement": {
+        "GraphSAGE_AUROC": 90.59,
+        "LightGBM_AUROC": 63.39
+      },
+      "post-votes": {
+        "GraphSAGE_MAE": 0.065,
+        "LightGBM_MAE": 0.068
+      }
+    },
+    "cross_table_summary": {
+      "rel-stack/badges__UserId__users": {
+        "cardinality_mean": 3.27034159627991,
+        "linear": {
+          "r2": 0.0,
+          "mse": 0.08569888888888907,
+          "mae": 0.1383600000000007
+        },
+        "mlp": {
+          "r2": 0.0,
+          "mse": 0.08569888333949163,
+          "mae": 0.13836016280949118
+        },
+        "prmp": {
+          "r2": 0.0,
+          "mse": 0.08569889941487224,
+          "mae": 0.1383597796810791
+        },
+        "prmp_diagnostics": {
+          "avg_residual_norm": 0.2731476128101349,
+          "avg_prediction_norm": 2.8500025272369385,
+          "residual_ratio": 0.09584118266552906
+        },
+        "n_examples": 5000
+      },
+      "rel-stack/postLinks__PostId__posts": {
+        "cardinality_mean": 1.6174246430460073,
+        "linear": {
+          "r2": 0.0,
+          "mse": 0.3476497777777777,
+          "mae": 0.3654506666666665
+        },
+        "mlp": {
+          "r2": 0.0,
+          "mse": 0.34764977498203237,
+          "mae": 0.36545061683654784
+        },
+        "prmp": {
+          "r2": 0.0,
+          "mse": 0.3476497803861863,
+          "mae": 0.3654507131576538
+        },
+        "prmp_diagnostics": {
+          "avg_residual_norm": 0.3654507100582123,
+          "avg_prediction_norm": 1.2146668434143066,
+          "residual_ratio": 0.3008649754783517
+        },
+        "n_examples": 5000
+      },
+      "rel-stack/postLinks__RelatedPostId__posts": {
+        "cardinality_mean": 3.0410363694882525,
+        "linear": {
+          "r2": 0.0002848194147404559,
+          "mse": 0.46696696085137485,
+          "mae": 0.46011607738492316
+        },
+        "mlp": {
+          "r2": 0.0,
+          "mse": 0.46750499837100506,
+          "mae": 0.46114095497131347
+        },
+        "prmp": {
+          "r2": 0.00028270594480916955,
+          "mse": 0.4669679480531797,
+          "mae": 0.46016733038425445
+        },
+        "prmp_diagnostics": {
+          "avg_residual_norm": 0.4601673483848572,
+          "avg_prediction_norm": 1.260773777961731,
+          "residual_ratio": 0.3649880386383043
+        },
+        "n_examples": 5000
+      },
+      "rel-stack/postHistory__PostId__posts": {
+        "cardinality_mean": 3.520193594954072,
+        "linear": {
+          "r2": 0.008614173467383246,
+          "mse": 85.17062950839329,
+          "mae": 5.065255893643802
+        },
+        "mlp": {
+          "r2": 0.013005359725814847,
+          "mse": 84.79337971531596,
+          "mae": 5.118895334720611
+        },
+        "prmp": {
+          "r2": 0.011963887638696158,
+          "mse": 84.88285328947988,
+          "mae": 4.991471718788147
+        },
+        "prmp_diagnostics": {
+          "avg_residual_norm": 4.991471767425537,
+          "avg_prediction_norm": 5.8773884773254395,
+          "residual_ratio": 0.8492669468220949
+        },
+        "n_examples": 5000
+      },
+      "rel-stack/postHistory__UserId__users": {
+        "cardinality_mean": 12.947024622192929,
+        "linear": {
+          "r2": 0.0,
+          "mse": 92.243696,
+          "mae": 4.589944
+        },
+        "mlp": {
+          "r2": 0.0,
+          "mse": 92.24369634516255,
+          "mae": 4.589944797515869
+        },
+        "prmp": {
+          "r2": 0.0,
+          "mse": 92.24369035734752,
+          "mae": 4.589930961608887
+        },
+        "prmp_diagnostics": {
+          "avg_residual_norm": 4.589931011199951,
+          "avg_prediction_norm": 5.675982475280762,
+          "residual_ratio": 0.8086584183776767
+        },
+        "n_examples": 5000
+      },
+      "rel-stack/votes__PostId__posts": {
+        "cardinality_mean": 4.3367960298269015,
+        "linear": {
+          "r2": 0.0,
+          "mse": 3.347161415133756,
+          "mae": 0.5958081855879043
+        },
+        "mlp": {
+          "r2": 0.09070923638543726,
+          "mse": 3.021896915003039,
+          "mae": 0.5754407272338867
+        },
+        "prmp": {
+          "r2": 0.047546813699089197,
+          "mse": 3.16534101141225,
+          "mae": 0.588681206703186
+        },
+        "prmp_diagnostics": {
+          "avg_residual_norm": 0.588681161403656,
+          "avg_prediction_norm": 2.2877721786499023,
+          "residual_ratio": 0.25731633896827005
+        },
+        "n_examples": 5000
+      },
+      "rel-stack/votes__UserId__users": {
+        "cardinality_mean": 1.986963190184049,
+        "linear": {
+          "r2": 1.0,
+          "mse": 0.0,
+          "mae": 0.0
+        },
+        "mlp": {
+          "r2": 0.0,
+          "mse": 3.637978807091713e-12,
+          "mae": 1.9073486328125e-06
+        },
+        "prmp": {
+          "r2": 0.0,
+          "mse": 1.4551915228366852e-11,
+          "mae": 3.814697265625e-06
+        },
+        "prmp_diagnostics": {
+          "avg_residual_norm": 3.814697265625e-06,
+          "avg_prediction_norm": 8.000003814697266,
+          "residual_ratio": 4.76836930829558e-07
+        },
+        "n_examples": 5000
+      },
+      "rel-stack/posts__OwnerUserId__users": {
+        "cardinality_mean": 3.904110239961986,
+        "linear": {
+          "r2": 0.0,
+          "mse": 0.29055211111111107,
+          "mae": 0.5104506666666667
+        },
+        "mlp": {
+          "r2": 0.0,
+          "mse": 0.29055210764526646,
+          "mae": 0.5104506587982178
+        },
+        "prmp": {
+          "r2": 0.0,
+          "mse": 0.29055212234793326,
+          "mae": 0.5104506921768188
+        },
+        "prmp_diagnostics": {
+          "avg_residual_norm": 0.5104507207870483,
+          "avg_prediction_norm": 1.5276663303375244,
+          "residual_ratio": 0.3341375735330036
+        },
+        "n_examples": 5000
+      },
+      "rel-stack/posts__ParentId__posts": {
+        "cardinality_mean": 1.4506817610499034,
+        "linear": {
+          "r2": 1.0,
+          "mse": 0.0,
+          "mae": 0.0
+        },
+        "mlp": {
+          "r2": 0.0,
+          "mse": 5.684341886080802e-14,
+          "mae": 2.384185791015625e-07
+        },
+        "prmp": {
+          "r2": 0.0,
+          "mse": 2.2737367544323206e-13,
+          "mae": 4.76837158203125e-07
+        },
+        "prmp_diagnostics": {
+          "avg_residual_norm": 4.76837158203125e-07,
+          "avg_prediction_norm": 2.000000476837158,
+          "residual_ratio": 2.384185222581572e-07
+        },
+        "n_examples": 5000
+      }
+    },
+    "gnn_results": {
+      "fk_diagnostics": {
+        "comments__UserId__users": {
+          "child_table": "comments",
+          "fk_col": "UserId",
+          "parent_table": "users",
+          "card_mean": 11.50355089617856,
+          "card_median": 2.0,
+          "card_max": 40851.0,
+          "card_std": 235.218549857104,
+          "num_parents": 53226,
+          "r_squared": 0.253009373945374
+        },
+        "comments__PostId__posts": {
+          "child_table": "comments",
+          "fk_col": "PostId",
+          "parent_table": "posts",
+          "card_mean": 3.3280990809833426,
+          "card_median": 2.0,
+          "card_max": 66.0,
+          "card_std": 2.80855324532324,
+          "num_parents": 187483,
+          "r_squared": 0.44402032510421097
+        },
+        "badges__UserId__users": {
+          "child_table": "badges",
+          "fk_col": "UserId",
+          "parent_table": "users",
+          "card_mean": 3.27034159627991,
+          "card_median": 2.0,
+          "card_max": 1578.0,
+          "card_std": 10.4941360923726,
+          "num_parents": 141717,
+          "r_squared": 0.1547961743527737
+        },
+        "postLinks__PostId__posts": {
+          "child_table": "postLinks",
+          "fk_col": "PostId",
+          "parent_table": "posts",
+          "card_mean": 1.6174246430460073,
+          "card_median": 1.0,
+          "card_max": 25.0,
+          "card_std": 1.1094606393124438,
+          "num_parents": 37820,
+          "r_squared": 0.19881907706797267
+        },
+        "postLinks__RelatedPostId__posts": {
+          "child_table": "postLinks",
+          "fk_col": "RelatedPostId",
+          "parent_table": "posts",
+          "card_mean": 3.0410363694882525,
+          "card_median": 1.0,
+          "card_max": 392.0,
+          "card_std": 8.372585431010085,
+          "num_parents": 24856,
+          "r_squared": 0.06832814559031038
+        },
+        "postHistory__PostId__posts": {
+          "child_table": "postHistory",
+          "fk_col": "PostId",
+          "parent_table": "posts",
+          "card_mean": 3.520193594954072,
+          "card_median": 3.0,
+          "card_max": 76.0,
+          "card_std": 2.814207128720753,
+          "num_parents": 333893,
+          "r_squared": 0.27321716860213263
+        },
+        "postHistory__UserId__users": {
+          "child_table": "postHistory",
+          "fk_col": "UserId",
+          "parent_table": "users",
+          "card_mean": 12.947024622192929,
+          "card_median": 3.0,
+          "card_max": 69917.0,
+          "card_std": 290.17300187150795,
+          "num_parents": 84964,
+          "r_squared": 0.12518161149184073
+        },
+        "votes__PostId__posts": {
+          "child_table": "votes",
+          "fk_col": "PostId",
+          "parent_table": "posts",
+          "card_mean": 4.3367960298269015,
+          "card_median": 2.0,
+          "card_max": 1561.0,
+          "card_std": 10.397881600247484,
+          "num_parents": 276663,
+          "r_squared": 0.13865456836948856
+        },
+        "votes__UserId__users": {
+          "child_table": "votes",
+          "fk_col": "UserId",
+          "parent_table": "users",
+          "card_mean": 1.986963190184049,
+          "card_median": 1.0,
+          "card_max": 168.0,
+          "card_std": 5.006001643461648,
+          "num_parents": 2608,
+          "r_squared": 0.4914369610369536
+        },
+        "posts__OwnerUserId__users": {
+          "child_table": "posts",
+          "fk_col": "OwnerUserId",
+          "parent_table": "users",
+          "card_mean": 3.904110239961986,
+          "card_median": 1.0,
+          "card_max": 4672.0,
+          "card_std": 34.48874423447024,
+          "num_parents": 84180,
+          "r_squared": 0.11011054974291186
+        },
+        "posts__ParentId__posts": {
+          "child_table": "posts",
+          "fk_col": "ParentId",
+          "parent_table": "posts",
+          "card_mean": 1.4506817610499034,
+          "card_median": 1.0,
+          "card_max": 151.0,
+          "card_std": 1.161057083919,
+          "num_parents": 115363,
+          "r_squared": 0.5686628748693697
+        }
+      },
+      "top3_high_card_links": [
+        "postHistory__UserId__users",
+        "comments__UserId__users",
+        "votes__PostId__posts"
+      ],
+      "per_run_results": {
+        "user-engagement__sage__seed42": {
+          "task": "user-engagement",
+          "variant": "sage",
+          "seed": 42,
+          "best_val_metric": 0.8931603846998082,
+          "test_metrics": {
+            "average_precision": 0.3429274107830971,
+            "accuracy": 0.9744829072920567,
+            "f1": 0.25702015196564254,
+            "roc_auc": 0.8956013779319647
+          },
+          "epochs_trained": 10,
+          "elapsed_seconds": 280.0919768810272,
+          "prmp_stats": {}
+        },
+        "user-engagement__prmp__seed42": {
+          "task": "user-engagement",
+          "variant": "prmp",
+          "seed": 42,
+          "best_val_metric": 0.8901531982075374,
+          "test_metrics": {
+            "average_precision": 0.32860153901050493,
+            "accuracy": 0.9742219499188763,
+            "f1": 0.20891364902506965,
+            "roc_auc": 0.8912261532607825
+          },
+          "epochs_trained": 10,
+          "elapsed_seconds": 353.63240456581116,
+          "prmp_stats": {
+            "layer0__('comments', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 33.396822016023584,
+              "avg_prediction_norm": 20.69500983766013,
+              "count": 724134.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'comments')": {
+              "avg_residual_norm": 148.68358040070365,
+              "avg_prediction_norm": 140.7620062660187,
+              "count": 724130.0
+            },
+            "layer0__('comments', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 124.44645737973588,
+              "avg_prediction_norm": 117.15590593742048,
+              "count": 1186898.0
+            },
+            "layer0__('posts', 'rev_f2p_PostId', 'comments')": {
+              "avg_residual_norm": 51.46515468423948,
+              "avg_prediction_norm": 42.08742346281695,
+              "count": 724128.0
+            },
+            "layer0__('badges', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 56.06609708578077,
+              "avg_prediction_norm": 28.345875300353235,
+              "count": 951848.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'badges')": {
+              "avg_residual_norm": 152.84876838758657,
+              "avg_prediction_norm": 143.4453782438215,
+              "count": 951848.0
+            },
+            "layer0__('postLinks', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 135.98771968966366,
+              "avg_prediction_norm": 102.5544043662847,
+              "count": 146886.0
+            },
+            "layer0__('posts', 'rev_f2p_PostId', 'postLinks')": {
+              "avg_residual_norm": 0.0,
+              "avg_prediction_norm": 0.0,
+              "count": 0.0
+            },
+            "layer0__('postLinks', 'f2p_RelatedPostId', 'posts')": {
+              "avg_residual_norm": 337.49718888870916,
+              "avg_prediction_norm": 313.309857957611,
+              "count": 141037.0
+            },
+            "layer0__('posts', 'rev_f2p_RelatedPostId', 'postLinks')": {
+              "avg_residual_norm": 0.0,
+              "avg_prediction_norm": 0.0,
+              "count": 0.0
+            },
+            "layer0__('postHistory', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 231.65286353523632,
+              "avg_prediction_norm": 232.59726757112932,
+              "count": 2542306.0
+            },
+            "layer0__('posts', 'rev_f2p_PostId', 'postHistory')": {
+              "avg_residual_norm": 91.16494992548394,
+              "avg_prediction_norm": 84.42874417869817,
+              "count": 1602486.0
+            },
+            "layer0__('postHistory', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 23.284398181632906,
+              "avg_prediction_norm": 10.114779619997217,
+              "count": 1602486.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'postHistory')": {
+              "avg_residual_norm": 110.82681560419165,
+              "avg_prediction_norm": 103.42022730709624,
+              "count": 1602347.0
+            },
+            "layer0__('votes', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 116.06085530544475,
+              "avg_prediction_norm": 112.4365413528254,
+              "count": 1696784.0
+            },
+            "layer0__('posts', 'rev_f2p_PostId', 'votes')": {
+              "avg_residual_norm": 53.99781264832976,
+              "avg_prediction_norm": 54.490310518937996,
+              "count": 12990.0
+            },
+            "layer0__('votes', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 265.9241505579701,
+              "avg_prediction_norm": 264.2821031532485,
+              "count": 13721.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'votes')": {
+              "avg_residual_norm": 84.63334229058317,
+              "avg_prediction_norm": 84.91020739157584,
+              "count": 13721.0
+            },
+            "layer0__('posts', 'f2p_OwnerUserId', 'users')": {
+              "avg_residual_norm": 25.978380136253104,
+              "avg_prediction_norm": 18.26873473983887,
+              "count": 649468.0
+            },
+            "layer0__('users', 'rev_f2p_OwnerUserId', 'posts')": {
+              "avg_residual_norm": 142.03958474620237,
+              "avg_prediction_norm": 134.81868455845722,
+              "count": 649351.0
+            },
+            "layer0__('posts', 'f2p_ParentId', 'posts')": {
+              "avg_residual_norm": 163.12581242220762,
+              "avg_prediction_norm": 161.1494127196122,
+              "count": 431236.0
+            },
+            "layer0__('posts', 'rev_f2p_ParentId', 'posts')": {
+              "avg_residual_norm": 106.12916651915445,
+              "avg_prediction_norm": 102.74208712121107,
+              "count": 226301.0
+            },
+            "layer1__('comments', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 12.18416605447006,
+              "avg_prediction_norm": 3.192528191783646,
+              "count": 724134.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'comments')": {
+              "avg_residual_norm": 4.2722399772256425,
+              "avg_prediction_norm": 0.0,
+              "count": 724130.0
+            },
+            "layer1__('comments', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 9.355440441601024,
+              "avg_prediction_norm": 0.0,
+              "count": 1186898.0
+            },
+            "layer1__('posts', 'rev_f2p_PostId', 'comments')": {
+              "avg_residual_norm": 8.069699636450332,
+              "avg_prediction_norm": 0.0,
+              "count": 724128.0
+            },
+            "layer1__('badges', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 7.355442715759608,
+              "avg_prediction_norm": 0.7284788885124672,
+              "count": 951848.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'badges')": {
+              "avg_residual_norm": 4.286804123938586,
+              "avg_prediction_norm": 0.0,
+              "count": 951848.0
+            },
+            "layer1__('postLinks', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 5.698405068211846,
+              "avg_prediction_norm": 0.0,
+              "count": 146886.0
+            },
+            "layer1__('posts', 'rev_f2p_PostId', 'postLinks')": {
+              "avg_residual_norm": 0.0,
+              "avg_prediction_norm": 0.0,
+              "count": 0.0
+            },
+            "layer1__('postLinks', 'f2p_RelatedPostId', 'posts')": {
+              "avg_residual_norm": 5.699950588541719,
+              "avg_prediction_norm": 0.0,
+              "count": 141037.0
+            },
+            "layer1__('posts', 'rev_f2p_RelatedPostId', 'postLinks')": {
+              "avg_residual_norm": 0.0,
+              "avg_prediction_norm": 0.0,
+              "count": 0.0
+            },
+            "layer1__('postHistory', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 9.044890311954513,
+              "avg_prediction_norm": 0.0,
+              "count": 2542306.0
+            },
+            "layer1__('posts', 'rev_f2p_PostId', 'postHistory')": {
+              "avg_residual_norm": 8.415762542122785,
+              "avg_prediction_norm": 0.0,
+              "count": 1602486.0
+            },
+            "layer1__('postHistory', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 9.401742935316351,
+              "avg_prediction_norm": 0.6079962599255968,
+              "count": 1602486.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'postHistory')": {
+              "avg_residual_norm": 4.357482614988333,
+              "avg_prediction_norm": 0.0,
+              "count": 1602347.0
+            },
+            "layer1__('votes', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 6.998816145219657,
+              "avg_prediction_norm": 0.0,
+              "count": 1696784.0
+            },
+            "layer1__('posts', 'rev_f2p_PostId', 'votes')": {
+              "avg_residual_norm": 8.04266157788988,
+              "avg_prediction_norm": 0.0,
+              "count": 12990.0
+            },
+            "layer1__('votes', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 15.67099154686217,
+              "avg_prediction_norm": 11.32776084834846,
+              "count": 13721.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'votes')": {
+              "avg_residual_norm": 4.0445761215963945,
+              "avg_prediction_norm": 0.0,
+              "count": 13721.0
+            },
+            "layer1__('posts', 'f2p_OwnerUserId', 'users')": {
+              "avg_residual_norm": 9.009676815646793,
+              "avg_prediction_norm": 0.7539418493635258,
+              "count": 649468.0
+            },
+            "layer1__('users', 'rev_f2p_OwnerUserId', 'posts')": {
+              "avg_residual_norm": 4.2961930975044575,
+              "avg_prediction_norm": 0.0,
+              "count": 649351.0
+            },
+            "layer1__('posts', 'f2p_ParentId', 'posts')": {
+              "avg_residual_norm": 7.865842191309793,
+              "avg_prediction_norm": 0.0,
+              "count": 431236.0
+            },
+            "layer1__('posts', 'rev_f2p_ParentId', 'posts')": {
+              "avg_residual_norm": 7.490470144163032,
+              "avg_prediction_norm": 0.0,
+              "count": 226301.0
+            }
+          }
+        },
+        "user-engagement__selective_prmp__seed42": {
+          "task": "user-engagement",
+          "variant": "selective_prmp",
+          "seed": 42,
+          "best_val_metric": 0.8904501593216276,
+          "test_metrics": {
+            "average_precision": 0.3263546978553356,
+            "accuracy": 0.9740631063004187,
+            "f1": 0.23442732752846618,
+            "roc_auc": 0.8916864325376154
+          },
+          "epochs_trained": 10,
+          "elapsed_seconds": 308.91877007484436,
+          "prmp_stats": {
+            "layer0__('comments', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 41.208974004950406,
+              "avg_prediction_norm": 28.455105015688613,
+              "count": 724661.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'comments')": {
+              "avg_residual_norm": 97.57968541852154,
+              "avg_prediction_norm": 95.9215133086691,
+              "count": 724653.0
+            },
+            "layer0__('postHistory', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 46.76128074479542,
+              "avg_prediction_norm": 34.77421962931831,
+              "count": 1605414.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'postHistory')": {
+              "avg_residual_norm": 80.09237090226644,
+              "avg_prediction_norm": 77.58810320971122,
+              "count": 1605270.0
+            },
+            "layer0__('votes', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 64.93141709287657,
+              "avg_prediction_norm": 58.62499957264897,
+              "count": 1702439.0
+            },
+            "layer0__('posts', 'rev_f2p_PostId', 'votes')": {
+              "avg_residual_norm": 131.0389698337427,
+              "avg_prediction_norm": 129.05239818930977,
+              "count": 13203.0
+            },
+            "layer1__('comments', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 13.126328875042587,
+              "avg_prediction_norm": 5.4205231836641845,
+              "count": 724661.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'comments')": {
+              "avg_residual_norm": 3.8950617038499873,
+              "avg_prediction_norm": 0.0,
+              "count": 724653.0
+            },
+            "layer1__('postHistory', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 12.244347938791265,
+              "avg_prediction_norm": 1.761199531753679,
+              "count": 1605414.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'postHistory')": {
+              "avg_residual_norm": 4.309433729594067,
+              "avg_prediction_norm": 0.0,
+              "count": 1605270.0
+            },
+            "layer1__('votes', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 5.544883865746771,
+              "avg_prediction_norm": 0.0,
+              "count": 1702439.0
+            },
+            "layer1__('posts', 'rev_f2p_PostId', 'votes')": {
+              "avg_residual_norm": 4.4417020145044415,
+              "avg_prediction_norm": 0.0,
+              "count": 13203.0
+            }
+          }
+        },
+        "post-votes__sage__seed42": {
+          "task": "post-votes",
+          "variant": "sage",
+          "seed": 42,
+          "best_val_metric": 0.06169022247195244,
+          "test_metrics": {
+            "r2": -0.03384971618652344,
+            "mae": 0.0679042637348175,
+            "rmse": 0.3752734959125519
+          },
+          "epochs_trained": 6,
+          "elapsed_seconds": 230.15234065055847,
+          "prmp_stats": {}
+        },
+        "post-votes__prmp__seed42": {
+          "task": "post-votes",
+          "variant": "prmp",
+          "seed": 42,
+          "best_val_metric": 0.06169022247195244,
+          "test_metrics": {
+            "r2": -0.03384971618652344,
+            "mae": 0.0679042637348175,
+            "rmse": 0.3752734959125519
+          },
+          "epochs_trained": 6,
+          "elapsed_seconds": 278.2529036998749,
+          "prmp_stats": {
+            "layer0__('comments', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 30.658599790270696,
+              "avg_prediction_norm": 17.969235355292554,
+              "count": 2819423.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'comments')": {
+              "avg_residual_norm": 21.990837648980932,
+              "avg_prediction_norm": 6.313612359268628,
+              "count": 833863.0
+            },
+            "layer0__('comments', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 18.98802902007718,
+              "avg_prediction_norm": 0.7513284568576394,
+              "count": 1503904.0
+            },
+            "layer0__('posts', 'rev_f2p_PostId', 'comments')": {
+              "avg_residual_norm": 20.856819617225728,
+              "avg_prediction_norm": 7.052286710902086,
+              "count": 846687.0
+            },
+            "layer0__('badges', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 24.308131139395936,
+              "avg_prediction_norm": 4.769353263332779,
+              "count": 3089257.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'badges')": {
+              "avg_residual_norm": 0.0,
+              "avg_prediction_norm": 0.0,
+              "count": 0.0
+            },
+            "layer0__('postLinks', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 19.210423630070675,
+              "avg_prediction_norm": 0.7846166909677827,
+              "count": 143217.0
+            },
+            "layer0__('posts', 'rev_f2p_PostId', 'postLinks')": {
+              "avg_residual_norm": 18.979026347835163,
+              "avg_prediction_norm": 1.0347837737315513,
+              "count": 271386.0
+            },
+            "layer0__('postLinks', 'f2p_RelatedPostId', 'posts')": {
+              "avg_residual_norm": 20.487818640881912,
+              "avg_prediction_norm": 4.500397845856723,
+              "count": 160223.0
+            },
+            "layer0__('posts', 'rev_f2p_RelatedPostId', 'postLinks')": {
+              "avg_residual_norm": 19.299649714501275,
+              "avg_prediction_norm": 3.4445674277473413,
+              "count": 301413.0
+            },
+            "layer0__('postHistory', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 37.2791830439112,
+              "avg_prediction_norm": 23.648033235730757,
+              "count": 2800622.0
+            },
+            "layer0__('posts', 'rev_f2p_PostId', 'postHistory')": {
+              "avg_residual_norm": 21.531654359694684,
+              "avg_prediction_norm": 5.885550314759695,
+              "count": 2047869.0
+            },
+            "layer0__('postHistory', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 25.374284639176757,
+              "avg_prediction_norm": 12.824410215255163,
+              "count": 4241088.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'postHistory')": {
+              "avg_residual_norm": 20.896945954006984,
+              "avg_prediction_norm": 3.3713595572073825,
+              "count": 1913792.0
+            },
+            "layer0__('votes', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 23.988363114463482,
+              "avg_prediction_norm": 8.798915570289617,
+              "count": 2504652.0
+            },
+            "layer0__('posts', 'rev_f2p_PostId', 'votes')": {
+              "avg_residual_norm": 63.47098310846559,
+              "avg_prediction_norm": 55.62823367896892,
+              "count": 1134367.0
+            },
+            "layer0__('votes', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 24.62229530347748,
+              "avg_prediction_norm": 13.698599785435341,
+              "count": 254593.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'votes')": {
+              "avg_residual_norm": 20.10804863970348,
+              "avg_prediction_norm": 5.146706637457906,
+              "count": 11510.0
+            },
+            "layer0__('posts', 'f2p_OwnerUserId', 'users')": {
+              "avg_residual_norm": 21.73584056805587,
+              "avg_prediction_norm": 8.14415847382013,
+              "count": 2675649.0
+            },
+            "layer0__('users', 'rev_f2p_OwnerUserId', 'posts')": {
+              "avg_residual_norm": 24.009238125676603,
+              "avg_prediction_norm": 8.118189874606248,
+              "count": 796951.0
+            },
+            "layer0__('posts', 'f2p_ParentId', 'posts')": {
+              "avg_residual_norm": 19.133863880366075,
+              "avg_prediction_norm": 0.635322986248913,
+              "count": 408926.0
+            },
+            "layer0__('posts', 'rev_f2p_ParentId', 'posts')": {
+              "avg_residual_norm": 21.93346868976695,
+              "avg_prediction_norm": 9.10364245527437,
+              "count": 408926.0
+            },
+            "layer1__('comments', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 7.392044193618307,
+              "avg_prediction_norm": 0.0,
+              "count": 2819423.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'comments')": {
+              "avg_residual_norm": 7.243514734437135,
+              "avg_prediction_norm": 0.0,
+              "count": 833863.0
+            },
+            "layer1__('comments', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 7.700113603449183,
+              "avg_prediction_norm": 0.5275660876905949,
+              "count": 1503904.0
+            },
+            "layer1__('posts', 'rev_f2p_PostId', 'comments')": {
+              "avg_residual_norm": 7.229036341379326,
+              "avg_prediction_norm": 0.0,
+              "count": 846687.0
+            },
+            "layer1__('badges', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 5.471410746969634,
+              "avg_prediction_norm": 0.0,
+              "count": 3089257.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'badges')": {
+              "avg_residual_norm": 0.0,
+              "avg_prediction_norm": 0.0,
+              "count": 0.0
+            },
+            "layer1__('postLinks', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 9.341958329623928,
+              "avg_prediction_norm": 1.6140676855985185,
+              "count": 143217.0
+            },
+            "layer1__('posts', 'rev_f2p_PostId', 'postLinks')": {
+              "avg_residual_norm": 7.243863882858286,
+              "avg_prediction_norm": 0.0,
+              "count": 271386.0
+            },
+            "layer1__('postLinks', 'f2p_RelatedPostId', 'posts')": {
+              "avg_residual_norm": 8.25164640889274,
+              "avg_prediction_norm": 0.23661614083306606,
+              "count": 160223.0
+            },
+            "layer1__('posts', 'rev_f2p_RelatedPostId', 'postLinks')": {
+              "avg_residual_norm": 7.230494260744459,
+              "avg_prediction_norm": 0.0,
+              "count": 301413.0
+            },
+            "layer1__('postHistory', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 7.299744371483315,
+              "avg_prediction_norm": 0.3163039709022683,
+              "count": 2800622.0
+            },
+            "layer1__('posts', 'rev_f2p_PostId', 'postHistory')": {
+              "avg_residual_norm": 7.236995836231449,
+              "avg_prediction_norm": 0.0,
+              "count": 2047869.0
+            },
+            "layer1__('postHistory', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 7.085244422346268,
+              "avg_prediction_norm": 0.0,
+              "count": 4241088.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'postHistory')": {
+              "avg_residual_norm": 7.241263404736227,
+              "avg_prediction_norm": 0.0,
+              "count": 1913792.0
+            },
+            "layer1__('votes', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 8.208981592677347,
+              "avg_prediction_norm": 1.275608109574723,
+              "count": 2504652.0
+            },
+            "layer1__('posts', 'rev_f2p_PostId', 'votes')": {
+              "avg_residual_norm": 7.223242725221165,
+              "avg_prediction_norm": 0.0,
+              "count": 1134367.0
+            },
+            "layer1__('votes', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 7.417044056342961,
+              "avg_prediction_norm": 0.0,
+              "count": 254593.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'votes')": {
+              "avg_residual_norm": 7.241022591545311,
+              "avg_prediction_norm": 0.0,
+              "count": 11510.0
+            },
+            "layer1__('posts', 'f2p_OwnerUserId', 'users')": {
+              "avg_residual_norm": 7.273863459921604,
+              "avg_prediction_norm": 0.0,
+              "count": 2675649.0
+            },
+            "layer1__('users', 'rev_f2p_OwnerUserId', 'posts')": {
+              "avg_residual_norm": 7.5616263273501225,
+              "avg_prediction_norm": 0.47717312361931213,
+              "count": 796951.0
+            },
+            "layer1__('posts', 'f2p_ParentId', 'posts')": {
+              "avg_residual_norm": 7.367307329588547,
+              "avg_prediction_norm": 0.2540926890820232,
+              "count": 408926.0
+            },
+            "layer1__('posts', 'rev_f2p_ParentId', 'posts')": {
+              "avg_residual_norm": 7.2320707599373115,
+              "avg_prediction_norm": 0.0,
+              "count": 408926.0
+            }
+          }
+        },
+        "post-votes__selective_prmp__seed42": {
+          "task": "post-votes",
+          "variant": "selective_prmp",
+          "seed": 42,
+          "best_val_metric": 0.06169022247195244,
+          "test_metrics": {
+            "r2": -0.03384971618652344,
+            "mae": 0.0679042637348175,
+            "rmse": 0.3752734959125519
+          },
+          "epochs_trained": 7,
+          "elapsed_seconds": 290.399471282959,
+          "prmp_stats": {
+            "layer0__('comments', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 19.700270522977444,
+              "avg_prediction_norm": 0.5604676367462018,
+              "count": 2817263.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'comments')": {
+              "avg_residual_norm": 21.08913413352509,
+              "avg_prediction_norm": 4.5209665076831556,
+              "count": 833318.0
+            },
+            "layer0__('postHistory', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 21.514898448781498,
+              "avg_prediction_norm": 2.1617646739116156,
+              "count": 4240211.0
+            },
+            "layer0__('users', 'rev_f2p_UserId', 'postHistory')": {
+              "avg_residual_norm": 20.631319606307137,
+              "avg_prediction_norm": 1.3474236504722172,
+              "count": 1914989.0
+            },
+            "layer0__('votes', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 73.90585026121018,
+              "avg_prediction_norm": 60.11187851112255,
+              "count": 2504018.0
+            },
+            "layer0__('posts', 'rev_f2p_PostId', 'votes')": {
+              "avg_residual_norm": 21.75751240547903,
+              "avg_prediction_norm": 3.2013427908820384,
+              "count": 1133615.0
+            },
+            "layer1__('comments', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 6.89580323407528,
+              "avg_prediction_norm": 0.0,
+              "count": 2817263.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'comments')": {
+              "avg_residual_norm": 7.116161954860438,
+              "avg_prediction_norm": 0.0,
+              "count": 833318.0
+            },
+            "layer1__('postHistory', 'f2p_UserId', 'users')": {
+              "avg_residual_norm": 7.445368805814771,
+              "avg_prediction_norm": 0.0,
+              "count": 4240211.0
+            },
+            "layer1__('users', 'rev_f2p_UserId', 'postHistory')": {
+              "avg_residual_norm": 7.147181352807175,
+              "avg_prediction_norm": 0.0,
+              "count": 1914989.0
+            },
+            "layer1__('votes', 'f2p_PostId', 'posts')": {
+              "avg_residual_norm": 10.089218402421908,
+              "avg_prediction_norm": 5.301676791155006,
+              "count": 2504018.0
+            },
+            "layer1__('posts', 'rev_f2p_PostId', 'votes')": {
+              "avg_residual_norm": 6.758136888356142,
+              "avg_prediction_norm": 0.0,
+              "count": 1133615.0
+            }
+          }
+        }
+      },
+      "summary": {
+        "user-engagement__sage": {
+          "task": "user-engagement",
+          "variant": "sage",
+          "metric": "roc_auc",
+          "test_mean": 0.8956013779319647,
+          "test_std": 0.0,
+          "test_scores": [
+            0.8956013779319647
+          ]
+        },
+        "user-engagement__prmp": {
+          "task": "user-engagement",
+          "variant": "prmp",
+          "metric": "roc_auc",
+          "test_mean": 0.8912261532607825,
+          "test_std": 0.0,
+          "test_scores": [
+            0.8912261532607825
+          ],
+          "improvement_over_sage": -0.004375224671182232,
+          "improvement_pct": -0.4885236645442723
+        },
+        "user-engagement__selective_prmp": {
+          "task": "user-engagement",
+          "variant": "selective_prmp",
+          "metric": "roc_auc",
+          "test_mean": 0.8916864325376154,
+          "test_std": 0.0,
+          "test_scores": [
+            0.8916864325376154
+          ],
+          "improvement_over_sage": -0.003914945394349334,
+          "improvement_pct": -0.43713034513070353
+        },
+        "post-votes__sage": {
+          "task": "post-votes",
+          "variant": "sage",
+          "metric": "mae",
+          "test_mean": 0.0679042637348175,
+          "test_std": 0.0,
+          "test_scores": [
+            0.0679042637348175
+          ]
+        },
+        "post-votes__prmp": {
+          "task": "post-votes",
+          "variant": "prmp",
+          "metric": "mae",
+          "test_mean": 0.0679042637348175,
+          "test_std": 0.0,
+          "test_scores": [
+            0.0679042637348175
+          ],
+          "improvement_over_sage": 0.0,
+          "improvement_pct": 0.0
+        },
+        "post-votes__selective_prmp": {
+          "task": "post-votes",
+          "variant": "selective_prmp",
+          "metric": "mae",
+          "test_mean": 0.0679042637348175,
+          "test_std": 0.0,
+          "test_scores": [
+            0.0679042637348175
+          ],
+          "improvement_over_sage": 0.0,
+          "improvement_pct": 0.0
+        }
+      },
+      "config": {
+        "channels": 64,
+        "num_layers": 2,
+        "num_neighbors_base": 32,
+        "batch_size": 512,
+        "lr": 0.005,
+        "max_epochs": 10,
+        "patience": 4,
+        "seeds": [
+          42
+        ],
+        "max_steps_per_epoch": 150
+      }
+    },
+    "total_elapsed_seconds": 1948.732809305191
+  },
+  "datasets": [
+    {
+      "dataset": "rel-stack/votes__PostId__posts",
+      "examples": [
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 100,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 200,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.464115}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.531656}",
+          "predict_prmp": "{\"VoteTypeId\": 2.524771}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 300,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 400,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 500,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 1.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 600,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.160541}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.108723}",
+          "predict_prmp": "{\"VoteTypeId\": 2.122075}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 700,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 800,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 900,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 1000,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 1100,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 1200,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 1300,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.160541}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.108723}",
+          "predict_prmp": "{\"VoteTypeId\": 2.122075}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 1400,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1500,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.464115}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.531656}",
+          "predict_prmp": "{\"VoteTypeId\": 2.524771}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 1600,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 1700,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 1800,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 1900,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 2000,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.464115}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.531656}",
+          "predict_prmp": "{\"VoteTypeId\": 2.524771}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 2100,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 2200,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.160541}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.108723}",
+          "predict_prmp": "{\"VoteTypeId\": 2.122075}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 1.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 2300,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.160541}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.108723}",
+          "predict_prmp": "{\"VoteTypeId\": 2.122075}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 2400,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2500,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 2600,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 2700,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2800,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 2900,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 3000,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 3100,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 3200,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 3300,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 3400,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 3500,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 3600,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.160541}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.108723}",
+          "predict_prmp": "{\"VoteTypeId\": 2.122075}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 3700,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 11.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 3800,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 1,
+          "metadata_row_index": 3900,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.160541}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.108723}",
+          "predict_prmp": "{\"VoteTypeId\": 2.122075}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4000,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.464115}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.531656}",
+          "predict_prmp": "{\"VoteTypeId\": 2.524771}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 3.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 4100,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 4200,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 4300,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.160541}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.108723}",
+          "predict_prmp": "{\"VoteTypeId\": 2.122075}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 4,
+          "metadata_row_index": 4400,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 3,
+          "metadata_row_index": 4500,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4600,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 2.160541}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 2.108723}",
+          "predict_prmp": "{\"VoteTypeId\": 2.122075}"
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4700,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 1.0}",
+          "metadata_fold": 2,
+          "metadata_row_index": 4800,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        },
+        {
+          "input": "{\"PostTypeId\": 2.0}",
+          "output": "{\"VoteTypeId\": 2.0}",
+          "metadata_fold": 0,
+          "metadata_row_index": 4900,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "votes",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": "[\"VoteTypeId\"]",
+          "metadata_parent_feature_names": "[\"PostTypeId\"]",
+          "metadata_cardinality_mean": 4.3367960298269015,
+          "metadata_cardinality_median": 2.0,
+          "metadata_coverage": 0.8285977843201265,
+          "predict_linear_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_mlp_baseline": "{\"VoteTypeId\": 0.0}",
+          "predict_prmp": "{\"VoteTypeId\": 0.0}"
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/gnn-user-engagement",
+      "examples": [
+        {
+          "input": "{\"task\": \"user-engagement\", \"variant\": \"sage\", \"metric\": \"average_precision\", \"epochs_trained\": 10, \"elapsed_seconds\": 280.0919768810272}",
+          "output": "{\"test_metric_value\": 0.3429274107830971, \"best_val_metric\": 0.8931603846998082}",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "sage",
+          "metadata_seed": 42,
+          "metadata_epochs": 10,
+          "predict_sage": "0.3429274107830971",
+          "predict_prmp": "0.32860153901050493",
+          "predict_selective_prmp": "0.3263546978553356"
+        },
+        {
+          "input": "{\"task\": \"user-engagement\", \"variant\": \"prmp\", \"metric\": \"average_precision\", \"epochs_trained\": 10, \"elapsed_seconds\": 353.63240456581116}",
+          "output": "{\"test_metric_value\": 0.32860153901050493, \"best_val_metric\": 0.8901531982075374}",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_seed": 42,
+          "metadata_epochs": 10,
+          "predict_sage": "0.3429274107830971",
+          "predict_prmp": "0.32860153901050493",
+          "predict_selective_prmp": "0.3263546978553356"
+        },
+        {
+          "input": "{\"task\": \"user-engagement\", \"variant\": \"selective_prmp\", \"metric\": \"average_precision\", \"epochs_trained\": 10, \"elapsed_seconds\": 308.91877007484436}",
+          "output": "{\"test_metric_value\": 0.3263546978553356, \"best_val_metric\": 0.8904501593216276}",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "selective_prmp",
+          "metadata_seed": 42,
+          "metadata_epochs": 10,
+          "predict_sage": "0.3429274107830971",
+          "predict_prmp": "0.32860153901050493",
+          "predict_selective_prmp": "0.3263546978553356"
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/gnn-post-votes",
+      "examples": [
+        {
+          "input": "{\"task\": \"post-votes\", \"variant\": \"sage\", \"metric\": \"r2\", \"epochs_trained\": 6, \"elapsed_seconds\": 230.15234065055847}",
+          "output": "{\"test_metric_value\": -0.03384971618652344, \"best_val_metric\": 0.06169022247195244}",
+          "metadata_task": "post-votes",
+          "metadata_variant": "sage",
+          "metadata_seed": 42,
+          "metadata_epochs": 6,
+          "predict_sage": "-0.03384971618652344",
+          "predict_prmp": "-0.03384971618652344",
+          "predict_selective_prmp": "-0.03384971618652344"
+        },
+        {
+          "input": "{\"task\": \"post-votes\", \"variant\": \"prmp\", \"metric\": \"r2\", \"epochs_trained\": 6, \"elapsed_seconds\": 278.2529036998749}",
+          "output": "{\"test_metric_value\": -0.03384971618652344, \"best_val_metric\": 0.06169022247195244}",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_seed": 42,
+          "metadata_epochs": 6,
+          "predict_sage": "-0.03384971618652344",
+          "predict_prmp": "-0.03384971618652344",
+          "predict_selective_prmp": "-0.03384971618652344"
+        },
+        {
+          "input": "{\"task\": \"post-votes\", \"variant\": \"selective_prmp\", \"metric\": \"r2\", \"epochs_trained\": 7, \"elapsed_seconds\": 290.399471282959}",
+          "output": "{\"test_metric_value\": -0.03384971618652344, \"best_val_metric\": 0.06169022247195244}",
+          "metadata_task": "post-votes",
+          "metadata_variant": "selective_prmp",
+          "metadata_seed": 42,
+          "metadata_epochs": 7,
+          "predict_sage": "-0.03384971618652344",
+          "predict_prmp": "-0.03384971618652344",
+          "predict_selective_prmp": "-0.03384971618652344"
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/gnn-summary",
+      "examples": [
+        {
+          "input": "{\"task\": \"user-engagement\", \"variant\": \"sage\", \"metric\": \"roc_auc\"}",
+          "output": "{\"test_mean\": 0.8956013779319647, \"test_std\": 0.0, \"improvement_over_sage\": 0.0, \"improvement_pct\": 0.0}",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "sage",
+          "metadata_metric": "roc_auc",
+          "predict_sage": "0.8956013779319647",
+          "predict_prmp": "0.8912261532607825",
+          "predict_selective_prmp": "0.8916864325376154"
+        },
+        {
+          "input": "{\"task\": \"user-engagement\", \"variant\": \"prmp\", \"metric\": \"roc_auc\"}",
+          "output": "{\"test_mean\": 0.8912261532607825, \"test_std\": 0.0, \"improvement_over_sage\": -0.004375224671182232, \"improvement_pct\": -0.4885236645442723}",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_metric": "roc_auc",
+          "predict_sage": "0.8956013779319647",
+          "predict_prmp": "0.8912261532607825",
+          "predict_selective_prmp": "0.8916864325376154"
+        },
+        {
+          "input": "{\"task\": \"user-engagement\", \"variant\": \"selective_prmp\", \"metric\": \"roc_auc\"}",
+          "output": "{\"test_mean\": 0.8916864325376154, \"test_std\": 0.0, \"improvement_over_sage\": -0.003914945394349334, \"improvement_pct\": -0.43713034513070353}",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "selective_prmp",
+          "metadata_metric": "roc_auc",
+          "predict_sage": "0.8956013779319647",
+          "predict_prmp": "0.8912261532607825",
+          "predict_selective_prmp": "0.8916864325376154"
+        },
+        {
+          "input": "{\"task\": \"post-votes\", \"variant\": \"sage\", \"metric\": \"mae\"}",
+          "output": "{\"test_mean\": 0.0679042637348175, \"test_std\": 0.0, \"improvement_over_sage\": 0.0, \"improvement_pct\": 0.0}",
+          "metadata_task": "post-votes",
+          "metadata_variant": "sage",
+          "metadata_metric": "mae",
+          "predict_sage": "0.0679042637348175",
+          "predict_prmp": "0.0679042637348175",
+          "predict_selective_prmp": "0.0679042637348175"
+        },
+        {
+          "input": "{\"task\": \"post-votes\", \"variant\": \"prmp\", \"metric\": \"mae\"}",
+          "output": "{\"test_mean\": 0.0679042637348175, \"test_std\": 0.0, \"improvement_over_sage\": 0.0, \"improvement_pct\": 0.0}",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_metric": "mae",
+          "predict_sage": "0.0679042637348175",
+          "predict_prmp": "0.0679042637348175",
+          "predict_selective_prmp": "0.0679042637348175"
+        },
+        {
+          "input": "{\"task\": \"post-votes\", \"variant\": \"selective_prmp\", \"metric\": \"mae\"}",
+          "output": "{\"test_mean\": 0.0679042637348175, \"test_std\": 0.0, \"improvement_over_sage\": 0.0, \"improvement_pct\": 0.0}",
+          "metadata_task": "post-votes",
+          "metadata_variant": "selective_prmp",
+          "metadata_metric": "mae",
+          "predict_sage": "0.0679042637348175",
+          "predict_prmp": "0.0679042637348175",
+          "predict_selective_prmp": "0.0679042637348175"
+        }
+      ]
+    }
+  ]
+}

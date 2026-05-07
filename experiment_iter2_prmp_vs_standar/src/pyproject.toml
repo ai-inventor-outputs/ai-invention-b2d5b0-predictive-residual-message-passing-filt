@@ -1,0 +1,35 @@
+[project]
+name = "prmp-vs-sage-relstack"
+version = "0.1.0"
+requires-python = ">=3.10,<3.12"
+description = "PRMP vs Standard Aggregation on RelBench rel-stack FK-link data"
+dependencies = [
+    "accelerate==1.13.0",
+    "datasets==4.7.0",
+    "duckdb==1.5.0",
+    "huggingface-hub==1.6.0",
+    "joblib==1.5.3",
+    "loguru==0.7.3",
+    "numpy==2.2.6",
+    "pandas==2.3.3",
+    "pooch==1.9.0",
+    "psutil==7.2.2",
+    "pyarrow==23.0.1",
+    "relbench==2.1.1",
+    "requests==2.32.5",
+    "scikit-learn==1.6.1",
+    "scipy==1.15.3",
+    "tabulate==0.10.0",
+    "torch==2.5.1+cu124",
+    "torch-frame==1.7.5",
+    "torch-geometric==2.7.0",
+    "torch-scatter==2.1.2+pt25cu124",
+    "torch-sparse==0.6.18+pt25cu124",
+    "transformers==5.3.0",
+]
+
+[tool.uv]
+extra-index-url = [
+    "https://download.pytorch.org/whl/cu124",
+    "https://data.pyg.org/whl/torch-2.5.1+cu124.html",
+]

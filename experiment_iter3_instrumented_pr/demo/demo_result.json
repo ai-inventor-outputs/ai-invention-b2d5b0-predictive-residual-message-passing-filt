@@ -1,0 +1,13 @@
+{
+  "id": "exp_id5_it3__opus",
+  "type": "code",
+  "title": "Instrumented PRMP Mechanism Analysis: Information Filtering vs Implicit Regularization on Amazon Dataset",
+  "summary": "Demo notebook analyzing Predictive Residual Message Passing (PRMP) mechanism on Amazon Video Games dataset. Loads pre-computed experiment results comparing three GNN variants (standard SAGEConv, PRMP, no-subtraction) across 3 seeds x 100 epochs. Visualizes training curves, per-review prediction errors, aggregated RMSE comparison, and mutual information filtering ratios. Mini dataset contains 15 review-level predictions and 4 variant summaries with thinned epoch diagnostics.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_3/gen_art/exp_id5_it3__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id5_it3__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id5_it3__opus/method_code_demo.ipynb"
+}

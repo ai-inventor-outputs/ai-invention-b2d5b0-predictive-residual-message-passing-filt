@@ -1,0 +1,351 @@
+{
+  "metadata": {
+    "experiment": "prmp_vs_sage_relstack",
+    "dataset": "rel-stack",
+    "method_name": "Predictive Residual Message Passing (PRMP)",
+    "description": "PRMP implements predict-subtract-propagate for cross-table feature prediction on RelBench rel-stack FK links. A 2-layer prediction MLP with zero-init final layer predicts child features from parent fe...",
+    "baselines": [
+      "linear_regression",
+      "mlp_baseline"
+    ],
+    "our_method": "prmp",
+    "fk_diagnostic": {
+      "rel-stack/badges__UserId__users": {
+        "cardinality_mean": 3.27034159627991,
+        "cardinality_median": 2.0,
+        "coverage": 0.554969454887218,
+        "predictability_r2": -0.002491216908475291,
+        "child_table": "badges",
+        "parent_table": "users",
+        "fkey_col": "UserId",
+        "n_examples": 5000
+      },
+      "rel-stack/postLinks__PostId__posts": {
+        "cardinality_mean": 1.6174246430460073,
+        "cardinality_median": 1.0,
+        "coverage": 0.11326981997226657,
+        "predictability_r2": -0.00037818378046665656,
+        "child_table": "postLinks",
+        "parent_table": "posts",
+        "fkey_col": "PostId",
+        "n_examples": 5000
+      },
+      "rel-stack/postLinks__RelatedPostId__posts": {
+        "cardinality_mean": 3.0410363694882525,
+        "cardinality_median": 1.0,
+        "coverage": 0.07444301018589788,
+        "predictability_r2": -0.00032209297923686543,
+        "child_table": "postLinks",
+        "parent_table": "posts",
+        "fkey_col": "RelatedPostId",
+        "n_examples": 5000
+      },
+      "rel-stack/postHistory__PostId__posts": {
+        "cardinality_mean": 3.520193594954072,
+        "cardinality_median": 3.0,
+        "coverage": 1.0,
+        "predictability_r2": 0.007268525861000086,
+        "child_table": "postHistory",
+        "parent_table": "posts",
+        "fkey_col": "PostId",
+        "n_examples": 5000
+      },
+      "rel-stack/postHistory__UserId__users": {
+        "cardinality_mean": 12.947024622192929,
+        "cardinality_median": 3.0,
+        "coverage": 0.3327224310776942,
+        "predictability_r2": -0.0017386960345041392,
+        "child_table": "postHistory",
+        "parent_table": "users",
+        "fkey_col": "UserId",
+        "n_examples": 5000
+      },
+      "rel-stack/votes__PostId__posts": {
+        "cardinality_mean": 4.3367960298269015,
+        "cardinality_median": 2.0,
+        "coverage": 0.8285977843201265,
+        "predictability_r2": 0.0008972826595320838,
+        "child_table": "votes",
+        "parent_table": "posts",
+        "fkey_col": "PostId",
+        "n_examples": 5000
+      },
+      "rel-stack/votes__UserId__users": {
+        "cardinality_mean": 1.986963190184049,
+        "cardinality_median": 1.0,
+        "coverage": 0.010213032581453634,
+        "predictability_r2": 1.0,
+        "child_table": "votes",
+        "parent_table": "users",
+        "fkey_col": "UserId",
+        "n_examples": 5000
+      },
+      "rel-stack/posts__OwnerUserId__users": {
+        "cardinality_mean": 3.904110239961986,
+        "cardinality_median": 1.0,
+        "coverage": 0.3296522556390977,
+        "predictability_r2": -0.00030628021616507795,
+        "child_table": "posts",
+        "parent_table": "users",
+        "fkey_col": "OwnerUserId",
+        "n_examples": 5000
+      },
+      "rel-stack/posts__ParentId__posts": {
+        "cardinality_mean": 1.4506817610499034,
+        "cardinality_median": 1.0,
+        "coverage": 0.3455088905727284,
+        "predictability_r2": 1.0,
+        "child_table": "posts",
+        "parent_table": "posts",
+        "fkey_col": "ParentId",
+        "n_examples": 5000
+      }
+    },
+    "regime_analysis": {
+      "correlation_cardinality_x_predictability_vs_improvement": -0.8467338943871131,
+      "p_value": 0.003981496080283825,
+      "n_links": 9,
+      "per_link": [
+        {
+          "cardinality_x_predictability": 0.0,
+          "improvement_pct": -0.6124692212002738
+        },
+        {
+          "cardinality_x_predictability": 0.0,
+          "improvement_pct": -0.002433188405764527
+        },
+        {
+          "cardinality_x_predictability": 0.0,
+          "improvement_pct": 0.07541998524740191
+        }
+      ]
+    },
+    "gnn_results": {
+      "user-engagement": {
+        "status": "loaded",
+        "entity_table": "users"
+      },
+      "post-votes": {
+        "status": "loaded",
+        "entity_table": "posts"
+      }
+    },
+    "hardware": {
+      "gpu": "NVIDIA RTX A4500",
+      "vram_gb": 21.15108864,
+      "ram_gb": 61.999996928,
+      "num_cpus": 11,
+      "training_time_total_s": 517.441862821579
+    },
+    "hyperparameters": {
+      "hidden_dim": 64,
+      "epochs": 150,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "pred_mlp_init": "zero_final_layer",
+      "residual_norm": "LayerNorm",
+      "gradient_detach": true,
+      "aggregation": "mean"
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "rel-stack/badges__UserId__users",
+      "examples": [
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "predict_linear_regression": "{\"Class\": 2.845998, \"TagBased\": 0.004292}",
+          "predict_mlp_baseline": "{\"Class\": 2.843075, \"TagBased\": 0.004139}",
+          "predict_prmp": "{\"Class\": 2.880225, \"TagBased\": 0.004747}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "predict_linear_regression": "{\"Class\": 2.845998, \"TagBased\": 0.004292}",
+          "predict_mlp_baseline": "{\"Class\": 2.843075, \"TagBased\": 0.004139}",
+          "predict_prmp": "{\"Class\": 2.880225, \"TagBased\": 0.004747}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991
+        },
+        {
+          "input": "{\"ProfileImageUrl\": 0.0}",
+          "output": "{\"Class\": 3.0, \"TagBased\": 0.0}",
+          "predict_linear_regression": "{\"Class\": 2.845998, \"TagBased\": 0.004292}",
+          "predict_mlp_baseline": "{\"Class\": 2.843075, \"TagBased\": 0.004139}",
+          "predict_prmp": "{\"Class\": 2.880225, \"TagBased\": 0.004747}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "badges",
+          "metadata_parent_table": "users",
+          "metadata_fkey_col": "UserId",
+          "metadata_child_feature_names": [
+            "Class",
+            "TagBased"
+          ],
+          "metadata_parent_feature_names": [
+            "ProfileImageUrl"
+          ],
+          "metadata_cardinality_mean": 3.27034159627991
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/postLinks__PostId__posts",
+      "examples": [
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "predict_linear_regression": "{\"LinkTypeId\": 1.204999}",
+          "predict_mlp_baseline": "{\"LinkTypeId\": 1.204824}",
+          "predict_prmp": "{\"LinkTypeId\": 1.205884}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "predict_linear_regression": "{\"LinkTypeId\": 1.204999}",
+          "predict_mlp_baseline": "{\"LinkTypeId\": 1.204824}",
+          "predict_prmp": "{\"LinkTypeId\": 1.205884}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "predict_linear_regression": "{\"LinkTypeId\": 1.204999}",
+          "predict_mlp_baseline": "{\"LinkTypeId\": 1.204824}",
+          "predict_prmp": "{\"LinkTypeId\": 1.205884}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "PostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 1.6174246430460073
+        }
+      ]
+    },
+    {
+      "dataset": "rel-stack/postLinks__RelatedPostId__posts",
+      "examples": [
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 3.0}",
+          "predict_linear_regression": "{\"LinkTypeId\": 1.270475}",
+          "predict_mlp_baseline": "{\"LinkTypeId\": 1.269662}",
+          "predict_prmp": "{\"LinkTypeId\": 1.269704}",
+          "metadata_fold": 0,
+          "metadata_row_index": 0,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 3.0}",
+          "predict_linear_regression": "{\"LinkTypeId\": 1.270475}",
+          "predict_mlp_baseline": "{\"LinkTypeId\": 1.269662}",
+          "predict_prmp": "{\"LinkTypeId\": 1.269704}",
+          "metadata_fold": 1,
+          "metadata_row_index": 1,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525
+        },
+        {
+          "input": "{\"PostTypeId\": 1.0}",
+          "output": "{\"LinkTypeId\": 1.0}",
+          "predict_linear_regression": "{\"LinkTypeId\": 1.270475}",
+          "predict_mlp_baseline": "{\"LinkTypeId\": 1.269662}",
+          "predict_prmp": "{\"LinkTypeId\": 1.269704}",
+          "metadata_fold": 2,
+          "metadata_row_index": 2,
+          "metadata_task_type": "cross_table_prediction",
+          "metadata_child_table": "postLinks",
+          "metadata_parent_table": "posts",
+          "metadata_fkey_col": "RelatedPostId",
+          "metadata_child_feature_names": [
+            "LinkTypeId"
+          ],
+          "metadata_parent_feature_names": [
+            "PostTypeId"
+          ],
+          "metadata_cardinality_mean": 3.0410363694882525
+        }
+      ]
+    }
+  ]
+}
