@@ -1,0 +1,433 @@
+{
+  "metadata": {
+    "description": "Embedding-space cross-table predictability trajectories comparing Standard vs PRMP HeteroGNN on Amazon Video Games reviews. Tests whether embedding-space R² emerges during training, whether PRMP produ...",
+    "dataset": "amazon_video_games",
+    "num_reviews": 10000,
+    "num_products": 2805,
+    "num_customers": 5388,
+    "model_config": {
+      "hidden_dim": 32,
+      "num_layers": 2,
+      "epochs": 60,
+      "lr": 0.005,
+      "weight_decay": 0.0001,
+      "checkpoint_every": 10
+    },
+    "gpu_used": false,
+    "device": "cpu",
+    "raw_feature_baseline": {
+      "product_to_review": {
+        "ridge_r2": -0.013140771059761924,
+        "rf_r2": -0.054507908385213,
+        "mi": 0.011821408521327825
+      },
+      "customer_to_review": {
+        "ridge_r2": 0.03936183470264896,
+        "rf_r2": 0.039822119936196436,
+        "mi": 0.0495105886951229
+      }
+    },
+    "training_curves": {
+      "standard": {
+        "train_losses": [
+          10.45910358428955,
+          9.394979476928711,
+          8.117220878601074
+        ],
+        "val_losses": [
+          9.446969985961914,
+          8.197322845458984,
+          6.524677753448486
+        ]
+      },
+      "prmp": {
+        "train_losses": [
+          11.983102798461914,
+          11.03270435333252,
+          10.176464080810547
+        ],
+        "val_losses": [
+          11.06775188446045,
+          10.228667259216309,
+          9.073625564575195
+        ]
+      }
+    },
+    "embedding_predictability": {
+      "standard": {
+        "product_to_review": {
+          "layer_0": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.04364656507554756,
+              0.04055081458919842,
+              0.039169024280339526
+            ],
+            "rf_r2": [
+              -0.015050691316641643,
+              0.0027483520629789835,
+              -0.0031037038083655765
+            ],
+            "mi": [
+              0.00677254833461863,
+              0.007009412663035975,
+              0.006882994792600752
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.31964069649331905,
+              0.37446980832457627,
+              0.3757635048006368
+            ],
+            "rf_r2": [
+              0.26209372830394373,
+              0.3333502823299947,
+              0.33225410989384035
+            ],
+            "mi": [
+              0.06252776344362394,
+              0.059570252293935276,
+              0.062083323311190285
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.36562616085933,
+              0.4310411056650727,
+              0.4424693401417378
+            ],
+            "rf_r2": [
+              0.31621340933803865,
+              0.3718382539745499,
+              0.38445441442992506
+            ],
+            "mi": [
+              0.08648451220755522,
+              0.05865858589846744,
+              0.05362821693713821
+            ]
+          }
+        },
+        "customer_to_review": {
+          "layer_0": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.10350971086893479,
+              0.10382749207254541,
+              0.10955824448842273
+            ],
+            "rf_r2": [
+              0.08521551341981654,
+              0.09742534240519805,
+              0.09270636074442462
+            ],
+            "mi": [
+              0.01562714503550558,
+              0.017705506364495343,
+              0.0183619499304137
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.5016111135702057,
+              0.4991984307587516,
+              0.5087017034328443
+            ],
+            "rf_r2": [
+              0.4668867336826071,
+              0.47091373688488164,
+              0.480168535886538
+            ],
+            "mi": [
+              0.09794084778619869,
+              0.07877426288460251,
+              0.07912018484610789
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.5453186598366617,
+              0.6204536823131809,
+              0.6104392737725244
+            ],
+            "rf_r2": [
+              0.4920996126471926,
+              0.5493041590683891,
+              0.5498289833004583
+            ],
+            "mi": [
+              0.0921779897134643,
+              0.07578901635704186,
+              0.06015529879415956
+            ]
+          }
+        }
+      },
+      "prmp": {
+        "product_to_review": {
+          "layer_0": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.03798237144397363,
+              0.05001823589005559,
+              0.04709414723460552
+            ],
+            "rf_r2": [
+              -0.023469646817884906,
+              -0.0032836150434929156,
+              0.006965873418848038
+            ],
+            "mi": [
+              0.005144421417639552,
+              0.005639309598336322,
+              0.004658541469165645
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.2907895142176552,
+              0.3032819854564929,
+              0.3088271637980669
+            ],
+            "rf_r2": [
+              0.21592100263360633,
+              0.26191628598138905,
+              0.2746367682869417
+            ],
+            "mi": [
+              0.04800534173593752,
+              0.04857199647283325,
+              0.044067252289770084
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.39331289887891946,
+              0.44923823790431305,
+              0.45543971779708875
+            ],
+            "rf_r2": [
+              0.31676193548455783,
+              0.3415003645330268,
+              0.3506623434738409
+            ],
+            "mi": [
+              0.06303813252577595,
+              0.06600117816944007,
+              0.05159061438441681
+            ]
+          }
+        },
+        "customer_to_review": {
+          "layer_0": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.10010322358570858,
+              0.12078424569175066,
+              0.09585286408741166
+            ],
+            "rf_r2": [
+              0.06430320851295489,
+              0.08673338482888425,
+              0.06679034282806702
+            ],
+            "mi": [
+              0.01553214107551019,
+              0.019670867036037397,
+              0.016262447246433713
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.4020926345092538,
+              0.4807146097807893,
+              0.48864491564138524
+            ],
+            "rf_r2": [
+              0.3575053441547171,
+              0.4507761930544998,
+              0.500593325798976
+            ],
+            "mi": [
+              0.0642179942272195,
+              0.07046711605099736,
+              0.07576466975481984
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              10,
+              20
+            ],
+            "ridge_r2": [
+              0.5673250165735073,
+              0.6686920743444469,
+              0.6869374245233539
+            ],
+            "rf_r2": [
+              0.5322365128705299,
+              0.5885419153709623,
+              0.6221237771728457
+            ],
+            "mi": [
+              0.08771404259626805,
+              0.07585985006621093,
+              0.06018897252972544
+            ]
+          }
+        }
+      }
+    },
+    "predictability_gap": {
+      "standard_product_to_review": {
+        "raw_r2": -0.013140771059761924,
+        "embedding_r2": 0.4506990865443701,
+        "gap": 0.463839857604132
+      },
+      "prmp_product_to_review": {
+        "raw_r2": -0.013140771059761924,
+        "embedding_r2": 0.4334700881638442,
+        "gap": 0.4466108592236061
+      },
+      "standard_customer_to_review": {
+        "raw_r2": 0.03936183470264896,
+        "embedding_r2": 0.6087222912027925,
+        "gap": 0.5693604565001436
+      },
+      "prmp_customer_to_review": {
+        "raw_r2": 0.03936183470264896,
+        "embedding_r2": 0.6569876139983958,
+        "gap": 0.6176257792957468
+      }
+    },
+    "task_performance": {
+      "standard": {
+        "final_val_loss": 0.4223000407218933,
+        "final_val_mae": 0.4499027729034424,
+        "final_test_mae": 0.43513473868370056
+      },
+      "prmp": {
+        "final_val_loss": 0.38854947686195374,
+        "final_val_mae": 0.4385438561439514,
+        "final_test_mae": 0.41426098346710205
+      }
+    },
+    "key_findings": {
+      "embedding_r2_increases_product_to_review": true,
+      "prmp_lower_r2_product_to_review": true,
+      "embedding_r2_increases_customer_to_review": true,
+      "prmp_lower_r2_customer_to_review": false,
+      "prmp_improves_task_performance": true,
+      "predictability_gap_is_large": true
+    },
+    "runtime_seconds": 2529.77459192276
+  },
+  "datasets": [
+    {
+      "dataset": "amazon_video_games_reviews",
+      "examples": [
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": -0.425, \"time_dayofweek\": 1.04, \"summary_h0\": 0.333, \"summary_h1\": 0.0, \"summary_h2\": 0.667, \"summary_h3\": 0.333, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\":...",
+          "output": "3.0",
+          "predict_standard": "2.3584",
+          "predict_prmp": "2.4335",
+          "metadata_fold": 4,
+          "metadata_row_index": 4,
+          "metadata_task_type": "regression",
+          "metadata_feature_names": [
+            "time_year",
+            "time_month",
+            "time_dayofweek"
+          ],
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "A2UTRVO4FDCBH6"
+        },
+        {
+          "input": "{\"time_year\": 1.464, \"time_month\": 1.256, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.333, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.33...",
+          "output": "0.0",
+          "predict_standard": "0.9632",
+          "predict_prmp": "0.5818",
+          "metadata_fold": 1,
+          "metadata_row_index": 6,
+          "metadata_task_type": "regression",
+          "metadata_feature_names": [
+            "time_year",
+            "time_month",
+            "time_dayofweek"
+          ],
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "AQTC623NCESZW"
+        },
+        {
+          "input": "{\"time_year\": 1.464, \"time_month\": 1.256, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.258, \"summary_h2\": 0.0, \"summary_h3\": 0.258, \"summary_h4\": 0.258, \"summary_h5\": 0.0, \"summary_h6\"...",
+          "output": "3.0",
+          "predict_standard": "2.4367",
+          "predict_prmp": "2.4141",
+          "metadata_fold": 2,
+          "metadata_row_index": 7,
+          "metadata_task_type": "regression",
+          "metadata_feature_names": [
+            "time_year",
+            "time_month",
+            "time_dayofweek"
+          ],
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "A1QJJU33VNC4S7"
+        }
+      ]
+    }
+  ]
+}

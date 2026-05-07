@@ -1,0 +1,20 @@
+[project]
+name = "embedding-predictability-trajectories"
+version = "0.1.0"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "torch==2.2.0",
+    "numpy==2.2.6",
+    "scikit-learn==1.7.2",
+    "pandas==2.3.3",
+    "loguru==0.7.3",
+    "psutil==7.2.2",
+    "networkx==3.4.2",
+    "sympy==1.14.0",
+    "filelock==3.20.0",
+    "fsspec==2025.12.0",
+    "Jinja2==3.1.6",
+    "MarkupSafe==3.0.2",
+    "mpmath==1.3.0",
+    "typing_extensions==4.15.0",
+]

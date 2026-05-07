@@ -1,0 +1,13 @@
+{
+  "id": "exp_id1_it4__opus",
+  "type": "code",
+  "title": "Parameter-Matched Control Experiments: Isolating PRMP's Predict-Subtract Mechanism on Amazon & F1",
+  "summary": "Demo notebook running parameter-matched control experiments on Amazon Video Games data to isolate whether PRMP's predict-subtract mechanism provides genuine benefit beyond extra parameters. Trains 5 heterogeneous GNN variants (Standard SAGEConv, PRMP, Wide SAGEConv, AuxMLP, Skip-Residual) with matched parameter counts (~550K) on a review-product-customer graph built from 80 curated examples. Uses full original hyperparameters (128-dim hidden, 2 layers, 80 epochs, 3 seeds). Computes RMSE/MAE/R\u00b2 metrics and Cohen's d effect sizes, with bar chart visualizations comparing all variants. Runs in ~53 seconds.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_4/gen_art/exp_id1_it4__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id1_it4__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id1_it4__opus/method_code_demo.ipynb"
+}

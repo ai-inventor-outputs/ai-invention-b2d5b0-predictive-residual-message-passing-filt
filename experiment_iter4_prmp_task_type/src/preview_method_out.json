@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "method_name": "PRMP_Task_Type_Effect",
+    "description": "Systematic investigation of PRMP task-type effect using RelBench rel-f1 and rel-stack datasets. Compares regression vs classification to test if PRMP residual subtraction creates a de-noising effect b...",
+    "datasets": [
+      "rel-f1",
+      "rel-stack"
+    ],
+    "tasks": [
+      "driver-position",
+      "driver-dnf",
+      "driver-top3"
+    ],
+    "variants": [
+      "standard",
+      "prmp"
+    ],
+    "seeds": [
+      42
+    ],
+    "hyperparameters": {
+      "channels": 64,
+      "num_layers": 2,
+      "batch_size": 512,
+      "num_neighbors": [
+        10,
+        5
+      ],
+      "max_epochs": 20,
+      "patience": 7,
+      "lr": 0.001
+    },
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 4090"
+  },
+  "datasets": [
+    {
+      "dataset": "prmp_task_type_analysis",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 11.827667, \"val_loss\": 8.440052, \"val_metric\": 8.440052, \"test_metric\": 999.0, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.006519, \"effective_rank\": 3.3276, \"num...",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 0,
+          "predict_baseline": "8.440052",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 1}",
+          "output": "{\"train_loss\": 11.032243, \"val_loss\": 7.926404, \"val_metric\": 7.926404, \"test_metric\": 999.0, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 1,
+          "predict_baseline": "7.926404",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 2}",
+          "output": "{\"train_loss\": 10.522909, \"val_loss\": 7.421438, \"val_metric\": 7.421438, \"test_metric\": 999.0, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 2,
+          "predict_baseline": "7.421438",
+          "predict_our_method": ""
+        }
+      ]
+    }
+  ]
+}

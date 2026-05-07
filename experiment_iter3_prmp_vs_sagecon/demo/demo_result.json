@@ -1,0 +1,13 @@
+{
+  "id": "exp_id1_it3__opus",
+  "type": "code",
+  "title": "PRMP vs SAGEConv Benchmark on RelBench rel-hm Tasks",
+  "summary": "Interactive notebook demonstrating Predictive Residual Message Passing (PRMP) benchmarked against standard HeteroSAGEConv on RelBench rel-hm tasks (user-churn classification via AUROC, item-sales regression via MAE). Compares three model variants \u2014 standard SAGEConv baseline, PRMP with learned predictions, and PRMP with random frozen predictions \u2014 across multiple seeds. The mini data JSON contains curated per-instance predictions and run summaries for reproducible analysis.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_3/gen_art/exp_id1_it3__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id1_it3__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id1_it3__opus/method_code_demo.ipynb"
+}

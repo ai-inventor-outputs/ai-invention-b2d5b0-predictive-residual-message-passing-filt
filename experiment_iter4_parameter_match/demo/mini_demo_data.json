@@ -1,0 +1,569 @@
+{
+  "datasets": [
+    {
+      "dataset": "amazon_video_games",
+      "examples": [
+        {
+          "input": "{\"time_year\": -0.459, \"time_month\": 1.537, \"time_dayofweek\": -1.457, \"summary_h0\": 0.0, \"summary_h1\": 0.5, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.5, \"summary_h9\": 0.0, \"summary_h10\": 0.5, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.5, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00008KTNW",
+          "metadata_customer_id": "A3U7OB45IUPD76",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": -1.18, \"time_month\": -1.266, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.485, \"summary_h2\": 0.243, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.243, \"summary_h6\": 0.0, \"summary_h7\": 0.728, \"summary_h8\": 0.243, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.243, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.13, \"helpful_total\": 0.128}",
+          "output": "2.0",
+          "metadata_product_id": "B00002STJH",
+          "metadata_customer_id": "A3PJK306HMRZ7H",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": 1.945, \"time_month\": -0.985, \"time_dayofweek\": -1.457, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.707, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.707, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00000J2W7",
+          "metadata_customer_id": "A2YGAPR3H2VOJZ",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": 0.022, \"time_month\": -0.985, \"time_dayofweek\": -1.457, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.5, \"summary_h10\": 0.5, \"summary_h11\": 0.5, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.5, \"helpful_up\": -0.088, \"helpful_total\": -0.129}",
+          "output": "1.0",
+          "metadata_product_id": "B0000TSR4W",
+          "metadata_customer_id": "AGR4LKC72JEQ8",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": 0.696, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.408, \"summary_h8\": 0.0, \"summary_h9\": 0.408, \"summary_h10\": 0.0, \"summary_h11\": 0.816, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.088, \"helpful_total\": -0.215}",
+          "output": "4.0",
+          "metadata_product_id": "B00004ZDFY",
+          "metadata_customer_id": "A2QQ2HQ4WQM1EP",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": -1.18, \"time_month\": 0.976, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.378, \"summary_h2\": 0.378, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.378, \"summary_h8\": 0.0, \"summary_h9\": 0.378, \"summary_h10\": 0.0, \"summary_h11\": 0.378, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.378, \"summary_h15\": 0.378, \"helpful_up\": -0.197, \"helpful_total\": -0.129}",
+          "output": "1.0",
+          "metadata_product_id": "B00004W4QS",
+          "metadata_customer_id": "A2HRZU037C0SIA",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": -0.459, \"time_month\": 0.135, \"time_dayofweek\": -1.457, \"summary_h0\": 0.378, \"summary_h1\": 0.378, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.378, \"summary_h6\": 0.378, \"summary_h7\": 0.378, \"summary_h8\": 0.0, \"summary_h9\": 0.378, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.378, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.215}",
+          "output": "4.0",
+          "metadata_product_id": "B00004U1R2",
+          "metadata_customer_id": "A367Z0IJ53WBK",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": 1.945, \"time_month\": -1.266, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.447, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.894, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B000034DC6",
+          "metadata_customer_id": "A18JPN9WD6V98F",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": -0.459, \"time_month\": 0.135, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.408, \"summary_h2\": 0.408, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.408, \"summary_h7\": 0.408, \"summary_h8\": 0.0, \"summary_h9\": 0.408, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.408, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.088, \"helpful_total\": 0.042}",
+          "output": "4.0",
+          "metadata_product_id": "B0000DJX7I",
+          "metadata_customer_id": "A2XDQQ0EN4MXMJ",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": -0.425, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.707, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.707, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "3.0",
+          "metadata_product_id": "B00002STGD",
+          "metadata_customer_id": "A308CPZVR00BTN",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": 0.135, \"time_dayofweek\": 0.041, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.577, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.577, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.577, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00009WAUD",
+          "metadata_customer_id": "A2Z97KCLIW5L34",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": -0.459, \"time_month\": -0.705, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.707, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.707, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.088, \"helpful_total\": -0.215}",
+          "output": "3.0",
+          "metadata_product_id": "B0000ET9D8",
+          "metadata_customer_id": "AQMWZIH22R6LE",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": -0.705, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.577, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.577, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.577, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B0007U0GUM",
+          "metadata_customer_id": "A3KMEUY129LFLH",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": -0.218, \"time_month\": 0.416, \"time_dayofweek\": -0.958, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.333, \"summary_h4\": 0.667, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.333, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.333, \"summary_h12\": 0.333, \"summary_h13\": 0.0, \"summary_h14\": 0.333, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.215}",
+          "output": "3.0",
+          "metadata_product_id": "B00006GSNY",
+          "metadata_customer_id": "A3B71L0V3QVTQL",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": 0.416, \"time_dayofweek\": 0.041, \"summary_h0\": 0.447, \"summary_h1\": 0.671, \"summary_h2\": 0.224, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.224, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.447, \"summary_h14\": 0.224, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "3.0",
+          "metadata_product_id": "B00002CF9M",
+          "metadata_customer_id": "A3EX36SNRYD5VL",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": 1.537, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.447, \"summary_h5\": 0.0, \"summary_h6\": 0.447, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.447, \"summary_h11\": 0.447, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.447, \"helpful_up\": 2.092, \"helpful_total\": 1.584}",
+          "output": "3.0",
+          "metadata_product_id": "B00007F8PB",
+          "metadata_customer_id": "A14ME4FQBNFYWH",
+          "metadata_fold": 0
+        },
+        {
+          "input": "{\"time_year\": 1.224, \"time_month\": 1.537, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.354, \"summary_h3\": 0.0, \"summary_h4\": 0.354, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.354, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.354, \"summary_h14\": 0.0, \"summary_h15\": 0.707, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00005R5PO",
+          "metadata_customer_id": "A3CM33RZX5K5M6",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": 1.945, \"time_month\": -1.546, \"time_dayofweek\": 1.04, \"summary_h0\": 0.171, \"summary_h1\": 0.0, \"summary_h2\": 0.171, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.343, \"summary_h6\": 0.0, \"summary_h7\": 0.171, \"summary_h8\": 0.514, \"summary_h9\": 0.514, \"summary_h10\": 0.343, \"summary_h11\": 0.171, \"summary_h12\": 0.343, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00000J9JI",
+          "metadata_customer_id": "AWI8LGUNYD15T",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -1.18, \"time_month\": 1.537, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.707, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.707, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00000J97G",
+          "metadata_customer_id": "A3L3SPDV9J5UJY",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -1.42, \"time_month\": -0.145, \"time_dayofweek\": 0.041, \"summary_h0\": 0.447, \"summary_h1\": 0.447, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.447, \"summary_h9\": 0.0, \"summary_h10\": 0.447, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.447, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00002NDRY",
+          "metadata_customer_id": "A2L1UU8OHWEVIV",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": -1.266, \"time_dayofweek\": -0.958, \"summary_h0\": 0.0, \"summary_h1\": 0.5, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.5, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.5, \"summary_h8\": 0.0, \"summary_h9\": 0.5, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00004U5VF",
+          "metadata_customer_id": "A1DOD390VLS81Y",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": 0.135, \"time_dayofweek\": 0.041, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.447, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.447, \"summary_h7\": 0.447, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.447, \"summary_h11\": 0.0, \"summary_h12\": 0.447, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.088, \"helpful_total\": -0.215}",
+          "output": "4.0",
+          "metadata_product_id": "B00004VP4B",
+          "metadata_customer_id": "AO8L5183QI611",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -0.218, \"time_month\": -0.705, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.802, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.267, \"summary_h8\": 0.267, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.267, \"summary_h14\": 0.267, \"summary_h15\": 0.267, \"helpful_up\": 0.675, \"helpful_total\": 0.47}",
+          "output": "0.0",
+          "metadata_product_id": "B000067FDY",
+          "metadata_customer_id": "A334IDOGGAAZF5",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -0.699, \"time_month\": 1.537, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.447, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.447, \"summary_h9\": 0.447, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.447, \"summary_h13\": 0.447, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00007KQE9",
+          "metadata_customer_id": "AY23924HQXF06",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -0.699, \"time_month\": -0.425, \"time_dayofweek\": -1.457, \"summary_h0\": 0.209, \"summary_h1\": 0.209, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.209, \"summary_h7\": 0.834, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.417, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.13, \"helpful_total\": -0.044}",
+          "output": "4.0",
+          "metadata_product_id": "B00000IODY",
+          "metadata_customer_id": "AQI2CW6UKF1ES",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -0.459, \"time_month\": -0.985, \"time_dayofweek\": 1.04, \"summary_h0\": 0.408, \"summary_h1\": 0.408, \"summary_h2\": 0.0, \"summary_h3\": 0.408, \"summary_h4\": 0.408, \"summary_h5\": 0.0, \"summary_h6\": 0.408, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.408, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.129}",
+          "output": "4.0",
+          "metadata_product_id": "B00006IQTH",
+          "metadata_customer_id": "A3N6DYN2ZLSI5X",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -0.459, \"time_month\": -0.145, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.378, \"summary_h2\": 0.0, \"summary_h3\": 0.378, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.378, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.378, \"summary_h12\": 0.0, \"summary_h13\": 0.378, \"summary_h14\": 0.378, \"summary_h15\": 0.378, \"helpful_up\": 0.021, \"helpful_total\": 0.213}",
+          "output": "1.0",
+          "metadata_product_id": "B00004T4XJ",
+          "metadata_customer_id": "A3IP4KRNLMFBDJ",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -0.459, \"time_month\": -0.985, \"time_dayofweek\": -0.958, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.447, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.447, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.447, \"summary_h10\": 0.447, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.447, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B0000A2TPE",
+          "metadata_customer_id": "A3N8IZMVDG0M47",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": 1.224, \"time_month\": -0.425, \"time_dayofweek\": -1.457, \"summary_h0\": 0.5, \"summary_h1\": 0.5, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.5, \"summary_h9\": 0.5, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00008RUYZ",
+          "metadata_customer_id": "A3W0UE2TWCV7VQ",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": 0.022, \"time_month\": 0.416, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.25, \"summary_h4\": 0.0, \"summary_h5\": 0.5, \"summary_h6\": 0.5, \"summary_h7\": 0.5, \"summary_h8\": 0.25, \"summary_h9\": 0.25, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.25, \"summary_h15\": 0.0, \"helpful_up\": -0.088, \"helpful_total\": -0.215}",
+          "output": "3.0",
+          "metadata_product_id": "B00009YFU4",
+          "metadata_customer_id": "A31M2ZY4WOIVK7",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -0.699, \"time_month\": -1.266, \"time_dayofweek\": 1.04, \"summary_h0\": 0.447, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.447, \"summary_h4\": 0.447, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.447, \"summary_h8\": 0.447, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "3.0",
+          "metadata_product_id": "B00006GEX2",
+          "metadata_customer_id": "A1D2JLLWMSTDXC",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -0.218, \"time_month\": 0.696, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.707, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.707, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.13, \"helpful_total\": -0.044}",
+          "output": "3.0",
+          "metadata_product_id": "B00005QX4B",
+          "metadata_customer_id": "A2IW0326MP3ZZZ",
+          "metadata_fold": 1
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": -1.546, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.949, \"summary_h9\": 0.0, \"summary_h10\": 0.316, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.021, \"helpful_total\": -0.129}",
+          "output": "2.0",
+          "metadata_product_id": "B00004W4VG",
+          "metadata_customer_id": "A363QRXP83K8ZE",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": 0.416, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.5, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.5, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.5, \"summary_h15\": 0.5, \"helpful_up\": -0.306, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00005V9NZ",
+          "metadata_customer_id": "A1EMDSTJDUE6B0",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": -0.699, \"time_month\": -0.425, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.816, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.408, \"summary_h9\": 0.408, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "3.0",
+          "metadata_product_id": "B000083DZS",
+          "metadata_customer_id": "A3HKUPXXH6HSSQ",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": -0.425, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.707, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.707, \"helpful_up\": -0.088, \"helpful_total\": -0.215}",
+          "output": "3.0",
+          "metadata_product_id": "B00005AG0X",
+          "metadata_customer_id": "A1YEPFLLH42OU1",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": 1.224, \"time_month\": -0.705, \"time_dayofweek\": -0.958, \"summary_h0\": 0.408, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.408, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.408, \"summary_h11\": 0.408, \"summary_h12\": 0.0, \"summary_h13\": 0.408, \"summary_h14\": 0.408, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "1.0",
+          "metadata_product_id": "B0002HOF34",
+          "metadata_customer_id": "A30WCCIVCXKZBF",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": -0.218, \"time_month\": -0.985, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 1.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.566, \"helpful_total\": 0.47}",
+          "output": "4.0",
+          "metadata_product_id": "B0007TFLLC",
+          "metadata_customer_id": "A359WWAIZ59P3Z",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": -1.42, \"time_month\": 1.537, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.289, \"summary_h2\": 0.577, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.289, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.577, \"summary_h10\": 0.289, \"summary_h11\": 0.289, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00000DMAO",
+          "metadata_customer_id": "A1J1B8IHW9W848",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": 0.503, \"time_month\": 0.696, \"time_dayofweek\": 0.041, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.707, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.707, \"summary_h15\": 0.0, \"helpful_up\": 0.13, \"helpful_total\": -0.044}",
+          "output": "4.0",
+          "metadata_product_id": "B0001DLLWC",
+          "metadata_customer_id": "A2UU25NSTZKP00",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": -0.459, \"time_month\": 0.976, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.707, \"summary_h11\": 0.0, \"summary_h12\": 0.707, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.021, \"helpful_total\": 0.042}",
+          "output": "3.0",
+          "metadata_product_id": "B0002CNUNA",
+          "metadata_customer_id": "A1WUXHN8Y6G0SA",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": -1.18, \"time_month\": -1.266, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.189, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.189, \"summary_h6\": 0.0, \"summary_h7\": 0.378, \"summary_h8\": 0.0, \"summary_h9\": 0.567, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.378, \"summary_h15\": 0.567, \"helpful_up\": -0.088, \"helpful_total\": -0.215}",
+          "output": "4.0",
+          "metadata_product_id": "B00004OCYG",
+          "metadata_customer_id": "A11440YU3U1WXZ",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": 0.984, \"time_month\": -1.266, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 1.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B0000A92KZ",
+          "metadata_customer_id": "A3G222SNGCD6JU",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": 0.976, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.5, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.5, \"summary_h5\": 0.0, \"summary_h6\": 0.5, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.5, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00005TNI6",
+          "metadata_customer_id": "AP7EW3TXFZGO6",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": -0.425, \"time_dayofweek\": 0.041, \"summary_h0\": 0.5, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.5, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.5, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.5, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": 0.042}",
+          "output": "2.0",
+          "metadata_product_id": "B00005NFN5",
+          "metadata_customer_id": "A3RHWM5NKPTY9J",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": -1.42, \"time_month\": 0.696, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.894, \"summary_h6\": 0.447, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.021, \"helpful_total\": 0.042}",
+          "output": "4.0",
+          "metadata_product_id": "B000046Q7Q",
+          "metadata_customer_id": "ACEGE5JHIT1GT",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": 1.224, \"time_month\": 0.135, \"time_dayofweek\": -0.958, \"summary_h0\": 0.0, \"summary_h1\": 0.354, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.354, \"summary_h9\": 0.0, \"summary_h10\": 0.354, \"summary_h11\": 0.707, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.354, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "3.0",
+          "metadata_product_id": "B00004UE0V",
+          "metadata_customer_id": "A1MRPX3RM48T2I",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": 0.743, \"time_month\": -0.705, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.707, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.707, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.129}",
+          "output": "3.0",
+          "metadata_product_id": "B0009Z3MQ0",
+          "metadata_customer_id": "APS7IH14C8AZ9",
+          "metadata_fold": 2
+        },
+        {
+          "input": "{\"time_year\": 0.503, \"time_month\": -0.145, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.577, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.577, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.577, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00020V4NK",
+          "metadata_customer_id": "A1ETF073IG978T",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": 1.537, \"time_dayofweek\": -1.457, \"summary_h0\": 0.0, \"summary_h1\": 0.707, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.707, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00005NCCR",
+          "metadata_customer_id": "A1RQEEWKDVF060",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": 0.976, \"time_dayofweek\": -0.958, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.577, \"summary_h8\": 0.577, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.577, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.215}",
+          "output": "4.0",
+          "metadata_product_id": "B00002STXN",
+          "metadata_customer_id": "A3H21F775QII1B",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": 1.224, \"time_month\": 0.696, \"time_dayofweek\": -1.457, \"summary_h0\": 0.0, \"summary_h1\": 0.316, \"summary_h2\": 0.316, \"summary_h3\": 0.0, \"summary_h4\": 0.316, \"summary_h5\": 0.0, \"summary_h6\": 0.316, \"summary_h7\": 0.632, \"summary_h8\": 0.316, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.316, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00002ST8W",
+          "metadata_customer_id": "A1F7YU6O5RU432",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": 0.696, \"time_dayofweek\": 0.041, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.632, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.316, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.632, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.316, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": 0.128}",
+          "output": "2.0",
+          "metadata_product_id": "B00005Q8LY",
+          "metadata_customer_id": "A150XV12S9HAZ",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": 0.416, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.408, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.408, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.816, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00002STJC",
+          "metadata_customer_id": "A3CVSD2DBV1TMZ",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": -0.939, \"time_month\": -0.425, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.5, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.5, \"summary_h10\": 0.0, \"summary_h11\": 0.5, \"summary_h12\": 0.0, \"summary_h13\": 0.5, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.021, \"helpful_total\": -0.129}",
+          "output": "4.0",
+          "metadata_product_id": "B00005O0I2",
+          "metadata_customer_id": "A3WXEF78N3XQF",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": 0.503, \"time_month\": -0.705, \"time_dayofweek\": 0.041, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.707, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.707, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.3}",
+          "output": "3.0",
+          "metadata_product_id": "B00077VDS4",
+          "metadata_customer_id": "A2PJUWNZ0B80VN",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": -0.699, \"time_month\": 0.135, \"time_dayofweek\": 0.041, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.408, \"summary_h3\": 0.0, \"summary_h4\": 0.408, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.816, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "3.0",
+          "metadata_product_id": "B00005NNGC",
+          "metadata_customer_id": "AGOHW680WF4KR",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": -0.425, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.577, \"summary_h9\": 0.577, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.577, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00008G948",
+          "metadata_customer_id": "ACDJYQK8NC88R",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": 0.416, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.447, \"summary_h5\": 0.0, \"summary_h6\": 0.447, \"summary_h7\": 0.447, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.447, \"summary_h14\": 0.0, \"summary_h15\": 0.447, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B000056O4Q",
+          "metadata_customer_id": "AP3B615GM191G",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": -0.218, \"time_month\": 0.135, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 1.0, \"helpful_up\": -0.306, \"helpful_total\": -0.3}",
+          "output": "1.0",
+          "metadata_product_id": "B0002J9UBY",
+          "metadata_customer_id": "A3UP23BX6CPILB",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": -1.18, \"time_month\": 1.256, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.577, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.577, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.577, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00000K39I",
+          "metadata_customer_id": "A2TP5M5XZS57QP",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": -0.218, \"time_month\": 1.537, \"time_dayofweek\": 0.54, \"summary_h0\": 0.333, \"summary_h1\": 0.333, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.333, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.333, \"summary_h8\": 0.0, \"summary_h9\": 0.333, \"summary_h10\": 0.0, \"summary_h11\": 0.667, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.13, \"helpful_total\": 1.755}",
+          "output": "1.0",
+          "metadata_product_id": "B0001AVZ5I",
+          "metadata_customer_id": "A1T6HZRLANJTWN",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": -0.699, \"time_month\": -1.546, \"time_dayofweek\": 1.539, \"summary_h0\": 0.866, \"summary_h1\": 0.289, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.289, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.289, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.129}",
+          "output": "1.0",
+          "metadata_product_id": "B0000664JF",
+          "metadata_customer_id": "ABV3QOMO5R2N",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": -0.699, \"time_month\": -0.425, \"time_dayofweek\": -1.457, \"summary_h0\": 0.0, \"summary_h1\": 0.5, \"summary_h2\": 0.5, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.25, \"summary_h8\": 0.0, \"summary_h9\": 0.5, \"summary_h10\": 0.25, \"summary_h11\": 0.0, \"summary_h12\": 0.25, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.25, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B00006JN5M",
+          "metadata_customer_id": "AAYA7UBIWPV52",
+          "metadata_fold": 3
+        },
+        {
+          "input": "{\"time_year\": -0.218, \"time_month\": 1.537, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.667, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.333, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.667, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.13, \"helpful_total\": 0.042}",
+          "output": "4.0",
+          "metadata_product_id": "B00002SVG0",
+          "metadata_customer_id": "A6UW2KEO5UOSA",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": 0.503, \"time_month\": -0.705, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.577, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.577, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.577, \"summary_h15\": 0.0, \"helpful_up\": -0.197, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B0009VXBAQ",
+          "metadata_customer_id": "A2X09CK0OJZIUK",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": 0.416, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.756, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.378, \"summary_h6\": 0.0, \"summary_h7\": 0.378, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.378, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "3.0",
+          "metadata_product_id": "B0008G2OWS",
+          "metadata_customer_id": "A3QMNR19IPUG31",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": -0.459, \"time_month\": -1.546, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.447, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.447, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.447, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.447, \"summary_h14\": 0.0, \"summary_h15\": 0.447, \"helpful_up\": -0.197, \"helpful_total\": -0.215}",
+          "output": "3.0",
+          "metadata_product_id": "B00005NZ1G",
+          "metadata_customer_id": "A2F93PQ0NHCF9L",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": 0.503, \"time_month\": -0.705, \"time_dayofweek\": -0.958, \"summary_h0\": 0.0, \"summary_h1\": 0.632, \"summary_h2\": 0.316, \"summary_h3\": 0.316, \"summary_h4\": 0.0, \"summary_h5\": 0.316, \"summary_h6\": 0.0, \"summary_h7\": 0.316, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.316, \"summary_h14\": 0.0, \"summary_h15\": 0.316, \"helpful_up\": -0.306, \"helpful_total\": -0.215}",
+          "output": "2.0",
+          "metadata_product_id": "B0000296O5",
+          "metadata_customer_id": "A2LVUKWQ589H8I",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": 0.262, \"time_month\": -1.266, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.316, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.316, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.632, \"summary_h12\": 0.0, \"summary_h13\": 0.632, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.215}",
+          "output": "4.0",
+          "metadata_product_id": "B00006I02Z",
+          "metadata_customer_id": "A1XXZEIX5VNVKF",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": 0.503, \"time_month\": -1.266, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.816, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.408, \"summary_h9\": 0.408, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00005ATSN",
+          "metadata_customer_id": "A2DDRD1JAGF5Z3",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": -0.218, \"time_month\": -0.425, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.577, \"summary_h9\": 0.577, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.577, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.566, \"helpful_total\": 0.299}",
+          "output": "4.0",
+          "metadata_product_id": "B0002FQVBA",
+          "metadata_customer_id": "A3FPFZ3DTAJB1N",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": 0.022, \"time_month\": -1.546, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.577, \"summary_h2\": 0.577, \"summary_h3\": 0.289, \"summary_h4\": 0.0, \"summary_h5\": 0.289, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.289, \"summary_h12\": 0.0, \"summary_h13\": 0.289, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.348, \"helpful_total\": 0.984}",
+          "output": "2.0",
+          "metadata_product_id": "B00008DHLX",
+          "metadata_customer_id": "AE8LCUNRSTTW2",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": 1.224, \"time_month\": 0.416, \"time_dayofweek\": -0.958, \"summary_h0\": 0.447, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.447, \"summary_h7\": 0.447, \"summary_h8\": 0.0, \"summary_h9\": 0.447, \"summary_h10\": 0.0, \"summary_h11\": 0.447, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.3}",
+          "output": "4.0",
+          "metadata_product_id": "B000088KH2",
+          "metadata_customer_id": "A119Q9NFGVOEJZ",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": -0.218, \"time_month\": -0.985, \"time_dayofweek\": -1.457, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.5, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.5, \"summary_h9\": 0.5, \"summary_h10\": 0.5, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 2.092, \"helpful_total\": 1.841}",
+          "output": "4.0",
+          "metadata_product_id": "B00077VDS4",
+          "metadata_customer_id": "ANEDXRFDZDL18",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": 0.022, \"time_month\": -1.266, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.447, \"summary_h2\": 0.0, \"summary_h3\": 0.447, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.447, \"summary_h9\": 0.447, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.447, \"summary_h15\": 0.0, \"helpful_up\": 0.13, \"helpful_total\": 0.299}",
+          "output": "3.0",
+          "metadata_product_id": "B0002YIUNS",
+          "metadata_customer_id": "A2IH7X72AMFDHM",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": 0.743, \"time_month\": 0.976, \"time_dayofweek\": -1.457, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 1.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "3.0",
+          "metadata_product_id": "B00005NCCW",
+          "metadata_customer_id": "A3MZU8A1ASX8X2",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": 0.743, \"time_month\": 0.976, \"time_dayofweek\": 0.041, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.577, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.577, \"summary_h7\": 0.577, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "4.0",
+          "metadata_product_id": "B00006LEM0",
+          "metadata_customer_id": "A3LPA9D5IOQ1XY",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": -0.218, \"time_month\": -0.985, \"time_dayofweek\": -0.958, \"summary_h0\": 0.0, \"summary_h1\": 1.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.0, \"summary_h8\": 0.0, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.0, \"helpful_up\": 0.021, \"helpful_total\": -0.044}",
+          "output": "4.0",
+          "metadata_product_id": "B00004SVYQ",
+          "metadata_customer_id": "A1VJ6MG8BLO7N4",
+          "metadata_fold": 4
+        },
+        {
+          "input": "{\"time_year\": -0.459, \"time_month\": 0.135, \"time_dayofweek\": 0.54, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.447, \"summary_h4\": 0.447, \"summary_h5\": 0.0, \"summary_h6\": 0.0, \"summary_h7\": 0.447, \"summary_h8\": 0.447, \"summary_h9\": 0.0, \"summary_h10\": 0.0, \"summary_h11\": 0.0, \"summary_h12\": 0.0, \"summary_h13\": 0.0, \"summary_h14\": 0.0, \"summary_h15\": 0.447, \"helpful_up\": -0.306, \"helpful_total\": -0.386}",
+          "output": "3.0",
+          "metadata_product_id": "B0000A03AG",
+          "metadata_customer_id": "A22BFGHM9X80OE",
+          "metadata_fold": 4
+        }
+      ]
+    }
+  ]
+}

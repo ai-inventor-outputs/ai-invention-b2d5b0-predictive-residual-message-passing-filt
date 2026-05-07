@@ -1,0 +1,826 @@
+{
+  "metadata": {
+    "method_name": "PRMP_Task_Type_Effect",
+    "description": "Systematic investigation of PRMP task-type effect using RelBench rel-f1 and rel-stack datasets. Compares regression vs classification to test if PRMP residual subtraction creates a de-noising effect benefiting continuous targets.",
+    "datasets": [
+      "rel-f1",
+      "rel-stack"
+    ],
+    "tasks": [
+      "driver-position",
+      "driver-dnf",
+      "driver-top3",
+      "user-engagement",
+      "post-votes"
+    ],
+    "variants": [
+      "standard",
+      "prmp"
+    ],
+    "seeds": [
+      42
+    ],
+    "hyperparameters": {
+      "channels": 64,
+      "num_layers": 2,
+      "batch_size": 512,
+      "num_neighbors": [
+        10,
+        5
+      ],
+      "max_epochs": 20,
+      "patience": 7,
+      "lr": 0.001
+    },
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 4090"
+  },
+  "datasets": [
+    {
+      "dataset": "prmp_task_type_analysis",
+      "examples": [
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\"}",
+          "output": "{\"best_val\": 2.843577, \"final_test\": 999.0, \"num_epochs\": 20, \"final_prmp_r2\": {}, \"final_embed_stats\": {\"mean_variance\": 0.145671, \"effective_rank\": 6.5273, \"num_embeddings\": 499, \"embed_dim\": 64}, \"training_time_s\": 16.9}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "2.843577",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 0}",
+          "output": "{\"prediction\": 9.36447, \"label\": 4.2}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "9.36447",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 1}",
+          "output": "{\"prediction\": 13.409409, \"label\": 12.333333}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "13.409409",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 2}",
+          "output": "{\"prediction\": 9.180488, \"label\": 11.666667}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "9.180488",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 11.827667, \"val_loss\": 8.440052, \"val_metric\": 8.440052, \"test_metric\": 999.0, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.006519, \"effective_rank\": 3.3276, \"num_embeddings\": 499, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 0,
+          "predict_baseline": "8.440052",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 10}",
+          "output": "{\"train_loss\": 6.534358, \"val_loss\": 4.076882, \"val_metric\": 4.076882, \"test_metric\": 999.0, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.015381, \"effective_rank\": 1.8589, \"num_embeddings\": 499, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 10,
+          "predict_baseline": "4.076882",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 19}",
+          "output": "{\"train_loss\": 4.768194, \"val_loss\": 2.85769, \"val_metric\": 2.85769, \"test_metric\": 999.0, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.145671, \"effective_rank\": 6.5273, \"num_embeddings\": 499, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 19,
+          "predict_baseline": "2.85769",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\"}",
+          "output": "{\"best_val\": 2.815833, \"final_test\": 999.0, \"num_epochs\": 20, \"final_prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -0.806009, \"L0/('standings', 'f2p_driverId', 'drivers')\": -1.35437, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -63.13443, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -4.233252, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -0.75705, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -267.25296, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -89.137947, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -1.465194, \"L0/('results', 'f2p_driverId', 'drivers')\": -0.574174, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -93.161064, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -139.380203, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -1.248866, \"L1/('standings', 'f2p_driverId', 'drivers')\": -5.178619, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -7.298824, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -1.265366, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -1.378613, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -7.085257, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -29.657158, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -1.280448, \"L1/('results', 'f2p_driverId', 'drivers')\": -1.344125, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -7.258303, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -32.239635}, \"final_embed_stats\": {\"mean_variance\": 0.248471, \"effective_rank\": 7.1809, \"num_embeddings\": 499, \"embed_dim\": 64}, \"training_time_s\": 20.4}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "2.815833"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 0}",
+          "output": "{\"prediction\": 9.952911, \"label\": 4.2}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "9.952911"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 1}",
+          "output": "{\"prediction\": 13.010546, \"label\": 12.333333}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "13.010546"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 2}",
+          "output": "{\"prediction\": 8.76232, \"label\": 11.666667}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "8.76232"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 11.85658, \"val_loss\": 8.437699, \"val_metric\": 8.437699, \"test_metric\": 999.0, \"prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -13.594208, \"L0/('standings', 'f2p_driverId', 'drivers')\": -13.294875, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -13.7376, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -11.646804, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -13.133205, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -13.832242, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -9.940448, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -10.953447, \"L0/('results', 'f2p_driverId', 'drivers')\": -10.887089, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -13.722875, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -11.307749, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -7.384294, \"L1/('standings', 'f2p_driverId', 'drivers')\": -119.608521, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -100.039001, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -6.911005, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -69.084839, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -181.245941, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -11.72339, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -7.447441, \"L1/('results', 'f2p_driverId', 'drivers')\": -76.475647, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -96.024467, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -12.907596}, \"grad_norms\": {\"L1/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.006879, \"L1/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001178, \"L1/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.008127, \"L1/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000535, \"L1/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.007965, \"L1/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001001, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/update_mlp\": 0.001102, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/pred_mlp\": 0.000881, \"L0/('drivers', 'rev_f2p_driverId', 'results')/update_mlp\": 0.0011, \"L0/('drivers', 'rev_f2p_driverId', 'results')/pred_mlp\": 0.000884, \"L0/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.007772, \"L0/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001405, \"L0/('races', 'rev_f2p_raceId', 'results')/update_mlp\": 0.001091, \"L0/('races', 'rev_f2p_raceId', 'results')/pred_mlp\": 0.000967, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/update_mlp\": 0.00054, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/pred_mlp\": 0.000427, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/update_mlp\": 0.000506, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/pred_mlp\": 0.000394, \"L0/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.007475, \"L0/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000429, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/update_mlp\": 0.000577, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/pred_mlp\": 0.000464, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/update_mlp\": 0.001271, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/pred_mlp\": 0.000988, \"L0/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.007446, \"L0/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.00108, \"L0/('races', 'rev_f2p_raceId', 'standings')/update_mlp\": 0.00123, \"L0/('races', 'rev_f2p_raceId', 'standings')/pred_mlp\": 0.001077}, \"embed_stats\": {\"mean_variance\": 0.00432, \"effective_rank\": 4.7318, \"num_embeddings\": 499, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 0,
+          "predict_baseline": "",
+          "predict_our_method": "8.437699"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 10}",
+          "output": "{\"train_loss\": 6.763043, \"val_loss\": 4.131211, \"val_metric\": 4.131211, \"test_metric\": 999.0, \"prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -26.492456, \"L0/('standings', 'f2p_driverId', 'drivers')\": -29.816015, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -48.267712, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -27.083817, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -50.476391, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -36.245281, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -23.743172, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -18.093857, \"L0/('results', 'f2p_driverId', 'drivers')\": -22.847523, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -34.259068, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -37.607311, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -11.856421, \"L1/('standings', 'f2p_driverId', 'drivers')\": -458.517181, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -92.867111, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -11.250281, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -389.83252, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -725.674622, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -27.461128, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -11.765281, \"L1/('results', 'f2p_driverId', 'drivers')\": -316.739655, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -84.410202, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -23.48056}, \"grad_norms\": {\"L1/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.000457, \"L1/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 8.4e-05, \"L1/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.000495, \"L1/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 7.2e-05, \"L1/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.000556, \"L1/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 5e-05, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/update_mlp\": 2.7e-05, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/pred_mlp\": 8e-06, \"L0/('drivers', 'rev_f2p_driverId', 'results')/update_mlp\": 2.5e-05, \"L0/('drivers', 'rev_f2p_driverId', 'results')/pred_mlp\": 1e-05, \"L0/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.000124, \"L0/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 1.9e-05, \"L0/('races', 'rev_f2p_raceId', 'results')/update_mlp\": 2.7e-05, \"L0/('races', 'rev_f2p_raceId', 'results')/pred_mlp\": 1.4e-05, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/update_mlp\": 2.3e-05, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/pred_mlp\": 1e-05, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/update_mlp\": 1.6e-05, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/pred_mlp\": 7e-06, \"L0/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.000147, \"L0/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 1.2e-05, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/update_mlp\": 2.4e-05, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/pred_mlp\": 6e-06, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/update_mlp\": 1.9e-05, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/pred_mlp\": 6e-06, \"L0/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.00014, \"L0/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 1e-05, \"L0/('races', 'rev_f2p_raceId', 'standings')/update_mlp\": 1.9e-05, \"L0/('races', 'rev_f2p_raceId', 'standings')/pred_mlp\": 8e-06}, \"embed_stats\": {\"mean_variance\": 0.011912, \"effective_rank\": 2.5907, \"num_embeddings\": 499, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 10,
+          "predict_baseline": "",
+          "predict_our_method": "4.131211"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-position\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 19}",
+          "output": "{\"train_loss\": 4.807513, \"val_loss\": 2.817219, \"val_metric\": 2.817219, \"test_metric\": 999.0, \"prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -0.806009, \"L0/('standings', 'f2p_driverId', 'drivers')\": -1.35437, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -63.13443, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -4.233252, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -0.75705, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -267.25296, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -89.137947, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -1.465194, \"L0/('results', 'f2p_driverId', 'drivers')\": -0.574174, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -93.161064, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -139.380203, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -1.248866, \"L1/('standings', 'f2p_driverId', 'drivers')\": -5.178619, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -7.298824, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -1.265366, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -1.378613, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -7.085257, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -29.657158, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -1.280448, \"L1/('results', 'f2p_driverId', 'drivers')\": -1.344125, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -7.258303, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -32.239635}, \"grad_norms\": {\"L1/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.025671, \"L1/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.006979, \"L1/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.025214, \"L1/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001598, \"L1/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.022331, \"L1/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.003151, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/update_mlp\": 0.001299, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/pred_mlp\": 0.000244, \"L0/('drivers', 'rev_f2p_driverId', 'results')/update_mlp\": 0.001203, \"L0/('drivers', 'rev_f2p_driverId', 'results')/pred_mlp\": 0.000411, \"L0/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.00625, \"L0/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001049, \"L0/('races', 'rev_f2p_raceId', 'results')/update_mlp\": 0.001491, \"L0/('races', 'rev_f2p_raceId', 'results')/pred_mlp\": 0.00068, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/update_mlp\": 0.00022, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/pred_mlp\": 6.4e-05, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/update_mlp\": 0.000164, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/pred_mlp\": 6.1e-05, \"L0/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.007493, \"L0/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000259, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/update_mlp\": 0.000173, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/pred_mlp\": 7.5e-05, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/update_mlp\": 0.000936, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/pred_mlp\": 0.000244, \"L0/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.007535, \"L0/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.00116, \"L0/('races', 'rev_f2p_raceId', 'standings')/update_mlp\": 0.000952, \"L0/('races', 'rev_f2p_raceId', 'standings')/pred_mlp\": 0.00042}, \"embed_stats\": {\"mean_variance\": 0.248471, \"effective_rank\": 7.1809, \"num_embeddings\": 499, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-position",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 19,
+          "predict_baseline": "",
+          "predict_our_method": "2.817219"
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\"}",
+          "output": "{\"best_val\": 0.804771, \"final_test\": 0.5, \"num_epochs\": 13, \"final_prmp_r2\": {}, \"final_embed_stats\": {}, \"training_time_s\": 13.6}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.804771",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 0}",
+          "output": "{\"prediction\": 0.984228, \"label\": 1.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.984228",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 1}",
+          "output": "{\"prediction\": 0.711891, \"label\": 1.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.711891",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 2}",
+          "output": "{\"prediction\": 0.928887, \"label\": 1.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.928887",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 0.364767, \"val_loss\": 0.438101, \"val_metric\": 0.798549, \"test_metric\": 0.5, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.166714, \"effective_rank\": 7.8924, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "predict_baseline": "0.798549",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 6}",
+          "output": "{\"train_loss\": 0.28524, \"val_loss\": 0.432778, \"val_metric\": 0.801741, \"test_metric\": 0.5, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 6,
+          "predict_baseline": "0.801741",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 12}",
+          "output": "{\"train_loss\": 0.2755, \"val_loss\": 0.440257, \"val_metric\": 0.799819, \"test_metric\": 0.5, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 12,
+          "predict_baseline": "0.799819",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\"}",
+          "output": "{\"best_val\": 0.803664, \"final_test\": 0.5, \"num_epochs\": 16, \"final_prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -0.140452, \"L0/('standings', 'f2p_driverId', 'drivers')\": -0.450181, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -1.004381, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -0.27734, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -0.804677, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -0.969561, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -24.411678, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -0.186082, \"L0/('results', 'f2p_driverId', 'drivers')\": -0.44215, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -1.077614, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -26.065437, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -0.633128, \"L1/('standings', 'f2p_driverId', 'drivers')\": -0.87753, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -1.810126, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -0.636338, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -1.114914, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -1.837325, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -22.352371, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -0.630283, \"L1/('results', 'f2p_driverId', 'drivers')\": -1.301643, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -1.829514, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -22.284248}, \"final_embed_stats\": {\"mean_variance\": 0.284511, \"effective_rank\": 15.8521, \"num_embeddings\": 512, \"embed_dim\": 64}, \"training_time_s\": 24.1}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.803664"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 0}",
+          "output": "{\"prediction\": 0.985013, \"label\": 1.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.985013"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 1}",
+          "output": "{\"prediction\": 0.668501, \"label\": 1.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.668501"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 2}",
+          "output": "{\"prediction\": 0.961258, \"label\": 1.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.961258"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 0.373688, \"val_loss\": 0.435868, \"val_metric\": 0.781079, \"test_metric\": 0.5, \"prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -8.651798, \"L0/('standings', 'f2p_driverId', 'drivers')\": -1.731998, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -12.113837, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -6.484888, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -1.599705, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -13.942863, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -8.849599, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -7.906314, \"L0/('results', 'f2p_driverId', 'drivers')\": -2.397128, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -12.804859, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -9.495698, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -4.61224, \"L1/('standings', 'f2p_driverId', 'drivers')\": -3.948467, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -6.991849, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -4.085346, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -2.331594, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -5.087531, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -8.485784, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -4.679433, \"L1/('results', 'f2p_driverId', 'drivers')\": -16.816982, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -6.767617, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -8.383193}, \"grad_norms\": {\"L1/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.003333, \"L1/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.00062, \"L1/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.004391, \"L1/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000438, \"L1/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.004094, \"L1/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000655, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/update_mlp\": 0.00044, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/pred_mlp\": 0.000321, \"L0/('drivers', 'rev_f2p_driverId', 'results')/update_mlp\": 0.000427, \"L0/('drivers', 'rev_f2p_driverId', 'results')/pred_mlp\": 0.000311, \"L0/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.002604, \"L0/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000559, \"L0/('races', 'rev_f2p_raceId', 'results')/update_mlp\": 0.000406, \"L0/('races', 'rev_f2p_raceId', 'results')/pred_mlp\": 0.000326, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/update_mlp\": 0.000405, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/pred_mlp\": 0.000283, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/update_mlp\": 0.000393, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/pred_mlp\": 0.000263, \"L0/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.002618, \"L0/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000207, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/update_mlp\": 0.000407, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/pred_mlp\": 0.000274, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/update_mlp\": 0.000707, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/pred_mlp\": 0.00049, \"L0/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.00276, \"L0/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000531, \"L0/('races', 'rev_f2p_raceId', 'standings')/update_mlp\": 0.000715, \"L0/('races', 'rev_f2p_raceId', 'standings')/pred_mlp\": 0.000505}, \"embed_stats\": {\"mean_variance\": 0.179395, \"effective_rank\": 7.6885, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "predict_baseline": "",
+          "predict_our_method": "0.781079"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 8}",
+          "output": "{\"train_loss\": 0.284853, \"val_loss\": 0.436196, \"val_metric\": 0.803664, \"test_metric\": 0.5, \"prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -0.557453, \"L0/('standings', 'f2p_driverId', 'drivers')\": -1.017903, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -7.247108, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -0.935048, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -0.732105, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -8.68303, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -17.641136, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -0.706809, \"L0/('results', 'f2p_driverId', 'drivers')\": -0.594553, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -8.269022, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -18.57926, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -1.021699, \"L1/('standings', 'f2p_driverId', 'drivers')\": -1.662841, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -2.896851, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -1.043871, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -1.301275, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -2.681229, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -16.619116, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -1.02951, \"L1/('results', 'f2p_driverId', 'drivers')\": -1.687914, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -2.917414, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -16.596825}, \"grad_norms\": {\"L1/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.003802, \"L1/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000739, \"L1/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.00523, \"L1/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000404, \"L1/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.005006, \"L1/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000869, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/update_mlp\": 0.000231, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/pred_mlp\": 9.2e-05, \"L0/('drivers', 'rev_f2p_driverId', 'results')/update_mlp\": 0.000211, \"L0/('drivers', 'rev_f2p_driverId', 'results')/pred_mlp\": 0.000108, \"L0/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.002318, \"L0/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000511, \"L0/('races', 'rev_f2p_raceId', 'results')/update_mlp\": 0.000232, \"L0/('races', 'rev_f2p_raceId', 'results')/pred_mlp\": 0.000152, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/update_mlp\": 0.000144, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/pred_mlp\": 6.2e-05, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/update_mlp\": 0.000129, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/pred_mlp\": 8e-05, \"L0/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.001886, \"L0/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000104, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/update_mlp\": 0.000149, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/pred_mlp\": 0.000101, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/update_mlp\": 0.000521, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/pred_mlp\": 0.000285, \"L0/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.001921, \"L0/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000321, \"L0/('races', 'rev_f2p_raceId', 'standings')/update_mlp\": 0.000642, \"L0/('races', 'rev_f2p_raceId', 'standings')/pred_mlp\": 0.000477}, \"embed_stats\": {}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 8,
+          "predict_baseline": "",
+          "predict_our_method": "0.803664"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-dnf\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 15}",
+          "output": "{\"train_loss\": 0.27307, \"val_loss\": 0.427732, \"val_metric\": 0.801723, \"test_metric\": 0.5, \"prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -0.140452, \"L0/('standings', 'f2p_driverId', 'drivers')\": -0.450181, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -1.004381, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -0.27734, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -0.804677, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -0.969561, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -24.411678, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -0.186082, \"L0/('results', 'f2p_driverId', 'drivers')\": -0.44215, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -1.077614, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -26.065437, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -0.633128, \"L1/('standings', 'f2p_driverId', 'drivers')\": -0.87753, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -1.810126, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -0.636338, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -1.114914, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -1.837325, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -22.352371, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -0.630283, \"L1/('results', 'f2p_driverId', 'drivers')\": -1.301643, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -1.829514, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -22.284248}, \"grad_norms\": {\"L1/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.003748, \"L1/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.00074, \"L1/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.005187, \"L1/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000425, \"L1/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.00497, \"L1/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001019, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/update_mlp\": 0.000249, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/pred_mlp\": 8.3e-05, \"L0/('drivers', 'rev_f2p_driverId', 'results')/update_mlp\": 0.00022, \"L0/('drivers', 'rev_f2p_driverId', 'results')/pred_mlp\": 0.000126, \"L0/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.00238, \"L0/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000517, \"L0/('races', 'rev_f2p_raceId', 'results')/update_mlp\": 0.000244, \"L0/('races', 'rev_f2p_raceId', 'results')/pred_mlp\": 0.000169, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/update_mlp\": 0.000104, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/pred_mlp\": 3.9e-05, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/update_mlp\": 0.000145, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/pred_mlp\": 0.000114, \"L0/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.001978, \"L0/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.00011, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/update_mlp\": 0.000138, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/pred_mlp\": 9.3e-05, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/update_mlp\": 0.00054, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/pred_mlp\": 0.000322, \"L0/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.002174, \"L0/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000376, \"L0/('races', 'rev_f2p_raceId', 'standings')/update_mlp\": 0.000697, \"L0/('races', 'rev_f2p_raceId', 'standings')/pred_mlp\": 0.000566}, \"embed_stats\": {\"mean_variance\": 0.284511, \"effective_rank\": 15.8521, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-dnf",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 15,
+          "predict_baseline": "",
+          "predict_our_method": "0.801723"
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"standard\", \"task_type\": \"classification\"}",
+          "output": "{\"best_val\": 0.907653, \"final_test\": 0.5, \"num_epochs\": 11, \"final_prmp_r2\": {}, \"final_embed_stats\": {\"mean_variance\": 0.20419, \"effective_rank\": 6.5615, \"num_embeddings\": 512, \"embed_dim\": 64}, \"training_time_s\": 3.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.907653",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 0}",
+          "output": "{\"prediction\": 0.413118, \"label\": 0.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.413118",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 1}",
+          "output": "{\"prediction\": 0.109414, \"label\": 0.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.109414",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 2}",
+          "output": "{\"prediction\": 0.37862, \"label\": 0.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.37862",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 0.570458, \"val_loss\": 0.50963, \"val_metric\": 0.840874, \"test_metric\": 0.5, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.012508, \"effective_rank\": 13.7727, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "predict_baseline": "0.840874",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 5}",
+          "output": "{\"train_loss\": 0.31388, \"val_loss\": 0.361079, \"val_metric\": 0.905019, \"test_metric\": 0.5, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.207531, \"effective_rank\": 7.7614, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 5,
+          "predict_baseline": "0.905019",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 10}",
+          "output": "{\"train_loss\": 0.276721, \"val_loss\": 0.355628, \"val_metric\": 0.891079, \"test_metric\": 0.5, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.20419, \"effective_rank\": 6.5615, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 10,
+          "predict_baseline": "0.891079",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"prmp\", \"task_type\": \"classification\"}",
+          "output": "{\"best_val\": 0.909014, \"final_test\": 0.5, \"num_epochs\": 11, \"final_prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -4.486579, \"L0/('standings', 'f2p_driverId', 'drivers')\": -5.300048, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -5.125784, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -4.397222, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -4.020459, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -5.199061, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -6.814478, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -4.660245, \"L0/('results', 'f2p_driverId', 'drivers')\": -0.677233, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -5.474738, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -7.532427, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -3.646147, \"L1/('standings', 'f2p_driverId', 'drivers')\": -7.073003, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -4.76812, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -3.477519, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -14.612567, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -4.8413, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -4.118479, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -3.643779, \"L1/('results', 'f2p_driverId', 'drivers')\": -1.757972, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -4.71371, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -4.1227}, \"final_embed_stats\": {\"mean_variance\": 0.239259, \"effective_rank\": 9.6386, \"num_embeddings\": 512, \"embed_dim\": 64}, \"training_time_s\": 3.8}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.909014"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 0}",
+          "output": "{\"prediction\": 0.59922, \"label\": 0.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.59922"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 1}",
+          "output": "{\"prediction\": 0.057611, \"label\": 0.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.057611"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 2}",
+          "output": "{\"prediction\": 0.346848, \"label\": 0.0}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.346848"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 0.556282, \"val_loss\": 0.496907, \"val_metric\": 0.897637, \"test_metric\": 0.5, \"prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -1.478923, \"L0/('standings', 'f2p_driverId', 'drivers')\": -3.237791, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -2.53378, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -1.450377, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -3.521741, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -2.553636, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -1.947337, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -1.463294, \"L0/('results', 'f2p_driverId', 'drivers')\": -2.22093, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -2.528842, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -1.96393, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -1.724153, \"L1/('standings', 'f2p_driverId', 'drivers')\": -3.003404, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -28.425642, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -1.745547, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -3.567187, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -30.548258, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -1.639498, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -1.733936, \"L1/('results', 'f2p_driverId', 'drivers')\": -3.327093, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -27.758429, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -1.636253}, \"grad_norms\": {\"L1/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.010408, \"L1/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001979, \"L1/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.009527, \"L1/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.002113, \"L1/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.009611, \"L1/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001652, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/update_mlp\": 0.001992, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/pred_mlp\": 0.001717, \"L0/('drivers', 'rev_f2p_driverId', 'results')/update_mlp\": 0.002241, \"L0/('drivers', 'rev_f2p_driverId', 'results')/pred_mlp\": 0.001896, \"L0/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.008341, \"L0/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.00222, \"L0/('races', 'rev_f2p_raceId', 'results')/update_mlp\": 0.002083, \"L0/('races', 'rev_f2p_raceId', 'results')/pred_mlp\": 0.001843, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/update_mlp\": 0.00207, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/pred_mlp\": 0.001731, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/update_mlp\": 0.00229, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/pred_mlp\": 0.00195, \"L0/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.008705, \"L0/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.002148, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/update_mlp\": 0.002279, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/pred_mlp\": 0.00193, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/update_mlp\": 0.002466, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/pred_mlp\": 0.002009, \"L0/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.008635, \"L0/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001971, \"L0/('races', 'rev_f2p_raceId', 'standings')/update_mlp\": 0.002448, \"L0/('races', 'rev_f2p_raceId', 'standings')/pred_mlp\": 0.002216}, \"embed_stats\": {\"mean_variance\": 0.033439, \"effective_rank\": 16.4979, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "predict_baseline": "",
+          "predict_our_method": "0.897637"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 5}",
+          "output": "{\"train_loss\": 0.295661, \"val_loss\": 0.344614, \"val_metric\": 0.907778, \"test_metric\": 0.5, \"prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -5.911422, \"L0/('standings', 'f2p_driverId', 'drivers')\": -4.150625, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -6.887826, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -5.691558, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -4.812742, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -7.019621, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -5.325998, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -5.997917, \"L0/('results', 'f2p_driverId', 'drivers')\": -0.773218, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -7.154706, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -5.779341, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -4.500402, \"L1/('standings', 'f2p_driverId', 'drivers')\": -6.952604, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -4.252946, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -4.30258, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -16.968491, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -4.086621, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -3.137045, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -4.472293, \"L1/('results', 'f2p_driverId', 'drivers')\": -2.390888, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -4.228951, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -3.144556}, \"grad_norms\": {\"L1/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.007157, \"L1/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001352, \"L1/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.005629, \"L1/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001145, \"L1/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.006669, \"L1/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.00111, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/update_mlp\": 0.000887, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/pred_mlp\": 0.000569, \"L0/('drivers', 'rev_f2p_driverId', 'results')/update_mlp\": 0.001052, \"L0/('drivers', 'rev_f2p_driverId', 'results')/pred_mlp\": 0.000635, \"L0/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.005247, \"L0/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001181, \"L0/('races', 'rev_f2p_raceId', 'results')/update_mlp\": 0.001017, \"L0/('races', 'rev_f2p_raceId', 'results')/pred_mlp\": 0.000562, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/update_mlp\": 0.000607, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/pred_mlp\": 0.000397, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/update_mlp\": 0.000805, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/pred_mlp\": 0.000479, \"L0/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.005429, \"L0/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001254, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/update_mlp\": 0.000748, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/pred_mlp\": 0.000382, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/update_mlp\": 0.001136, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/pred_mlp\": 0.000664, \"L0/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.005837, \"L0/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.00112, \"L0/('races', 'rev_f2p_raceId', 'standings')/update_mlp\": 0.001166, \"L0/('races', 'rev_f2p_raceId', 'standings')/pred_mlp\": 0.000632}, \"embed_stats\": {\"mean_variance\": 0.261021, \"effective_rank\": 8.6648, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 5,
+          "predict_baseline": "",
+          "predict_our_method": "0.907778"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"task\": \"driver-top3\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 10}",
+          "output": "{\"train_loss\": 0.263537, \"val_loss\": 0.330224, \"val_metric\": 0.901113, \"test_metric\": 0.5, \"prmp_r2\": {\"L0/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L0/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L0/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L0/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L0/('standings', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'standings')\": -4.486579, \"L0/('standings', 'f2p_driverId', 'drivers')\": -5.300048, \"L0/('drivers', 'rev_f2p_driverId', 'standings')\": -5.125784, \"L0/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L0/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L0/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'qualifying')\": -4.397222, \"L0/('qualifying', 'f2p_driverId', 'drivers')\": -4.020459, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')\": -5.199061, \"L0/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -6.814478, \"L0/('results', 'f2p_raceId', 'races')\": 1.0, \"L0/('races', 'rev_f2p_raceId', 'results')\": -4.660245, \"L0/('results', 'f2p_driverId', 'drivers')\": -0.677233, \"L0/('drivers', 'rev_f2p_driverId', 'results')\": -5.474738, \"L0/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L0/('constructors', 'rev_f2p_constructorId', 'results')\": -7.532427, \"L1/('races', 'f2p_circuitId', 'circuits')\": 1.0, \"L1/('circuits', 'rev_f2p_circuitId', 'races')\": 1.0, \"L1/('constructor_standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_standings')\": 1.0, \"L1/('constructor_standings', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_standings')\": 1.0, \"L1/('standings', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'standings')\": -3.646147, \"L1/('standings', 'f2p_driverId', 'drivers')\": -7.073003, \"L1/('drivers', 'rev_f2p_driverId', 'standings')\": -4.76812, \"L1/('constructor_results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'constructor_results')\": 1.0, \"L1/('constructor_results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'constructor_results')\": 1.0, \"L1/('qualifying', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'qualifying')\": -3.477519, \"L1/('qualifying', 'f2p_driverId', 'drivers')\": -14.612567, \"L1/('drivers', 'rev_f2p_driverId', 'qualifying')\": -4.8413, \"L1/('qualifying', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'qualifying')\": -4.118479, \"L1/('results', 'f2p_raceId', 'races')\": 1.0, \"L1/('races', 'rev_f2p_raceId', 'results')\": -3.643779, \"L1/('results', 'f2p_driverId', 'drivers')\": -1.757972, \"L1/('drivers', 'rev_f2p_driverId', 'results')\": -4.71371, \"L1/('results', 'f2p_constructorId', 'constructors')\": 1.0, \"L1/('constructors', 'rev_f2p_constructorId', 'results')\": -4.1227}, \"grad_norms\": {\"L1/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.006234, \"L1/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001144, \"L1/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.005089, \"L1/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000975, \"L1/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.006559, \"L1/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.001073, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/update_mlp\": 0.00068, \"L0/('constructors', 'rev_f2p_constructorId', 'results')/pred_mlp\": 0.00041, \"L0/('drivers', 'rev_f2p_driverId', 'results')/update_mlp\": 0.000785, \"L0/('drivers', 'rev_f2p_driverId', 'results')/pred_mlp\": 0.000481, \"L0/('results', 'f2p_driverId', 'drivers')/update_mlp\": 0.004228, \"L0/('results', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000943, \"L0/('races', 'rev_f2p_raceId', 'results')/update_mlp\": 0.000745, \"L0/('races', 'rev_f2p_raceId', 'results')/pred_mlp\": 0.000399, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/update_mlp\": 0.000406, \"L0/('constructors', 'rev_f2p_constructorId', 'qualifying')/pred_mlp\": 0.000263, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/update_mlp\": 0.00051, \"L0/('drivers', 'rev_f2p_driverId', 'qualifying')/pred_mlp\": 0.00032, \"L0/('qualifying', 'f2p_driverId', 'drivers')/update_mlp\": 0.004003, \"L0/('qualifying', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000762, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/update_mlp\": 0.00045, \"L0/('races', 'rev_f2p_raceId', 'qualifying')/pred_mlp\": 0.000223, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/update_mlp\": 0.000863, \"L0/('drivers', 'rev_f2p_driverId', 'standings')/pred_mlp\": 0.000556, \"L0/('standings', 'f2p_driverId', 'drivers')/update_mlp\": 0.004126, \"L0/('standings', 'f2p_driverId', 'drivers')/pred_mlp\": 0.000682, \"L0/('races', 'rev_f2p_raceId', 'standings')/update_mlp\": 0.000905, \"L0/('races', 'rev_f2p_raceId', 'standings')/pred_mlp\": 0.000476}, \"embed_stats\": {\"mean_variance\": 0.239259, \"effective_rank\": 9.6386, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-f1",
+          "metadata_task": "driver-top3",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 10,
+          "predict_baseline": "",
+          "predict_our_method": "0.901113"
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\"}",
+          "output": "{\"best_val\": 0.83063, \"final_test\": 0.5, \"num_epochs\": 11, \"final_prmp_r2\": {}, \"final_embed_stats\": {\"mean_variance\": 0.095538, \"effective_rank\": 17.2328, \"num_embeddings\": 512, \"embed_dim\": 64}, \"training_time_s\": 37.7}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.83063",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 0}",
+          "output": "{\"prediction\": 0.131027, \"label\": 1.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.131027",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 1}",
+          "output": "{\"prediction\": 0.506926, \"label\": 1.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.506926",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 2}",
+          "output": "{\"prediction\": 0.483654, \"label\": 1.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.483654",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 0.217986, \"val_loss\": 0.146225, \"val_metric\": 0.812605, \"test_metric\": 0.5, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.031727, \"effective_rank\": 9.1165, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "predict_baseline": "0.812605",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 5}",
+          "output": "{\"train_loss\": 0.174629, \"val_loss\": 0.133054, \"val_metric\": 0.809232, \"test_metric\": 0.5, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.090541, \"effective_rank\": 15.227, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 5,
+          "predict_baseline": "0.809232",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 10}",
+          "output": "{\"train_loss\": 0.17272, \"val_loss\": 0.128915, \"val_metric\": 0.81682, \"test_metric\": 0.5, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.095538, \"effective_rank\": 17.2328, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 10,
+          "predict_baseline": "0.81682",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\"}",
+          "output": "{\"best_val\": 0.841016, \"final_test\": 0.5, \"num_epochs\": 20, \"final_prmp_r2\": {\"L0/('comments', 'f2p_UserId', 'users')\": -0.859185, \"L0/('users', 'rev_f2p_UserId', 'comments')\": -1.971798, \"L0/('comments', 'f2p_PostId', 'posts')\": -8.351848, \"L0/('posts', 'rev_f2p_PostId', 'comments')\": -3.274702, \"L0/('badges', 'f2p_UserId', 'users')\": -2.03161, \"L0/('users', 'rev_f2p_UserId', 'badges')\": -3.991697, \"L0/('postLinks', 'f2p_PostId', 'posts')\": -3.143769, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')\": 1.0, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')\": -22.324268, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": 1.0, \"L0/('postHistory', 'f2p_PostId', 'posts')\": -0.400674, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')\": -11.491896, \"L0/('postHistory', 'f2p_UserId', 'users')\": -0.561373, \"L0/('users', 'rev_f2p_UserId', 'postHistory')\": -7.050538, \"L0/('votes', 'f2p_PostId', 'posts')\": -28.009752, \"L0/('posts', 'rev_f2p_PostId', 'votes')\": -7.343572, \"L0/('votes', 'f2p_UserId', 'users')\": -48.805332, \"L0/('users', 'rev_f2p_UserId', 'votes')\": -4.612469, \"L0/('posts', 'f2p_OwnerUserId', 'users')\": -4.034148, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')\": -1.818372, \"L0/('posts', 'f2p_ParentId', 'posts')\": -9.655419, \"L0/('posts', 'rev_f2p_ParentId', 'posts')\": -17.520107, \"L1/('comments', 'f2p_UserId', 'users')\": -26.476257, \"L1/('users', 'rev_f2p_UserId', 'comments')\": -6.410161, \"L1/('comments', 'f2p_PostId', 'posts')\": -6.198218, \"L1/('posts', 'rev_f2p_PostId', 'comments')\": -1.015688, \"L1/('badges', 'f2p_UserId', 'users')\": -3.797512, \"L1/('users', 'rev_f2p_UserId', 'badges')\": -6.318909, \"L1/('postLinks', 'f2p_PostId', 'posts')\": -4.943166, \"L1/('posts', 'rev_f2p_PostId', 'postLinks')\": 1.0, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')\": -3.683503, \"L1/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": 1.0, \"L1/('postHistory', 'f2p_PostId', 'posts')\": -1.155535, \"L1/('posts', 'rev_f2p_PostId', 'postHistory')\": -1.3001, \"L1/('postHistory', 'f2p_UserId', 'users')\": -2.443636, \"L1/('users', 'rev_f2p_UserId', 'postHistory')\": -6.360149, \"L1/('votes', 'f2p_PostId', 'posts')\": -469.856537, \"L1/('posts', 'rev_f2p_PostId', 'votes')\": -1.202153, \"L1/('votes', 'f2p_UserId', 'users')\": -840.386047, \"L1/('users', 'rev_f2p_UserId', 'votes')\": -9.987605, \"L1/('posts', 'f2p_OwnerUserId', 'users')\": -1.0544, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')\": -5.761846, \"L1/('posts', 'f2p_ParentId', 'posts')\": -13.550865, \"L1/('posts', 'rev_f2p_ParentId', 'posts')\": -6.751075}, \"final_embed_stats\": {\"mean_variance\": 0.199922, \"effective_rank\": 19.1061, \"num_embeddings\": 512, \"embed_dim\": 64}, \"training_time_s\": 102.3}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.841016"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 0}",
+          "output": "{\"prediction\": 0.053456, \"label\": 1.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.053456"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 1}",
+          "output": "{\"prediction\": 0.659099, \"label\": 1.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.659099"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"type\": \"test_instance\", \"instance_idx\": 2}",
+          "output": "{\"prediction\": 0.211823, \"label\": 1.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.211823"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 0.208913, \"val_loss\": 0.141484, \"val_metric\": 0.81703, \"test_metric\": 0.5, \"prmp_r2\": {\"L0/('comments', 'f2p_UserId', 'users')\": -10.865338, \"L0/('users', 'rev_f2p_UserId', 'comments')\": -14.086267, \"L0/('comments', 'f2p_PostId', 'posts')\": -9.153317, \"L0/('posts', 'rev_f2p_PostId', 'comments')\": -11.512453, \"L0/('badges', 'f2p_UserId', 'users')\": -13.498196, \"L0/('users', 'rev_f2p_UserId', 'badges')\": -14.593616, \"L0/('postLinks', 'f2p_PostId', 'posts')\": -20.340084, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')\": 1.0, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')\": -19.27976, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": 1.0, \"L0/('postHistory', 'f2p_PostId', 'posts')\": -6.375007, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')\": -13.384985, \"L0/('postHistory', 'f2p_UserId', 'users')\": -6.448725, \"L0/('users', 'rev_f2p_UserId', 'postHistory')\": -15.032982, \"L0/('votes', 'f2p_PostId', 'posts')\": -17.831223, \"L0/('posts', 'rev_f2p_PostId', 'votes')\": -16.221138, \"L0/('votes', 'f2p_UserId', 'users')\": -25.922268, \"L0/('users', 'rev_f2p_UserId', 'votes')\": -18.825953, \"L0/('posts', 'f2p_OwnerUserId', 'users')\": -11.614223, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')\": -13.64272, \"L0/('posts', 'f2p_ParentId', 'posts')\": -14.103616, \"L0/('posts', 'rev_f2p_ParentId', 'posts')\": -25.830244, \"L1/('comments', 'f2p_UserId', 'users')\": -41.180054, \"L1/('users', 'rev_f2p_UserId', 'comments')\": -32.43681, \"L1/('comments', 'f2p_PostId', 'posts')\": -9.199467, \"L1/('posts', 'rev_f2p_PostId', 'comments')\": -3.204041, \"L1/('badges', 'f2p_UserId', 'users')\": -57.976059, \"L1/('users', 'rev_f2p_UserId', 'badges')\": -21.084124, \"L1/('postLinks', 'f2p_PostId', 'posts')\": -11.777369, \"L1/('posts', 'rev_f2p_PostId', 'postLinks')\": 1.0, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')\": -10.642966, \"L1/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": 1.0, \"L1/('postHistory', 'f2p_PostId', 'posts')\": -6.527683, \"L1/('posts', 'rev_f2p_PostId', 'postHistory')\": -3.35168, \"L1/('postHistory', 'f2p_UserId', 'users')\": -30.453812, \"L1/('users', 'rev_f2p_UserId', 'postHistory')\": -19.832468, \"L1/('votes', 'f2p_PostId', 'posts')\": -52.170513, \"L1/('posts', 'rev_f2p_PostId', 'votes')\": -2.997967, \"L1/('votes', 'f2p_UserId', 'users')\": -102.912621, \"L1/('users', 'rev_f2p_UserId', 'votes')\": -44.53619, \"L1/('posts', 'f2p_OwnerUserId', 'users')\": -2.64501, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')\": -19.2449, \"L1/('posts', 'f2p_ParentId', 'posts')\": -13.122801, \"L1/('posts', 'rev_f2p_ParentId', 'posts')\": -8.285424}, \"grad_norms\": {\"L1/('posts', 'f2p_OwnerUserId', 'users')/update_mlp\": 0.001407, \"L1/('posts', 'f2p_OwnerUserId', 'users')/pred_mlp\": 0.000532, \"L1/('votes', 'f2p_UserId', 'users')/update_mlp\": 0.001722, \"L1/('votes', 'f2p_UserId', 'users')/pred_mlp\": 0.000222, \"L1/('postHistory', 'f2p_UserId', 'users')/update_mlp\": 0.00139, \"L1/('postHistory', 'f2p_UserId', 'users')/pred_mlp\": 0.000287, \"L1/('badges', 'f2p_UserId', 'users')/update_mlp\": 0.001123, \"L1/('badges', 'f2p_UserId', 'users')/pred_mlp\": 0.000281, \"L1/('comments', 'f2p_UserId', 'users')/update_mlp\": 0.001799, \"L1/('comments', 'f2p_UserId', 'users')/pred_mlp\": 0.000447, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/update_mlp\": 0.000343, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/pred_mlp\": 8.8e-05, \"L0/('posts', 'f2p_ParentId', 'posts')/update_mlp\": 0.000329, \"L0/('posts', 'f2p_ParentId', 'posts')/pred_mlp\": 0.000143, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/update_mlp\": 0.000354, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/pred_mlp\": 0.000243, \"L0/('posts', 'f2p_OwnerUserId', 'users')/update_mlp\": 0.000912, \"L0/('posts', 'f2p_OwnerUserId', 'users')/pred_mlp\": 0.000412, \"L0/('users', 'rev_f2p_UserId', 'votes')/update_mlp\": 0.000199, \"L0/('users', 'rev_f2p_UserId', 'votes')/pred_mlp\": 0.000124, \"L0/('votes', 'f2p_UserId', 'users')/update_mlp\": 0.000912, \"L0/('votes', 'f2p_UserId', 'users')/pred_mlp\": 0.000111, \"L0/('posts', 'rev_f2p_PostId', 'votes')/update_mlp\": 0.000179, \"L0/('posts', 'rev_f2p_PostId', 'votes')/pred_mlp\": 0.000109, \"L0/('votes', 'f2p_PostId', 'posts')/update_mlp\": 0.000352, \"L0/('votes', 'f2p_PostId', 'posts')/pred_mlp\": 0.000155, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/update_mlp\": 0.000257, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/pred_mlp\": 0.000182, \"L0/('postHistory', 'f2p_UserId', 'users')/update_mlp\": 0.000911, \"L0/('postHistory', 'f2p_UserId', 'users')/pred_mlp\": 0.000284, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/update_mlp\": 0.000265, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/pred_mlp\": 0.000193, \"L0/('postHistory', 'f2p_PostId', 'posts')/update_mlp\": 0.00036, \"L0/('postHistory', 'f2p_PostId', 'posts')/pred_mlp\": 0.000161, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/update_mlp\": 0.000312, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/pred_mlp\": 3.8e-05, \"L0/('postLinks', 'f2p_PostId', 'posts')/update_mlp\": 0.000324, \"L0/('postLinks', 'f2p_PostId', 'posts')/pred_mlp\": 6.9e-05, \"L0/('users', 'rev_f2p_UserId', 'badges')/update_mlp\": 0.000408, \"L0/('users', 'rev_f2p_UserId', 'badges')/pred_mlp\": 0.000287, \"L0/('badges', 'f2p_UserId', 'users')/update_mlp\": 0.000901, \"L0/('badges', 'f2p_UserId', 'users')/pred_mlp\": 0.000334, \"L0/('posts', 'rev_f2p_PostId', 'comments')/update_mlp\": 0.000393, \"L0/('posts', 'rev_f2p_PostId', 'comments')/pred_mlp\": 0.000274, \"L0/('comments', 'f2p_PostId', 'posts')/update_mlp\": 0.000302, \"L0/('comments', 'f2p_PostId', 'posts')/pred_mlp\": 0.000111, \"L0/('users', 'rev_f2p_UserId', 'comments')/update_mlp\": 0.000352, \"L0/('users', 'rev_f2p_UserId', 'comments')/pred_mlp\": 0.000247, \"L0/('comments', 'f2p_UserId', 'users')/update_mlp\": 0.000855, \"L0/('comments', 'f2p_UserId', 'users')/pred_mlp\": 0.000333}, \"embed_stats\": {\"mean_variance\": 0.099574, \"effective_rank\": 11.2917, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 0,
+          "predict_baseline": "",
+          "predict_our_method": "0.81703"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 10}",
+          "output": "{\"train_loss\": 0.171328, \"val_loss\": 0.133294, \"val_metric\": 0.829601, \"test_metric\": 0.5, \"prmp_r2\": {\"L0/('comments', 'f2p_UserId', 'users')\": -4.783734, \"L0/('users', 'rev_f2p_UserId', 'comments')\": -2.321604, \"L0/('comments', 'f2p_PostId', 'posts')\": -11.650612, \"L0/('posts', 'rev_f2p_PostId', 'comments')\": -4.810616, \"L0/('badges', 'f2p_UserId', 'users')\": -2.84619, \"L0/('users', 'rev_f2p_UserId', 'badges')\": -4.842813, \"L0/('postLinks', 'f2p_PostId', 'posts')\": -3.271925, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')\": 1.0, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')\": -24.028677, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": 1.0, \"L0/('postHistory', 'f2p_PostId', 'posts')\": -0.579629, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')\": -15.565636, \"L0/('postHistory', 'f2p_UserId', 'users')\": -1.038038, \"L0/('users', 'rev_f2p_UserId', 'postHistory')\": -6.712141, \"L0/('votes', 'f2p_PostId', 'posts')\": -39.575066, \"L0/('posts', 'rev_f2p_PostId', 'votes')\": -3.723122, \"L0/('votes', 'f2p_UserId', 'users')\": -49.043911, \"L0/('users', 'rev_f2p_UserId', 'votes')\": -3.154033, \"L0/('posts', 'f2p_OwnerUserId', 'users')\": -5.661349, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')\": -2.470989, \"L0/('posts', 'f2p_ParentId', 'posts')\": -14.736152, \"L0/('posts', 'rev_f2p_ParentId', 'posts')\": -18.047613, \"L1/('comments', 'f2p_UserId', 'users')\": -36.377895, \"L1/('users', 'rev_f2p_UserId', 'comments')\": -9.28847, \"L1/('comments', 'f2p_PostId', 'posts')\": -11.255312, \"L1/('posts', 'rev_f2p_PostId', 'comments')\": -1.016192, \"L1/('badges', 'f2p_UserId', 'users')\": -4.538547, \"L1/('users', 'rev_f2p_UserId', 'badges')\": -7.739999, \"L1/('postLinks', 'f2p_PostId', 'posts')\": -4.320297, \"L1/('posts', 'rev_f2p_PostId', 'postLinks')\": 1.0, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')\": -3.791287, \"L1/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": 1.0, \"L1/('postHistory', 'f2p_PostId', 'posts')\": -1.644537, \"L1/('posts', 'rev_f2p_PostId', 'postHistory')\": -1.44807, \"L1/('postHistory', 'f2p_UserId', 'users')\": -3.633641, \"L1/('users', 'rev_f2p_UserId', 'postHistory')\": -7.534977, \"L1/('votes', 'f2p_PostId', 'posts')\": -569.751038, \"L1/('posts', 'rev_f2p_PostId', 'votes')\": -1.038749, \"L1/('votes', 'f2p_UserId', 'users')\": -363.403625, \"L1/('users', 'rev_f2p_UserId', 'votes')\": -17.409805, \"L1/('posts', 'f2p_OwnerUserId', 'users')\": -1.169544, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')\": -6.891425, \"L1/('posts', 'f2p_ParentId', 'posts')\": -10.76986, \"L1/('posts', 'rev_f2p_ParentId', 'posts')\": -5.654483}, \"grad_norms\": {\"L1/('posts', 'f2p_OwnerUserId', 'users')/update_mlp\": 0.002981, \"L1/('posts', 'f2p_OwnerUserId', 'users')/pred_mlp\": 0.001712, \"L1/('votes', 'f2p_UserId', 'users')/update_mlp\": 0.003375, \"L1/('votes', 'f2p_UserId', 'users')/pred_mlp\": 0.000217, \"L1/('postHistory', 'f2p_UserId', 'users')/update_mlp\": 0.001946, \"L1/('postHistory', 'f2p_UserId', 'users')/pred_mlp\": 0.000347, \"L1/('badges', 'f2p_UserId', 'users')/update_mlp\": 0.002087, \"L1/('badges', 'f2p_UserId', 'users')/pred_mlp\": 0.000584, \"L1/('comments', 'f2p_UserId', 'users')/update_mlp\": 0.00285, \"L1/('comments', 'f2p_UserId', 'users')/pred_mlp\": 0.00044, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/update_mlp\": 0.000529, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/pred_mlp\": 9.8e-05, \"L0/('posts', 'f2p_ParentId', 'posts')/update_mlp\": 0.000517, \"L0/('posts', 'f2p_ParentId', 'posts')/pred_mlp\": 8.6e-05, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/update_mlp\": 0.000418, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/pred_mlp\": 0.000257, \"L0/('posts', 'f2p_OwnerUserId', 'users')/update_mlp\": 0.000632, \"L0/('posts', 'f2p_OwnerUserId', 'users')/pred_mlp\": 0.000194, \"L0/('users', 'rev_f2p_UserId', 'votes')/update_mlp\": 5.1e-05, \"L0/('users', 'rev_f2p_UserId', 'votes')/pred_mlp\": 2.9e-05, \"L0/('votes', 'f2p_UserId', 'users')/update_mlp\": 0.000807, \"L0/('votes', 'f2p_UserId', 'users')/pred_mlp\": 5.6e-05, \"L0/('posts', 'rev_f2p_PostId', 'votes')/update_mlp\": 4.6e-05, \"L0/('posts', 'rev_f2p_PostId', 'votes')/pred_mlp\": 2.8e-05, \"L0/('votes', 'f2p_PostId', 'posts')/update_mlp\": 0.000495, \"L0/('votes', 'f2p_PostId', 'posts')/pred_mlp\": 8.1e-05, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/update_mlp\": 6.6e-05, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/pred_mlp\": 2.6e-05, \"L0/('postHistory', 'f2p_UserId', 'users')/update_mlp\": 0.000838, \"L0/('postHistory', 'f2p_UserId', 'users')/pred_mlp\": 0.00018, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/update_mlp\": 6.6e-05, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/pred_mlp\": 3.3e-05, \"L0/('postHistory', 'f2p_PostId', 'posts')/update_mlp\": 0.000548, \"L0/('postHistory', 'f2p_PostId', 'posts')/pred_mlp\": 0.000162, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/update_mlp\": 0.00041, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/pred_mlp\": 5e-06, \"L0/('postLinks', 'f2p_PostId', 'posts')/update_mlp\": 0.000383, \"L0/('postLinks', 'f2p_PostId', 'posts')/pred_mlp\": 4.1e-05, \"L0/('users', 'rev_f2p_UserId', 'badges')/update_mlp\": 0.00011, \"L0/('users', 'rev_f2p_UserId', 'badges')/pred_mlp\": 4.9e-05, \"L0/('badges', 'f2p_UserId', 'users')/update_mlp\": 0.000722, \"L0/('badges', 'f2p_UserId', 'users')/pred_mlp\": 0.000147, \"L0/('posts', 'rev_f2p_PostId', 'comments')/update_mlp\": 0.000111, \"L0/('posts', 'rev_f2p_PostId', 'comments')/pred_mlp\": 8.7e-05, \"L0/('comments', 'f2p_PostId', 'posts')/update_mlp\": 0.000496, \"L0/('comments', 'f2p_PostId', 'posts')/pred_mlp\": 3.8e-05, \"L0/('users', 'rev_f2p_UserId', 'comments')/update_mlp\": 0.000107, \"L0/('users', 'rev_f2p_UserId', 'comments')/pred_mlp\": 7.4e-05, \"L0/('comments', 'f2p_UserId', 'users')/update_mlp\": 0.00064, \"L0/('comments', 'f2p_UserId', 'users')/pred_mlp\": 0.000117}, \"embed_stats\": {\"mean_variance\": 0.205927, \"effective_rank\": 17.4967, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 10,
+          "predict_baseline": "",
+          "predict_our_method": "0.829601"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 19}",
+          "output": "{\"train_loss\": 0.164335, \"val_loss\": 0.128749, \"val_metric\": 0.838437, \"test_metric\": 0.5, \"prmp_r2\": {\"L0/('comments', 'f2p_UserId', 'users')\": -0.859185, \"L0/('users', 'rev_f2p_UserId', 'comments')\": -1.971798, \"L0/('comments', 'f2p_PostId', 'posts')\": -8.351848, \"L0/('posts', 'rev_f2p_PostId', 'comments')\": -3.274702, \"L0/('badges', 'f2p_UserId', 'users')\": -2.03161, \"L0/('users', 'rev_f2p_UserId', 'badges')\": -3.991697, \"L0/('postLinks', 'f2p_PostId', 'posts')\": -3.143769, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')\": 1.0, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')\": -22.324268, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": 1.0, \"L0/('postHistory', 'f2p_PostId', 'posts')\": -0.400674, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')\": -11.491896, \"L0/('postHistory', 'f2p_UserId', 'users')\": -0.561373, \"L0/('users', 'rev_f2p_UserId', 'postHistory')\": -7.050538, \"L0/('votes', 'f2p_PostId', 'posts')\": -28.009752, \"L0/('posts', 'rev_f2p_PostId', 'votes')\": -7.343572, \"L0/('votes', 'f2p_UserId', 'users')\": -48.805332, \"L0/('users', 'rev_f2p_UserId', 'votes')\": -4.612469, \"L0/('posts', 'f2p_OwnerUserId', 'users')\": -4.034148, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')\": -1.818372, \"L0/('posts', 'f2p_ParentId', 'posts')\": -9.655419, \"L0/('posts', 'rev_f2p_ParentId', 'posts')\": -17.520107, \"L1/('comments', 'f2p_UserId', 'users')\": -26.476257, \"L1/('users', 'rev_f2p_UserId', 'comments')\": -6.410161, \"L1/('comments', 'f2p_PostId', 'posts')\": -6.198218, \"L1/('posts', 'rev_f2p_PostId', 'comments')\": -1.015688, \"L1/('badges', 'f2p_UserId', 'users')\": -3.797512, \"L1/('users', 'rev_f2p_UserId', 'badges')\": -6.318909, \"L1/('postLinks', 'f2p_PostId', 'posts')\": -4.943166, \"L1/('posts', 'rev_f2p_PostId', 'postLinks')\": 1.0, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')\": -3.683503, \"L1/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": 1.0, \"L1/('postHistory', 'f2p_PostId', 'posts')\": -1.155535, \"L1/('posts', 'rev_f2p_PostId', 'postHistory')\": -1.3001, \"L1/('postHistory', 'f2p_UserId', 'users')\": -2.443636, \"L1/('users', 'rev_f2p_UserId', 'postHistory')\": -6.360149, \"L1/('votes', 'f2p_PostId', 'posts')\": -469.856537, \"L1/('posts', 'rev_f2p_PostId', 'votes')\": -1.202153, \"L1/('votes', 'f2p_UserId', 'users')\": -840.386047, \"L1/('users', 'rev_f2p_UserId', 'votes')\": -9.987605, \"L1/('posts', 'f2p_OwnerUserId', 'users')\": -1.0544, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')\": -5.761846, \"L1/('posts', 'f2p_ParentId', 'posts')\": -13.550865, \"L1/('posts', 'rev_f2p_ParentId', 'posts')\": -6.751075}, \"grad_norms\": {\"L1/('posts', 'f2p_OwnerUserId', 'users')/update_mlp\": 0.003341, \"L1/('posts', 'f2p_OwnerUserId', 'users')/pred_mlp\": 0.002606, \"L1/('votes', 'f2p_UserId', 'users')/update_mlp\": 0.003213, \"L1/('votes', 'f2p_UserId', 'users')/pred_mlp\": 0.000154, \"L1/('postHistory', 'f2p_UserId', 'users')/update_mlp\": 0.001914, \"L1/('postHistory', 'f2p_UserId', 'users')/pred_mlp\": 0.00035, \"L1/('badges', 'f2p_UserId', 'users')/update_mlp\": 0.002386, \"L1/('badges', 'f2p_UserId', 'users')/pred_mlp\": 0.000672, \"L1/('comments', 'f2p_UserId', 'users')/update_mlp\": 0.002802, \"L1/('comments', 'f2p_UserId', 'users')/pred_mlp\": 0.000425, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/update_mlp\": 0.000548, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/pred_mlp\": 9e-05, \"L0/('posts', 'f2p_ParentId', 'posts')/update_mlp\": 0.000512, \"L0/('posts', 'f2p_ParentId', 'posts')/pred_mlp\": 8.8e-05, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/update_mlp\": 0.000384, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/pred_mlp\": 0.000238, \"L0/('posts', 'f2p_OwnerUserId', 'users')/update_mlp\": 0.000586, \"L0/('posts', 'f2p_OwnerUserId', 'users')/pred_mlp\": 0.000175, \"L0/('users', 'rev_f2p_UserId', 'votes')/update_mlp\": 2.2e-05, \"L0/('users', 'rev_f2p_UserId', 'votes')/pred_mlp\": 1.2e-05, \"L0/('votes', 'f2p_UserId', 'users')/update_mlp\": 0.000839, \"L0/('votes', 'f2p_UserId', 'users')/pred_mlp\": 4.7e-05, \"L0/('posts', 'rev_f2p_PostId', 'votes')/update_mlp\": 2.4e-05, \"L0/('posts', 'rev_f2p_PostId', 'votes')/pred_mlp\": 1.3e-05, \"L0/('votes', 'f2p_PostId', 'posts')/update_mlp\": 0.000579, \"L0/('votes', 'f2p_PostId', 'posts')/pred_mlp\": 7.3e-05, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/update_mlp\": 6.1e-05, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/pred_mlp\": 2.2e-05, \"L0/('postHistory', 'f2p_UserId', 'users')/update_mlp\": 0.000899, \"L0/('postHistory', 'f2p_UserId', 'users')/pred_mlp\": 0.000188, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/update_mlp\": 6.3e-05, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/pred_mlp\": 2.5e-05, \"L0/('postHistory', 'f2p_PostId', 'posts')/update_mlp\": 0.000494, \"L0/('postHistory', 'f2p_PostId', 'posts')/pred_mlp\": 0.000146, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/update_mlp\": 0.000394, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/pred_mlp\": 6e-06, \"L0/('postLinks', 'f2p_PostId', 'posts')/update_mlp\": 0.000308, \"L0/('postLinks', 'f2p_PostId', 'posts')/pred_mlp\": 2.1e-05, \"L0/('users', 'rev_f2p_UserId', 'badges')/update_mlp\": 8.3e-05, \"L0/('users', 'rev_f2p_UserId', 'badges')/pred_mlp\": 3.5e-05, \"L0/('badges', 'f2p_UserId', 'users')/update_mlp\": 0.000664, \"L0/('badges', 'f2p_UserId', 'users')/pred_mlp\": 0.00011, \"L0/('posts', 'rev_f2p_PostId', 'comments')/update_mlp\": 8.9e-05, \"L0/('posts', 'rev_f2p_PostId', 'comments')/pred_mlp\": 6.4e-05, \"L0/('comments', 'f2p_PostId', 'posts')/update_mlp\": 0.000447, \"L0/('comments', 'f2p_PostId', 'posts')/pred_mlp\": 3.6e-05, \"L0/('users', 'rev_f2p_UserId', 'comments')/update_mlp\": 8.2e-05, \"L0/('users', 'rev_f2p_UserId', 'comments')/pred_mlp\": 5.6e-05, \"L0/('comments', 'f2p_UserId', 'users')/update_mlp\": 0.000751, \"L0/('comments', 'f2p_UserId', 'users')/pred_mlp\": 0.000169}, \"embed_stats\": {\"mean_variance\": 0.199922, \"effective_rank\": 19.1061, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "classification",
+          "metadata_epoch": 19,
+          "predict_baseline": "",
+          "predict_our_method": "0.838437"
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\"}",
+          "output": "{\"best_val\": 0.077912, \"final_test\": 999.0, \"num_epochs\": 12, \"final_prmp_r2\": {}, \"final_embed_stats\": {}, \"training_time_s\": 43.4}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.077912",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 0}",
+          "output": "{\"prediction\": -0.002075, \"label\": 1.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "-0.002075",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 1}",
+          "output": "{\"prediction\": -0.006207, \"label\": 1.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "-0.006207",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 2}",
+          "output": "{\"prediction\": -0.005409, \"label\": 4.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "-0.005409",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 0.180743, \"val_loss\": 0.08274, \"val_metric\": 0.08274, \"test_metric\": 999.0, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {\"mean_variance\": 0.003905, \"effective_rank\": 11.8908, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 0,
+          "predict_baseline": "0.08274",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 6}",
+          "output": "{\"train_loss\": 0.105087, \"val_loss\": 0.082247, \"val_metric\": 0.082247, \"test_metric\": 999.0, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 6,
+          "predict_baseline": "0.082247",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 11}",
+          "output": "{\"train_loss\": 0.098365, \"val_loss\": 0.080072, \"val_metric\": 0.080072, \"test_metric\": 999.0, \"prmp_r2\": {}, \"grad_norms\": {}, \"embed_stats\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 11,
+          "predict_baseline": "0.080072",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\"}",
+          "output": "{\"best_val\": 0.075773, \"final_test\": 999.0, \"num_epochs\": 18, \"final_prmp_r2\": {\"L0/('comments', 'f2p_UserId', 'users')\": -14.554939, \"L0/('users', 'rev_f2p_UserId', 'comments')\": -13.888304, \"L0/('comments', 'f2p_PostId', 'posts')\": -15.042395, \"L0/('posts', 'rev_f2p_PostId', 'comments')\": -14.763803, \"L0/('badges', 'f2p_UserId', 'users')\": -23.036007, \"L0/('users', 'rev_f2p_UserId', 'badges')\": 1.0, \"L0/('postLinks', 'f2p_PostId', 'posts')\": -20.211164, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')\": -15.009995, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')\": -21.311937, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": -15.043585, \"L0/('postHistory', 'f2p_PostId', 'posts')\": -21.452719, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')\": -16.689514, \"L0/('postHistory', 'f2p_UserId', 'users')\": -20.808874, \"L0/('users', 'rev_f2p_UserId', 'postHistory')\": -14.202512, \"L0/('votes', 'f2p_PostId', 'posts')\": -17.551746, \"L0/('posts', 'rev_f2p_PostId', 'votes')\": -16.627029, \"L0/('votes', 'f2p_UserId', 'users')\": -15.959625, \"L0/('users', 'rev_f2p_UserId', 'votes')\": -15.13603, \"L0/('posts', 'f2p_OwnerUserId', 'users')\": -14.848093, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')\": -16.446808, \"L0/('posts', 'f2p_ParentId', 'posts')\": -14.034661, \"L0/('posts', 'rev_f2p_ParentId', 'posts')\": -14.542933, \"L1/('comments', 'f2p_UserId', 'users')\": -42.727066, \"L1/('users', 'rev_f2p_UserId', 'comments')\": -61.069221, \"L1/('comments', 'f2p_PostId', 'posts')\": -44.67643, \"L1/('posts', 'rev_f2p_PostId', 'comments')\": -86.969467, \"L1/('badges', 'f2p_UserId', 'users')\": -18.955818, \"L1/('users', 'rev_f2p_UserId', 'badges')\": 1.0, \"L1/('postLinks', 'f2p_PostId', 'posts')\": -327.865631, \"L1/('posts', 'rev_f2p_PostId', 'postLinks')\": -31.221703, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')\": -160.087265, \"L1/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": -27.717384, \"L1/('postHistory', 'f2p_PostId', 'posts')\": -58.857895, \"L1/('posts', 'rev_f2p_PostId', 'postHistory')\": -64.044159, \"L1/('postHistory', 'f2p_UserId', 'users')\": -45.66584, \"L1/('users', 'rev_f2p_UserId', 'postHistory')\": -81.590767, \"L1/('votes', 'f2p_PostId', 'posts')\": -29.682144, \"L1/('posts', 'rev_f2p_PostId', 'votes')\": -71.824501, \"L1/('votes', 'f2p_UserId', 'users')\": -62.033367, \"L1/('users', 'rev_f2p_UserId', 'votes')\": -154.469223, \"L1/('posts', 'f2p_OwnerUserId', 'users')\": -38.694805, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')\": -63.655365, \"L1/('posts', 'f2p_ParentId', 'posts')\": -104.766785, \"L1/('posts', 'rev_f2p_ParentId', 'posts')\": -74.640251}, \"final_embed_stats\": {}, \"training_time_s\": 110.2}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.075773"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 0}",
+          "output": "{\"prediction\": 0.00155, \"label\": 1.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.00155"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 1}",
+          "output": "{\"prediction\": 0.002778, \"label\": 1.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.002778"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"type\": \"test_instance\", \"instance_idx\": 2}",
+          "output": "{\"prediction\": 0.003183, \"label\": 4.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.003183"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 0.169669, \"val_loss\": 0.087942, \"val_metric\": 0.087942, \"test_metric\": 999.0, \"prmp_r2\": {\"L0/('comments', 'f2p_UserId', 'users')\": -11.661777, \"L0/('users', 'rev_f2p_UserId', 'comments')\": -11.819212, \"L0/('comments', 'f2p_PostId', 'posts')\": -12.896348, \"L0/('posts', 'rev_f2p_PostId', 'comments')\": -11.003166, \"L0/('badges', 'f2p_UserId', 'users')\": -20.907877, \"L0/('users', 'rev_f2p_UserId', 'badges')\": 1.0, \"L0/('postLinks', 'f2p_PostId', 'posts')\": -16.389477, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')\": -10.871075, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')\": -15.218054, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": -10.624973, \"L0/('postHistory', 'f2p_PostId', 'posts')\": -16.864246, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')\": -11.438797, \"L0/('postHistory', 'f2p_UserId', 'users')\": -16.243635, \"L0/('users', 'rev_f2p_UserId', 'postHistory')\": -12.507687, \"L0/('votes', 'f2p_PostId', 'posts')\": -16.248589, \"L0/('posts', 'rev_f2p_PostId', 'votes')\": -10.89987, \"L0/('votes', 'f2p_UserId', 'users')\": -15.151474, \"L0/('users', 'rev_f2p_UserId', 'votes')\": -16.399721, \"L0/('posts', 'f2p_OwnerUserId', 'users')\": -9.616973, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')\": -13.144989, \"L0/('posts', 'f2p_ParentId', 'posts')\": -10.683288, \"L0/('posts', 'rev_f2p_ParentId', 'posts')\": -10.590846, \"L1/('comments', 'f2p_UserId', 'users')\": -14.272742, \"L1/('users', 'rev_f2p_UserId', 'comments')\": -21.699543, \"L1/('comments', 'f2p_PostId', 'posts')\": -14.738518, \"L1/('posts', 'rev_f2p_PostId', 'comments')\": -44.828899, \"L1/('badges', 'f2p_UserId', 'users')\": -20.081648, \"L1/('users', 'rev_f2p_UserId', 'badges')\": 1.0, \"L1/('postLinks', 'f2p_PostId', 'posts')\": -89.043755, \"L1/('posts', 'rev_f2p_PostId', 'postLinks')\": -15.738993, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')\": -44.717014, \"L1/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": -15.428825, \"L1/('postHistory', 'f2p_PostId', 'posts')\": -24.287872, \"L1/('posts', 'rev_f2p_PostId', 'postHistory')\": -38.255222, \"L1/('postHistory', 'f2p_UserId', 'users')\": -17.357046, \"L1/('users', 'rev_f2p_UserId', 'postHistory')\": -29.028811, \"L1/('votes', 'f2p_PostId', 'posts')\": -18.775312, \"L1/('posts', 'rev_f2p_PostId', 'votes')\": -43.55661, \"L1/('votes', 'f2p_UserId', 'users')\": -29.649504, \"L1/('users', 'rev_f2p_UserId', 'votes')\": -72.246468, \"L1/('posts', 'f2p_OwnerUserId', 'users')\": -16.73041, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')\": -23.992674, \"L1/('posts', 'f2p_ParentId', 'posts')\": -55.407627, \"L1/('posts', 'rev_f2p_ParentId', 'posts')\": -43.248203}, \"grad_norms\": {\"L1/('posts', 'rev_f2p_ParentId', 'posts')/update_mlp\": 0.003402, \"L1/('posts', 'rev_f2p_ParentId', 'posts')/pred_mlp\": 0.0, \"L1/('posts', 'f2p_ParentId', 'posts')/update_mlp\": 0.004174, \"L1/('posts', 'f2p_ParentId', 'posts')/pred_mlp\": 0.001752, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')/update_mlp\": 0.003347, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')/pred_mlp\": 0.001659, \"L1/('votes', 'f2p_PostId', 'posts')/update_mlp\": 0.003416, \"L1/('votes', 'f2p_PostId', 'posts')/pred_mlp\": 0.001143, \"L1/('postHistory', 'f2p_PostId', 'posts')/update_mlp\": 0.004051, \"L1/('postHistory', 'f2p_PostId', 'posts')/pred_mlp\": 0.000945, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')/update_mlp\": 0.003826, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')/pred_mlp\": 0.000735, \"L1/('postLinks', 'f2p_PostId', 'posts')/update_mlp\": 0.003689, \"L1/('postLinks', 'f2p_PostId', 'posts')/pred_mlp\": 0.000761, \"L1/('comments', 'f2p_PostId', 'posts')/update_mlp\": 0.003646, \"L1/('comments', 'f2p_PostId', 'posts')/pred_mlp\": 0.000993, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/update_mlp\": 0.001545, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/pred_mlp\": 0.000533, \"L0/('posts', 'f2p_ParentId', 'posts')/update_mlp\": 0.001644, \"L0/('posts', 'f2p_ParentId', 'posts')/pred_mlp\": 0.000853, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/update_mlp\": 0.001745, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/pred_mlp\": 0.001263, \"L0/('posts', 'f2p_OwnerUserId', 'users')/update_mlp\": 0.000799, \"L0/('posts', 'f2p_OwnerUserId', 'users')/pred_mlp\": 0.00043, \"L0/('users', 'rev_f2p_UserId', 'votes')/update_mlp\": 0.00113, \"L0/('users', 'rev_f2p_UserId', 'votes')/pred_mlp\": 5.3e-05, \"L0/('votes', 'f2p_UserId', 'users')/update_mlp\": 0.000785, \"L0/('votes', 'f2p_UserId', 'users')/pred_mlp\": 0.000178, \"L0/('posts', 'rev_f2p_PostId', 'votes')/update_mlp\": 0.001343, \"L0/('posts', 'rev_f2p_PostId', 'votes')/pred_mlp\": 0.000943, \"L0/('votes', 'f2p_PostId', 'posts')/update_mlp\": 0.001779, \"L0/('votes', 'f2p_PostId', 'posts')/pred_mlp\": 0.000859, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/update_mlp\": 0.000747, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/pred_mlp\": 0.000495, \"L0/('postHistory', 'f2p_UserId', 'users')/update_mlp\": 0.000873, \"L0/('postHistory', 'f2p_UserId', 'users')/pred_mlp\": 0.000303, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/update_mlp\": 0.00081, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/pred_mlp\": 0.000559, \"L0/('postHistory', 'f2p_PostId', 'posts')/update_mlp\": 0.001683, \"L0/('postHistory', 'f2p_PostId', 'posts')/pred_mlp\": 0.000742, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')/update_mlp\": 0.00093, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')/pred_mlp\": 0.000674, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/update_mlp\": 0.001687, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/pred_mlp\": 0.000333, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')/update_mlp\": 0.000988, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')/pred_mlp\": 0.000644, \"L0/('postLinks', 'f2p_PostId', 'posts')/update_mlp\": 0.001626, \"L0/('postLinks', 'f2p_PostId', 'posts')/pred_mlp\": 0.000396, \"L0/('badges', 'f2p_UserId', 'users')/update_mlp\": 0.00088, \"L0/('badges', 'f2p_UserId', 'users')/pred_mlp\": 0.000398, \"L0/('posts', 'rev_f2p_PostId', 'comments')/update_mlp\": 0.000948, \"L0/('posts', 'rev_f2p_PostId', 'comments')/pred_mlp\": 0.000652, \"L0/('comments', 'f2p_PostId', 'posts')/update_mlp\": 0.001639, \"L0/('comments', 'f2p_PostId', 'posts')/pred_mlp\": 0.00065, \"L0/('users', 'rev_f2p_UserId', 'comments')/update_mlp\": 0.000983, \"L0/('users', 'rev_f2p_UserId', 'comments')/pred_mlp\": 0.000673, \"L0/('comments', 'f2p_UserId', 'users')/update_mlp\": 0.000815, \"L0/('comments', 'f2p_UserId', 'users')/pred_mlp\": 0.000314}, \"embed_stats\": {\"mean_variance\": 0.011874, \"effective_rank\": 11.8393, \"num_embeddings\": 512, \"embed_dim\": 64}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 0,
+          "predict_baseline": "",
+          "predict_our_method": "0.087942"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 9}",
+          "output": "{\"train_loss\": 0.098774, \"val_loss\": 0.082596, \"val_metric\": 0.082596, \"test_metric\": 999.0, \"prmp_r2\": {\"L0/('comments', 'f2p_UserId', 'users')\": -14.141062, \"L0/('users', 'rev_f2p_UserId', 'comments')\": -12.980595, \"L0/('comments', 'f2p_PostId', 'posts')\": -15.793839, \"L0/('posts', 'rev_f2p_PostId', 'comments')\": -14.213139, \"L0/('badges', 'f2p_UserId', 'users')\": -22.728231, \"L0/('users', 'rev_f2p_UserId', 'badges')\": 1.0, \"L0/('postLinks', 'f2p_PostId', 'posts')\": -20.570065, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')\": -13.253986, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')\": -19.035137, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": -13.598652, \"L0/('postHistory', 'f2p_PostId', 'posts')\": -21.387512, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')\": -16.249279, \"L0/('postHistory', 'f2p_UserId', 'users')\": -19.688217, \"L0/('users', 'rev_f2p_UserId', 'postHistory')\": -13.846488, \"L0/('votes', 'f2p_PostId', 'posts')\": -17.366917, \"L0/('posts', 'rev_f2p_PostId', 'votes')\": -15.209263, \"L0/('votes', 'f2p_UserId', 'users')\": -16.478559, \"L0/('users', 'rev_f2p_UserId', 'votes')\": -12.001847, \"L0/('posts', 'f2p_OwnerUserId', 'users')\": -13.193507, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')\": -15.205019, \"L0/('posts', 'f2p_ParentId', 'posts')\": -14.188948, \"L0/('posts', 'rev_f2p_ParentId', 'posts')\": -14.144471, \"L1/('comments', 'f2p_UserId', 'users')\": -31.830311, \"L1/('users', 'rev_f2p_UserId', 'comments')\": -45.110668, \"L1/('comments', 'f2p_PostId', 'posts')\": -34.879925, \"L1/('posts', 'rev_f2p_PostId', 'comments')\": -73.512489, \"L1/('badges', 'f2p_UserId', 'users')\": -19.619017, \"L1/('users', 'rev_f2p_UserId', 'badges')\": 1.0, \"L1/('postLinks', 'f2p_PostId', 'posts')\": -267.571808, \"L1/('posts', 'rev_f2p_PostId', 'postLinks')\": -25.639141, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')\": -115.414673, \"L1/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": -22.722044, \"L1/('postHistory', 'f2p_PostId', 'posts')\": -46.498398, \"L1/('posts', 'rev_f2p_PostId', 'postHistory')\": -59.089867, \"L1/('postHistory', 'f2p_UserId', 'users')\": -34.218178, \"L1/('users', 'rev_f2p_UserId', 'postHistory')\": -59.429745, \"L1/('votes', 'f2p_PostId', 'posts')\": -27.434877, \"L1/('posts', 'rev_f2p_PostId', 'votes')\": -67.273666, \"L1/('votes', 'f2p_UserId', 'users')\": -54.687584, \"L1/('users', 'rev_f2p_UserId', 'votes')\": -86.044823, \"L1/('posts', 'f2p_OwnerUserId', 'users')\": -33.048981, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')\": -47.338959, \"L1/('posts', 'f2p_ParentId', 'posts')\": -97.436089, \"L1/('posts', 'rev_f2p_ParentId', 'posts')\": -64.593842}, \"grad_norms\": {\"L1/('posts', 'rev_f2p_ParentId', 'posts')/update_mlp\": 0.00104, \"L1/('posts', 'rev_f2p_ParentId', 'posts')/pred_mlp\": 0.0, \"L1/('posts', 'f2p_ParentId', 'posts')/update_mlp\": 0.001466, \"L1/('posts', 'f2p_ParentId', 'posts')/pred_mlp\": 0.000499, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')/update_mlp\": 0.001127, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')/pred_mlp\": 0.000469, \"L1/('votes', 'f2p_PostId', 'posts')/update_mlp\": 0.001192, \"L1/('votes', 'f2p_PostId', 'posts')/pred_mlp\": 0.000351, \"L1/('postHistory', 'f2p_PostId', 'posts')/update_mlp\": 0.00133, \"L1/('postHistory', 'f2p_PostId', 'posts')/pred_mlp\": 0.00025, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')/update_mlp\": 0.001119, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')/pred_mlp\": 0.000113, \"L1/('postLinks', 'f2p_PostId', 'posts')/update_mlp\": 0.001189, \"L1/('postLinks', 'f2p_PostId', 'posts')/pred_mlp\": 0.000203, \"L1/('comments', 'f2p_PostId', 'posts')/update_mlp\": 0.001231, \"L1/('comments', 'f2p_PostId', 'posts')/pred_mlp\": 0.000257, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/update_mlp\": 9e-05, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/pred_mlp\": 1.9e-05, \"L0/('posts', 'f2p_ParentId', 'posts')/update_mlp\": 0.000108, \"L0/('posts', 'f2p_ParentId', 'posts')/pred_mlp\": 3.1e-05, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/update_mlp\": 0.000115, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/pred_mlp\": 4.9e-05, \"L0/('posts', 'f2p_OwnerUserId', 'users')/update_mlp\": 5.5e-05, \"L0/('posts', 'f2p_OwnerUserId', 'users')/pred_mlp\": 1.8e-05, \"L0/('users', 'rev_f2p_UserId', 'votes')/update_mlp\": 7.2e-05, \"L0/('users', 'rev_f2p_UserId', 'votes')/pred_mlp\": 3e-06, \"L0/('votes', 'f2p_UserId', 'users')/update_mlp\": 6e-05, \"L0/('votes', 'f2p_UserId', 'users')/pred_mlp\": 9e-06, \"L0/('posts', 'rev_f2p_PostId', 'votes')/update_mlp\": 9.4e-05, \"L0/('posts', 'rev_f2p_PostId', 'votes')/pred_mlp\": 4.1e-05, \"L0/('votes', 'f2p_PostId', 'posts')/update_mlp\": 0.000131, \"L0/('votes', 'f2p_PostId', 'posts')/pred_mlp\": 3.7e-05, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/update_mlp\": 6.6e-05, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/pred_mlp\": 3.2e-05, \"L0/('postHistory', 'f2p_UserId', 'users')/update_mlp\": 6.6e-05, \"L0/('postHistory', 'f2p_UserId', 'users')/pred_mlp\": 1.6e-05, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/update_mlp\": 6.3e-05, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/pred_mlp\": 2.6e-05, \"L0/('postHistory', 'f2p_PostId', 'posts')/update_mlp\": 0.000116, \"L0/('postHistory', 'f2p_PostId', 'posts')/pred_mlp\": 3.9e-05, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')/update_mlp\": 4.8e-05, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')/pred_mlp\": 2.3e-05, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/update_mlp\": 0.000104, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/pred_mlp\": 1e-05, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')/update_mlp\": 5.2e-05, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')/pred_mlp\": 2.2e-05, \"L0/('postLinks', 'f2p_PostId', 'posts')/update_mlp\": 0.00011, \"L0/('postLinks', 'f2p_PostId', 'posts')/pred_mlp\": 1.2e-05, \"L0/('badges', 'f2p_UserId', 'users')/update_mlp\": 6.4e-05, \"L0/('badges', 'f2p_UserId', 'users')/pred_mlp\": 1.9e-05, \"L0/('posts', 'rev_f2p_PostId', 'comments')/update_mlp\": 9.2e-05, \"L0/('posts', 'rev_f2p_PostId', 'comments')/pred_mlp\": 4.2e-05, \"L0/('comments', 'f2p_PostId', 'posts')/update_mlp\": 0.00012, \"L0/('comments', 'f2p_PostId', 'posts')/pred_mlp\": 2.9e-05, \"L0/('users', 'rev_f2p_UserId', 'comments')/update_mlp\": 7e-05, \"L0/('users', 'rev_f2p_UserId', 'comments')/pred_mlp\": 3e-05, \"L0/('comments', 'f2p_UserId', 'users')/update_mlp\": 5.4e-05, \"L0/('comments', 'f2p_UserId', 'users')/pred_mlp\": 1.3e-05}, \"embed_stats\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 9,
+          "predict_baseline": "",
+          "predict_our_method": "0.082596"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 17}",
+          "output": "{\"train_loss\": 0.097932, \"val_loss\": 0.07854, \"val_metric\": 0.07854, \"test_metric\": 999.0, \"prmp_r2\": {\"L0/('comments', 'f2p_UserId', 'users')\": -14.554939, \"L0/('users', 'rev_f2p_UserId', 'comments')\": -13.888304, \"L0/('comments', 'f2p_PostId', 'posts')\": -15.042395, \"L0/('posts', 'rev_f2p_PostId', 'comments')\": -14.763803, \"L0/('badges', 'f2p_UserId', 'users')\": -23.036007, \"L0/('users', 'rev_f2p_UserId', 'badges')\": 1.0, \"L0/('postLinks', 'f2p_PostId', 'posts')\": -20.211164, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')\": -15.009995, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')\": -21.311937, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": -15.043585, \"L0/('postHistory', 'f2p_PostId', 'posts')\": -21.452719, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')\": -16.689514, \"L0/('postHistory', 'f2p_UserId', 'users')\": -20.808874, \"L0/('users', 'rev_f2p_UserId', 'postHistory')\": -14.202512, \"L0/('votes', 'f2p_PostId', 'posts')\": -17.551746, \"L0/('posts', 'rev_f2p_PostId', 'votes')\": -16.627029, \"L0/('votes', 'f2p_UserId', 'users')\": -15.959625, \"L0/('users', 'rev_f2p_UserId', 'votes')\": -15.13603, \"L0/('posts', 'f2p_OwnerUserId', 'users')\": -14.848093, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')\": -16.446808, \"L0/('posts', 'f2p_ParentId', 'posts')\": -14.034661, \"L0/('posts', 'rev_f2p_ParentId', 'posts')\": -14.542933, \"L1/('comments', 'f2p_UserId', 'users')\": -42.727066, \"L1/('users', 'rev_f2p_UserId', 'comments')\": -61.069221, \"L1/('comments', 'f2p_PostId', 'posts')\": -44.67643, \"L1/('posts', 'rev_f2p_PostId', 'comments')\": -86.969467, \"L1/('badges', 'f2p_UserId', 'users')\": -18.955818, \"L1/('users', 'rev_f2p_UserId', 'badges')\": 1.0, \"L1/('postLinks', 'f2p_PostId', 'posts')\": -327.865631, \"L1/('posts', 'rev_f2p_PostId', 'postLinks')\": -31.221703, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')\": -160.087265, \"L1/('posts', 'rev_f2p_RelatedPostId', 'postLinks')\": -27.717384, \"L1/('postHistory', 'f2p_PostId', 'posts')\": -58.857895, \"L1/('posts', 'rev_f2p_PostId', 'postHistory')\": -64.044159, \"L1/('postHistory', 'f2p_UserId', 'users')\": -45.66584, \"L1/('users', 'rev_f2p_UserId', 'postHistory')\": -81.590767, \"L1/('votes', 'f2p_PostId', 'posts')\": -29.682144, \"L1/('posts', 'rev_f2p_PostId', 'votes')\": -71.824501, \"L1/('votes', 'f2p_UserId', 'users')\": -62.033367, \"L1/('users', 'rev_f2p_UserId', 'votes')\": -154.469223, \"L1/('posts', 'f2p_OwnerUserId', 'users')\": -38.694805, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')\": -63.655365, \"L1/('posts', 'f2p_ParentId', 'posts')\": -104.766785, \"L1/('posts', 'rev_f2p_ParentId', 'posts')\": -74.640251}, \"grad_norms\": {\"L1/('posts', 'rev_f2p_ParentId', 'posts')/update_mlp\": 0.000643, \"L1/('posts', 'rev_f2p_ParentId', 'posts')/pred_mlp\": 0.0, \"L1/('posts', 'f2p_ParentId', 'posts')/update_mlp\": 0.001079, \"L1/('posts', 'f2p_ParentId', 'posts')/pred_mlp\": 0.000346, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')/update_mlp\": 0.000837, \"L1/('users', 'rev_f2p_OwnerUserId', 'posts')/pred_mlp\": 0.000338, \"L1/('votes', 'f2p_PostId', 'posts')/update_mlp\": 0.000897, \"L1/('votes', 'f2p_PostId', 'posts')/pred_mlp\": 0.000266, \"L1/('postHistory', 'f2p_PostId', 'posts')/update_mlp\": 0.000981, \"L1/('postHistory', 'f2p_PostId', 'posts')/pred_mlp\": 0.000177, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')/update_mlp\": 0.000805, \"L1/('postLinks', 'f2p_RelatedPostId', 'posts')/pred_mlp\": 8e-05, \"L1/('postLinks', 'f2p_PostId', 'posts')/update_mlp\": 0.000863, \"L1/('postLinks', 'f2p_PostId', 'posts')/pred_mlp\": 0.000152, \"L1/('comments', 'f2p_PostId', 'posts')/update_mlp\": 0.000916, \"L1/('comments', 'f2p_PostId', 'posts')/pred_mlp\": 0.000192, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/update_mlp\": 5.9e-05, \"L0/('posts', 'rev_f2p_ParentId', 'posts')/pred_mlp\": 1.1e-05, \"L0/('posts', 'f2p_ParentId', 'posts')/update_mlp\": 6.8e-05, \"L0/('posts', 'f2p_ParentId', 'posts')/pred_mlp\": 2e-05, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/update_mlp\": 7.2e-05, \"L0/('users', 'rev_f2p_OwnerUserId', 'posts')/pred_mlp\": 2.9e-05, \"L0/('posts', 'f2p_OwnerUserId', 'users')/update_mlp\": 3.3e-05, \"L0/('posts', 'f2p_OwnerUserId', 'users')/pred_mlp\": 1e-05, \"L0/('users', 'rev_f2p_UserId', 'votes')/update_mlp\": 3.9e-05, \"L0/('users', 'rev_f2p_UserId', 'votes')/pred_mlp\": 1e-06, \"L0/('votes', 'f2p_UserId', 'users')/update_mlp\": 3.6e-05, \"L0/('votes', 'f2p_UserId', 'users')/pred_mlp\": 5e-06, \"L0/('posts', 'rev_f2p_PostId', 'votes')/update_mlp\": 5.5e-05, \"L0/('posts', 'rev_f2p_PostId', 'votes')/pred_mlp\": 2.3e-05, \"L0/('votes', 'f2p_PostId', 'posts')/update_mlp\": 7.9e-05, \"L0/('votes', 'f2p_PostId', 'posts')/pred_mlp\": 2.2e-05, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/update_mlp\": 4e-05, \"L0/('users', 'rev_f2p_UserId', 'postHistory')/pred_mlp\": 1.9e-05, \"L0/('postHistory', 'f2p_UserId', 'users')/update_mlp\": 3.9e-05, \"L0/('postHistory', 'f2p_UserId', 'users')/pred_mlp\": 9e-06, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/update_mlp\": 3.6e-05, \"L0/('posts', 'rev_f2p_PostId', 'postHistory')/pred_mlp\": 1.5e-05, \"L0/('postHistory', 'f2p_PostId', 'posts')/update_mlp\": 7e-05, \"L0/('postHistory', 'f2p_PostId', 'posts')/pred_mlp\": 2.2e-05, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')/update_mlp\": 3.2e-05, \"L0/('posts', 'rev_f2p_RelatedPostId', 'postLinks')/pred_mlp\": 1.5e-05, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/update_mlp\": 6e-05, \"L0/('postLinks', 'f2p_RelatedPostId', 'posts')/pred_mlp\": 6e-06, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')/update_mlp\": 3.5e-05, \"L0/('posts', 'rev_f2p_PostId', 'postLinks')/pred_mlp\": 1.5e-05, \"L0/('postLinks', 'f2p_PostId', 'posts')/update_mlp\": 6.7e-05, \"L0/('postLinks', 'f2p_PostId', 'posts')/pred_mlp\": 7e-06, \"L0/('badges', 'f2p_UserId', 'users')/update_mlp\": 3.9e-05, \"L0/('badges', 'f2p_UserId', 'users')/pred_mlp\": 1.1e-05, \"L0/('posts', 'rev_f2p_PostId', 'comments')/update_mlp\": 5.7e-05, \"L0/('posts', 'rev_f2p_PostId', 'comments')/pred_mlp\": 2.5e-05, \"L0/('comments', 'f2p_PostId', 'posts')/update_mlp\": 7.1e-05, \"L0/('comments', 'f2p_PostId', 'posts')/pred_mlp\": 1.6e-05, \"L0/('users', 'rev_f2p_UserId', 'comments')/update_mlp\": 4.4e-05, \"L0/('users', 'rev_f2p_UserId', 'comments')/pred_mlp\": 1.8e-05, \"L0/('comments', 'f2p_UserId', 'users')/update_mlp\": 3.4e-05, \"L0/('comments', 'f2p_UserId', 'users')/pred_mlp\": 8e-06}, \"embed_stats\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_task_type": "regression",
+          "metadata_epoch": 17,
+          "predict_baseline": "",
+          "predict_our_method": "0.07854"
+        },
+        {
+          "input": "{\"type\": \"cross_task_analysis\"}",
+          "output": "{\"per_task\": {\"rel-f1/driver-position\": {\"task_type\": \"regression\", \"metric\": \"mae\", \"standard\": 2.843577, \"prmp\": 2.815833, \"delta\": 0.027744, \"prmp_better\": true}, \"rel-f1/driver-dnf\": {\"task_type\": \"classification\", \"metric\": \"auroc\", \"standard\": 0.804771, \"prmp\": 0.803664, \"delta\": -0.001107, \"prmp_better\": false}, \"rel-f1/driver-top3\": {\"task_type\": \"classification\", \"metric\": \"auroc\", \"standard\": 0.907653, \"prmp\": 0.909014, \"delta\": 0.001362, \"prmp_better\": true}, \"rel-stack/user-engagement\": {\"task_type\": \"classification\", \"metric\": \"auroc\", \"standard\": 0.83063, \"prmp\": 0.841016, \"delta\": 0.010387, \"prmp_better\": true}, \"rel-stack/post-votes\": {\"task_type\": \"regression\", \"metric\": \"mae\", \"standard\": 0.077912, \"prmp\": 0.075773, \"delta\": 0.002139, \"prmp_better\": true}}, \"regression_deltas\": [0.027744, 0.002139], \"classification_deltas\": [-0.001107, 0.001362, 0.010387], \"regression_tasks\": [\"rel-f1/driver-position\", \"rel-stack/post-votes\"], \"classification_tasks\": [\"rel-f1/driver-dnf\", \"rel-f1/driver-top3\", \"rel-stack/user-engagement\"], \"regression_mean_delta\": 0.014941, \"classification_mean_delta\": 0.003547, \"reg_vs_cls_delta_diff\": 0.011394}",
+          "metadata_dataset": "all",
+          "metadata_task": "analysis",
+          "metadata_variant": "comparison",
+          "metadata_task_type": "analysis",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.003547",
+          "predict_our_method": "0.014941"
+        }
+      ]
+    }
+  ]
+}

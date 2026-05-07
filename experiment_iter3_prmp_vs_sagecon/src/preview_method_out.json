@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "method_name": "PRMP_vs_SAGEConv_RelBench",
+    "description": "Predictive Residual Message Passing (PRMP) benchmark against standard HeteroSAGEConv on RelBench rel-hm tasks",
+    "dataset": "rel-hm",
+    "tasks": [
+      "user-churn",
+      "item-sales"
+    ],
+    "variants": [
+      "standard",
+      "prmp",
+      "random_pred"
+    ],
+    "seeds": [
+      42,
+      123,
+      456
+    ],
+    "device": "cuda",
+    "gpu_name": "NVIDIA RTX A4500"
+  },
+  "datasets": [
+    {
+      "dataset": "rel_hm_fashion",
+      "examples": [
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 0, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 1.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 0,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.761169",
+          "predict_our_method": "0.784115",
+          "predict_ablation_random": "0.772793"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 1, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 1.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 1,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.836875",
+          "predict_our_method": "0.858649",
+          "predict_ablation_random": "0.845093"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 2, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 1.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 2,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.780301",
+          "predict_our_method": "0.77271",
+          "predict_ablation_random": "0.785505"
+        }
+      ]
+    }
+  ]
+}

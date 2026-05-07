@@ -1,0 +1,13 @@
+{
+  "id": "exp_id3_it4__opus",
+  "type": "code",
+  "title": "PRMP Task-Type Effect: Why PRMP Helps Regression but Not Classification (F1 + rel-stack Instrumented Comparison)",
+  "summary": "Demo notebook analyzing pre-computed PRMP experiment results across 5 RelBench tasks (2 datasets). Loads 71 curated examples from mini_demo_data.json covering epoch records, run summaries, test instances, and cross-task analysis. Visualizes PRMP improvement delta by task type (regression vs classification), training loss curves, embedding statistics, and summary comparisons. Confirms key finding: PRMP benefits regression more than classification.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_4/gen_art/exp_id3_it4__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it4__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it4__opus/method_code_demo.ipynb"
+}

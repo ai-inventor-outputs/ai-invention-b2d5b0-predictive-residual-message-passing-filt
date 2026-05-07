@@ -1,0 +1,371 @@
+{
+  "metadata": {
+    "method_name": "PRMP_vs_SAGEConv_RelBench",
+    "description": "Predictive Residual Message Passing (PRMP) benchmark against standard HeteroSAGEConv on RelBench rel-hm tasks",
+    "dataset": "rel-hm",
+    "tasks": [
+      "user-churn",
+      "item-sales"
+    ],
+    "variants": [
+      "standard",
+      "prmp",
+      "random_pred"
+    ],
+    "seeds": [
+      42,
+      123,
+      456
+    ],
+    "device": "cuda",
+    "gpu_name": "NVIDIA RTX A4500"
+  },
+  "datasets": [
+    {
+      "dataset": "rel_hm_fashion",
+      "examples": [
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 0, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 1.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 0,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.761169",
+          "predict_our_method": "0.784115",
+          "predict_ablation_random": "0.772793"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 3, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 0.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 3,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.732775",
+          "predict_our_method": "0.715773",
+          "predict_ablation_random": "0.742816"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 7, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 1.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 7,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.750924",
+          "predict_our_method": "0.748299",
+          "predict_ablation_random": "0.767253"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 11, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 0.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 11,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.805862",
+          "predict_our_method": "0.808972",
+          "predict_ablation_random": "0.822585"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 42, \"type\": \"run_summary\", \"metric\": \"auroc\", \"channels\": 64, \"num_layers\": 2, \"batch_size\": 512, \"num_neighbors\": [10, 5], \"max_epochs\": 15, \"lr\": 0.001}",
+          "output": "{\"eval_metrics\": {\"standard\": 0.5, \"prmp\": 0.5625, \"random_pred\": 0.5}, \"run_details\": {\"standard\": {\"best_val\": 0.61187, \"train_time_s\": 37.9, \"num_epochs\": 10, \"diagnostics\": {}}, \"prmp\": {\"best_val\": 0.611013, \"train_time_s\": 48.9, \"num_epochs\": 12, \"diagnostics\": {\"L0/transactions->customer\": {\"r2\": -0.0002, \"var_ratio\": 1.0002}, \"L0/customer->transactions\": {\"r2\": -0.0037, \"var_ratio\": 1.0037}, \"L0/article->transactions\": {\"r2\": -0.0001, \"var_ratio\": 1.0001}}}, \"random_pred\": {\"best_val\": 0.610313, \"train_time_s\": 39.1, \"num_epochs\": 10, \"diagnostics\": {\"L0/transactions->customer\": {\"r2\": -0.1171, \"var_ratio\": 1.1171}, \"L0/customer->transactions\": {\"r2\": -0.5386, \"var_ratio\": 1.5386}, \"L0/article->transactions\": {\"r2\": -0.2096, \"var_ratio\": 1.2096}}}}}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 42,
+          "metadata_instance_idx": -1,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.5",
+          "predict_our_method": "0.5625",
+          "predict_ablation_random": "0.5"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 123, \"test_instance_idx\": 0, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 1.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 123,
+          "metadata_instance_idx": 0,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.814953",
+          "predict_our_method": "0.803493",
+          "predict_ablation_random": "0.773333"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 123, \"test_instance_idx\": 3, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 0.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 123,
+          "metadata_instance_idx": 3,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.748959",
+          "predict_our_method": "0.705958",
+          "predict_ablation_random": "0.740309"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 123, \"test_instance_idx\": 7, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 1.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 123,
+          "metadata_instance_idx": 7,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.807181",
+          "predict_our_method": "0.77874",
+          "predict_ablation_random": "0.773478"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 123, \"test_instance_idx\": 11, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 0.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 123,
+          "metadata_instance_idx": 11,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.826806",
+          "predict_our_method": "0.845563",
+          "predict_ablation_random": "0.820248"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 123, \"type\": \"run_summary\", \"metric\": \"auroc\", \"channels\": 64, \"num_layers\": 2, \"batch_size\": 512, \"num_neighbors\": [10, 5], \"max_epochs\": 15, \"lr\": 0.001}",
+          "output": "{\"eval_metrics\": {\"standard\": 0.53125, \"prmp\": 0.53125, \"random_pred\": 0.53125}, \"run_details\": {\"standard\": {\"best_val\": 0.602449, \"train_time_s\": 44.7, \"num_epochs\": 12, \"diagnostics\": {}}, \"prmp\": {\"best_val\": 0.606419, \"train_time_s\": 52.7, \"num_epochs\": 13, \"diagnostics\": {\"L0/transactions->customer\": {\"r2\": 0.0004, \"var_ratio\": 0.9996}, \"L0/customer->transactions\": {\"r2\": -0.0103, \"var_ratio\": 1.0103}, \"L0/article->transactions\": {\"r2\": -0.0042, \"var_ratio\": 1.0042}}}, \"random_pred\": {\"best_val\": 0.605547, \"train_time_s\": 57.2, \"num_epochs\": 15, \"diagnostics\": {\"L0/transactions->customer\": {\"r2\": -0.0909, \"var_ratio\": 1.0909}, \"L0/customer->transactions\": {\"r2\": -0.5953, \"var_ratio\": 1.5953}, \"L0/article->transactions\": {\"r2\": -0.1293, \"var_ratio\": 1.1293}}}}}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 123,
+          "metadata_instance_idx": -1,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.53125",
+          "predict_our_method": "0.53125",
+          "predict_ablation_random": "0.53125"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 456, \"test_instance_idx\": 0, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 1.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 456,
+          "metadata_instance_idx": 0,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.790302",
+          "predict_our_method": "0.801757",
+          "predict_ablation_random": "0.770752"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 456, \"test_instance_idx\": 3, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 0.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 456,
+          "metadata_instance_idx": 3,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.728967",
+          "predict_our_method": "0.728258",
+          "predict_ablation_random": "0.66198"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 456, \"test_instance_idx\": 7, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 1.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 456,
+          "metadata_instance_idx": 7,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.768917",
+          "predict_our_method": "0.75717",
+          "predict_ablation_random": "0.759901"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 456, \"test_instance_idx\": 11, \"metric\": \"auroc\", \"task_type\": \"classification\"}",
+          "output": "{\"label\": 0.0}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 456,
+          "metadata_instance_idx": 11,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.851544",
+          "predict_our_method": "0.842363",
+          "predict_ablation_random": "0.838363"
+        },
+        {
+          "input": "{\"task\": \"user-churn\", \"dataset\": \"rel-hm\", \"seed\": 456, \"type\": \"run_summary\", \"metric\": \"auroc\", \"channels\": 64, \"num_layers\": 2, \"batch_size\": 512, \"num_neighbors\": [10, 5], \"max_epochs\": 15, \"lr\": 0.001}",
+          "output": "{\"eval_metrics\": {\"standard\": 0.53125, \"prmp\": 0.5625, \"random_pred\": 0.59375}, \"run_details\": {\"standard\": {\"best_val\": 0.612833, \"train_time_s\": 55.3, \"num_epochs\": 15, \"diagnostics\": {}}, \"prmp\": {\"best_val\": 0.611236, \"train_time_s\": 60.0, \"num_epochs\": 15, \"diagnostics\": {\"L0/transactions->customer\": {\"r2\": 0.0006, \"var_ratio\": 0.9994}, \"L0/customer->transactions\": {\"r2\": -0.2458, \"var_ratio\": 1.2458}, \"L0/article->transactions\": {\"r2\": -0.0007, \"var_ratio\": 1.0007}}}, \"random_pred\": {\"best_val\": 0.6122, \"train_time_s\": 56.3, \"num_epochs\": 15, \"diagnostics\": {\"L0/transactions->customer\": {\"r2\": -0.0731, \"var_ratio\": 1.0731}, \"L0/customer->transactions\": {\"r2\": -0.5664, \"var_ratio\": 1.5664}, \"L0/article->transactions\": {\"r2\": -0.1505, \"var_ratio\": 1.1505}}}}}",
+          "metadata_task": "user-churn",
+          "metadata_seed": 456,
+          "metadata_instance_idx": -1,
+          "metadata_metric": "auroc",
+          "predict_baseline": "0.53125",
+          "predict_our_method": "0.5625",
+          "predict_ablation_random": "0.59375"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 0, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 26.022051}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 0,
+          "metadata_metric": "mae",
+          "predict_baseline": "2.181983",
+          "predict_our_method": "2.516138",
+          "predict_ablation_random": "2.467577"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 3, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 0.085864}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 3,
+          "metadata_metric": "mae",
+          "predict_baseline": "0.042597",
+          "predict_our_method": "0.018438",
+          "predict_ablation_random": "0.022415"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 7, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 3.45978}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 7,
+          "metadata_metric": "mae",
+          "predict_baseline": "2.174443",
+          "predict_our_method": "2.520411",
+          "predict_ablation_random": "2.471886"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 42, \"test_instance_idx\": 11, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 1.756186}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 42,
+          "metadata_instance_idx": 11,
+          "metadata_metric": "mae",
+          "predict_baseline": "0.745801",
+          "predict_our_method": "0.988751",
+          "predict_ablation_random": "0.642882"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 42, \"type\": \"run_summary\", \"metric\": \"mae\", \"channels\": 64, \"num_layers\": 2, \"batch_size\": 512, \"num_neighbors\": [10, 5], \"max_epochs\": 15, \"lr\": 0.001}",
+          "output": "{\"eval_metrics\": {\"standard\": 4.914015, \"prmp\": 4.778648, \"random_pred\": 4.873093}, \"run_details\": {\"standard\": {\"best_val\": 0.305055, \"train_time_s\": 55.7, \"num_epochs\": 14, \"diagnostics\": {}}, \"prmp\": {\"best_val\": 0.298642, \"train_time_s\": 59.4, \"num_epochs\": 15, \"diagnostics\": {\"L0/customer->transactions\": {\"r2\": -0.1885, \"var_ratio\": 1.1885}, \"L0/transactions->article\": {\"r2\": -0.1214, \"var_ratio\": 1.1214}, \"L0/article->transactions\": {\"r2\": -0.5983, \"var_ratio\": 1.5983}}}, \"random_pred\": {\"best_val\": 0.306963, \"train_time_s\": 56.8, \"num_epochs\": 15, \"diagnostics\": {\"L0/customer->transactions\": {\"r2\": -7.581, \"var_ratio\": 8.581}, \"L0/transactions->article\": {\"r2\": -0.0712, \"var_ratio\": 1.0712}, \"L0/article->transactions\": {\"r2\": -1.3205, \"var_ratio\": 2.3205}}}}}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 42,
+          "metadata_instance_idx": -1,
+          "metadata_metric": "mae",
+          "predict_baseline": "4.914015",
+          "predict_our_method": "4.778648",
+          "predict_ablation_random": "4.873093"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 123, \"test_instance_idx\": 0, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 26.022051}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 123,
+          "metadata_instance_idx": 0,
+          "metadata_metric": "mae",
+          "predict_baseline": "2.721473",
+          "predict_our_method": "2.451809",
+          "predict_ablation_random": "2.398381"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 123, \"test_instance_idx\": 3, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 0.085864}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 123,
+          "metadata_instance_idx": 3,
+          "metadata_metric": "mae",
+          "predict_baseline": "0.022444",
+          "predict_our_method": "0.029802",
+          "predict_ablation_random": "0.023567"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 123, \"test_instance_idx\": 7, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 3.45978}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 123,
+          "metadata_instance_idx": 7,
+          "metadata_metric": "mae",
+          "predict_baseline": "3.07726",
+          "predict_our_method": "2.537005",
+          "predict_ablation_random": "2.416748"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 123, \"test_instance_idx\": 11, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 1.756186}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 123,
+          "metadata_instance_idx": 11,
+          "metadata_metric": "mae",
+          "predict_baseline": "0.732778",
+          "predict_our_method": "0.730293",
+          "predict_ablation_random": "0.487446"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 123, \"type\": \"run_summary\", \"metric\": \"mae\", \"channels\": 64, \"num_layers\": 2, \"batch_size\": 512, \"num_neighbors\": [10, 5], \"max_epochs\": 15, \"lr\": 0.001}",
+          "output": "{\"eval_metrics\": {\"standard\": 4.686013, \"prmp\": 4.74401, \"random_pred\": 4.858595}, \"run_details\": {\"standard\": {\"best_val\": 0.299382, \"train_time_s\": 57.9, \"num_epochs\": 15, \"diagnostics\": {}}, \"prmp\": {\"best_val\": 0.300371, \"train_time_s\": 60.7, \"num_epochs\": 15, \"diagnostics\": {\"L0/customer->transactions\": {\"r2\": -0.0317, \"var_ratio\": 1.0317}, \"L0/transactions->article\": {\"r2\": -0.2037, \"var_ratio\": 1.2037}, \"L0/article->transactions\": {\"r2\": -0.5572, \"var_ratio\": 1.5572}}}, \"random_pred\": {\"best_val\": 0.305927, \"train_time_s\": 56.4, \"num_epochs\": 15, \"diagnostics\": {\"L0/customer->transactions\": {\"r2\": -5.3299, \"var_ratio\": 6.3299}, \"L0/transactions->article\": {\"r2\": -0.0519, \"var_ratio\": 1.0519}, \"L0/article->transactions\": {\"r2\": -1.56, \"var_ratio\": 2.56}}}}}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 123,
+          "metadata_instance_idx": -1,
+          "metadata_metric": "mae",
+          "predict_baseline": "4.686013",
+          "predict_our_method": "4.74401",
+          "predict_ablation_random": "4.858595"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 456, \"test_instance_idx\": 0, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 26.022051}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 456,
+          "metadata_instance_idx": 0,
+          "metadata_metric": "mae",
+          "predict_baseline": "2.874027",
+          "predict_our_method": "2.172797",
+          "predict_ablation_random": "2.477561"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 456, \"test_instance_idx\": 3, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 0.085864}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 456,
+          "metadata_instance_idx": 3,
+          "metadata_metric": "mae",
+          "predict_baseline": "-0.014149",
+          "predict_our_method": "0.015556",
+          "predict_ablation_random": "0.023822"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 456, \"test_instance_idx\": 7, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 3.45978}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 456,
+          "metadata_instance_idx": 7,
+          "metadata_metric": "mae",
+          "predict_baseline": "2.892413",
+          "predict_our_method": "2.227317",
+          "predict_ablation_random": "2.520063"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 456, \"test_instance_idx\": 11, \"metric\": \"mae\", \"task_type\": \"regression\"}",
+          "output": "{\"label\": 1.756186}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 456,
+          "metadata_instance_idx": 11,
+          "metadata_metric": "mae",
+          "predict_baseline": "1.028884",
+          "predict_our_method": "0.437801",
+          "predict_ablation_random": "0.709547"
+        },
+        {
+          "input": "{\"task\": \"item-sales\", \"dataset\": \"rel-hm\", \"seed\": 456, \"type\": \"run_summary\", \"metric\": \"mae\", \"channels\": 64, \"num_layers\": 2, \"batch_size\": 512, \"num_neighbors\": [10, 5], \"max_epochs\": 15, \"lr\": 0.001}",
+          "output": "{\"eval_metrics\": {\"standard\": 4.615858, \"prmp\": 5.024019, \"random_pred\": 4.830264}, \"run_details\": {\"standard\": {\"best_val\": 0.31039, \"train_time_s\": 58.3, \"num_epochs\": 15, \"diagnostics\": {}}, \"prmp\": {\"best_val\": 0.314982, \"train_time_s\": 60.0, \"num_epochs\": 15, \"diagnostics\": {\"L0/customer->transactions\": {\"r2\": -3.3541, \"var_ratio\": 4.3541}, \"L0/transactions->article\": {\"r2\": -0.4581, \"var_ratio\": 1.4581}, \"L0/article->transactions\": {\"r2\": -0.6543, \"var_ratio\": 1.6543}}}, \"random_pred\": {\"best_val\": 0.304454, \"train_time_s\": 57.1, \"num_epochs\": 15, \"diagnostics\": {\"L0/customer->transactions\": {\"r2\": -1.6341, \"var_ratio\": 2.6341}, \"L0/transactions->article\": {\"r2\": -0.0628, \"var_ratio\": 1.0628}, \"L0/article->transactions\": {\"r2\": -0.5058, \"var_ratio\": 1.5058}}}}}",
+          "metadata_task": "item-sales",
+          "metadata_seed": 456,
+          "metadata_instance_idx": -1,
+          "metadata_metric": "mae",
+          "predict_baseline": "4.615858",
+          "predict_our_method": "5.024019",
+          "predict_ablation_random": "4.830264"
+        },
+        {
+          "input": "{\"type\": \"aggregate_summary\", \"dataset\": \"rel-hm\", \"tasks\": [\"user-churn\", \"item-sales\"], \"variants\": [\"standard\", \"prmp\", \"random_pred\"], \"seeds\": [42, 123, 456]}",
+          "output": "{\"aggregate\": {\"user-churn\": {\"standard\": {\"mean\": 0.5208, \"std\": 0.0147, \"values\": [0.5, 0.53125, 0.53125], \"n\": 3}, \"prmp\": {\"mean\": 0.5521, \"std\": 0.0147, \"values\": [0.5625, 0.53125, 0.5625], \"n\": 3}, \"random_pred\": {\"mean\": 0.5417, \"std\": 0.039, \"values\": [0.5, 0.53125, 0.59375], \"n\": 3}, \"prmp_vs_standard\": {\"delta\": 0.0312, \"t_stat\": 1.7321, \"p_value\": 0.2254}, \"random_pred_vs_standard\": {\"delta\": 0.0208, \"t_stat\": 1.0, \"p_value\": 0.4226}, \"published_ref\": {\"metric\": \"auroc\", \"graphsage\": 69.88}}, \"item-sales\": {\"standard\": {\"mean\": 4.7386, \"std\": 0.1273, \"values\": [4.914015, 4.686013, 4.615858], \"n\": 3}, \"prmp\": {\"mean\": 4.8489, \"std\": 0.1246, \"values\": [4.778648, 4.74401, 5.024019], \"n\": 3}, \"random_pred\": {\"mean\": 4.854, \"std\": 0.0178, \"values\": [4.873093, 4.858595, 4.830264], \"n\": 3}, \"prmp_vs_standard\": {\"delta\": 0.1103, \"t_stat\": 0.6932, \"p_value\": 0.5599}, \"random_pred_vs_standard\": {\"delta\": 0.1154, \"t_stat\": 1.459, \"p_value\": 0.282}, \"published_ref\": {\"metric\": \"mae\", \"graphsage\": 0.056}}}, \"data_info\": {\"node_types\": [\"article\", \"customer\", \"transactions\"], \"edge_types\": [\"('transactions', 'f2p_customer_id', 'customer')\", \"('customer', 'rev_f2p_customer_id', 'transactions')\", \"('transactions', 'f2p_article_id', 'article')\", \"('article', 'rev_f2p_article_id', 'transactions')\"], \"num_nodes\": {\"article\": 105542, \"customer\": 1371980, \"transactions\": 15187287}}, \"hyperparameters\": {\"channels\": 64, \"num_layers\": 2, \"batch_size\": 512, \"num_neighbors\": [10, 5], \"max_epochs\": 15, \"patience\": 5, \"lr\": 0.001}}",
+          "metadata_task": "aggregate",
+          "metadata_seed": 0,
+          "metadata_instance_idx": -1,
+          "metadata_metric": "summary",
+          "predict_baseline": "{'user-churn': 0.5208, 'item-sales': 4.7386}",
+          "predict_our_method": "{'user-churn': 0.5521, 'item-sales': 4.8489}",
+          "predict_ablation_random": "{'user-churn': 0.5417, 'item-sales': 4.854}"
+        }
+      ]
+    }
+  ]
+}

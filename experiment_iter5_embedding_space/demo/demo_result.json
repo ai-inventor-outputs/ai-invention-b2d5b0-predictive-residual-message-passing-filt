@@ -1,0 +1,13 @@
+{
+  "id": "exp_id3_it5__opus",
+  "type": "code",
+  "title": "Embedding-Space Cross-Table Predictability on rel-stack: Third Dataset for Revised Regime Theory",
+  "summary": "Demo notebook for the embedding-space cross-table predictability experiment on the rel-stack (Stack Exchange) dataset. Defines Standard and PRMP HeteroSAGEConv architectures, loads pre-computed results, and visualizes training curves, R\u00b2 trajectories, and task performance. Shows PRMP significantly outperforms Standard on post-votes regression (MAE 0.073 vs 0.564) and user-engagement classification (AUROC 0.767 vs 0.505). Mini data JSON contains raw-feature baselines, per-epoch training metrics, and embedding R\u00b2 trajectories across all table edges.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_5/gen_art/exp_id3_it5__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it5__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it5__opus/method_code_demo.ipynb"
+}

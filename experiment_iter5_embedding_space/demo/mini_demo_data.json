@@ -1,0 +1,3137 @@
+{
+  "metadata": {
+    "method_name": "Embedding_Space_Cross_Table_Predictability_RelStack",
+    "description": "Embedding-space cross-table predictability on rel-stack. Trains Standard and PRMP HeteroGNN, measures R\u00b2 trajectories. Tests revised regime theory: low embedding R\u00b2 -> PRMP doesn't help.",
+    "dataset": "rel-stack",
+    "model_config": {
+      "channels": 48,
+      "num_layers": 2,
+      "num_epochs": 30,
+      "lr": 0.003,
+      "checkpoint_every": 15
+    },
+    "gpu_used": true,
+    "device": "cuda",
+    "raw_feature_baseline": {
+      "rel-stack/badges__UserId__users": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 2,
+        "parent_table": "users",
+        "child_table": "badges",
+        "cardinality_mean": 3.2703
+      },
+      "rel-stack/postLinks__PostId__posts": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "posts",
+        "child_table": "postLinks",
+        "cardinality_mean": 1.6174
+      },
+      "rel-stack/postLinks__RelatedPostId__posts": {
+        "ridge_r2": 0.000104,
+        "rf_r2": 2.9e-05,
+        "mi": 0.004282,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "posts",
+        "child_table": "postLinks",
+        "cardinality_mean": 3.041
+      },
+      "rel-stack/postHistory__PostId__posts": {
+        "ridge_r2": 0.0062,
+        "rf_r2": 0.006631,
+        "mi": 0.202308,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "posts",
+        "child_table": "postHistory",
+        "cardinality_mean": 3.5202
+      },
+      "rel-stack/postHistory__UserId__users": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "users",
+        "child_table": "postHistory",
+        "cardinality_mean": 12.947
+      },
+      "rel-stack/votes__PostId__posts": {
+        "ridge_r2": -0.006537,
+        "rf_r2": 0.093963,
+        "mi": 0.02941,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "posts",
+        "child_table": "votes",
+        "cardinality_mean": 4.3368
+      },
+      "rel-stack/votes__UserId__users": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "users",
+        "child_table": "votes",
+        "cardinality_mean": 1.987
+      },
+      "rel-stack/posts__OwnerUserId__users": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "users",
+        "child_table": "posts",
+        "cardinality_mean": 3.9041
+      },
+      "rel-stack/posts__ParentId__posts": {
+        "ridge_r2": 0.0,
+        "rf_r2": 0.0,
+        "mi": 0.0,
+        "parent_dim": 1,
+        "child_dim": 1,
+        "parent_table": "posts",
+        "child_table": "posts",
+        "cardinality_mean": 1.4507
+      }
+    },
+    "embedding_predictability": {
+      "post-votes/standard": {
+        "users_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -8.804357
+            ],
+            "rf_r2": [
+              0.040587
+            ],
+            "mi": [
+              0.001259
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -40.766945
+            ],
+            "rf_r2": [
+              0.039919
+            ],
+            "mi": [
+              0.001337
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              -0.201322,
+              -16.81914,
+              -1.027504
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.035789
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.001291
+            ]
+          }
+        },
+        "comments_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.315389
+            ],
+            "rf_r2": [
+              0.179584
+            ],
+            "mi": [
+              0.013203
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.027224
+            ],
+            "rf_r2": [
+              0.066237
+            ],
+            "mi": [
+              0.00438
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.017509,
+              0.000339,
+              0.001805
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.004444
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.001128
+            ]
+          }
+        },
+        "comments_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_badges": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -0.905804
+            ],
+            "rf_r2": [
+              0.007756
+            ],
+            "mi": [
+              0.019041
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -1.315694
+            ],
+            "rf_r2": [
+              0.00926
+            ],
+            "mi": [
+              0.018513
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              -0.404515,
+              -1.020687,
+              -0.065062
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.012133
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.018059
+            ]
+          }
+        },
+        "badges_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postLinks": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.036163
+            ],
+            "rf_r2": [
+              -0.000458
+            ],
+            "mi": [
+              0.004178
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.006491
+            ],
+            "rf_r2": [
+              0.000471
+            ],
+            "mi": [
+              0.00359
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.006204,
+              -0.008502,
+              -0.006946
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              -0.014993
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.002553
+            ]
+          }
+        },
+        "postLinks_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.539042
+            ],
+            "rf_r2": [
+              0.310564
+            ],
+            "mi": [
+              0.049837
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.045472
+            ],
+            "rf_r2": [
+              0.098135
+            ],
+            "mi": [
+              0.009266
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.016593,
+              -0.000101,
+              0.009401
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.031677
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.004766
+            ]
+          }
+        },
+        "postHistory_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -482.916316
+            ],
+            "rf_r2": [
+              0.099148
+            ],
+            "mi": [
+              0.044607
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -12.926652
+            ],
+            "rf_r2": [
+              0.09661
+            ],
+            "mi": [
+              0.042196
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              -169.241002,
+              -6.909068,
+              -0.162093
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.09955
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.043678
+            ]
+          }
+        },
+        "postHistory_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.143805
+            ],
+            "rf_r2": [
+              0.049269
+            ],
+            "mi": [
+              0.037484
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.012777
+            ],
+            "rf_r2": [
+              0.005847
+            ],
+            "mi": [
+              0.05967
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.025491,
+              -0.00842,
+              -0.001784
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              -0.009701
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.067307
+            ]
+          }
+        },
+        "votes_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -89.212482
+            ],
+            "rf_r2": [
+              0.133358
+            ],
+            "mi": [
+              0.075524
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -318.901103
+            ],
+            "rf_r2": [
+              0.133147
+            ],
+            "mi": [
+              0.076482
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              -6.49912,
+              -207.136964,
+              -2.216401
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.134569
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.076808
+            ]
+          }
+        },
+        "votes_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_posts": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -727.025106
+            ],
+            "rf_r2": [
+              0.051995
+            ],
+            "mi": [
+              0.001903
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -5.314745
+            ],
+            "rf_r2": [
+              -0.015358
+            ],
+            "mi": [
+              0.018652
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              -2.288197,
+              -0.355535,
+              -4.677728
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.212083
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.019539
+            ]
+          }
+        },
+        "posts_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        }
+      },
+      "post-votes/prmp": {
+        "users_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -3.819802
+            ],
+            "rf_r2": [
+              0.061097
+            ],
+            "mi": [
+              0.002235
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.036839
+            ],
+            "rf_r2": [
+              0.069152
+            ],
+            "mi": [
+              0.004983
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.002505,
+              0.016878,
+              0.030367
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.044205
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.0033
+            ]
+          }
+        },
+        "comments_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.51949
+            ],
+            "rf_r2": [
+              0.27752
+            ],
+            "mi": [
+              0.022455
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.179014
+            ],
+            "rf_r2": [
+              0.139897
+            ],
+            "mi": [
+              0.012545
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.092595,
+              0.04998,
+              0.056494
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.094801
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.008573
+            ]
+          }
+        },
+        "comments_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_badges": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -0.905804
+            ],
+            "rf_r2": [
+              0.007756
+            ],
+            "mi": [
+              0.019041
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.115791
+            ],
+            "rf_r2": [
+              0.121398
+            ],
+            "mi": [
+              0.02978
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.033923,
+              0.043423,
+              0.058974
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.084135
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.021219
+            ]
+          }
+        },
+        "badges_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postLinks": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.018016
+            ],
+            "rf_r2": [
+              -0.006869
+            ],
+            "mi": [
+              0.003323
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.011931
+            ],
+            "rf_r2": [
+              -0.00546
+            ],
+            "mi": [
+              0.00558
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.054771,
+              0.024227,
+              0.02536
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.002679
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.003193
+            ]
+          }
+        },
+        "postLinks_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.472147
+            ],
+            "rf_r2": [
+              0.33366
+            ],
+            "mi": [
+              0.04955
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.153379
+            ],
+            "rf_r2": [
+              0.122842
+            ],
+            "mi": [
+              0.012431
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.055842,
+              0.061943,
+              0.05869
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.072215
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.011673
+            ]
+          }
+        },
+        "postHistory_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -5.287655
+            ],
+            "rf_r2": [
+              0.089928
+            ],
+            "mi": [
+              0.048382
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.079534
+            ],
+            "rf_r2": [
+              0.123185
+            ],
+            "mi": [
+              0.0574
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.069705,
+              0.086231,
+              0.074258
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.074668
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.04323
+            ]
+          }
+        },
+        "postHistory_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.200296
+            ],
+            "rf_r2": [
+              0.097584
+            ],
+            "mi": [
+              0.043386
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.045358
+            ],
+            "rf_r2": [
+              0.017544
+            ],
+            "mi": [
+              0.050662
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.007204,
+              0.012012,
+              0.015204
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.022492
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.051078
+            ]
+          }
+        },
+        "votes_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -56.849274
+            ],
+            "rf_r2": [
+              0.124699
+            ],
+            "mi": [
+              0.097058
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.081217
+            ],
+            "rf_r2": [
+              0.132101
+            ],
+            "mi": [
+              0.060758
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.039565,
+              0.07195,
+              0.094259
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.078155
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.060587
+            ]
+          }
+        },
+        "votes_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_posts": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -647.03875
+            ],
+            "rf_r2": [
+              0.041063
+            ],
+            "mi": [
+              0.008205
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.00556
+            ],
+            "rf_r2": [
+              -0.006922
+            ],
+            "mi": [
+              0.039576
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.256736,
+              0.224701,
+              0.177592
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.16604
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.121968
+            ]
+          }
+        },
+        "posts_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        }
+      },
+      "user-engagement/standard": {
+        "users_to_comments": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              -0.074763,
+              -123.177944
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "comments_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_comments": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              0.027723,
+              0.130242
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "comments_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_badges": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              -0.292207,
+              -1.728799
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "badges_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postLinks": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              0.018092,
+              0.016461
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "postLinks_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postHistory": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              0.08704,
+              0.084031
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "postHistory_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_postHistory": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              -0.127997,
+              -27.03478
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "postHistory_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_votes": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              0.026782,
+              -0.015598
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "votes_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_votes": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              -3.303419,
+              -61.683956
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "votes_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15
+            ],
+            "ridge_r2": [
+              -0.414068,
+              -11.661657
+            ],
+            "rf_r2": [
+              0.0,
+              0.0
+            ],
+            "mi": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "posts_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        }
+      },
+      "user-engagement/prmp": {
+        "users_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -2.509572
+            ],
+            "rf_r2": [
+              0.047538
+            ],
+            "mi": [
+              0.003812
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.033316
+            ],
+            "rf_r2": [
+              0.056116
+            ],
+            "mi": [
+              0.003494
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.008311,
+              0.01444,
+              0.010743
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.028163
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.002002
+            ]
+          }
+        },
+        "comments_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_comments": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.483005
+            ],
+            "rf_r2": [
+              0.249142
+            ],
+            "mi": [
+              0.012636
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.108404
+            ],
+            "rf_r2": [
+              0.12183
+            ],
+            "mi": [
+              0.00686
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.095221,
+              0.143729,
+              0.132337
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.108583
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.007459
+            ]
+          }
+        },
+        "comments_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_badges": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -0.266047
+            ],
+            "rf_r2": [
+              0.004365
+            ],
+            "mi": [
+              0.010101
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.112734
+            ],
+            "rf_r2": [
+              0.112046
+            ],
+            "mi": [
+              0.028774
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.028168,
+              0.032442,
+              0.02719
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.070856
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.017741
+            ]
+          }
+        },
+        "badges_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postLinks": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.019344
+            ],
+            "rf_r2": [
+              -0.008849
+            ],
+            "mi": [
+              0.004887
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.047517
+            ],
+            "rf_r2": [
+              0.016733
+            ],
+            "mi": [
+              0.005847
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.041395,
+              0.050767,
+              0.056635
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.00272
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.005518
+            ]
+          }
+        },
+        "postLinks_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.52721
+            ],
+            "rf_r2": [
+              0.334628
+            ],
+            "mi": [
+              0.049303
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.085958
+            ],
+            "rf_r2": [
+              0.104537
+            ],
+            "mi": [
+              0.007343
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.061783,
+              0.083466,
+              0.094752
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.077381
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.01436
+            ]
+          }
+        },
+        "postHistory_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_postHistory": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -189.360503
+            ],
+            "rf_r2": [
+              0.083631
+            ],
+            "mi": [
+              0.03503
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.074089
+            ],
+            "rf_r2": [
+              0.107701
+            ],
+            "mi": [
+              0.047874
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.068124,
+              0.09975,
+              0.069873
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.06413
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.025101
+            ]
+          }
+        },
+        "postHistory_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.226231
+            ],
+            "rf_r2": [
+              0.153162
+            ],
+            "mi": [
+              0.037215
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.009615
+            ],
+            "rf_r2": [
+              0.018626
+            ],
+            "mi": [
+              0.052066
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.004682,
+              0.011214,
+              0.01296
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.003988
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.037506
+            ]
+          }
+        },
+        "votes_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_votes": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -69.802448
+            ],
+            "rf_r2": [
+              0.103775
+            ],
+            "mi": [
+              0.079522
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.056048
+            ],
+            "rf_r2": [
+              0.101738
+            ],
+            "mi": [
+              0.056246
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.041388,
+              0.036159,
+              0.037854
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.038067
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.080932
+            ]
+          }
+        },
+        "votes_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "users_to_posts": {
+          "layer_0": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              -1027.718695
+            ],
+            "rf_r2": [
+              0.0587
+            ],
+            "mi": [
+              0.00627
+            ]
+          },
+          "layer_1": {
+            "epochs": [
+              29
+            ],
+            "ridge_r2": [
+              0.007084
+            ],
+            "rf_r2": [
+              -0.009525
+            ],
+            "mi": [
+              0.035748
+            ]
+          },
+          "layer_2": {
+            "epochs": [
+              0,
+              15,
+              29
+            ],
+            "ridge_r2": [
+              0.242712,
+              0.175263,
+              0.173082
+            ],
+            "rf_r2": [
+              0.0,
+              0.0,
+              0.206221
+            ],
+            "mi": [
+              0.0,
+              0.0,
+              0.144319
+            ]
+          }
+        },
+        "posts_to_users": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        },
+        "posts_to_posts": {
+          "layer_0": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_1": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          },
+          "layer_2": {
+            "epochs": [],
+            "ridge_r2": [],
+            "rf_r2": [],
+            "mi": []
+          }
+        }
+      }
+    },
+    "task_performance": {
+      "post-votes": {
+        "standard": 0.563823,
+        "prmp": 0.072779,
+        "delta": 0.491044,
+        "prmp_better": true
+      },
+      "user-engagement": {
+        "standard": 0.50468,
+        "prmp": 0.767385,
+        "delta": 0.262705,
+        "prmp_better": true
+      }
+    },
+    "comparison_with_amazon": {
+      "amazon": {
+        "embedding_r2_range": "0.2-0.6",
+        "prmp_helps": true
+      },
+      "rel_stack": {
+        "embedding_r2_mean": -6.444769,
+        "prmp_helps_regression": true,
+        "prmp_helps_classification": true
+      }
+    },
+    "parent_dim_confound_analysis": {
+      "raw_parent_dims": {
+        "rel-stack/badges__UserId__users": 1,
+        "rel-stack/postLinks__PostId__posts": 1,
+        "rel-stack/postLinks__RelatedPostId__posts": 1,
+        "rel-stack/postHistory__PostId__posts": 1,
+        "rel-stack/postHistory__UserId__users": 1,
+        "rel-stack/votes__PostId__posts": 1,
+        "rel-stack/votes__UserId__users": 1,
+        "rel-stack/posts__OwnerUserId__users": 1,
+        "rel-stack/posts__ParentId__posts": 1
+      },
+      "embedding_dims": 48,
+      "raw_r2_mean": -2.6e-05,
+      "embedding_r2_mean": -6.444769,
+      "confound_resolved": false
+    },
+    "key_findings": {
+      "prmp_helps_post_votes": true,
+      "prmp_helps_user_engagement": true,
+      "embedding_r2_mean": -6.444769,
+      "raw_r2_mean": -2.6e-05,
+      "parent_dim1_resolved": false
+    },
+    "runtime_seconds": 727.3
+  },
+  "datasets": [
+    {
+      "dataset": "rel_stack_embedding_r2",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 27.340267, \"val_metric\": 155.463928, \"prmp_r2\": {}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_2\": {\"ridge_r2\": -0.201322, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.017509, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_badges\": {\"layer_2\": {\"ridge_r2\": -0.404515, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postLinks\": {\"layer_2\": {\"ridge_r2\": 0.006204, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.016593, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_postHistory\": {\"layer_2\": {\"ridge_r2\": -169.241002, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.025491, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_votes\": {\"layer_2\": {\"ridge_r2\": -6.49912, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_posts\": {\"layer_2\": {\"ridge_r2\": -2.288197, \"rf_r2\": 0.0, \"mi\": 0.0}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 0,
+          "predict_baseline": "155.463928",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 3}",
+          "output": "{\"train_loss\": 34.912979, \"val_metric\": 29.533951, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 3,
+          "predict_baseline": "29.533951",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 6}",
+          "output": "{\"train_loss\": 16.841974, \"val_metric\": 20.614981, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 6,
+          "predict_baseline": "20.614981",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 9}",
+          "output": "{\"train_loss\": 3.738497, \"val_metric\": 13.283637, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 9,
+          "predict_baseline": "13.283637",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 12}",
+          "output": "{\"train_loss\": 12.703119, \"val_metric\": 4.420723, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 12,
+          "predict_baseline": "4.420723",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 15}",
+          "output": "{\"train_loss\": 7.68745, \"val_metric\": 4.162479, \"prmp_r2\": {}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_2\": {\"ridge_r2\": -16.81914, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.000339, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_badges\": {\"layer_2\": {\"ridge_r2\": -1.020687, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postLinks\": {\"layer_2\": {\"ridge_r2\": -0.008502, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postHistory\": {\"layer_2\": {\"ridge_r2\": -0.000101, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_postHistory\": {\"layer_2\": {\"ridge_r2\": -6.909068, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_votes\": {\"layer_2\": {\"ridge_r2\": -0.00842, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_votes\": {\"layer_2\": {\"ridge_r2\": -207.136964, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_posts\": {\"layer_2\": {\"ridge_r2\": -0.355535, \"rf_r2\": 0.0, \"mi\": 0.0}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 15,
+          "predict_baseline": "4.162479",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 18}",
+          "output": "{\"train_loss\": 2.13276, \"val_metric\": 1.357077, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 18,
+          "predict_baseline": "1.357077",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 21}",
+          "output": "{\"train_loss\": 1.114276, \"val_metric\": 0.894872, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 21,
+          "predict_baseline": "0.894872",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 24}",
+          "output": "{\"train_loss\": 1.243023, \"val_metric\": 0.797342, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 24,
+          "predict_baseline": "0.797342",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 27}",
+          "output": "{\"train_loss\": 3.253573, \"val_metric\": 2.058822, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 27,
+          "predict_baseline": "2.058822",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 29}",
+          "output": "{\"train_loss\": 1.786495, \"val_metric\": 1.271094, \"prmp_r2\": {}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_0\": {\"ridge_r2\": -8.804357, \"rf_r2\": 0.040587, \"mi\": 0.001259}, \"layer_1\": {\"ridge_r2\": -40.766945, \"rf_r2\": 0.039919, \"mi\": 0.001337}, \"layer_2\": {\"ridge_r2\": -1.027504, \"rf_r2\": 0.035789, \"mi\": 0.001291}}, \"posts_to_comments\": {\"layer_0\": {\"ridge_r2\": 0.315389, \"rf_r2\": 0.179584, \"mi\": 0.013203}, \"layer_1\": {\"ridge_r2\": 0.027224, \"rf_r2\": 0.066237, \"mi\": 0.00438}, \"layer_2\": {\"ridge_r2\": 0.001805, \"rf_r2\": 0.004444, \"mi\": 0.001128}}, \"users_to_badges\": {\"layer_0\": {\"ridge_r2\": -0.905804, \"rf_r2\": 0.007756, \"mi\": 0.019041}, \"layer_1\": {\"ridge_r2\": -1.315694, \"rf_r2\": 0.00926, \"mi\": 0.018513}, \"layer_2\": {\"ridge_r2\": -0.065062, \"rf_r2\": 0.012133, \"mi\": 0.018059}}, \"posts_to_postLinks\": {\"layer_0\": {\"ridge_r2\": 0.036163, \"rf_r2\": -0.000458, \"mi\": 0.004178}, \"layer_1\": {\"ridge_r2\": 0.006491, \"rf_r2\": 0.000471, \"mi\": 0.00359}, \"layer_2\": {\"ridge_r2\": -0.006946, \"rf_r2\": -0.014993, \"mi\": 0.002553}}, \"posts_to_postHistory\": {\"layer_0\": {\"ridge_r2\": 0.539042, \"rf_r2\": 0.310564, \"mi\": 0.049837}, \"layer_1\": {\"ridge_r2\": 0.045472, \"rf_r2\": 0.098135, \"mi\": 0.009266}, \"layer_2\": {\"ridge_r2\": 0.009401, \"rf_r2\": 0.031677, \"mi\": 0.004766}}, \"users_to_postHistory\": {\"layer_0\": {\"ridge_r2\": -482.916316, \"rf_r2\": 0.099148, \"mi\": 0.044607}, \"layer_1\": {\"ridge_r2\": -12.926652, \"rf_r2\": 0.09661, \"mi\": 0.042196}, \"layer_2\": {\"ridge_r2\": -0.162093, \"rf_r2\": 0.09955, \"mi\": 0.043678}}, \"posts_to_votes\": {\"layer_0\": {\"ridge_r2\": 0.143805, \"rf_r2\": 0.049269, \"mi\": 0.037484}, \"layer_1\": {\"ridge_r2\": 0.012777, \"rf_r2\": 0.005847, \"mi\": 0.05967}, \"layer_2\": {\"ridge_r2\": -0.001784, \"rf_r2\": -0.009701, \"mi\": 0.067307}}, \"users_to_votes\": {\"layer_0\": {\"ridge_r2\": -89.212482, \"rf_r2\": 0.133358, \"mi\": 0.075524}, \"layer_1\": {\"ridge_r2\": -318.901103, \"rf_r2\": 0.133147, \"mi\": 0.076482}, \"layer_2\": {\"ridge_r2\": -2.216401, \"rf_r2\": 0.134569, \"mi\": 0.076808}}, \"users_to_posts\": {\"layer_0\": {\"ridge_r2\": -727.025106, \"rf_r2\": 0.051995, \"mi\": 0.001903}, \"layer_1\": {\"ridge_r2\": -5.314745, \"rf_r2\": -0.015358, \"mi\": 0.018652}, \"layer_2\": {\"ridge_r2\": -4.677728, \"rf_r2\": 0.212083, \"mi\": 0.019539}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": 29,
+          "predict_baseline": "1.271094",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"standard\"}",
+          "output": "{\"best_val\": 0.563823, \"num_epochs\": 30, \"training_time_s\": 163.9}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "standard",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.563823",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 0.200898, \"val_metric\": 0.363123, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5036.347168, \"comments__f2p_PostId__posts\": -5020.617676, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -4154.486328, \"postLinks__f2p_RelatedPostId__posts\": -4176.204102, \"postHistory__f2p_PostId__posts\": -4655.005859, \"postHistory__f2p_UserId__users\": -4751.175293, \"votes__f2p_PostId__posts\": -33038.332031, \"votes__f2p_UserId__users\": -34133.167969, \"posts__f2p_OwnerUserId__users\": -5251.710938, \"posts__f2p_ParentId__posts\": -5247.094727, \"L2_comments__f2p_UserId__users\": -5036.347168, \"L2_comments__f2p_PostId__posts\": -5037.054199, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -4154.339355, \"L2_postLinks__f2p_RelatedPostId__posts\": -4160.060059, \"L2_postHistory__f2p_PostId__posts\": -4668.654785, \"L2_postHistory__f2p_UserId__users\": -4751.175293, \"L2_votes__f2p_PostId__posts\": -33013.417969, \"L2_votes__f2p_UserId__users\": -34133.167969, \"L2_posts__f2p_OwnerUserId__users\": -3.460571, \"L2_posts__f2p_ParentId__posts\": -6.727297}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.002505, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.092595, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_badges\": {\"layer_2\": {\"ridge_r2\": 0.033923, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postLinks\": {\"layer_2\": {\"ridge_r2\": 0.054771, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.055842, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.069705, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.007204, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.039565, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_posts\": {\"layer_2\": {\"ridge_r2\": 0.256736, \"rf_r2\": 0.0, \"mi\": 0.0}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 0,
+          "predict_baseline": "",
+          "predict_our_method": "0.363123"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 3}",
+          "output": "{\"train_loss\": 0.160358, \"val_metric\": 0.146098, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5119.834961, \"comments__f2p_PostId__posts\": -5103.186035, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -4274.038574, \"postLinks__f2p_RelatedPostId__posts\": -4273.54541, \"postHistory__f2p_PostId__posts\": -4661.382324, \"postHistory__f2p_UserId__users\": -4766.935547, \"votes__f2p_PostId__posts\": -33177.695312, \"votes__f2p_UserId__users\": -34349.707031, \"posts__f2p_OwnerUserId__users\": -5189.490723, \"posts__f2p_ParentId__posts\": -5185.771973, \"L2_comments__f2p_UserId__users\": -5119.834961, \"L2_comments__f2p_PostId__posts\": -5120.577148, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -4273.887207, \"L2_postLinks__f2p_RelatedPostId__posts\": -4279.677734, \"L2_postHistory__f2p_PostId__posts\": -4685.425293, \"L2_postHistory__f2p_UserId__users\": -4766.935547, \"L2_votes__f2p_PostId__posts\": -33122.164062, \"L2_votes__f2p_UserId__users\": -34349.707031, \"L2_posts__f2p_OwnerUserId__users\": -5.244141, \"L2_posts__f2p_ParentId__posts\": -8.668182}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 3,
+          "predict_baseline": "",
+          "predict_our_method": "0.146098"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 6}",
+          "output": "{\"train_loss\": 0.145988, \"val_metric\": 0.114544, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5238.064941, \"comments__f2p_PostId__posts\": -5225.37793, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -4382.491211, \"postLinks__f2p_RelatedPostId__posts\": -4386.136719, \"postHistory__f2p_PostId__posts\": -4706.09375, \"postHistory__f2p_UserId__users\": -4805.578125, \"votes__f2p_PostId__posts\": -33632.382812, \"votes__f2p_UserId__users\": -34774.4375, \"posts__f2p_OwnerUserId__users\": -4938.308105, \"posts__f2p_ParentId__posts\": -4934.417969, \"L2_comments__f2p_UserId__users\": -5238.064941, \"L2_comments__f2p_PostId__posts\": -5238.928223, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -4382.428711, \"L2_postLinks__f2p_RelatedPostId__posts\": -4388.258301, \"L2_postHistory__f2p_PostId__posts\": -4724.071777, \"L2_postHistory__f2p_UserId__users\": -4805.578125, \"L2_votes__f2p_PostId__posts\": -33579.195312, \"L2_votes__f2p_UserId__users\": -34774.4375, \"L2_posts__f2p_OwnerUserId__users\": -6.811128, \"L2_posts__f2p_ParentId__posts\": -9.525508}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 6,
+          "predict_baseline": "",
+          "predict_our_method": "0.114544"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 9}",
+          "output": "{\"train_loss\": 0.142334, \"val_metric\": 0.110137, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5254.967285, \"comments__f2p_PostId__posts\": -5241.333008, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -4469.020996, \"postLinks__f2p_RelatedPostId__posts\": -4476.056152, \"postHistory__f2p_PostId__posts\": -4705.59082, \"postHistory__f2p_UserId__users\": -4795.59082, \"votes__f2p_PostId__posts\": -34265.507812, \"votes__f2p_UserId__users\": -35359.65625, \"posts__f2p_OwnerUserId__users\": -4902.239746, \"posts__f2p_ParentId__posts\": -4898.454102, \"L2_comments__f2p_UserId__users\": -5254.967285, \"L2_comments__f2p_PostId__posts\": -5255.772461, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -4469.032715, \"L2_postLinks__f2p_RelatedPostId__posts\": -4474.941406, \"L2_postHistory__f2p_PostId__posts\": -4716.38916, \"L2_postHistory__f2p_UserId__users\": -4795.59082, \"L2_votes__f2p_PostId__posts\": -34180.058594, \"L2_votes__f2p_UserId__users\": -35359.65625, \"L2_posts__f2p_OwnerUserId__users\": -8.149345, \"L2_posts__f2p_ParentId__posts\": -10.33799}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 9,
+          "predict_baseline": "",
+          "predict_our_method": "0.110137"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 12}",
+          "output": "{\"train_loss\": 0.139965, \"val_metric\": 0.100662, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5258.29248, \"comments__f2p_PostId__posts\": -5245.299316, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -4531.730469, \"postLinks__f2p_RelatedPostId__posts\": -4538.779785, \"postHistory__f2p_PostId__posts\": -4759.98584, \"postHistory__f2p_UserId__users\": -4846.78418, \"votes__f2p_PostId__posts\": -34842.792969, \"votes__f2p_UserId__users\": -35909.972656, \"posts__f2p_OwnerUserId__users\": -4863.748047, \"posts__f2p_ParentId__posts\": -4860.101074, \"L2_comments__f2p_UserId__users\": -5258.29248, \"L2_comments__f2p_PostId__posts\": -5259.104004, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -4531.802246, \"L2_postLinks__f2p_RelatedPostId__posts\": -4537.791992, \"L2_postHistory__f2p_PostId__posts\": -4766.98291, \"L2_postHistory__f2p_UserId__users\": -4846.78418, \"L2_votes__f2p_PostId__posts\": -34750.320312, \"L2_votes__f2p_UserId__users\": -35909.972656, \"L2_posts__f2p_OwnerUserId__users\": -9.065201, \"L2_posts__f2p_ParentId__posts\": -10.805099}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 12,
+          "predict_baseline": "",
+          "predict_our_method": "0.100662"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 15}",
+          "output": "{\"train_loss\": 0.108998, \"val_metric\": 0.080795, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5320.078613, \"comments__f2p_PostId__posts\": -5307.571289, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -4623.553223, \"postLinks__f2p_RelatedPostId__posts\": -4632.451172, \"postHistory__f2p_PostId__posts\": -4788.885742, \"postHistory__f2p_UserId__users\": -4873.919434, \"votes__f2p_PostId__posts\": -35430.3125, \"votes__f2p_UserId__users\": -36416.152344, \"posts__f2p_OwnerUserId__users\": -4961.501465, \"posts__f2p_ParentId__posts\": -4958.08252, \"L2_comments__f2p_UserId__users\": -5320.078613, \"L2_comments__f2p_PostId__posts\": -5320.913574, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -4623.685547, \"L2_postLinks__f2p_RelatedPostId__posts\": -4629.806152, \"L2_postHistory__f2p_PostId__posts\": -4795.016113, \"L2_postHistory__f2p_UserId__users\": -4873.919434, \"L2_votes__f2p_PostId__posts\": -35327.566406, \"L2_votes__f2p_UserId__users\": -36416.152344, \"L2_posts__f2p_OwnerUserId__users\": -9.820518, \"L2_posts__f2p_ParentId__posts\": -11.242219}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.016878, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.04998, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_badges\": {\"layer_2\": {\"ridge_r2\": 0.043423, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postLinks\": {\"layer_2\": {\"ridge_r2\": 0.024227, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.061943, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.086231, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.012012, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.07195, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_posts\": {\"layer_2\": {\"ridge_r2\": 0.224701, \"rf_r2\": 0.0, \"mi\": 0.0}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 15,
+          "predict_baseline": "",
+          "predict_our_method": "0.080795"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 18}",
+          "output": "{\"train_loss\": 0.113163, \"val_metric\": 0.081502, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5387.527344, \"comments__f2p_PostId__posts\": -5376.005371, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -4724.566895, \"postLinks__f2p_RelatedPostId__posts\": -4734.637207, \"postHistory__f2p_PostId__posts\": -4845.204102, \"postHistory__f2p_UserId__users\": -4929.37793, \"votes__f2p_PostId__posts\": -34946.078125, \"votes__f2p_UserId__users\": -35818.453125, \"posts__f2p_OwnerUserId__users\": -5120.730957, \"posts__f2p_ParentId__posts\": -5119.367188, \"L2_comments__f2p_UserId__users\": -5387.527344, \"L2_comments__f2p_PostId__posts\": -5388.362793, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -4724.683105, \"L2_postLinks__f2p_RelatedPostId__posts\": -4730.897461, \"L2_postHistory__f2p_PostId__posts\": -4850.510742, \"L2_postHistory__f2p_UserId__users\": -4929.37793, \"L2_votes__f2p_PostId__posts\": -34832.875, \"L2_votes__f2p_UserId__users\": -35818.453125, \"L2_posts__f2p_OwnerUserId__users\": -10.497923, \"L2_posts__f2p_ParentId__posts\": -11.850103}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 18,
+          "predict_baseline": "",
+          "predict_our_method": "0.081502"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 21}",
+          "output": "{\"train_loss\": 0.110957, \"val_metric\": 0.076149, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5420.686523, \"comments__f2p_PostId__posts\": -5409.368164, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -4837.120605, \"postLinks__f2p_RelatedPostId__posts\": -4845.475586, \"postHistory__f2p_PostId__posts\": -4905.655762, \"postHistory__f2p_UserId__users\": -4989.152344, \"votes__f2p_PostId__posts\": -36431.53125, \"votes__f2p_UserId__users\": -37401.445312, \"posts__f2p_OwnerUserId__users\": -4894.025391, \"posts__f2p_ParentId__posts\": -4892.249512, \"L2_comments__f2p_UserId__users\": -5420.686523, \"L2_comments__f2p_PostId__posts\": -5421.507324, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -4837.184082, \"L2_postLinks__f2p_RelatedPostId__posts\": -4843.588867, \"L2_postHistory__f2p_PostId__posts\": -4910.204102, \"L2_postHistory__f2p_UserId__users\": -4989.152344, \"L2_votes__f2p_PostId__posts\": -36328.480469, \"L2_votes__f2p_UserId__users\": -37401.445312, \"L2_posts__f2p_OwnerUserId__users\": -10.956674, \"L2_posts__f2p_ParentId__posts\": -12.15337}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 21,
+          "predict_baseline": "",
+          "predict_our_method": "0.076149"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 24}",
+          "output": "{\"train_loss\": 0.110785, \"val_metric\": 0.077854, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5454.670898, \"comments__f2p_PostId__posts\": -5443.039062, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -4933.964355, \"postLinks__f2p_RelatedPostId__posts\": -4939.946777, \"postHistory__f2p_PostId__posts\": -4999.29248, \"postHistory__f2p_UserId__users\": -5083.813965, \"votes__f2p_PostId__posts\": -37078.558594, \"votes__f2p_UserId__users\": -38049.886719, \"posts__f2p_OwnerUserId__users\": -5112.242676, \"posts__f2p_ParentId__posts\": -5108.628418, \"L2_comments__f2p_UserId__users\": -5454.670898, \"L2_comments__f2p_PostId__posts\": -5455.488281, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -4933.992676, \"L2_postLinks__f2p_RelatedPostId__posts\": -4940.585938, \"L2_postHistory__f2p_PostId__posts\": -5003.547852, \"L2_postHistory__f2p_UserId__users\": -5083.813965, \"L2_votes__f2p_PostId__posts\": -36993.253906, \"L2_votes__f2p_UserId__users\": -38049.886719, \"L2_posts__f2p_OwnerUserId__users\": -11.298516, \"L2_posts__f2p_ParentId__posts\": -12.384812}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 24,
+          "predict_baseline": "",
+          "predict_our_method": "0.077854"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 27}",
+          "output": "{\"train_loss\": 0.105187, \"val_metric\": 0.075998, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5454.020996, \"comments__f2p_PostId__posts\": -5443.249512, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -5019.779297, \"postLinks__f2p_RelatedPostId__posts\": -5024.881836, \"postHistory__f2p_PostId__posts\": -5093.876465, \"postHistory__f2p_UserId__users\": -5179.11084, \"votes__f2p_PostId__posts\": -37776.082031, \"votes__f2p_UserId__users\": -38739.039062, \"posts__f2p_OwnerUserId__users\": -5727.749023, \"posts__f2p_ParentId__posts\": -5723.990723, \"L2_comments__f2p_UserId__users\": -5454.020996, \"L2_comments__f2p_PostId__posts\": -5454.827637, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -5019.769531, \"L2_postLinks__f2p_RelatedPostId__posts\": -5026.557129, \"L2_postHistory__f2p_PostId__posts\": -5097.729492, \"L2_postHistory__f2p_UserId__users\": -5179.11084, \"L2_votes__f2p_PostId__posts\": -37698.542969, \"L2_votes__f2p_UserId__users\": -38739.039062, \"L2_posts__f2p_OwnerUserId__users\": -11.649404, \"L2_posts__f2p_ParentId__posts\": -12.670965}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 27,
+          "predict_baseline": "",
+          "predict_our_method": "0.075998"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\", \"task_type\": \"regression\", \"metric\": \"mae\", \"epoch\": 29}",
+          "output": "{\"train_loss\": 0.104845, \"val_metric\": 0.073131, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5365.060547, \"comments__f2p_PostId__posts\": -5355.762695, \"badges__f2p_UserId__users\": -6349.744141, \"postLinks__f2p_PostId__posts\": -5092.154785, \"postLinks__f2p_RelatedPostId__posts\": -5097.772949, \"postHistory__f2p_PostId__posts\": -5128.615723, \"postHistory__f2p_UserId__users\": -5213.597656, \"votes__f2p_PostId__posts\": -38255.898438, \"votes__f2p_UserId__users\": -39211.261719, \"posts__f2p_OwnerUserId__users\": -5899.894043, \"posts__f2p_ParentId__posts\": -5896.01123, \"L2_comments__f2p_UserId__users\": -5365.060547, \"L2_comments__f2p_PostId__posts\": -5365.887207, \"L2_badges__f2p_UserId__users\": -6349.744141, \"L2_postLinks__f2p_PostId__posts\": -5092.13916, \"L2_postLinks__f2p_RelatedPostId__posts\": -5099.085938, \"L2_postHistory__f2p_PostId__posts\": -5132.287109, \"L2_postHistory__f2p_UserId__users\": -5213.597656, \"L2_votes__f2p_PostId__posts\": -38181.003906, \"L2_votes__f2p_UserId__users\": -39211.261719, \"L2_posts__f2p_OwnerUserId__users\": -11.897685, \"L2_posts__f2p_ParentId__posts\": -12.910761}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_0\": {\"ridge_r2\": -3.819802, \"rf_r2\": 0.061097, \"mi\": 0.002235}, \"layer_1\": {\"ridge_r2\": 0.036839, \"rf_r2\": 0.069152, \"mi\": 0.004983}, \"layer_2\": {\"ridge_r2\": 0.030367, \"rf_r2\": 0.044205, \"mi\": 0.0033}}, \"posts_to_comments\": {\"layer_0\": {\"ridge_r2\": 0.51949, \"rf_r2\": 0.27752, \"mi\": 0.022455}, \"layer_1\": {\"ridge_r2\": 0.179014, \"rf_r2\": 0.139897, \"mi\": 0.012545}, \"layer_2\": {\"ridge_r2\": 0.056494, \"rf_r2\": 0.094801, \"mi\": 0.008573}}, \"users_to_badges\": {\"layer_0\": {\"ridge_r2\": -0.905804, \"rf_r2\": 0.007756, \"mi\": 0.019041}, \"layer_1\": {\"ridge_r2\": 0.115791, \"rf_r2\": 0.121398, \"mi\": 0.02978}, \"layer_2\": {\"ridge_r2\": 0.058974, \"rf_r2\": 0.084135, \"mi\": 0.021219}}, \"posts_to_postLinks\": {\"layer_0\": {\"ridge_r2\": 0.018016, \"rf_r2\": -0.006869, \"mi\": 0.003323}, \"layer_1\": {\"ridge_r2\": 0.011931, \"rf_r2\": -0.00546, \"mi\": 0.00558}, \"layer_2\": {\"ridge_r2\": 0.02536, \"rf_r2\": 0.002679, \"mi\": 0.003193}}, \"posts_to_postHistory\": {\"layer_0\": {\"ridge_r2\": 0.472147, \"rf_r2\": 0.33366, \"mi\": 0.04955}, \"layer_1\": {\"ridge_r2\": 0.153379, \"rf_r2\": 0.122842, \"mi\": 0.012431}, \"layer_2\": {\"ridge_r2\": 0.05869, \"rf_r2\": 0.072215, \"mi\": 0.011673}}, \"users_to_postHistory\": {\"layer_0\": {\"ridge_r2\": -5.287655, \"rf_r2\": 0.089928, \"mi\": 0.048382}, \"layer_1\": {\"ridge_r2\": 0.079534, \"rf_r2\": 0.123185, \"mi\": 0.0574}, \"layer_2\": {\"ridge_r2\": 0.074258, \"rf_r2\": 0.074668, \"mi\": 0.04323}}, \"posts_to_votes\": {\"layer_0\": {\"ridge_r2\": 0.200296, \"rf_r2\": 0.097584, \"mi\": 0.043386}, \"layer_1\": {\"ridge_r2\": 0.045358, \"rf_r2\": 0.017544, \"mi\": 0.050662}, \"layer_2\": {\"ridge_r2\": 0.015204, \"rf_r2\": 0.022492, \"mi\": 0.051078}}, \"users_to_votes\": {\"layer_0\": {\"ridge_r2\": -56.849274, \"rf_r2\": 0.124699, \"mi\": 0.097058}, \"layer_1\": {\"ridge_r2\": 0.081217, \"rf_r2\": 0.132101, \"mi\": 0.060758}, \"layer_2\": {\"ridge_r2\": 0.094259, \"rf_r2\": 0.078155, \"mi\": 0.060587}}, \"users_to_posts\": {\"layer_0\": {\"ridge_r2\": -647.03875, \"rf_r2\": 0.041063, \"mi\": 0.008205}, \"layer_1\": {\"ridge_r2\": 0.00556, \"rf_r2\": -0.006922, \"mi\": 0.039576}, \"layer_2\": {\"ridge_r2\": 0.177592, \"rf_r2\": 0.16604, \"mi\": 0.121968}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 29,
+          "predict_baseline": "",
+          "predict_our_method": "0.073131"
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-stack\", \"task\": \"post-votes\", \"variant\": \"prmp\"}",
+          "output": "{\"best_val\": 0.072779, \"num_epochs\": 30, \"training_time_s\": 196.1}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "post-votes",
+          "metadata_variant": "prmp",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.072779"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 99541.273438, \"val_metric\": 0.501395, \"prmp_r2\": {}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_2\": {\"ridge_r2\": -0.074763, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.027723, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_badges\": {\"layer_2\": {\"ridge_r2\": -0.292207, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postLinks\": {\"layer_2\": {\"ridge_r2\": 0.018092, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.08704, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_postHistory\": {\"layer_2\": {\"ridge_r2\": -0.127997, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.026782, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_votes\": {\"layer_2\": {\"ridge_r2\": -3.303419, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_posts\": {\"layer_2\": {\"ridge_r2\": -0.414068, \"rf_r2\": 0.0, \"mi\": 0.0}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_epoch": 0,
+          "predict_baseline": "0.501395",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 3}",
+          "output": "{\"train_loss\": 30590.267578, \"val_metric\": 0.499427, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_epoch": 3,
+          "predict_baseline": "0.499427",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 6}",
+          "output": "{\"train_loss\": 672.996033, \"val_metric\": 0.500103, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_epoch": 6,
+          "predict_baseline": "0.500103",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 9}",
+          "output": "{\"train_loss\": 303.28241, \"val_metric\": 0.50468, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_epoch": 9,
+          "predict_baseline": "0.50468",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 12}",
+          "output": "{\"train_loss\": 60.707142, \"val_metric\": 0.499122, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_epoch": 12,
+          "predict_baseline": "0.499122",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 15}",
+          "output": "{\"train_loss\": 12294.589844, \"val_metric\": 0.498669, \"prmp_r2\": {}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_2\": {\"ridge_r2\": -123.177944, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.130242, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_badges\": {\"layer_2\": {\"ridge_r2\": -1.728799, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postLinks\": {\"layer_2\": {\"ridge_r2\": 0.016461, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.084031, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_postHistory\": {\"layer_2\": {\"ridge_r2\": -27.03478, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_votes\": {\"layer_2\": {\"ridge_r2\": -0.015598, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_votes\": {\"layer_2\": {\"ridge_r2\": -61.683956, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_posts\": {\"layer_2\": {\"ridge_r2\": -11.661657, \"rf_r2\": 0.0, \"mi\": 0.0}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_epoch": 15,
+          "predict_baseline": "0.498669",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 18}",
+          "output": "{\"train_loss\": 336.985138, \"val_metric\": 0.500979, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_epoch": 18,
+          "predict_baseline": "0.500979",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 21}",
+          "output": "{\"train_loss\": 4315.741699, \"val_metric\": 0.498515, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_epoch": 21,
+          "predict_baseline": "0.498515",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 24}",
+          "output": "{\"train_loss\": 246.006607, \"val_metric\": 0.500972, \"prmp_r2\": {}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_epoch": 24,
+          "predict_baseline": "0.500972",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"standard\"}",
+          "output": "{\"best_val\": 0.50468, \"num_epochs\": 25, \"training_time_s\": 15.1}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "standard",
+          "metadata_epoch": -1,
+          "predict_baseline": "0.50468",
+          "predict_our_method": ""
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 0}",
+          "output": "{\"train_loss\": 0.609644, \"val_metric\": 0.433193, \"prmp_r2\": {\"comments__f2p_UserId__users\": -4842.066406, \"comments__f2p_PostId__posts\": -4838.556152, \"badges__f2p_UserId__users\": -6329.151367, \"postLinks__f2p_PostId__posts\": -4089.370117, \"postLinks__f2p_RelatedPostId__posts\": -4124.000488, \"postHistory__f2p_PostId__posts\": -4646.552734, \"postHistory__f2p_UserId__users\": -4747.446777, \"votes__f2p_PostId__posts\": -33783.574219, \"votes__f2p_UserId__users\": -35240.066406, \"posts__f2p_OwnerUserId__users\": -5281.788574, \"posts__f2p_ParentId__posts\": -5285.42334, \"L2_comments__f2p_UserId__users\": -4842.067383, \"L2_comments__f2p_PostId__posts\": -4842.816406, \"L2_badges__f2p_UserId__users\": -6329.03418, \"L2_postLinks__f2p_PostId__posts\": -4117.908203, \"L2_postLinks__f2p_RelatedPostId__posts\": -4123.387207, \"L2_postHistory__f2p_PostId__posts\": -4665.101074, \"L2_postHistory__f2p_UserId__users\": -4747.503418, \"L2_votes__f2p_PostId__posts\": -33926.398438, \"L2_votes__f2p_UserId__users\": -35240.351562, \"L2_posts__f2p_OwnerUserId__users\": -3.269178, \"L2_posts__f2p_ParentId__posts\": -6.071954}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.008311, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.095221, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_badges\": {\"layer_2\": {\"ridge_r2\": 0.028168, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postLinks\": {\"layer_2\": {\"ridge_r2\": 0.041395, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.061783, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.068124, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.004682, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.041388, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_posts\": {\"layer_2\": {\"ridge_r2\": 0.242712, \"rf_r2\": 0.0, \"mi\": 0.0}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 0,
+          "predict_baseline": "",
+          "predict_our_method": "0.433193"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 3}",
+          "output": "{\"train_loss\": 0.254392, \"val_metric\": 0.408605, \"prmp_r2\": {\"comments__f2p_UserId__users\": -4803.944336, \"comments__f2p_PostId__posts\": -4739.806641, \"badges__f2p_UserId__users\": -6314.102051, \"postLinks__f2p_PostId__posts\": -4304.027344, \"postLinks__f2p_RelatedPostId__posts\": -4339.45752, \"postHistory__f2p_PostId__posts\": -4726.800293, \"postHistory__f2p_UserId__users\": -4726.774902, \"votes__f2p_PostId__posts\": -34297.347656, \"votes__f2p_UserId__users\": -35657.746094, \"posts__f2p_OwnerUserId__users\": -5447.174805, \"posts__f2p_ParentId__posts\": -5616.631836, \"L2_comments__f2p_UserId__users\": -4803.887207, \"L2_comments__f2p_PostId__posts\": -4804.708984, \"L2_badges__f2p_UserId__users\": -6313.883301, \"L2_postLinks__f2p_PostId__posts\": -4252.875488, \"L2_postLinks__f2p_RelatedPostId__posts\": -4258.544434, \"L2_postHistory__f2p_PostId__posts\": -4645.864258, \"L2_postHistory__f2p_UserId__users\": -4726.821289, \"L2_votes__f2p_PostId__posts\": -34380.808594, \"L2_votes__f2p_UserId__users\": -35657.425781, \"L2_posts__f2p_OwnerUserId__users\": -6.708879, \"L2_posts__f2p_ParentId__posts\": -10.706207}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 3,
+          "predict_baseline": "",
+          "predict_our_method": "0.408605"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 6}",
+          "output": "{\"train_loss\": 0.217884, \"val_metric\": 0.411965, \"prmp_r2\": {\"comments__f2p_UserId__users\": -4835.056641, \"comments__f2p_PostId__posts\": -4801.20752, \"badges__f2p_UserId__users\": -6339.882812, \"postLinks__f2p_PostId__posts\": -4618.59668, \"postLinks__f2p_RelatedPostId__posts\": -4648.827637, \"postHistory__f2p_PostId__posts\": -5070.57666, \"postHistory__f2p_UserId__users\": -4746.709473, \"votes__f2p_PostId__posts\": -37555.003906, \"votes__f2p_UserId__users\": -37152.15625, \"posts__f2p_OwnerUserId__users\": -5661.393066, \"posts__f2p_ParentId__posts\": -6204.94043, \"L2_comments__f2p_UserId__users\": -4835.03125, \"L2_comments__f2p_PostId__posts\": -4835.826172, \"L2_badges__f2p_UserId__users\": -6339.734863, \"L2_postLinks__f2p_PostId__posts\": -4428.435059, \"L2_postLinks__f2p_RelatedPostId__posts\": -4434.369141, \"L2_postHistory__f2p_PostId__posts\": -4667.133789, \"L2_postHistory__f2p_UserId__users\": -4746.808105, \"L2_votes__f2p_PostId__posts\": -36346.707031, \"L2_votes__f2p_UserId__users\": -37152.25, \"L2_posts__f2p_OwnerUserId__users\": -8.689527, \"L2_posts__f2p_ParentId__posts\": -13.804148}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 6,
+          "predict_baseline": "",
+          "predict_our_method": "0.411965"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 9}",
+          "output": "{\"train_loss\": 0.231115, \"val_metric\": 0.489814, \"prmp_r2\": {\"comments__f2p_UserId__users\": -4894.345703, \"comments__f2p_PostId__posts\": -4946.77832, \"badges__f2p_UserId__users\": -6400.148438, \"postLinks__f2p_PostId__posts\": -4878.484375, \"postLinks__f2p_RelatedPostId__posts\": -4887.032227, \"postHistory__f2p_PostId__posts\": -5508.839355, \"postHistory__f2p_UserId__users\": -4651.504395, \"votes__f2p_PostId__posts\": -44254.953125, \"votes__f2p_UserId__users\": -42012.761719, \"posts__f2p_OwnerUserId__users\": -5915.103516, \"posts__f2p_ParentId__posts\": -6865.62793, \"L2_comments__f2p_UserId__users\": -4894.366211, \"L2_comments__f2p_PostId__posts\": -4895.118164, \"L2_badges__f2p_UserId__users\": -6400.112793, \"L2_postLinks__f2p_PostId__posts\": -4558.515625, \"L2_postLinks__f2p_RelatedPostId__posts\": -4564.441895, \"L2_postHistory__f2p_PostId__posts\": -4578.526367, \"L2_postHistory__f2p_UserId__users\": -4651.653809, \"L2_votes__f2p_PostId__posts\": -40432.964844, \"L2_votes__f2p_UserId__users\": -42012.984375, \"L2_posts__f2p_OwnerUserId__users\": -9.491053, \"L2_posts__f2p_ParentId__posts\": -15.048815}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 9,
+          "predict_baseline": "",
+          "predict_our_method": "0.489814"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 12}",
+          "output": "{\"train_loss\": 0.215775, \"val_metric\": 0.477294, \"prmp_r2\": {\"comments__f2p_UserId__users\": -4942.196777, \"comments__f2p_PostId__posts\": -5165.007812, \"badges__f2p_UserId__users\": -6479.413086, \"postLinks__f2p_PostId__posts\": -5281.258789, \"postLinks__f2p_RelatedPostId__posts\": -5232.724121, \"postHistory__f2p_PostId__posts\": -6195.254883, \"postHistory__f2p_UserId__users\": -4557.490234, \"votes__f2p_PostId__posts\": -50506.152344, \"votes__f2p_UserId__users\": -43453.355469, \"posts__f2p_OwnerUserId__users\": -6201.671387, \"posts__f2p_ParentId__posts\": -7482.838379, \"L2_comments__f2p_UserId__users\": -4942.242676, \"L2_comments__f2p_PostId__posts\": -4942.978027, \"L2_badges__f2p_UserId__users\": -6479.449219, \"L2_postLinks__f2p_PostId__posts\": -4825.150391, \"L2_postLinks__f2p_RelatedPostId__posts\": -4831.525391, \"L2_postHistory__f2p_PostId__posts\": -4486.625977, \"L2_postHistory__f2p_UserId__users\": -4557.644043, \"L2_votes__f2p_PostId__posts\": -41863.707031, \"L2_votes__f2p_UserId__users\": -43453.699219, \"L2_posts__f2p_OwnerUserId__users\": -9.899166, \"L2_posts__f2p_ParentId__posts\": -15.741543}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 12,
+          "predict_baseline": "",
+          "predict_our_method": "0.477294"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 15}",
+          "output": "{\"train_loss\": 0.201444, \"val_metric\": 0.472885, \"prmp_r2\": {\"comments__f2p_UserId__users\": -4997.947754, \"comments__f2p_PostId__posts\": -5513.580078, \"badges__f2p_UserId__users\": -6569.061523, \"postLinks__f2p_PostId__posts\": -5687.463867, \"postLinks__f2p_RelatedPostId__posts\": -5573.353516, \"postHistory__f2p_PostId__posts\": -7366.850098, \"postHistory__f2p_UserId__users\": -4595.072266, \"votes__f2p_PostId__posts\": -57151.511719, \"votes__f2p_UserId__users\": -43883.152344, \"posts__f2p_OwnerUserId__users\": -6518.864746, \"posts__f2p_ParentId__posts\": -8073.008789, \"L2_comments__f2p_UserId__users\": -4998.000977, \"L2_comments__f2p_PostId__posts\": -4998.724609, \"L2_badges__f2p_UserId__users\": -6569.121582, \"L2_postLinks__f2p_PostId__posts\": -5127.05957, \"L2_postLinks__f2p_RelatedPostId__posts\": -5133.914062, \"L2_postHistory__f2p_PostId__posts\": -4525.932129, \"L2_postHistory__f2p_UserId__users\": -4595.211914, \"L2_votes__f2p_PostId__posts\": -41521.882812, \"L2_votes__f2p_UserId__users\": -43883.582031, \"L2_posts__f2p_OwnerUserId__users\": -9.926151, \"L2_posts__f2p_ParentId__posts\": -15.504612}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.01444, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_comments\": {\"layer_2\": {\"ridge_r2\": 0.143729, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_badges\": {\"layer_2\": {\"ridge_r2\": 0.032442, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postLinks\": {\"layer_2\": {\"ridge_r2\": 0.050767, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.083466, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_postHistory\": {\"layer_2\": {\"ridge_r2\": 0.09975, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"posts_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.011214, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_votes\": {\"layer_2\": {\"ridge_r2\": 0.036159, \"rf_r2\": 0.0, \"mi\": 0.0}}, \"users_to_posts\": {\"layer_2\": {\"ridge_r2\": 0.175263, \"rf_r2\": 0.0, \"mi\": 0.0}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 15,
+          "predict_baseline": "",
+          "predict_our_method": "0.472885"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 18}",
+          "output": "{\"train_loss\": 0.197863, \"val_metric\": 0.704118, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5088.793945, \"comments__f2p_PostId__posts\": -5881.757324, \"badges__f2p_UserId__users\": -6670.272949, \"postLinks__f2p_PostId__posts\": -6040.097656, \"postLinks__f2p_RelatedPostId__posts\": -5914.9375, \"postHistory__f2p_PostId__posts\": -8534.004883, \"postHistory__f2p_UserId__users\": -4652.568359, \"votes__f2p_PostId__posts\": -67092.210938, \"votes__f2p_UserId__users\": -45655.292969, \"posts__f2p_OwnerUserId__users\": -6778.131348, \"posts__f2p_ParentId__posts\": -8510.055664, \"L2_comments__f2p_UserId__users\": -5088.848633, \"L2_comments__f2p_PostId__posts\": -5089.578613, \"L2_badges__f2p_UserId__users\": -6670.337891, \"L2_postLinks__f2p_PostId__posts\": -5471.249512, \"L2_postLinks__f2p_RelatedPostId__posts\": -5478.577637, \"L2_postHistory__f2p_PostId__posts\": -4583.909668, \"L2_postHistory__f2p_UserId__users\": -4652.695312, \"L2_votes__f2p_PostId__posts\": -43142.703125, \"L2_votes__f2p_UserId__users\": -45655.375, \"L2_posts__f2p_OwnerUserId__users\": -9.832687, \"L2_posts__f2p_ParentId__posts\": -15.277124}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 18,
+          "predict_baseline": "",
+          "predict_our_method": "0.704118"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 21}",
+          "output": "{\"train_loss\": 0.189811, \"val_metric\": 0.716965, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5187.799316, \"comments__f2p_PostId__posts\": -6082.508301, \"badges__f2p_UserId__users\": -6783.178711, \"postLinks__f2p_PostId__posts\": -6255.379395, \"postLinks__f2p_RelatedPostId__posts\": -6189.183105, \"postHistory__f2p_PostId__posts\": -9274.829102, \"postHistory__f2p_UserId__users\": -4668.782227, \"votes__f2p_PostId__posts\": -79171.257812, \"votes__f2p_UserId__users\": -48600.910156, \"posts__f2p_OwnerUserId__users\": -6984.29541, \"posts__f2p_ParentId__posts\": -8853.90625, \"L2_comments__f2p_UserId__users\": -5187.852051, \"L2_comments__f2p_PostId__posts\": -5188.592285, \"L2_badges__f2p_UserId__users\": -6783.244141, \"L2_postLinks__f2p_PostId__posts\": -5779.701172, \"L2_postLinks__f2p_RelatedPostId__posts\": -5787.455078, \"L2_postHistory__f2p_PostId__posts\": -4598.174316, \"L2_postHistory__f2p_UserId__users\": -4668.896484, \"L2_votes__f2p_PostId__posts\": -46958.199219, \"L2_votes__f2p_UserId__users\": -48600.609375, \"L2_posts__f2p_OwnerUserId__users\": -9.632237, \"L2_posts__f2p_ParentId__posts\": -15.092043}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 21,
+          "predict_baseline": "",
+          "predict_our_method": "0.716965"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 24}",
+          "output": "{\"train_loss\": 0.185213, \"val_metric\": 0.747131, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5296.246094, \"comments__f2p_PostId__posts\": -6210.305176, \"badges__f2p_UserId__users\": -6848.378418, \"postLinks__f2p_PostId__posts\": -6525.734375, \"postLinks__f2p_RelatedPostId__posts\": -6525.973145, \"postHistory__f2p_PostId__posts\": -10203.121094, \"postHistory__f2p_UserId__users\": -4830.683594, \"votes__f2p_PostId__posts\": -88027.898438, \"votes__f2p_UserId__users\": -50664.109375, \"posts__f2p_OwnerUserId__users\": -7397.712891, \"posts__f2p_ParentId__posts\": -9506.507812, \"L2_comments__f2p_UserId__users\": -5296.294922, \"L2_comments__f2p_PostId__posts\": -5297.047852, \"L2_badges__f2p_UserId__users\": -6848.443848, \"L2_postLinks__f2p_PostId__posts\": -6163.480957, \"L2_postLinks__f2p_RelatedPostId__posts\": -6171.888184, \"L2_postHistory__f2p_PostId__posts\": -4763.638184, \"L2_postHistory__f2p_UserId__users\": -4830.783691, \"L2_votes__f2p_PostId__posts\": -49221.433594, \"L2_votes__f2p_UserId__users\": -50663.78125, \"L2_posts__f2p_OwnerUserId__users\": -9.343964, \"L2_posts__f2p_ParentId__posts\": -14.960746}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 24,
+          "predict_baseline": "",
+          "predict_our_method": "0.747131"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 27}",
+          "output": "{\"train_loss\": 0.181773, \"val_metric\": 0.763351, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5413.494141, \"comments__f2p_PostId__posts\": -6344.677734, \"badges__f2p_UserId__users\": -6807.757812, \"postLinks__f2p_PostId__posts\": -6859.300781, \"postLinks__f2p_RelatedPostId__posts\": -6888.318359, \"postHistory__f2p_PostId__posts\": -11048.896484, \"postHistory__f2p_UserId__users\": -4927.402832, \"votes__f2p_PostId__posts\": -102030.742188, \"votes__f2p_UserId__users\": -54682.285156, \"posts__f2p_OwnerUserId__users\": -7847.768066, \"posts__f2p_ParentId__posts\": -10166.27832, \"L2_comments__f2p_UserId__users\": -5413.537598, \"L2_comments__f2p_PostId__posts\": -5414.305664, \"L2_badges__f2p_UserId__users\": -6807.822266, \"L2_postLinks__f2p_PostId__posts\": -6585.517578, \"L2_postLinks__f2p_RelatedPostId__posts\": -6595.015625, \"L2_postHistory__f2p_PostId__posts\": -4860.638672, \"L2_postHistory__f2p_UserId__users\": -4927.485352, \"L2_votes__f2p_PostId__posts\": -53914.464844, \"L2_votes__f2p_UserId__users\": -54682.117188, \"L2_posts__f2p_OwnerUserId__users\": -9.117908, \"L2_posts__f2p_ParentId__posts\": -14.984626}, \"r2_snapshot\": {}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 27,
+          "predict_baseline": "",
+          "predict_our_method": "0.763351"
+        },
+        {
+          "input": "{\"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\", \"task_type\": \"classification\", \"metric\": \"auroc\", \"epoch\": 29}",
+          "output": "{\"train_loss\": 0.178965, \"val_metric\": 0.767385, \"prmp_r2\": {\"comments__f2p_UserId__users\": -5497.875, \"comments__f2p_PostId__posts\": -6417.784668, \"badges__f2p_UserId__users\": -6911.637207, \"postLinks__f2p_PostId__posts\": -6962.125977, \"postLinks__f2p_RelatedPostId__posts\": -7004.270508, \"postHistory__f2p_PostId__posts\": -11597.323242, \"postHistory__f2p_UserId__users\": -4992.295898, \"votes__f2p_PostId__posts\": -103214.195312, \"votes__f2p_UserId__users\": -53781.222656, \"posts__f2p_OwnerUserId__users\": -8169.111816, \"posts__f2p_ParentId__posts\": -10618.556641, \"L2_comments__f2p_UserId__users\": -5497.913086, \"L2_comments__f2p_PostId__posts\": -5498.689941, \"L2_badges__f2p_UserId__users\": -6911.701172, \"L2_postLinks__f2p_PostId__posts\": -6743.886719, \"L2_postLinks__f2p_RelatedPostId__posts\": -6753.114258, \"L2_postHistory__f2p_PostId__posts\": -4925.807129, \"L2_postHistory__f2p_UserId__users\": -4992.366211, \"L2_votes__f2p_PostId__posts\": -52779.609375, \"L2_votes__f2p_UserId__users\": -53781.171875, \"L2_posts__f2p_OwnerUserId__users\": -9.040077, \"L2_posts__f2p_ParentId__posts\": -15.250423}, \"r2_snapshot\": {\"users_to_comments\": {\"layer_0\": {\"ridge_r2\": -2.509572, \"rf_r2\": 0.047538, \"mi\": 0.003812}, \"layer_1\": {\"ridge_r2\": 0.033316, \"rf_r2\": 0.056116, \"mi\": 0.003494}, \"layer_2\": {\"ridge_r2\": 0.010743, \"rf_r2\": 0.028163, \"mi\": 0.002002}}, \"posts_to_comments\": {\"layer_0\": {\"ridge_r2\": 0.483005, \"rf_r2\": 0.249142, \"mi\": 0.012636}, \"layer_1\": {\"ridge_r2\": 0.108404, \"rf_r2\": 0.12183, \"mi\": 0.00686}, \"layer_2\": {\"ridge_r2\": 0.132337, \"rf_r2\": 0.108583, \"mi\": 0.007459}}, \"users_to_badges\": {\"layer_0\": {\"ridge_r2\": -0.266047, \"rf_r2\": 0.004365, \"mi\": 0.010101}, \"layer_1\": {\"ridge_r2\": 0.112734, \"rf_r2\": 0.112046, \"mi\": 0.028774}, \"layer_2\": {\"ridge_r2\": 0.02719, \"rf_r2\": 0.070856, \"mi\": 0.017741}}, \"posts_to_postLinks\": {\"layer_0\": {\"ridge_r2\": 0.019344, \"rf_r2\": -0.008849, \"mi\": 0.004887}, \"layer_1\": {\"ridge_r2\": 0.047517, \"rf_r2\": 0.016733, \"mi\": 0.005847}, \"layer_2\": {\"ridge_r2\": 0.056635, \"rf_r2\": 0.00272, \"mi\": 0.005518}}, \"posts_to_postHistory\": {\"layer_0\": {\"ridge_r2\": 0.52721, \"rf_r2\": 0.334628, \"mi\": 0.049303}, \"layer_1\": {\"ridge_r2\": 0.085958, \"rf_r2\": 0.104537, \"mi\": 0.007343}, \"layer_2\": {\"ridge_r2\": 0.094752, \"rf_r2\": 0.077381, \"mi\": 0.01436}}, \"users_to_postHistory\": {\"layer_0\": {\"ridge_r2\": -189.360503, \"rf_r2\": 0.083631, \"mi\": 0.03503}, \"layer_1\": {\"ridge_r2\": 0.074089, \"rf_r2\": 0.107701, \"mi\": 0.047874}, \"layer_2\": {\"ridge_r2\": 0.069873, \"rf_r2\": 0.06413, \"mi\": 0.025101}}, \"posts_to_votes\": {\"layer_0\": {\"ridge_r2\": 0.226231, \"rf_r2\": 0.153162, \"mi\": 0.037215}, \"layer_1\": {\"ridge_r2\": 0.009615, \"rf_r2\": 0.018626, \"mi\": 0.052066}, \"layer_2\": {\"ridge_r2\": 0.01296, \"rf_r2\": 0.003988, \"mi\": 0.037506}}, \"users_to_votes\": {\"layer_0\": {\"ridge_r2\": -69.802448, \"rf_r2\": 0.103775, \"mi\": 0.079522}, \"layer_1\": {\"ridge_r2\": 0.056048, \"rf_r2\": 0.101738, \"mi\": 0.056246}, \"layer_2\": {\"ridge_r2\": 0.037854, \"rf_r2\": 0.038067, \"mi\": 0.080932}}, \"users_to_posts\": {\"layer_0\": {\"ridge_r2\": -1027.718695, \"rf_r2\": 0.0587, \"mi\": 0.00627}, \"layer_1\": {\"ridge_r2\": 0.007084, \"rf_r2\": -0.009525, \"mi\": 0.035748}, \"layer_2\": {\"ridge_r2\": 0.173082, \"rf_r2\": 0.206221, \"mi\": 0.144319}}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": 29,
+          "predict_baseline": "",
+          "predict_our_method": "0.767385"
+        },
+        {
+          "input": "{\"type\": \"run_summary\", \"dataset\": \"rel-stack\", \"task\": \"user-engagement\", \"variant\": \"prmp\"}",
+          "output": "{\"best_val\": 0.767385, \"num_epochs\": 30, \"training_time_s\": 198.0}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "user-engagement",
+          "metadata_variant": "prmp",
+          "metadata_epoch": -1,
+          "predict_baseline": "",
+          "predict_our_method": "0.767385"
+        },
+        {
+          "input": "{\"type\": \"analysis_summary\"}",
+          "output": "{\"per_task_analysis\": {\"post-votes\": {\"standard\": 0.563823, \"prmp\": 0.072779, \"delta\": 0.491044, \"prmp_better\": true}, \"user-engagement\": {\"standard\": 0.50468, \"prmp\": 0.767385, \"delta\": 0.262705, \"prmp_better\": true}}, \"confound_analysis\": {\"raw_parent_dims\": {\"rel-stack/badges__UserId__users\": 1, \"rel-stack/postLinks__PostId__posts\": 1, \"rel-stack/postLinks__RelatedPostId__posts\": 1, \"rel-stack/postHistory__PostId__posts\": 1, \"rel-stack/postHistory__UserId__users\": 1, \"rel-stack/votes__PostId__posts\": 1, \"rel-stack/votes__UserId__users\": 1, \"rel-stack/posts__OwnerUserId__users\": 1, \"rel-stack/posts__ParentId__posts\": 1}, \"embedding_dims\": 48, \"raw_r2_mean\": -2.6e-05, \"embedding_r2_mean\": -6.444769, \"confound_resolved\": false}, \"key_findings\": {\"prmp_helps_post_votes\": true, \"prmp_helps_user_engagement\": true, \"embedding_r2_mean\": -6.444769, \"raw_r2_mean\": -2.6e-05, \"parent_dim1_resolved\": false}, \"comparison_with_amazon\": {\"amazon\": {\"embedding_r2_range\": \"0.2-0.6\", \"prmp_helps\": true}, \"rel_stack\": {\"embedding_r2_mean\": -6.444769, \"prmp_helps_regression\": true, \"prmp_helps_classification\": true}}}",
+          "metadata_dataset": "rel-stack",
+          "metadata_task": "analysis",
+          "metadata_variant": "comparison",
+          "metadata_epoch": -1,
+          "predict_baseline": "{\"prmp_helps_post_votes\": true, \"prmp_helps_user_engagement\": true, \"embedding_r2_mean\": -6.444769, \"raw_r2_mean\": -2.6e-05, \"parent_dim1_resolved\": false}",
+          "predict_our_method": "{\"prmp_helps_post_votes\": true, \"prmp_helps_user_engagement\": true, \"embedding_r2_mean\": -6.444769, \"raw_r2_mean\": -2.6e-05, \"parent_dim1_resolved\": false}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,603 @@
+{
+  "metadata": {
+    "experiment_type": "parameter_matched_control",
+    "datasets": [
+      "amazon_video_games",
+      "rel-f1"
+    ],
+    "variants": {
+      "A_standard_sage": "Standard SAGEConv-like mean aggregation",
+      "B_prmp": "Predictive Residual Message Passing (predict-subtract)",
+      "C_wide_sage": "Wider SAGEConv to match PRMP param count",
+      "D_aux_mlp": "Standard agg + auxiliary MLP (same params, no subtraction)",
+      "E_skip_residual": "Standard agg + parent skip connection"
+    },
+    "config": {
+      "hidden_dim": 128,
+      "wide_hidden_dim_amazon": 179,
+      "wide_hidden_dim_f1": 181,
+      "num_layers": 2,
+      "seeds": [
+        42,
+        123,
+        456
+      ],
+      "max_epochs": 80,
+      "patience": 15,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "grad_clip": 5.0
+    },
+    "parameter_counts": {
+      "amazon": {
+        "A_standard_sage": 284161,
+        "B_prmp": 550401,
+        "C_wide_sage": 552574,
+        "D_aux_mlp": 550401,
+        "E_skip_residual": 415233,
+        "wide_hidden_dim": 179
+      },
+      "f1": {
+        "A_standard_sage": 1734273,
+        "B_prmp": 3464833,
+        "C_wide_sage": 3459635,
+        "D_aux_mlp": 3464833,
+        "E_skip_residual": 2586241,
+        "wide_hidden_dim": 181
+      }
+    },
+    "amazon_summaries": {
+      "A_standard_sage": {
+        "rmse": {
+          "mean": 0.564342,
+          "std": 0.010444,
+          "values": [
+            0.575958,
+            0.561341,
+            0.555728
+          ]
+        },
+        "mae": {
+          "mean": 0.399518,
+          "std": 0.009468,
+          "values": [
+            0.408849,
+            0.399786,
+            0.389918
+          ]
+        },
+        "r2": {
+          "mean": 0.767108,
+          "std": 0.008649,
+          "values": [
+            0.757478,
+            0.769631,
+            0.774215
+          ]
+        },
+        "param_count": 284161
+      },
+      "B_prmp": {
+        "rmse": {
+          "mean": 0.514344,
+          "std": 0.007312,
+          "values": [
+            0.514355,
+            0.507027,
+            0.521651
+          ]
+        },
+        "mae": {
+          "mean": 0.342573,
+          "std": 0.008504,
+          "values": [
+            0.33891,
+            0.336514,
+            0.352295
+          ]
+        },
+        "r2": {
+          "mean": 0.806564,
+          "std": 0.005499,
+          "values": [
+            0.806582,
+            0.812054,
+            0.801057
+          ]
+        },
+        "param_count": 550401
+      },
+      "C_wide_sage": {
+        "rmse": {
+          "mean": 0.556874,
+          "std": 0.002267,
+          "values": [
+            0.556539,
+            0.55929,
+            0.554793
+          ]
+        },
+        "mae": {
+          "mean": 0.393418,
+          "std": 0.001957,
+          "values": [
+            0.391666,
+            0.39553,
+            0.393058
+          ]
+        },
+        "r2": {
+          "mean": 0.773281,
+          "std": 0.001847,
+          "values": [
+            0.773556,
+            0.771312,
+            0.774975
+          ]
+        },
+        "param_count": 552574
+      },
+      "D_aux_mlp": {
+        "rmse": {
+          "mean": 0.55088,
+          "std": 0.006005,
+          "values": [
+            0.55128,
+            0.544685,
+            0.556675
+          ]
+        },
+        "mae": {
+          "mean": 0.380261,
+          "std": 0.007067,
+          "values": [
+            0.379521,
+            0.373593,
+            0.387669
+          ]
+        },
+        "r2": {
+          "mean": 0.77812,
+          "std": 0.004834,
+          "values": [
+            0.777815,
+            0.783099,
+            0.773445
+          ]
+        },
+        "param_count": 550401
+      },
+      "E_skip_residual": {
+        "rmse": {
+          "mean": 0.56057,
+          "std": 0.002409,
+          "values": [
+            0.558004,
+            0.560922,
+            0.562784
+          ]
+        },
+        "mae": {
+          "mean": 0.399383,
+          "std": 0.002423,
+          "values": [
+            0.396585,
+            0.400837,
+            0.400726
+          ]
+        },
+        "r2": {
+          "mean": 0.770261,
+          "std": 0.001974,
+          "values": [
+            0.772362,
+            0.769975,
+            0.768446
+          ]
+        },
+        "param_count": 415233
+      }
+    },
+    "f1_summaries": {
+      "A_standard_sage": {
+        "rmse": {
+          "mean": 0.690851,
+          "std": 0.07608,
+          "values": [
+            0.609829,
+            0.760768,
+            0.701957
+          ]
+        },
+        "mae": {
+          "mean": 0.512797,
+          "std": 0.063726,
+          "values": [
+            0.444858,
+            0.571247,
+            0.522285
+          ]
+        },
+        "r2": {
+          "mean": 0.987471,
+          "std": 0.002706,
+          "values": [
+            0.990316,
+            0.984929,
+            0.987169
+          ]
+        },
+        "param_count": 1734273
+      },
+      "B_prmp": {
+        "rmse": {
+          "mean": 0.824179,
+          "std": 0.053837,
+          "values": [
+            0.819185,
+            0.773014,
+            0.880339
+          ]
+        },
+        "mae": {
+          "mean": 0.510628,
+          "std": 0.026783,
+          "values": [
+            0.514837,
+            0.48199,
+            0.535057
+          ]
+        },
+        "r2": {
+          "mean": 0.982262,
+          "std": 0.002321,
+          "values": [
+            0.982526,
+            0.98444,
+            0.97982
+          ]
+        },
+        "param_count": 3464833
+      },
+      "C_wide_sage": {
+        "rmse": {
+          "mean": 0.695656,
+          "std": 0.137196,
+          "values": [
+            0.600546,
+            0.852931,
+            0.633492
+          ]
+        },
+        "mae": {
+          "mean": 0.512223,
+          "std": 0.162415,
+          "values": [
+            0.399806,
+            0.698433,
+            0.438429
+          ]
+        },
+        "r2": {
+          "mean": 0.987072,
+          "std": 0.005236,
+          "values": [
+            0.990609,
+            0.981057,
+            0.98955
+          ]
+        },
+        "param_count": 3459635
+      },
+      "D_aux_mlp": {
+        "rmse": {
+          "mean": 1.017695,
+          "std": 0.308078,
+          "values": [
+            0.693006,
+            1.305917,
+            1.054161
+          ]
+        },
+        "mae": {
+          "mean": 0.598557,
+          "std": 0.151759,
+          "values": [
+            0.444385,
+            0.747783,
+            0.603504
+          ]
+        },
+        "r2": {
+          "mean": 0.971383,
+          "std": 0.015953,
+          "values": [
+            0.987494,
+            0.955592,
+            0.971064
+          ]
+        },
+        "param_count": 3464833
+      },
+      "E_skip_residual": {
+        "rmse": {
+          "mean": 0.658174,
+          "std": 0.046091,
+          "values": [
+            0.605657,
+            0.676964,
+            0.691902
+          ]
+        },
+        "mae": {
+          "mean": 0.471533,
+          "std": 0.047488,
+          "values": [
+            0.431676,
+            0.458848,
+            0.524076
+          ]
+        },
+        "r2": {
+          "mean": 0.988683,
+          "std": 0.001552,
+          "values": [
+            0.990448,
+            0.988067,
+            0.987534
+          ]
+        },
+        "param_count": 2586241
+      }
+    },
+    "amazon_analysis": {
+      "prmp_vs_A_standard_sage": {
+        "cohens_d": -5.5462,
+        "prmp_mean": 0.514344,
+        "prmp_std": 0.007312,
+        "control_mean": 0.564342,
+        "control_std": 0.010444,
+        "improvement_pct": 8.8595,
+        "prmp_values": [
+          0.514355,
+          0.507027,
+          0.521651
+        ],
+        "control_values": [
+          0.575958,
+          0.561341,
+          0.555728
+        ],
+        "prmp_better": true
+      },
+      "prmp_vs_C_wide_sage": {
+        "cohens_d": -7.8567,
+        "prmp_mean": 0.514344,
+        "prmp_std": 0.007312,
+        "control_mean": 0.556874,
+        "control_std": 0.002267,
+        "improvement_pct": 7.6372,
+        "prmp_values": [
+          0.514355,
+          0.507027,
+          0.521651
+        ],
+        "control_values": [
+          0.556539,
+          0.55929,
+          0.554793
+        ],
+        "prmp_better": true
+      },
+      "prmp_vs_D_aux_mlp": {
+        "cohens_d": -5.4608,
+        "prmp_mean": 0.514344,
+        "prmp_std": 0.007312,
+        "control_mean": 0.55088,
+        "control_std": 0.006005,
+        "improvement_pct": 6.6322,
+        "prmp_values": [
+          0.514355,
+          0.507027,
+          0.521651
+        ],
+        "control_values": [
+          0.55128,
+          0.544685,
+          0.556675
+        ],
+        "prmp_better": true
+      },
+      "prmp_vs_E_skip_residual": {
+        "cohens_d": -8.4914,
+        "prmp_mean": 0.514344,
+        "prmp_std": 0.007312,
+        "control_mean": 0.56057,
+        "control_std": 0.002409,
+        "improvement_pct": 8.2462,
+        "prmp_values": [
+          0.514355,
+          0.507027,
+          0.521651
+        ],
+        "control_values": [
+          0.558004,
+          0.560922,
+          0.562784
+        ],
+        "prmp_better": true
+      },
+      "interpretation": "PRMP's predict-subtract mechanism provides genuine benefit on Amazon Video Games. PRMP outperforms both parameter-matched controls (Wide SAGEConv and AuxMLP), indicating improvement is from the mechan..."
+    },
+    "f1_analysis": {
+      "prmp_vs_A_standard_sage": {
+        "cohens_d": -0.0444,
+        "prmp_mean": 0.510628,
+        "prmp_std": 0.026783,
+        "control_mean": 0.512797,
+        "control_std": 0.063726,
+        "improvement_pct": 0.4229,
+        "prmp_values": [
+          0.514837,
+          0.48199,
+          0.535057
+        ],
+        "control_values": [
+          0.444858,
+          0.571247,
+          0.522285
+        ],
+        "prmp_better": true
+      },
+      "prmp_vs_C_wide_sage": {
+        "cohens_d": -0.0137,
+        "prmp_mean": 0.510628,
+        "prmp_std": 0.026783,
+        "control_mean": 0.512223,
+        "control_std": 0.162415,
+        "improvement_pct": 0.3113,
+        "prmp_values": [
+          0.514837,
+          0.48199,
+          0.535057
+        ],
+        "control_values": [
+          0.399806,
+          0.698433,
+          0.438429
+        ],
+        "prmp_better": true
+      },
+      "prmp_vs_D_aux_mlp": {
+        "cohens_d": -0.8069,
+        "prmp_mean": 0.510628,
+        "prmp_std": 0.026783,
+        "control_mean": 0.598557,
+        "control_std": 0.151759,
+        "improvement_pct": 14.6902,
+        "prmp_values": [
+          0.514837,
+          0.48199,
+          0.535057
+        ],
+        "control_values": [
+          0.444385,
+          0.747783,
+          0.603504
+        ],
+        "prmp_better": true
+      },
+      "prmp_vs_E_skip_residual": {
+        "cohens_d": 1.0141,
+        "prmp_mean": 0.510628,
+        "prmp_std": 0.026783,
+        "control_mean": 0.471533,
+        "control_std": 0.047488,
+        "improvement_pct": -8.291,
+        "prmp_values": [
+          0.514837,
+          0.48199,
+          0.535057
+        ],
+        "control_values": [
+          0.431676,
+          0.458848,
+          0.524076
+        ],
+        "prmp_better": false
+      },
+      "interpretation": "PRMP's predict-subtract mechanism provides genuine benefit on F1 driver-position. PRMP outperforms both parameter-matched controls (Wide SAGEConv and AuxMLP), indicating improvement is from the mechan..."
+    },
+    "runtime_seconds": 407.4
+  },
+  "datasets": [
+    {
+      "dataset": "amazon_parameter_controls",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"amazon_video_games\", \"variant\": \"A_standard_sage\", \"seed\": 42, \"hidden_dim\": 128}",
+          "output": "{\"rmse\": 0.575958, \"mae\": 0.408849, \"r2\": 0.757478, \"best_epoch\": 80, \"param_count\": 284161}",
+          "predict_A_standard_sage": "{\"rmse\": 0.575958, \"mae\": 0.408849, \"r2\": 0.757478}",
+          "predict_B_prmp": "{\"rmse\": 0.514355, \"mae\": 0.33891, \"r2\": 0.806582}",
+          "predict_C_wide_sage": "{\"rmse\": 0.556539, \"mae\": 0.391666, \"r2\": 0.773556}",
+          "predict_D_aux_mlp": "{\"rmse\": 0.55128, \"mae\": 0.379521, \"r2\": 0.777815}",
+          "predict_E_skip_residual": "{\"rmse\": 0.558004, \"mae\": 0.396585, \"r2\": 0.772362}",
+          "metadata_dataset": "amazon_video_games",
+          "metadata_variant": "A_standard_sage",
+          "metadata_seed": 42,
+          "metadata_task_type": "parameter_control"
+        },
+        {
+          "input": "{\"dataset\": \"amazon_video_games\", \"variant\": \"A_standard_sage\", \"seed\": 123, \"hidden_dim\": 128}",
+          "output": "{\"rmse\": 0.561341, \"mae\": 0.399786, \"r2\": 0.769631, \"best_epoch\": 79, \"param_count\": 284161}",
+          "predict_A_standard_sage": "{\"rmse\": 0.561341, \"mae\": 0.399786, \"r2\": 0.769631}",
+          "predict_B_prmp": "{\"rmse\": 0.507027, \"mae\": 0.336514, \"r2\": 0.812054}",
+          "predict_C_wide_sage": "{\"rmse\": 0.55929, \"mae\": 0.39553, \"r2\": 0.771312}",
+          "predict_D_aux_mlp": "{\"rmse\": 0.544685, \"mae\": 0.373593, \"r2\": 0.783099}",
+          "predict_E_skip_residual": "{\"rmse\": 0.560922, \"mae\": 0.400837, \"r2\": 0.769975}",
+          "metadata_dataset": "amazon_video_games",
+          "metadata_variant": "A_standard_sage",
+          "metadata_seed": 123,
+          "metadata_task_type": "parameter_control"
+        },
+        {
+          "input": "{\"dataset\": \"amazon_video_games\", \"variant\": \"A_standard_sage\", \"seed\": 456, \"hidden_dim\": 128}",
+          "output": "{\"rmse\": 0.555728, \"mae\": 0.389918, \"r2\": 0.774215, \"best_epoch\": 80, \"param_count\": 284161}",
+          "predict_A_standard_sage": "{\"rmse\": 0.555728, \"mae\": 0.389918, \"r2\": 0.774215}",
+          "predict_B_prmp": "{\"rmse\": 0.521651, \"mae\": 0.352295, \"r2\": 0.801057}",
+          "predict_C_wide_sage": "{\"rmse\": 0.554793, \"mae\": 0.393058, \"r2\": 0.774975}",
+          "predict_D_aux_mlp": "{\"rmse\": 0.556675, \"mae\": 0.387669, \"r2\": 0.773445}",
+          "predict_E_skip_residual": "{\"rmse\": 0.562784, \"mae\": 0.400726, \"r2\": 0.768446}",
+          "metadata_dataset": "amazon_video_games",
+          "metadata_variant": "A_standard_sage",
+          "metadata_seed": 456,
+          "metadata_task_type": "parameter_control"
+        }
+      ]
+    },
+    {
+      "dataset": "f1_parameter_controls",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"variant\": \"A_standard_sage\", \"seed\": 42, \"hidden_dim\": 128}",
+          "output": "{\"rmse\": 0.609829, \"mae\": 0.444858, \"r2\": 0.990316, \"best_epoch\": 78, \"param_count\": 1734273}",
+          "predict_A_standard_sage": "{\"rmse\": 0.609829, \"mae\": 0.444858, \"r2\": 0.990316}",
+          "predict_B_prmp": "{\"rmse\": 0.819185, \"mae\": 0.514837, \"r2\": 0.982526}",
+          "predict_C_wide_sage": "{\"rmse\": 0.600546, \"mae\": 0.399806, \"r2\": 0.990609}",
+          "predict_D_aux_mlp": "{\"rmse\": 0.693006, \"mae\": 0.444385, \"r2\": 0.987494}",
+          "predict_E_skip_residual": "{\"rmse\": 0.605657, \"mae\": 0.431676, \"r2\": 0.990448}",
+          "metadata_dataset": "rel-f1",
+          "metadata_variant": "A_standard_sage",
+          "metadata_seed": 42,
+          "metadata_task_type": "parameter_control"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"variant\": \"A_standard_sage\", \"seed\": 123, \"hidden_dim\": 128}",
+          "output": "{\"rmse\": 0.760768, \"mae\": 0.571247, \"r2\": 0.984929, \"best_epoch\": 80, \"param_count\": 1734273}",
+          "predict_A_standard_sage": "{\"rmse\": 0.760768, \"mae\": 0.571247, \"r2\": 0.984929}",
+          "predict_B_prmp": "{\"rmse\": 0.773014, \"mae\": 0.48199, \"r2\": 0.98444}",
+          "predict_C_wide_sage": "{\"rmse\": 0.852931, \"mae\": 0.698433, \"r2\": 0.981057}",
+          "predict_D_aux_mlp": "{\"rmse\": 1.305917, \"mae\": 0.747783, \"r2\": 0.955592}",
+          "predict_E_skip_residual": "{\"rmse\": 0.676964, \"mae\": 0.458848, \"r2\": 0.988067}",
+          "metadata_dataset": "rel-f1",
+          "metadata_variant": "A_standard_sage",
+          "metadata_seed": 123,
+          "metadata_task_type": "parameter_control"
+        },
+        {
+          "input": "{\"dataset\": \"rel-f1\", \"variant\": \"A_standard_sage\", \"seed\": 456, \"hidden_dim\": 128}",
+          "output": "{\"rmse\": 0.701957, \"mae\": 0.522285, \"r2\": 0.987169, \"best_epoch\": 78, \"param_count\": 1734273}",
+          "predict_A_standard_sage": "{\"rmse\": 0.701957, \"mae\": 0.522285, \"r2\": 0.987169}",
+          "predict_B_prmp": "{\"rmse\": 0.880339, \"mae\": 0.535057, \"r2\": 0.97982}",
+          "predict_C_wide_sage": "{\"rmse\": 0.633492, \"mae\": 0.438429, \"r2\": 0.98955}",
+          "predict_D_aux_mlp": "{\"rmse\": 1.054161, \"mae\": 0.603504, \"r2\": 0.971064}",
+          "predict_E_skip_residual": "{\"rmse\": 0.691902, \"mae\": 0.524076, \"r2\": 0.987534}",
+          "metadata_dataset": "rel-f1",
+          "metadata_variant": "A_standard_sage",
+          "metadata_seed": 456,
+          "metadata_task_type": "parameter_control"
+        }
+      ]
+    }
+  ]
+}

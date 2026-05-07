@@ -1,0 +1,13 @@
+{
+  "id": "exp_id2_it4__opus",
+  "type": "code",
+  "title": "Embedding-Space Cross-Table Predictability Trajectories: Standard vs PRMP HeteroGNN on Amazon Reviews",
+  "summary": "Interactive notebook demonstrating Predictive Residual Message Passing (PRMP) on heterogeneous graph neural networks for Amazon Video Games review-rating prediction. Constructs a heterogeneous graph (reviews \u2194 products \u2194 customers), trains Standard vs PRMP HeteroSAGE models in pure PyTorch, and tracks per-layer embedding-space predictability (Ridge R\u00b2, Random Forest R\u00b2, Mutual Information) across training epochs for each FK link. Shows that PRMP filters predictable cross-table information, achieving lower embedding R\u00b2 on product\u2192review links while improving task MAE. Mini dataset contains 10K sampled reviews with product/customer aggregated features and aligned parent-child matrices from the McAuley Amazon Video Games corpus.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_4/gen_art/exp_id2_it4__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id2_it4__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id2_it4__opus/method_code_demo.ipynb"
+}
