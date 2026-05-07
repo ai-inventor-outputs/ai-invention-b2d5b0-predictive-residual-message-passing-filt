@@ -1,0 +1,13 @@
+{
+  "id": "data_id3_it1__opus",
+  "type": "code",
+  "title": "RelBench rel-hm (H&M Fashion) Dataset: Tables, FK Links, Cardinality Stats & Parent-Child Feature Pairs",
+  "summary": "Demo notebook exploring the RelBench rel-hm (H&M Fashion) relational dataset. Loads pre-extracted FK link data (transaction\u2192customer and transaction\u2192article) containing cardinality statistics and aligned parent-child feature pairs. The notebook parses FK metadata, builds aligned DataFrames from sampled pairs, computes cross-table feature correlations, and visualizes cardinality histograms and correlation heatmaps. Uses 50 sampled pairs per FK link from the mini dataset (2 examples total). All categorical columns are label-encoded and dates are epoch seconds.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_1/gen_art/data_id3_it1__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/data_id3_it1__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/data_id3_it1__opus/data_code_demo.ipynb"
+}

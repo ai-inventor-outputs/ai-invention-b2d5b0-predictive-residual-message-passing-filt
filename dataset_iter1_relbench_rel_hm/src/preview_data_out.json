@@ -1,0 +1,29 @@
+{
+  "datasets": [
+    {
+      "dataset": "rel_hm_fashion",
+      "examples": [
+        {
+          "input": "{\"parent_table\": \"customer\", \"child_table\": \"transaction\", \"fk_column\": \"customer_id\", \"parent_feature_columns\": [\"FN\", \"Active\", \"club_member_status\", \"fashion_news_frequency\", \"age\"], \"child_feature...",
+          "output": "{\"num_unique_parents\": 119904, \"num_children_total\": 500000, \"mean_cardinality\": 4.17, \"median_cardinality\": 3.0, \"max_cardinality\": 169, \"std_cardinality\": 4.4495, \"p95_cardinality\": 12.0, \"cardinali...",
+          "metadata_fold": 0,
+          "metadata_parent_table": "customer",
+          "metadata_child_table": "transaction",
+          "metadata_fk_column": "customer_id",
+          "metadata_task_type": "fk_cardinality_and_feature_alignment",
+          "metadata_supplementary_file": "supplementary_customer_transaction_aligned_features.parquet"
+        },
+        {
+          "input": "{\"parent_table\": \"article\", \"child_table\": \"transaction\", \"fk_column\": \"article_id\", \"parent_feature_columns\": [\"product_type_no\", \"product_type_name\", \"product_group_name\", \"graphical_appearance_no\",...",
+          "output": "{\"num_unique_parents\": 24942, \"num_children_total\": 500000, \"mean_cardinality\": 20.0465, \"median_cardinality\": 6.0, \"max_cardinality\": 1241, \"std_cardinality\": 48.6948, \"p95_cardinality\": 84.0, \"cardi...",
+          "metadata_fold": 0,
+          "metadata_parent_table": "article",
+          "metadata_child_table": "transaction",
+          "metadata_fk_column": "article_id",
+          "metadata_task_type": "fk_cardinality_and_feature_alignment",
+          "metadata_supplementary_file": "supplementary_article_transaction_aligned_features.parquet"
+        }
+      ]
+    }
+  ]
+}

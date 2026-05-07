@@ -1,0 +1,13 @@
+{
+  "id": "data_id5_it2__opus",
+  "type": "code",
+  "title": "RelBench rel-f1 (Formula 1) Dataset: Tables, FK Links, Cardinality Stats & Parent-Child Feature Pairs",
+  "summary": "Interactive notebook analyzing the RelBench rel-f1 (Ergast Formula 1) relational database. Enumerates 22 foreign-key links across 14 tables (619K+ rows), computes cardinality statistics (mean, median, max, p95, std) per FK link, generates aligned parent-child feature matrices, and outputs structured metadata for PRMP (Predictive Residual Message Passing) hypothesis regime analysis. The mini dataset contains curated FK link examples with cardinality metadata and aligned feature dimensions.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_2/gen_art/data_id5_it2__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/data_id5_it2__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/data_id5_it2__opus/data_code_demo.ipynb"
+}

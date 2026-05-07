@@ -1,0 +1,13 @@
+{
+  "id": "data_id4_it1__opus",
+  "type": "code",
+  "title": "Download and Prepare RelBench rel-stack (Stack Exchange) Dataset",
+  "summary": "Demo notebook for the RelBench rel-stack (Stack Exchange) dataset processing pipeline. Loads pre-processed data containing 9 FK-link sub-datasets (27 examples across badges, postLinks, postHistory, votes, and posts tables). Demonstrates deterministic fold assignment via MD5 hashing, explores schema topology and metadata (7 tables, 11 FK links, 6 benchmark tasks), processes cross-table prediction examples with parent\u2192child feature alignment, and visualizes cardinality distributions and FK coverage across all relationships. Uses mini subset of the full 45K-example dataset.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_1/gen_art/data_id4_it1__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/data_id4_it1__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/data_id4_it1__opus/data_code_demo.ipynb"
+}

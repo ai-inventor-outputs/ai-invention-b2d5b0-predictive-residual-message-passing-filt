@@ -1,0 +1,1785 @@
+{
+  "datasets": [
+    {
+      "dataset": "rel-f1",
+      "examples": [
+        {
+          "input": "{\"fk_link\":{\"child_table\":\"results\",\"child_fk_col\":\"raceId\",\"parent_table\":\"races\",\"parent_pk_col\":\"raceId\"},\"child_table_info\":{\"row_count\":25420,\"col_count\":18,\"feature_dim\":13},\"parent_table_info\":{\"row_count\":1079,\"col_count\":8,\"feature_dim\":6}}",
+          "output": "{\"cardinality_stats\":{\"mean\":24.03,\"median\":22.0,\"max\":55,\"p95\":34.0,\"std\":4.89,\"num_parents\":1058,\"num_children\":25420},\"aligned_features_file\":\"results__races__raceId_features.parquet\",\"aligned_features_num_rows\":884,\"parent_feature_dim\":6,\"child_feature_dim\":13}",
+          "metadata_fk_index": 0,
+          "metadata_child_table": "results",
+          "metadata_parent_table": "races",
+          "metadata_child_fk_col": "raceId",
+          "metadata_cardinality_mean": 24.03,
+          "metadata_cardinality_max": 55,
+          "metadata_cardinality_p95": 34.0,
+          "metadata_cardinality_std": 4.89,
+          "metadata_num_parents": 1058,
+          "metadata_num_children": 25420,
+          "metadata_parent_feature_dim": 6,
+          "metadata_child_feature_dim": 13,
+          "metadata_aligned_rows": 884,
+          "metadata_task_type": "relational_predictability"
+        },
+        {
+          "input": "{\"fk_link\":{\"child_table\":\"results\",\"child_fk_col\":\"driverId\",\"parent_table\":\"drivers\",\"parent_pk_col\":\"driverId\"},\"child_table_info\":{\"row_count\":25420,\"col_count\":18,\"feature_dim\":13},\"parent_table_info\":{\"row_count\":854,\"col_count\":9,\"feature_dim\":8}}",
+          "output": "{\"cardinality_stats\":{\"mean\":29.77,\"median\":6.5,\"max\":352,\"p95\":147.7,\"std\":53.08,\"num_parents\":854,\"num_children\":25420},\"aligned_features_file\":\"results__drivers__driverId_features.parquet\",\"aligned_features_num_rows\":25420,\"parent_feature_dim\":8,\"child_feature_dim\":13}",
+          "metadata_fk_index": 1,
+          "metadata_child_table": "results",
+          "metadata_parent_table": "drivers",
+          "metadata_child_fk_col": "driverId",
+          "metadata_cardinality_mean": 29.77,
+          "metadata_cardinality_max": 352,
+          "metadata_cardinality_p95": 147.7,
+          "metadata_cardinality_std": 53.08,
+          "metadata_num_parents": 854,
+          "metadata_num_children": 25420,
+          "metadata_parent_feature_dim": 8,
+          "metadata_child_feature_dim": 13,
+          "metadata_aligned_rows": 25420,
+          "metadata_task_type": "relational_predictability"
+        },
+        {
+          "input": "{\"fk_link\":{\"child_table\":\"results\",\"child_fk_col\":\"constructorId\",\"parent_table\":\"constructors\",\"parent_pk_col\":\"constructorId\"},\"child_table_info\":{\"row_count\":25420,\"col_count\":18,\"feature_dim\":13},\"parent_table_info\":{\"row_count\":211,\"col_count\":5,\"feature_dim\":4}}",
+          "output": "{\"cardinality_stats\":{\"mean\":121.05,\"median\":18.5,\"max\":2305,\"p95\":601.55,\"std\":276.93,\"num_parents\":210,\"num_children\":25420},\"aligned_features_file\":\"results__constructors__constructorId_features.parquet\",\"aligned_features_num_rows\":25420,\"parent_feature_dim\":4,\"child_feature_dim\":13}",
+          "metadata_fk_index": 2,
+          "metadata_child_table": "results",
+          "metadata_parent_table": "constructors",
+          "metadata_child_fk_col": "constructorId",
+          "metadata_cardinality_mean": 121.05,
+          "metadata_cardinality_max": 2305,
+          "metadata_cardinality_p95": 601.55,
+          "metadata_cardinality_std": 276.93,
+          "metadata_num_parents": 210,
+          "metadata_num_children": 25420,
+          "metadata_parent_feature_dim": 4,
+          "metadata_child_feature_dim": 13,
+          "metadata_aligned_rows": 25420,
+          "metadata_task_type": "relational_predictability"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "dataset_name": "rel-f1",
+    "source": "ergast_f1_database",
+    "description": "Formula 1 relational database from Ergast Motor Racing Data (as used in RelBench). Contains 14 tables with ~74K total rows, 22 FK links with cardinality stats, and aligned parent-child feature matrices for cross-table predictability (R²) computation. High-priority for PRMP hypothesis: RelGNN reported largest improvements on rel-f1.",
+    "tables": [
+      {
+        "name": "circuits",
+        "row_count": 79,
+        "col_count": 9,
+        "feature_dim": 8,
+        "columns": [
+          {
+            "name": "circuitId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "circuitRef",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "name",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "location",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "country",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "lat",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "lng",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "alt",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "url",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "circuitId": "1",
+            "circuitRef": "albert_park",
+            "name": "Albert Park Grand Prix Circuit",
+            "location": "Melbourne",
+            "country": "Australia",
+            "lat": "-37.8497",
+            "lng": "144.968",
+            "alt": "10.0",
+            "url": "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit"
+          },
+          {
+            "circuitId": "2",
+            "circuitRef": "sepang",
+            "name": "Sepang International Circuit",
+            "location": "Kuala Lumpur",
+            "country": "Malaysia",
+            "lat": "2.76083",
+            "lng": "101.738",
+            "alt": "18.0",
+            "url": "http://en.wikipedia.org/wiki/Sepang_International_Circuit"
+          },
+          {
+            "circuitId": "3",
+            "circuitRef": "bahrain",
+            "name": "Bahrain International Circuit",
+            "location": "Sakhir",
+            "country": "Bahrain",
+            "lat": "26.0325",
+            "lng": "50.5106",
+            "alt": "7.0",
+            "url": "http://en.wikipedia.org/wiki/Bahrain_International_Circuit"
+          }
+        ]
+      },
+      {
+        "name": "constructor_results",
+        "row_count": 11960,
+        "col_count": 5,
+        "feature_dim": 2,
+        "columns": [
+          {
+            "name": "constructorResultsId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "raceId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "constructorId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "points",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "status",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "constructorResultsId": "1",
+            "raceId": "18",
+            "constructorId": "1",
+            "points": "14.0",
+            "status": null
+          },
+          {
+            "constructorResultsId": "2",
+            "raceId": "18",
+            "constructorId": "2",
+            "points": "8.0",
+            "status": null
+          },
+          {
+            "constructorResultsId": "3",
+            "raceId": "18",
+            "constructorId": "3",
+            "points": "9.0",
+            "status": null
+          }
+        ]
+      },
+      {
+        "name": "constructor_standings",
+        "row_count": 12721,
+        "col_count": 7,
+        "feature_dim": 4,
+        "columns": [
+          {
+            "name": "constructorStandingsId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "raceId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "constructorId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "points",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "position",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "positionText",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "wins",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "constructorStandingsId": "1",
+            "raceId": "18",
+            "constructorId": "1",
+            "points": "14.0",
+            "position": "1",
+            "positionText": "1",
+            "wins": "1"
+          },
+          {
+            "constructorStandingsId": "2",
+            "raceId": "18",
+            "constructorId": "2",
+            "points": "8.0",
+            "position": "3",
+            "positionText": "3",
+            "wins": "0"
+          },
+          {
+            "constructorStandingsId": "3",
+            "raceId": "18",
+            "constructorId": "3",
+            "points": "9.0",
+            "position": "2",
+            "positionText": "2",
+            "wins": "0"
+          }
+        ]
+      },
+      {
+        "name": "constructors",
+        "row_count": 211,
+        "col_count": 5,
+        "feature_dim": 4,
+        "columns": [
+          {
+            "name": "constructorId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "constructorRef",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "name",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "nationality",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "url",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "constructorId": "1",
+            "constructorRef": "mclaren",
+            "name": "McLaren",
+            "nationality": "British",
+            "url": "http://en.wikipedia.org/wiki/McLaren"
+          },
+          {
+            "constructorId": "2",
+            "constructorRef": "bmw_sauber",
+            "name": "BMW Sauber",
+            "nationality": "German",
+            "url": "http://en.wikipedia.org/wiki/BMW_Sauber"
+          },
+          {
+            "constructorId": "3",
+            "constructorRef": "williams",
+            "name": "Williams",
+            "nationality": "British",
+            "url": "http://en.wikipedia.org/wiki/Williams_Grand_Prix_Engineering"
+          }
+        ]
+      },
+      {
+        "name": "driver_standings",
+        "row_count": 33435,
+        "col_count": 7,
+        "feature_dim": 4,
+        "columns": [
+          {
+            "name": "driverStandingsId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "raceId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "driverId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "points",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "position",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "positionText",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "wins",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "driverStandingsId": "1",
+            "raceId": "18",
+            "driverId": "1",
+            "points": "10.0",
+            "position": "1",
+            "positionText": "1",
+            "wins": "1"
+          },
+          {
+            "driverStandingsId": "2",
+            "raceId": "18",
+            "driverId": "2",
+            "points": "8.0",
+            "position": "2",
+            "positionText": "2",
+            "wins": "0"
+          },
+          {
+            "driverStandingsId": "3",
+            "raceId": "18",
+            "driverId": "3",
+            "points": "6.0",
+            "position": "3",
+            "positionText": "3",
+            "wins": "0"
+          }
+        ]
+      },
+      {
+        "name": "drivers",
+        "row_count": 854,
+        "col_count": 9,
+        "feature_dim": 8,
+        "columns": [
+          {
+            "name": "driverId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "driverRef",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "number",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "code",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "forename",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "surname",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "dob",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "nationality",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "url",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "driverId": "1",
+            "driverRef": "hamilton",
+            "number": "44.0",
+            "code": "HAM",
+            "forename": "Lewis",
+            "surname": "Hamilton",
+            "dob": "1985-01-07",
+            "nationality": "British",
+            "url": "http://en.wikipedia.org/wiki/Lewis_Hamilton"
+          },
+          {
+            "driverId": "2",
+            "driverRef": "heidfeld",
+            "number": null,
+            "code": "HEI",
+            "forename": "Nick",
+            "surname": "Heidfeld",
+            "dob": "1977-05-10",
+            "nationality": "German",
+            "url": "http://en.wikipedia.org/wiki/Nick_Heidfeld"
+          },
+          {
+            "driverId": "3",
+            "driverRef": "rosberg",
+            "number": "6.0",
+            "code": "ROS",
+            "forename": "Nico",
+            "surname": "Rosberg",
+            "dob": "1985-06-27",
+            "nationality": "German",
+            "url": "http://en.wikipedia.org/wiki/Nico_Rosberg"
+          }
+        ]
+      },
+      {
+        "name": "lap_times",
+        "row_count": 515715,
+        "col_count": 6,
+        "feature_dim": 4,
+        "columns": [
+          {
+            "name": "raceId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "driverId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "lap",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "position",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "time",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "milliseconds",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "raceId": "841",
+            "driverId": "20",
+            "lap": "1",
+            "position": "1",
+            "time": "1:38.109",
+            "milliseconds": "98109"
+          },
+          {
+            "raceId": "841",
+            "driverId": "20",
+            "lap": "2",
+            "position": "1",
+            "time": "1:33.006",
+            "milliseconds": "93006"
+          },
+          {
+            "raceId": "841",
+            "driverId": "20",
+            "lap": "3",
+            "position": "1",
+            "time": "1:32.713",
+            "milliseconds": "92713"
+          }
+        ]
+      },
+      {
+        "name": "pit_stops",
+        "row_count": 8887,
+        "col_count": 7,
+        "feature_dim": 5,
+        "columns": [
+          {
+            "name": "raceId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "driverId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "stop",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "lap",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "time",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "duration",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "milliseconds",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "raceId": "841",
+            "driverId": "153",
+            "stop": "1",
+            "lap": "1",
+            "time": "17:05:23",
+            "duration": "26.898",
+            "milliseconds": "26898"
+          },
+          {
+            "raceId": "841",
+            "driverId": "30",
+            "stop": "1",
+            "lap": "1",
+            "time": "17:05:52",
+            "duration": "25.021",
+            "milliseconds": "25021"
+          },
+          {
+            "raceId": "841",
+            "driverId": "17",
+            "stop": "1",
+            "lap": "11",
+            "time": "17:20:48",
+            "duration": "23.426",
+            "milliseconds": "23426"
+          }
+        ]
+      },
+      {
+        "name": "qualifying",
+        "row_count": 9155,
+        "col_count": 9,
+        "feature_dim": 5,
+        "columns": [
+          {
+            "name": "qualifyId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "raceId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "driverId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "constructorId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "number",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "position",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "q1",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "q2",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "q3",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "qualifyId": "1",
+            "raceId": "18",
+            "driverId": "1",
+            "constructorId": "1",
+            "number": "22",
+            "position": "1",
+            "q1": "1:26.572",
+            "q2": "1:25.187",
+            "q3": "1:26.714"
+          },
+          {
+            "qualifyId": "2",
+            "raceId": "18",
+            "driverId": "9",
+            "constructorId": "2",
+            "number": "4",
+            "position": "2",
+            "q1": "1:26.103",
+            "q2": "1:25.315",
+            "q3": "1:26.869"
+          },
+          {
+            "qualifyId": "3",
+            "raceId": "18",
+            "driverId": "5",
+            "constructorId": "1",
+            "number": "23",
+            "position": "3",
+            "q1": "1:25.664",
+            "q2": "1:25.452",
+            "q3": "1:27.079"
+          }
+        ]
+      },
+      {
+        "name": "races",
+        "row_count": 1079,
+        "col_count": 8,
+        "feature_dim": 6,
+        "columns": [
+          {
+            "name": "raceId",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": true
+          },
+          {
+            "name": "year",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "round",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "circuitId",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": true
+          },
+          {
+            "name": "name",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "date",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "time",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "url",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "raceId": null,
+            "year": null,
+            "round": null,
+            "circuitId": null,
+            "name": null,
+            "date": null,
+            "time": null,
+            "url": null
+          },
+          {
+            "raceId": null,
+            "year": null,
+            "round": null,
+            "circuitId": null,
+            "name": null,
+            "date": null,
+            "time": null,
+            "url": null
+          },
+          {
+            "raceId": null,
+            "year": null,
+            "round": null,
+            "circuitId": null,
+            "name": null,
+            "date": null,
+            "time": null,
+            "url": null
+          }
+        ]
+      },
+      {
+        "name": "results",
+        "row_count": 25420,
+        "col_count": 18,
+        "feature_dim": 13,
+        "columns": [
+          {
+            "name": "resultId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "raceId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "driverId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "constructorId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "number",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "grid",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "position",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "positionText",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "positionOrder",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "points",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "laps",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "time",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "milliseconds",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "fastestLap",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "rank",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "fastestLapTime",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "fastestLapSpeed",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "statusId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          }
+        ],
+        "sample_rows": [
+          {
+            "resultId": "1",
+            "raceId": "18",
+            "driverId": "1",
+            "constructorId": "1",
+            "number": "22.0",
+            "grid": "1",
+            "position": "1.0",
+            "positionText": "1",
+            "positionOrder": "1",
+            "points": "10.0",
+            "laps": "58",
+            "time": "1:34:50.616",
+            "milliseconds": "5690616.0",
+            "fastestLap": "39.0",
+            "rank": "2.0",
+            "fastestLapTime": "1:27.452",
+            "fastestLapSpeed": "218.3",
+            "statusId": "1"
+          },
+          {
+            "resultId": "2",
+            "raceId": "18",
+            "driverId": "2",
+            "constructorId": "2",
+            "number": "3.0",
+            "grid": "5",
+            "position": "2.0",
+            "positionText": "2",
+            "positionOrder": "2",
+            "points": "8.0",
+            "laps": "58",
+            "time": "+5.478",
+            "milliseconds": "5696094.0",
+            "fastestLap": "41.0",
+            "rank": "3.0",
+            "fastestLapTime": "1:27.739",
+            "fastestLapSpeed": "217.586",
+            "statusId": "1"
+          },
+          {
+            "resultId": "3",
+            "raceId": "18",
+            "driverId": "3",
+            "constructorId": "3",
+            "number": "7.0",
+            "grid": "7",
+            "position": "3.0",
+            "positionText": "3",
+            "positionOrder": "3",
+            "points": "6.0",
+            "laps": "58",
+            "time": "+8.163",
+            "milliseconds": "5698779.0",
+            "fastestLap": "41.0",
+            "rank": "5.0",
+            "fastestLapTime": "1:28.090",
+            "fastestLapSpeed": "216.719",
+            "statusId": "1"
+          }
+        ]
+      },
+      {
+        "name": "seasons",
+        "row_count": 73,
+        "col_count": 2,
+        "feature_dim": 1,
+        "columns": [
+          {
+            "name": "year",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "url",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "year": "2009",
+            "url": "http://en.wikipedia.org/wiki/2009_Formula_One_season"
+          },
+          {
+            "year": "2008",
+            "url": "http://en.wikipedia.org/wiki/2008_Formula_One_season"
+          },
+          {
+            "year": "2007",
+            "url": "http://en.wikipedia.org/wiki/2007_Formula_One_season"
+          }
+        ]
+      },
+      {
+        "name": "sprint_results",
+        "row_count": 60,
+        "col_count": 16,
+        "feature_dim": 11,
+        "columns": [
+          {
+            "name": "resultId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "raceId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "driverId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "constructorId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "number",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "grid",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "position",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "positionText",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "positionOrder",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "points",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "laps",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": false
+          },
+          {
+            "name": "time",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "milliseconds",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "fastestLap",
+            "dtype": "numeric",
+            "original_dtype": "float64",
+            "is_id": false
+          },
+          {
+            "name": "fastestLapTime",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          },
+          {
+            "name": "statusId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          }
+        ],
+        "sample_rows": [
+          {
+            "resultId": "1",
+            "raceId": "1061",
+            "driverId": "830",
+            "constructorId": "9",
+            "number": "33",
+            "grid": "2",
+            "position": "1.0",
+            "positionText": "1",
+            "positionOrder": "1",
+            "points": "3",
+            "laps": "17",
+            "time": "25:38.426",
+            "milliseconds": "1538426.0",
+            "fastestLap": "14.0",
+            "fastestLapTime": "1:30.013",
+            "statusId": "1"
+          },
+          {
+            "resultId": "2",
+            "raceId": "1061",
+            "driverId": "1",
+            "constructorId": "131",
+            "number": "44",
+            "grid": "1",
+            "position": "2.0",
+            "positionText": "2",
+            "positionOrder": "2",
+            "points": "2",
+            "laps": "17",
+            "time": "+1.430",
+            "milliseconds": "1539856.0",
+            "fastestLap": "17.0",
+            "fastestLapTime": "1:29.937",
+            "statusId": "1"
+          },
+          {
+            "resultId": "3",
+            "raceId": "1061",
+            "driverId": "822",
+            "constructorId": "131",
+            "number": "77",
+            "grid": "3",
+            "position": "3.0",
+            "positionText": "3",
+            "positionOrder": "3",
+            "points": "1",
+            "laps": "17",
+            "time": "+7.502",
+            "milliseconds": "1545928.0",
+            "fastestLap": "17.0",
+            "fastestLapTime": "1:29.958",
+            "statusId": "1"
+          }
+        ]
+      },
+      {
+        "name": "status",
+        "row_count": 137,
+        "col_count": 2,
+        "feature_dim": 1,
+        "columns": [
+          {
+            "name": "statusId",
+            "dtype": "numeric",
+            "original_dtype": "int64",
+            "is_id": true
+          },
+          {
+            "name": "status",
+            "dtype": "other_encoded",
+            "original_dtype": "str",
+            "is_id": false
+          }
+        ],
+        "sample_rows": [
+          {
+            "statusId": "1",
+            "status": "Finished"
+          },
+          {
+            "statusId": "2",
+            "status": "Disqualified"
+          },
+          {
+            "statusId": "3",
+            "status": "Accident"
+          }
+        ]
+      }
+    ],
+    "fk_links": [
+      {
+        "child_table": "results",
+        "child_fk_col": "raceId",
+        "parent_table": "races",
+        "parent_pk_col": "raceId",
+        "cardinality_stats": {
+          "mean": 24.03,
+          "median": 22.0,
+          "max": 55,
+          "p95": 34.0,
+          "std": 4.89,
+          "num_parents": 1058,
+          "num_children": 25420
+        },
+        "num_parents": 1058,
+        "num_children": 25420,
+        "aligned_features_file": "results__races__raceId_features.parquet",
+        "aligned_features_num_rows": 884,
+        "parent_feature_dim": 6,
+        "child_feature_dim": 13
+      },
+      {
+        "child_table": "results",
+        "child_fk_col": "driverId",
+        "parent_table": "drivers",
+        "parent_pk_col": "driverId",
+        "cardinality_stats": {
+          "mean": 29.77,
+          "median": 6.5,
+          "max": 352,
+          "p95": 147.7,
+          "std": 53.08,
+          "num_parents": 854,
+          "num_children": 25420
+        },
+        "num_parents": 854,
+        "num_children": 25420,
+        "aligned_features_file": "results__drivers__driverId_features.parquet",
+        "aligned_features_num_rows": 25420,
+        "parent_feature_dim": 8,
+        "child_feature_dim": 13
+      },
+      {
+        "child_table": "results",
+        "child_fk_col": "constructorId",
+        "parent_table": "constructors",
+        "parent_pk_col": "constructorId",
+        "cardinality_stats": {
+          "mean": 121.05,
+          "median": 18.5,
+          "max": 2305,
+          "p95": 601.55,
+          "std": 276.93,
+          "num_parents": 210,
+          "num_children": 25420
+        },
+        "num_parents": 210,
+        "num_children": 25420,
+        "aligned_features_file": "results__constructors__constructorId_features.parquet",
+        "aligned_features_num_rows": 25420,
+        "parent_feature_dim": 4,
+        "child_feature_dim": 13
+      },
+      {
+        "child_table": "results",
+        "child_fk_col": "statusId",
+        "parent_table": "status",
+        "parent_pk_col": "statusId",
+        "cardinality_stats": {
+          "mean": 188.3,
+          "median": 13.0,
+          "max": 6821,
+          "p95": 807.6,
+          "std": 713.77,
+          "num_parents": 135,
+          "num_children": 25420
+        },
+        "num_parents": 135,
+        "num_children": 25420,
+        "aligned_features_file": "results__status__statusId_features.parquet",
+        "aligned_features_num_rows": 25420,
+        "parent_feature_dim": 1,
+        "child_feature_dim": 13
+      },
+      {
+        "child_table": "qualifying",
+        "child_fk_col": "raceId",
+        "parent_table": "races",
+        "parent_pk_col": "raceId",
+        "cardinality_stats": {
+          "mean": 21.44,
+          "median": 21.0,
+          "max": 28,
+          "p95": 24.0,
+          "std": 1.84,
+          "num_parents": 427,
+          "num_children": 9155
+        },
+        "num_parents": 427,
+        "num_children": 9155,
+        "aligned_features_file": "qualifying__races__raceId_features.parquet",
+        "aligned_features_num_rows": 884,
+        "parent_feature_dim": 6,
+        "child_feature_dim": 5
+      },
+      {
+        "child_table": "qualifying",
+        "child_fk_col": "driverId",
+        "parent_table": "drivers",
+        "parent_pk_col": "driverId",
+        "cardinality_stats": {
+          "mean": 55.48,
+          "median": 27.0,
+          "max": 321,
+          "p95": 209.2,
+          "std": 69.39,
+          "num_parents": 165,
+          "num_children": 9155
+        },
+        "num_parents": 165,
+        "num_children": 9155,
+        "aligned_features_file": "qualifying__drivers__driverId_features.parquet",
+        "aligned_features_num_rows": 9155,
+        "parent_feature_dim": 8,
+        "child_feature_dim": 5
+      },
+      {
+        "child_table": "qualifying",
+        "child_fk_col": "constructorId",
+        "parent_table": "constructors",
+        "parent_pk_col": "constructorId",
+        "cardinality_stats": {
+          "mean": 199.02,
+          "median": 94.0,
+          "max": 854,
+          "p95": 801.25,
+          "std": 238.18,
+          "num_parents": 46,
+          "num_children": 9155
+        },
+        "num_parents": 46,
+        "num_children": 9155,
+        "aligned_features_file": "qualifying__constructors__constructorId_features.parquet",
+        "aligned_features_num_rows": 9155,
+        "parent_feature_dim": 4,
+        "child_feature_dim": 5
+      },
+      {
+        "child_table": "lap_times",
+        "child_fk_col": "raceId",
+        "parent_table": "races",
+        "parent_pk_col": "raceId",
+        "cardinality_stats": {
+          "mean": 1081.16,
+          "median": 1076.0,
+          "max": 1649,
+          "p95": 1431.4,
+          "std": 214.34,
+          "num_parents": 477,
+          "num_children": 515715
+        },
+        "num_parents": 477,
+        "num_children": 515715,
+        "aligned_features_file": "lap_times__races__raceId_features.parquet",
+        "aligned_features_num_rows": 46210,
+        "parent_feature_dim": 6,
+        "child_feature_dim": 4
+      },
+      {
+        "child_table": "lap_times",
+        "child_fk_col": "driverId",
+        "parent_table": "drivers",
+        "parent_pk_col": "driverId",
+        "cardinality_stats": {
+          "mean": 3792.02,
+          "median": 2096.0,
+          "max": 18623,
+          "p95": 13491.75,
+          "std": 4307.42,
+          "num_parents": 136,
+          "num_children": 515715
+        },
+        "num_parents": 136,
+        "num_children": 515715,
+        "aligned_features_file": "lap_times__drivers__driverId_features.parquet",
+        "aligned_features_num_rows": 200000,
+        "parent_feature_dim": 8,
+        "child_feature_dim": 4
+      },
+      {
+        "child_table": "pit_stops",
+        "child_fk_col": "raceId",
+        "parent_table": "races",
+        "parent_pk_col": "raceId",
+        "cardinality_stats": {
+          "mean": 40.77,
+          "median": 38.0,
+          "max": 96,
+          "p95": 76.0,
+          "std": 17.12,
+          "num_parents": 218,
+          "num_children": 8887
+        },
+        "num_parents": 218,
+        "num_children": 8887,
+        "aligned_features_file": "",
+        "aligned_features_num_rows": 0,
+        "parent_feature_dim": 6,
+        "child_feature_dim": 5
+      },
+      {
+        "child_table": "pit_stops",
+        "child_fk_col": "driverId",
+        "parent_table": "drivers",
+        "parent_pk_col": "driverId",
+        "cardinality_stats": {
+          "mean": 128.8,
+          "median": 87.0,
+          "max": 435,
+          "p95": 377.0,
+          "std": 116.02,
+          "num_parents": 69,
+          "num_children": 8887
+        },
+        "num_parents": 69,
+        "num_children": 8887,
+        "aligned_features_file": "pit_stops__drivers__driverId_features.parquet",
+        "aligned_features_num_rows": 8887,
+        "parent_feature_dim": 8,
+        "child_feature_dim": 5
+      },
+      {
+        "child_table": "races",
+        "child_fk_col": "circuitId",
+        "parent_table": "circuits",
+        "parent_pk_col": "circuitId",
+        "cardinality_stats": {
+          "mean": 119.89,
+          "median": 1.0,
+          "max": 1060,
+          "p95": 639.6,
+          "std": 352.55,
+          "num_parents": 9,
+          "num_children": 1079
+        },
+        "num_parents": 9,
+        "num_children": 1079,
+        "aligned_features_file": "races__circuits__circuitId_features.parquet",
+        "aligned_features_num_rows": 18,
+        "parent_feature_dim": 8,
+        "child_feature_dim": 6
+      },
+      {
+        "child_table": "driver_standings",
+        "child_fk_col": "raceId",
+        "parent_table": "races",
+        "parent_pk_col": "raceId",
+        "cardinality_stats": {
+          "mean": 31.6,
+          "median": 26.0,
+          "max": 108,
+          "p95": 69.0,
+          "std": 15.47,
+          "num_parents": 1058,
+          "num_children": 33435
+        },
+        "num_parents": 1058,
+        "num_children": 33435,
+        "aligned_features_file": "driver_standings__races__raceId_features.parquet",
+        "aligned_features_num_rows": 910,
+        "parent_feature_dim": 6,
+        "child_feature_dim": 4
+      },
+      {
+        "child_table": "driver_standings",
+        "child_fk_col": "driverId",
+        "parent_table": "drivers",
+        "parent_pk_col": "driverId",
+        "cardinality_stats": {
+          "mean": 39.47,
+          "median": 19.0,
+          "max": 353,
+          "p95": 162.0,
+          "std": 53.33,
+          "num_parents": 847,
+          "num_children": 33435
+        },
+        "num_parents": 847,
+        "num_children": 33435,
+        "aligned_features_file": "driver_standings__drivers__driverId_features.parquet",
+        "aligned_features_num_rows": 33435,
+        "parent_feature_dim": 8,
+        "child_feature_dim": 4
+      },
+      {
+        "child_table": "constructor_standings",
+        "child_fk_col": "raceId",
+        "parent_table": "races",
+        "parent_pk_col": "raceId",
+        "cardinality_stats": {
+          "mean": 12.8,
+          "median": 11.5,
+          "max": 22,
+          "p95": 19.0,
+          "std": 3.27,
+          "num_parents": 994,
+          "num_children": 12721
+        },
+        "num_parents": 994,
+        "num_children": 12721,
+        "aligned_features_file": "constructor_standings__races__raceId_features.parquet",
+        "aligned_features_num_rows": 450,
+        "parent_feature_dim": 6,
+        "child_feature_dim": 4
+      },
+      {
+        "child_table": "constructor_standings",
+        "child_fk_col": "constructorId",
+        "parent_table": "constructors",
+        "parent_pk_col": "constructorId",
+        "cardinality_stats": {
+          "mean": 80.01,
+          "median": 31.0,
+          "max": 991,
+          "p95": 332.5,
+          "std": 144.33,
+          "num_parents": 159,
+          "num_children": 12721
+        },
+        "num_parents": 159,
+        "num_children": 12721,
+        "aligned_features_file": "constructor_standings__constructors__constructorId_features.parquet",
+        "aligned_features_num_rows": 12721,
+        "parent_feature_dim": 4,
+        "child_feature_dim": 4
+      },
+      {
+        "child_table": "constructor_results",
+        "child_fk_col": "raceId",
+        "parent_table": "races",
+        "parent_pk_col": "raceId",
+        "cardinality_stats": {
+          "mean": 12.02,
+          "median": 11.0,
+          "max": 20,
+          "p95": 18.0,
+          "std": 3.06,
+          "num_parents": 995,
+          "num_children": 11960
+        },
+        "num_parents": 995,
+        "num_children": 11960,
+        "aligned_features_file": "constructor_results__races__raceId_features.parquet",
+        "aligned_features_num_rows": 442,
+        "parent_feature_dim": 6,
+        "child_feature_dim": 2
+      },
+      {
+        "child_table": "constructor_results",
+        "child_fk_col": "constructorId",
+        "parent_table": "constructors",
+        "parent_pk_col": "constructorId",
+        "cardinality_stats": {
+          "mean": 68.34,
+          "median": 17.0,
+          "max": 979,
+          "p95": 327.9,
+          "std": 139.52,
+          "num_parents": 175,
+          "num_children": 11960
+        },
+        "num_parents": 175,
+        "num_children": 11960,
+        "aligned_features_file": "constructor_results__constructors__constructorId_features.parquet",
+        "aligned_features_num_rows": 11960,
+        "parent_feature_dim": 4,
+        "child_feature_dim": 2
+      },
+      {
+        "child_table": "sprint_results",
+        "child_fk_col": "raceId",
+        "parent_table": "races",
+        "parent_pk_col": "raceId",
+        "cardinality_stats": {
+          "mean": 20.0,
+          "median": 20.0,
+          "max": 20,
+          "p95": 20.0,
+          "std": 0.0,
+          "num_parents": 3,
+          "num_children": 60
+        },
+        "num_parents": 3,
+        "num_children": 60,
+        "aligned_features_file": "",
+        "aligned_features_num_rows": 0,
+        "parent_feature_dim": 6,
+        "child_feature_dim": 11
+      },
+      {
+        "child_table": "sprint_results",
+        "child_fk_col": "driverId",
+        "parent_table": "drivers",
+        "parent_pk_col": "driverId",
+        "cardinality_stats": {
+          "mean": 2.86,
+          "median": 3.0,
+          "max": 3,
+          "p95": 3.0,
+          "std": 0.48,
+          "num_parents": 21,
+          "num_children": 60
+        },
+        "num_parents": 21,
+        "num_children": 60,
+        "aligned_features_file": "sprint_results__drivers__driverId_features.parquet",
+        "aligned_features_num_rows": 60,
+        "parent_feature_dim": 8,
+        "child_feature_dim": 11
+      },
+      {
+        "child_table": "sprint_results",
+        "child_fk_col": "constructorId",
+        "parent_table": "constructors",
+        "parent_pk_col": "constructorId",
+        "cardinality_stats": {
+          "mean": 6.0,
+          "median": 6.0,
+          "max": 6,
+          "p95": 6.0,
+          "std": 0.0,
+          "num_parents": 10,
+          "num_children": 60
+        },
+        "num_parents": 10,
+        "num_children": 60,
+        "aligned_features_file": "sprint_results__constructors__constructorId_features.parquet",
+        "aligned_features_num_rows": 60,
+        "parent_feature_dim": 4,
+        "child_feature_dim": 11
+      },
+      {
+        "child_table": "sprint_results",
+        "child_fk_col": "statusId",
+        "parent_table": "status",
+        "parent_pk_col": "statusId",
+        "cardinality_stats": {
+          "mean": 20.0,
+          "median": 1.0,
+          "max": 58,
+          "p95": 52.3,
+          "std": 32.91,
+          "num_parents": 3,
+          "num_children": 60
+        },
+        "num_parents": 3,
+        "num_children": 60,
+        "aligned_features_file": "sprint_results__status__statusId_features.parquet",
+        "aligned_features_num_rows": 60,
+        "parent_feature_dim": 1,
+        "child_feature_dim": 11
+      }
+    ],
+    "tasks": [
+      {
+        "name": "driver-dnf",
+        "task_type": "binary_classification",
+        "target_table": "drivers",
+        "time_horizon": "1 race",
+        "metrics": [
+          "average_precision"
+        ],
+        "description": "Predict whether a driver will DNF (did not finish) in an upcoming race"
+      },
+      {
+        "name": "driver-top3",
+        "task_type": "binary_classification",
+        "target_table": "drivers",
+        "time_horizon": "1 race",
+        "metrics": [
+          "average_precision"
+        ],
+        "description": "Predict whether a driver will finish in the top 3 in an upcoming race"
+      },
+      {
+        "name": "driver-position",
+        "task_type": "regression",
+        "target_table": "drivers",
+        "time_horizon": "1 race",
+        "metrics": [
+          "mean_absolute_error"
+        ],
+        "description": "Predict a driver's finishing position in an upcoming race"
+      }
+    ],
+    "total_tables": 14,
+    "total_fk_links": 22,
+    "total_rows_across_tables": 619786,
+    "license": "CC-BY-4.0",
+    "data_source": "Ergast API (final 2024 release)"
+  }
+}

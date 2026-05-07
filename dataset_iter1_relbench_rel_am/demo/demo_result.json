@@ -1,0 +1,13 @@
+{
+  "id": "data_id5_it1__opus",
+  "type": "code",
+  "title": "RelBench rel-amazon Dataset: Download, Extract, and Prepare for PRMP Diagnostic",
+  "summary": "Demo notebook for the Amazon Video Games relational dataset prepared for PRMP cross-table predictability diagnostic. Loads pre-processed data (50K reviews, 3.4K products, 10.9K customers) with 21 encoded features and 2 FK links. Explores relational schema, FK cardinality statistics, inspects example records, extracts aligned parent-child feature matrices, computes R\u00b2 cross-table predictability via linear regression, and visualizes per-feature R\u00b2 scores for product\u2192review and customer\u2192review links. Uses curated mini_demo_data.json (3 examples, 50 aligned samples) loaded from GitHub URL with local fallback.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_1/gen_art/data_id5_it1__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/data_id5_it1__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/data_id5_it1__opus/data_code_demo.ipynb"
+}

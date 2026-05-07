@@ -1,0 +1,233 @@
+{
+  "metadata": {
+    "description": "Amazon Video Games relational dataset for PRMP cross-table predictability diagnostic. Product/customer/review triangle structure with FK links, cardinality statistics, and aligned parent-child feature...",
+    "source": "HuggingFace Hub - LoganKells/amazon_product_reviews_video_games",
+    "compute_profile": "cpu_heavy",
+    "datasets_info": {
+      "amazon_video_games": {
+        "source": "LoganKells/amazon_product_reviews_video_games (McAuley UCSD)",
+        "description": "Amazon Video Games product reviews relational database with product, customer, and review tables. Part of the Amazon product reviews family used by RelBench.",
+        "total_reviews": 50000,
+        "num_examples_sampled": 10000,
+        "align_sample_size": 2000,
+        "tables": {
+          "product": {
+            "num_rows": 3400,
+            "columns": [
+              "asin"
+            ],
+            "pkey_col": "asin",
+            "aggregated_feature_names": [
+              "prod_mean_rating",
+              "prod_std_rating",
+              "prod_review_count"
+            ]
+          },
+          "customer": {
+            "num_rows": 10871,
+            "columns": [
+              "reviewerID",
+              "reviewerName"
+            ],
+            "pkey_col": "reviewerID",
+            "aggregated_feature_names": [
+              "cust_mean_rating",
+              "cust_std_rating",
+              "cust_review_count"
+            ]
+          },
+          "review": {
+            "num_rows": 50000,
+            "columns": [
+              "reviewerID",
+              "asin",
+              "reviewerName"
+            ],
+            "pkey_col": null,
+            "fkey_col_to_pkey_table": {
+              "asin": "product",
+              "reviewerID": "customer"
+            },
+            "time_col": "unixReviewTime",
+            "feature_names": [
+              "time_year",
+              "time_month",
+              "time_dayofweek"
+            ]
+          }
+        },
+        "fk_links": {
+          "product_to_review": {
+            "parent_table": "product",
+            "child_table": "review",
+            "fk_col": "asin",
+            "num_parents": 3400,
+            "num_children": 50000,
+            "cardinality_mean": 14.7059,
+            "cardinality_median": 8.0,
+            "cardinality_std": 20.3412,
+            "cardinality_min": 1,
+            "cardinality_max": 371,
+            "cardinality_p25": 6.0,
+            "cardinality_p75": 16.0,
+            "parent_feature_names": [
+              "prod_mean_rating",
+              "prod_std_rating",
+              "prod_review_count"
+            ],
+            "child_feature_names": [
+              "time_year",
+              "time_month",
+              "time_dayofweek"
+            ],
+            "aligned_parent_features_sample": [
+              [
+                -1.742,
+                1.626,
+                0.408
+              ],
+              [
+                0.632,
+                -0.417,
+                0.359
+              ],
+              [
+                0.846,
+                -0.381,
+                0.703
+              ]
+            ],
+            "aligned_child_features_sample": [
+              [
+                1.705,
+                -0.145,
+                1.539
+              ],
+              [
+                1.464,
+                -0.145,
+                0.54
+              ],
+              [
+                1.705,
+                -0.705,
+                0.041
+              ]
+            ]
+          },
+          "customer_to_review": {
+            "parent_table": "customer",
+            "child_table": "review",
+            "fk_col": "reviewerID",
+            "num_parents": 10871,
+            "num_children": 50000,
+            "cardinality_mean": 4.5994,
+            "cardinality_median": 3.0,
+            "cardinality_std": 7.2774,
+            "cardinality_min": 1,
+            "cardinality_max": 239,
+            "cardinality_p25": 1.0,
+            "cardinality_p75": 5.0,
+            "parent_feature_names": [
+              "cust_mean_rating",
+              "cust_std_rating",
+              "cust_review_count"
+            ],
+            "child_feature_names": [
+              "time_year",
+              "time_month",
+              "time_dayofweek"
+            ],
+            "aligned_parent_features_sample": [
+              [
+                0.363,
+                0.205,
+                -0.357
+              ],
+              [
+                0.897,
+                -0.867,
+                -0.495
+              ],
+              [
+                -1.238,
+                -0.867,
+                -0.495
+              ]
+            ],
+            "aligned_child_features_sample": [
+              [
+                1.705,
+                -0.145,
+                1.539
+              ],
+              [
+                1.464,
+                -0.145,
+                0.54
+              ],
+              [
+                1.705,
+                -0.705,
+                0.041
+              ]
+            ]
+          }
+        },
+        "time_range": {
+          "start": "1999-10-14",
+          "end": "2014-07-22"
+        }
+      }
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "amazon_video_games_reviews",
+      "examples": [
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": -0.425, \"time_dayofweek\": 1.04, \"summary_h0\": 0.333, \"summary_h1\": 0.0, \"summary_h2\": 0.667, \"summary_h3\": 0.333, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\":...",
+          "output": "3.0",
+          "metadata_fold": 4,
+          "metadata_row_index": 4,
+          "metadata_task_type": "regression",
+          "metadata_feature_names": [
+            "time_year",
+            "time_month",
+            "time_dayofweek"
+          ],
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "A2UTRVO4FDCBH6"
+        },
+        {
+          "input": "{\"time_year\": 1.464, \"time_month\": 1.256, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.333, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.33...",
+          "output": "0.0",
+          "metadata_fold": 1,
+          "metadata_row_index": 6,
+          "metadata_task_type": "regression",
+          "metadata_feature_names": [
+            "time_year",
+            "time_month",
+            "time_dayofweek"
+          ],
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "AQTC623NCESZW"
+        },
+        {
+          "input": "{\"time_year\": 1.464, \"time_month\": 1.256, \"time_dayofweek\": -0.458, \"summary_h0\": 0.0, \"summary_h1\": 0.258, \"summary_h2\": 0.0, \"summary_h3\": 0.258, \"summary_h4\": 0.258, \"summary_h5\": 0.0, \"summary_h6\"...",
+          "output": "3.0",
+          "metadata_fold": 2,
+          "metadata_row_index": 7,
+          "metadata_task_type": "regression",
+          "metadata_feature_names": [
+            "time_year",
+            "time_month",
+            "time_dayofweek"
+          ],
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "A1QJJU33VNC4S7"
+        }
+      ]
+    }
+  ]
+}
