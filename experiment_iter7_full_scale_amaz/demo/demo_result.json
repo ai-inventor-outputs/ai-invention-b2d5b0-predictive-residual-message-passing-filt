@@ -1,0 +1,13 @@
+{
+  "id": "exp_id2_it7__opus",
+  "type": "code",
+  "title": "Full-Scale Amazon PRMP Validation (50K reviews, 4 variants \u00d7 5 seeds \u00d7 200 epochs)",
+  "summary": "Demonstrates Predictive Residual Message Passing (PRMP) on Amazon Video Games review-rating regression. The notebook trains 4 heterogeneous GNN variants (Standard, PRMP, Wide parameter-matched control, AuxMLP control) with 5 seeds on 75 curated test examples reconstructed from the full-scale experiment output (50K reviews). It computes Cohen's d effect sizes between variants and visualizes: (1) full-scale MAE comparison across variants, (2) effect size bar chart showing PRMP's d=-0.755 persists at scale, and (3) prediction vs actual scatter plot. Training completes in ~26s with the original hyperparameters (hidden_dim=128, max_epochs=200, patience=20). Data loaded from GitHub URL with local fallback.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_7/gen_art/exp_id2_it7__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id2_it7__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id2_it7__opus/method_code_demo.ipynb"
+}

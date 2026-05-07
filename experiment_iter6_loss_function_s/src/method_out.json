@@ -1,0 +1,659 @@
+{
+  "metadata": {
+    "method_name": "PRMP Loss Function Swap Experiment on rel-f1",
+    "description": "Controlled experiment: 4 configs x 2 methods x 13 seeds = 104 runs",
+    "configs": [
+      "config1_natural_regression",
+      "config2_binned_classification",
+      "config3_natural_classification",
+      "config4_softened_regression"
+    ],
+    "hidden_dim": 128,
+    "num_layers": 2,
+    "seeds": [
+      42,
+      123,
+      7,
+      0,
+      1,
+      2,
+      3,
+      10,
+      21,
+      55,
+      77,
+      99,
+      256
+    ],
+    "graph_stats": {
+      "drivers": 854,
+      "races": 1079,
+      "constructors": 211,
+      "circuits": 79,
+      "status": 137,
+      "results": 25420,
+      "qualifying": 9155,
+      "driver_standings": 33435,
+      "total_edges": 153846
+    },
+    "analysis": {
+      "deltas_per_config": {
+        "config1_natural_regression": {
+          "mean": 0.987868804198045,
+          "std": 0.8044851198387168
+        },
+        "config2_binned_classification": {
+          "mean": -0.28815628815628813,
+          "std": 0.07362546242579406
+        },
+        "config3_natural_classification": {
+          "mean": 0.18158890290037838,
+          "std": 0.3880042135007229
+        },
+        "config4_softened_regression": {
+          "mean": -0.130010364147333,
+          "std": 0.07732000366369916
+        }
+      },
+      "loss_function_hypothesis": {
+        "regression_loss_configs_delta_mean": 0.428929220025356,
+        "classification_loss_configs_delta_mean": -0.05328369262795491,
+        "t_statistic": 2.7438351916633197,
+        "p_value": 0.008409936021902339,
+        "effect_significant": true,
+        "interpretation": "Reg-loss delta=0.4289, cls-loss delta=-0.0533, p=0.0084"
+      },
+      "target_nature_hypothesis": {
+        "position_target_configs_delta_mean": 0.3498562580208784,
+        "binary_target_configs_delta_mean": 0.025789269376522664,
+        "t_statistic": 1.772255652700569,
+        "p_value": 0.08244502242856926,
+        "effect_significant": true,
+        "interpretation": "Position delta=0.3499, binary delta=0.0258, p=0.0824"
+      },
+      "gradient_routing_analysis": {
+        "per_config_grad_ratios": {}
+      },
+      "conclusion": "Mixed"
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "rel-f1-loss-swap",
+      "examples": [
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":42,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":5.380597114562988,\"prmp_test_metric\":4.6916680335998535,\"standard_metrics\":{\"mae\":5.380597114562988,\"r2\":-1.858994483947754},\"prmp_metrics\":{\"mae\":4.6916680335998535,\"r2\":-1.1986088752746582},\"prmp_delta\":0.6889290809631348,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":5.380597114562988,\"r2\":-1.858994483947754,\"primary_metric\":5.380597114562988,\"best_val\":2.9250032901763916,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":4.6916680335998535,\"r2\":-1.1986088752746582,\"primary_metric\":4.6916680335998535,\"best_val\":4.058071136474609,\"num_epochs\":60,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 42,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":123,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":5.547440052032471,\"prmp_test_metric\":4.757712364196777,\"standard_metrics\":{\"mae\":5.547440052032471,\"r2\":-1.921149492263794},\"prmp_metrics\":{\"mae\":4.757712364196777,\"r2\":-1.1975133419036865},\"prmp_delta\":0.7897276878356934,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":5.547440052032471,\"r2\":-1.921149492263794,\"primary_metric\":5.547440052032471,\"best_val\":2.6599245071411133,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":4.757712364196777,\"r2\":-1.1975133419036865,\"primary_metric\":4.757712364196777,\"best_val\":3.9355309009552,\"num_epochs\":77,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 123,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":7,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":3.9383058547973633,\"prmp_test_metric\":3.975904941558838,\"standard_metrics\":{\"mae\":3.9383058547973633,\"r2\":-0.644733190536499},\"prmp_metrics\":{\"mae\":3.975904941558838,\"r2\":-0.6247245073318481},\"prmp_delta\":-0.03759908676147461,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":3.9383058547973633,\"r2\":-0.644733190536499,\"primary_metric\":3.9383058547973633,\"best_val\":2.3104896545410156,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":3.975904941558838,\"r2\":-0.6247245073318481,\"primary_metric\":3.975904941558838,\"best_val\":3.659684658050537,\"num_epochs\":70,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 7,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":0,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":6.333140850067139,\"prmp_test_metric\":3.4819140434265137,\"standard_metrics\":{\"mae\":6.333140850067139,\"r2\":-2.786719799041748},\"prmp_metrics\":{\"mae\":3.4819140434265137,\"r2\":-0.27488648891448975},\"prmp_delta\":2.851226806640625,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":6.333140850067139,\"r2\":-2.786719799041748,\"primary_metric\":6.333140850067139,\"best_val\":4.114856719970703,\"num_epochs\":33}",
+          "predict_prmp": "{\"mae\":3.4819140434265137,\"r2\":-0.27488648891448975,\"primary_metric\":3.4819140434265137,\"best_val\":3.3720664978027344,\"num_epochs\":62,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 0,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":1,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":5.378659725189209,\"prmp_test_metric\":3.9255025386810303,\"standard_metrics\":{\"mae\":5.378659725189209,\"r2\":-1.9301769733428955},\"prmp_metrics\":{\"mae\":3.9255025386810303,\"r2\":-0.5856132507324219},\"prmp_delta\":1.4531571865081787,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":5.378659725189209,\"r2\":-1.9301769733428955,\"primary_metric\":5.378659725189209,\"best_val\":3.064018726348877,\"num_epochs\":60}",
+          "predict_prmp": "{\"mae\":3.9255025386810303,\"r2\":-0.5856132507324219,\"primary_metric\":3.9255025386810303,\"best_val\":3.5210049152374268,\"num_epochs\":77,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 1,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":2,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":6.738087177276611,\"prmp_test_metric\":4.888254642486572,\"standard_metrics\":{\"mae\":6.738087177276611,\"r2\":-3.3511271476745605},\"prmp_metrics\":{\"mae\":4.888254642486572,\"r2\":-1.3822102546691895},\"prmp_delta\":1.849832534790039,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":6.738087177276611,\"r2\":-3.3511271476745605,\"primary_metric\":6.738087177276611,\"best_val\":3.228364944458008,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":4.888254642486572,\"r2\":-1.3822102546691895,\"primary_metric\":4.888254642486572,\"best_val\":4.047216892242432,\"num_epochs\":70,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 2,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":3,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":5.284409999847412,\"prmp_test_metric\":4.152998924255371,\"standard_metrics\":{\"mae\":5.284409999847412,\"r2\":-1.820019245147705},\"prmp_metrics\":{\"mae\":4.152998924255371,\"r2\":-0.7525017261505127},\"prmp_delta\":1.131411075592041,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":5.284409999847412,\"r2\":-1.820019245147705,\"primary_metric\":5.284409999847412,\"best_val\":2.611035108566284,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":4.152998924255371,\"r2\":-0.7525017261505127,\"primary_metric\":4.152998924255371,\"best_val\":3.677459239959717,\"num_epochs\":71,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 3,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":10,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":3.246151924133301,\"prmp_test_metric\":3.8132896423339844,\"standard_metrics\":{\"mae\":3.246151924133301,\"r2\":-0.057624101638793945},\"prmp_metrics\":{\"mae\":3.8132896423339844,\"r2\":-0.49180471897125244},\"prmp_delta\":-0.5671377182006836,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":3.246151924133301,\"r2\":-0.057624101638793945,\"primary_metric\":3.246151924133301,\"best_val\":2.0672881603240967,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":3.8132896423339844,\"r2\":-0.49180471897125244,\"primary_metric\":3.8132896423339844,\"best_val\":3.5673015117645264,\"num_epochs\":78,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 10,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":21,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":4.824259281158447,\"prmp_test_metric\":3.744194507598877,\"standard_metrics\":{\"mae\":4.824259281158447,\"r2\":-1.2761449813842773},\"prmp_metrics\":{\"mae\":3.744194507598877,\"r2\":-0.42739129066467285},\"prmp_delta\":1.0800647735595703,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":4.824259281158447,\"r2\":-1.2761449813842773,\"primary_metric\":4.824259281158447,\"best_val\":2.4151322841644287,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":3.744194507598877,\"r2\":-0.42739129066467285,\"primary_metric\":3.744194507598877,\"best_val\":3.408247232437134,\"num_epochs\":71,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 21,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":55,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":4.767258167266846,\"prmp_test_metric\":3.9256880283355713,\"standard_metrics\":{\"mae\":4.767258167266846,\"r2\":-1.2979562282562256},\"prmp_metrics\":{\"mae\":3.9256880283355713,\"r2\":-0.5754014253616333},\"prmp_delta\":0.8415701389312744,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":4.767258167266846,\"r2\":-1.2979562282562256,\"primary_metric\":4.767258167266846,\"best_val\":2.6824865341186523,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":3.9256880283355713,\"r2\":-0.5754014253616333,\"primary_metric\":3.9256880283355713,\"best_val\":3.837790012359619,\"num_epochs\":68,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 55,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":77,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":4.032324314117432,\"prmp_test_metric\":3.5732038021087646,\"standard_metrics\":{\"mae\":4.032324314117432,\"r2\":-0.7024039030075073},\"prmp_metrics\":{\"mae\":3.5732038021087646,\"r2\":-0.3450969457626343},\"prmp_delta\":0.459120512008667,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":4.032324314117432,\"r2\":-0.7024039030075073,\"primary_metric\":4.032324314117432,\"best_val\":2.291651725769043,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":3.5732038021087646,\"r2\":-0.3450969457626343,\"primary_metric\":3.5732038021087646,\"best_val\":3.4123241901397705,\"num_epochs\":71,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 77,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":99,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":4.388185024261475,\"prmp_test_metric\":3.2227611541748047,\"standard_metrics\":{\"mae\":4.388185024261475,\"r2\":-0.9219114780426025},\"prmp_metrics\":{\"mae\":3.2227611541748047,\"r2\":-0.16672158241271973},\"prmp_delta\":1.16542387008667,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":4.388185024261475,\"r2\":-0.9219114780426025,\"primary_metric\":4.388185024261475,\"best_val\":2.305088520050049,\"num_epochs\":77}",
+          "predict_prmp": "{\"mae\":3.2227611541748047,\"r2\":-0.16672158241271973,\"primary_metric\":3.2227611541748047,\"best_val\":3.283228635787964,\"num_epochs\":74,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 99,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":256,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":4.749100685119629,\"prmp_test_metric\":3.6125330924987793,\"standard_metrics\":{\"mae\":4.749100685119629,\"r2\":-1.2451279163360596},\"prmp_metrics\":{\"mae\":3.6125330924987793,\"r2\":-0.32719361782073975},\"prmp_delta\":1.1365675926208496,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":4.749100685119629,\"r2\":-1.2451279163360596,\"primary_metric\":4.749100685119629,\"best_val\":2.7978627681732178,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":3.6125330924987793,\"r2\":-0.32719361782073975,\"primary_metric\":3.6125330924987793,\"best_val\":3.557283639907837,\"num_epochs\":80,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 256,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":42,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.5555555555555556,\"prmp_test_metric\":0.3333333333333333,\"standard_metrics\":{\"accuracy\":0.5555555555555556,\"mae_bin_centers\":2.873647689819336},\"prmp_metrics\":{\"accuracy\":0.3333333333333333,\"mae_bin_centers\":5.235978603363037},\"prmp_delta\":-0.22222222222222227,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.5555555555555556,\"mae_bin_centers\":2.873647689819336,\"primary_metric\":0.5555555555555556,\"best_val\":0.8545454545454545,\"num_epochs\":72}",
+          "predict_prmp": "{\"accuracy\":0.3333333333333333,\"mae_bin_centers\":5.235978603363037,\"primary_metric\":0.3333333333333333,\"best_val\":0.34545454545454546,\"num_epochs\":54,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 42,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":123,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.5714285714285714,\"prmp_test_metric\":0.1746031746031746,\"standard_metrics\":{\"accuracy\":0.5714285714285714,\"mae_bin_centers\":2.96743106842041},\"prmp_metrics\":{\"accuracy\":0.1746031746031746,\"mae_bin_centers\":9.12299919128418},\"prmp_delta\":-0.3968253968253968,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.5714285714285714,\"mae_bin_centers\":2.96743106842041,\"primary_metric\":0.5714285714285714,\"best_val\":0.8545454545454545,\"num_epochs\":61}",
+          "predict_prmp": "{\"accuracy\":0.1746031746031746,\"mae_bin_centers\":9.12299919128418,\"primary_metric\":0.1746031746031746,\"best_val\":0.2,\"num_epochs\":24,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 123,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":7,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.5396825396825397,\"prmp_test_metric\":0.2857142857142857,\"standard_metrics\":{\"accuracy\":0.5396825396825397,\"mae_bin_centers\":4.099250793457031},\"prmp_metrics\":{\"accuracy\":0.2857142857142857,\"mae_bin_centers\":5.804850101470947},\"prmp_delta\":-0.25396825396825395,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.5396825396825397,\"mae_bin_centers\":4.099250793457031,\"primary_metric\":0.5396825396825397,\"best_val\":0.7818181818181819,\"num_epochs\":49}",
+          "predict_prmp": "{\"accuracy\":0.2857142857142857,\"mae_bin_centers\":5.804850101470947,\"primary_metric\":0.2857142857142857,\"best_val\":0.2909090909090909,\"num_epochs\":19,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 7,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":0,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.5396825396825397,\"prmp_test_metric\":0.2698412698412698,\"standard_metrics\":{\"accuracy\":0.5396825396825397,\"mae_bin_centers\":2.9617578983306885},\"prmp_metrics\":{\"accuracy\":0.2698412698412698,\"mae_bin_centers\":6.065475940704346},\"prmp_delta\":-0.2698412698412698,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.5396825396825397,\"mae_bin_centers\":2.9617578983306885,\"primary_metric\":0.5396825396825397,\"best_val\":0.8909090909090909,\"num_epochs\":65}",
+          "predict_prmp": "{\"accuracy\":0.2698412698412698,\"mae_bin_centers\":6.065475940704346,\"primary_metric\":0.2698412698412698,\"best_val\":0.2727272727272727,\"num_epochs\":46,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 0,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":1,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.49206349206349204,\"prmp_test_metric\":0.2222222222222222,\"standard_metrics\":{\"accuracy\":0.49206349206349204,\"mae_bin_centers\":4.440960884094238},\"prmp_metrics\":{\"accuracy\":0.2222222222222222,\"mae_bin_centers\":4.6829352378845215},\"prmp_delta\":-0.2698412698412698,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.49206349206349204,\"mae_bin_centers\":4.440960884094238,\"primary_metric\":0.49206349206349204,\"best_val\":0.7818181818181819,\"num_epochs\":40}",
+          "predict_prmp": "{\"accuracy\":0.2222222222222222,\"mae_bin_centers\":4.6829352378845215,\"primary_metric\":0.2222222222222222,\"best_val\":0.2727272727272727,\"num_epochs\":17,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 1,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":2,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.5396825396825397,\"prmp_test_metric\":0.2222222222222222,\"standard_metrics\":{\"accuracy\":0.5396825396825397,\"mae_bin_centers\":2.5302910804748535},\"prmp_metrics\":{\"accuracy\":0.2222222222222222,\"mae_bin_centers\":6.841416835784912},\"prmp_delta\":-0.31746031746031744,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.5396825396825397,\"mae_bin_centers\":2.5302910804748535,\"primary_metric\":0.5396825396825397,\"best_val\":0.8181818181818182,\"num_epochs\":71}",
+          "predict_prmp": "{\"accuracy\":0.2222222222222222,\"mae_bin_centers\":6.841416835784912,\"primary_metric\":0.2222222222222222,\"best_val\":0.32727272727272727,\"num_epochs\":19,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 2,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":3,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.5079365079365079,\"prmp_test_metric\":0.15873015873015872,\"standard_metrics\":{\"accuracy\":0.5079365079365079,\"mae_bin_centers\":3.6916816234588623},\"prmp_metrics\":{\"accuracy\":0.15873015873015872,\"mae_bin_centers\":7.880482196807861},\"prmp_delta\":-0.3492063492063492,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.5079365079365079,\"mae_bin_centers\":3.6916816234588623,\"primary_metric\":0.5079365079365079,\"best_val\":0.7272727272727273,\"num_epochs\":35}",
+          "predict_prmp": "{\"accuracy\":0.15873015873015872,\"mae_bin_centers\":7.880482196807861,\"primary_metric\":0.15873015873015872,\"best_val\":0.2727272727272727,\"num_epochs\":18,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 3,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":10,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.5079365079365079,\"prmp_test_metric\":0.15873015873015872,\"standard_metrics\":{\"accuracy\":0.5079365079365079,\"mae_bin_centers\":3.6151533126831055},\"prmp_metrics\":{\"accuracy\":0.15873015873015872,\"mae_bin_centers\":7.318166255950928},\"prmp_delta\":-0.3492063492063492,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.5079365079365079,\"mae_bin_centers\":3.6151533126831055,\"primary_metric\":0.5079365079365079,\"best_val\":0.8363636363636363,\"num_epochs\":80}",
+          "predict_prmp": "{\"accuracy\":0.15873015873015872,\"mae_bin_centers\":7.318166255950928,\"primary_metric\":0.15873015873015872,\"best_val\":0.2727272727272727,\"num_epochs\":17,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 10,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":21,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.49206349206349204,\"prmp_test_metric\":0.15873015873015872,\"standard_metrics\":{\"accuracy\":0.49206349206349204,\"mae_bin_centers\":4.37655782699585},\"prmp_metrics\":{\"accuracy\":0.15873015873015872,\"mae_bin_centers\":5.76199197769165},\"prmp_delta\":-0.3333333333333333,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.49206349206349204,\"mae_bin_centers\":4.37655782699585,\"primary_metric\":0.49206349206349204,\"best_val\":0.8181818181818182,\"num_epochs\":77}",
+          "predict_prmp": "{\"accuracy\":0.15873015873015872,\"mae_bin_centers\":5.76199197769165,\"primary_metric\":0.15873015873015872,\"best_val\":0.21818181818181817,\"num_epochs\":18,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 21,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":55,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.47619047619047616,\"prmp_test_metric\":0.38095238095238093,\"standard_metrics\":{\"accuracy\":0.47619047619047616,\"mae_bin_centers\":4.5340681076049805},\"prmp_metrics\":{\"accuracy\":0.38095238095238093,\"mae_bin_centers\":5.192812442779541},\"prmp_delta\":-0.09523809523809523,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.47619047619047616,\"mae_bin_centers\":4.5340681076049805,\"primary_metric\":0.47619047619047616,\"best_val\":0.7818181818181819,\"num_epochs\":52}",
+          "predict_prmp": "{\"accuracy\":0.38095238095238093,\"mae_bin_centers\":5.192812442779541,\"primary_metric\":0.38095238095238093,\"best_val\":0.4,\"num_epochs\":80,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 55,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":77,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.5238095238095238,\"prmp_test_metric\":0.2698412698412698,\"standard_metrics\":{\"accuracy\":0.5238095238095238,\"mae_bin_centers\":3.6318345069885254},\"prmp_metrics\":{\"accuracy\":0.2698412698412698,\"mae_bin_centers\":6.388256549835205},\"prmp_delta\":-0.253968253968254,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.5238095238095238,\"mae_bin_centers\":3.6318345069885254,\"primary_metric\":0.5238095238095238,\"best_val\":0.8,\"num_epochs\":57}",
+          "predict_prmp": "{\"accuracy\":0.2698412698412698,\"mae_bin_centers\":6.388256549835205,\"primary_metric\":0.2698412698412698,\"best_val\":0.36363636363636365,\"num_epochs\":23,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 77,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":99,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.6031746031746031,\"prmp_test_metric\":0.25396825396825395,\"standard_metrics\":{\"accuracy\":0.6031746031746031,\"mae_bin_centers\":2.3943417072296143},\"prmp_metrics\":{\"accuracy\":0.25396825396825395,\"mae_bin_centers\":5.756789684295654},\"prmp_delta\":-0.3492063492063492,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.6031746031746031,\"mae_bin_centers\":2.3943417072296143,\"primary_metric\":0.6031746031746031,\"best_val\":0.7090909090909091,\"num_epochs\":32}",
+          "predict_prmp": "{\"accuracy\":0.25396825396825395,\"mae_bin_centers\":5.756789684295654,\"primary_metric\":0.25396825396825395,\"best_val\":0.2909090909090909,\"num_epochs\":22,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 99,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config2_binned_classification\",\"loss_type\":\"CrossEntropy\",\"target_type\":\"position\",\"num_classes\":5,\"seed\":256,\"description\":\"Binned classification: 5-class with CrossEntropyLoss\"}",
+          "output": "{\"standard_test_metric\":0.6190476190476191,\"prmp_test_metric\":0.3333333333333333,\"standard_metrics\":{\"accuracy\":0.6190476190476191,\"mae_bin_centers\":2.9174749851226807},\"prmp_metrics\":{\"accuracy\":0.3333333333333333,\"mae_bin_centers\":5.988256454467773},\"prmp_delta\":-0.28571428571428575,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"accuracy\":0.6190476190476191,\"mae_bin_centers\":2.9174749851226807,\"primary_metric\":0.6190476190476191,\"best_val\":0.8545454545454545,\"num_epochs\":75}",
+          "predict_prmp": "{\"accuracy\":0.3333333333333333,\"mae_bin_centers\":5.988256454467773,\"primary_metric\":0.3333333333333333,\"best_val\":0.34545454545454546,\"num_epochs\":67,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config2_binned_classification",
+          "metadata_loss_type": "CrossEntropy",
+          "metadata_target_type": "position",
+          "metadata_seed": 256,
+          "metadata_prmp_delta_mean": -0.28815628815628813
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":42,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.16393442622950818,\"prmp_test_metric\":0.13934426229508196,\"standard_metrics\":{\"auroc\":0.16393442622950818,\"avg_precision\":0.9381503731477516},\"prmp_metrics\":{\"auroc\":0.13934426229508196,\"avg_precision\":0.9355742708057506},\"prmp_delta\":-0.02459016393442623,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.16393442622950818,\"avg_precision\":0.9381503731477516,\"primary_metric\":0.16393442622950818,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.13934426229508196,\"avg_precision\":0.9355742708057506,\"primary_metric\":0.13934426229508196,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 42,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":123,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.5983606557377049,\"prmp_test_metric\":0.6393442622950819,\"standard_metrics\":{\"auroc\":0.5983606557377049,\"avg_precision\":0.9757959416269117},\"prmp_metrics\":{\"auroc\":0.6393442622950819,\"avg_precision\":0.9817272783109772},\"prmp_delta\":0.040983606557376984,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.5983606557377049,\"avg_precision\":0.9757959416269117,\"primary_metric\":0.5983606557377049,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.6393442622950819,\"avg_precision\":0.9817272783109772,\"primary_metric\":0.6393442622950819,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 123,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":7,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.06557377049180328,\"prmp_test_metric\":0.5737704918032787,\"standard_metrics\":{\"auroc\":0.06557377049180328,\"avg_precision\":0.9253027572555486},\"prmp_metrics\":{\"auroc\":0.5737704918032787,\"avg_precision\":0.9719978271730596},\"prmp_delta\":0.5081967213114754,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.06557377049180328,\"avg_precision\":0.9253027572555486,\"primary_metric\":0.06557377049180328,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.5737704918032787,\"avg_precision\":0.9719978271730596,\"primary_metric\":0.5737704918032787,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 7,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":0,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.0901639344262295,\"prmp_test_metric\":0.11475409836065573,\"standard_metrics\":{\"auroc\":0.0901639344262295,\"avg_precision\":0.9317430382859936},\"prmp_metrics\":{\"auroc\":0.11475409836065573,\"avg_precision\":0.934645008810915},\"prmp_delta\":0.02459016393442623,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.0901639344262295,\"avg_precision\":0.9317430382859936,\"primary_metric\":0.0901639344262295,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.11475409836065573,\"avg_precision\":0.934645008810915,\"primary_metric\":0.11475409836065573,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 0,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":1,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.1885245901639344,\"prmp_test_metric\":0.6229508196721312,\"standard_metrics\":{\"auroc\":0.1885245901639344,\"avg_precision\":0.9369601852111181},\"prmp_metrics\":{\"auroc\":0.6229508196721312,\"avg_precision\":0.9816530904407741},\"prmp_delta\":0.43442622950819676,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.1885245901639344,\"avg_precision\":0.9369601852111181,\"primary_metric\":0.1885245901639344,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.6229508196721312,\"avg_precision\":0.9816530904407741,\"primary_metric\":0.6229508196721312,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 1,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":2,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.6967213114754098,\"prmp_test_metric\":0.12295081967213115,\"standard_metrics\":{\"auroc\":0.6967213114754098,\"avg_precision\":0.986643850639393},\"prmp_metrics\":{\"auroc\":0.12295081967213115,\"avg_precision\":0.9187187581088685},\"prmp_delta\":-0.5737704918032787,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.6967213114754098,\"avg_precision\":0.986643850639393,\"primary_metric\":0.6967213114754098,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.12295081967213115,\"avg_precision\":0.9187187581088685,\"primary_metric\":0.12295081967213115,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 2,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":3,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.20491803278688525,\"prmp_test_metric\":0.5491803278688525,\"standard_metrics\":{\"auroc\":0.20491803278688525,\"avg_precision\":0.9417119077105243},\"prmp_metrics\":{\"auroc\":0.5491803278688525,\"avg_precision\":0.9652535123774492},\"prmp_delta\":0.34426229508196726,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.20491803278688525,\"avg_precision\":0.9417119077105243,\"primary_metric\":0.20491803278688525,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.5491803278688525,\"avg_precision\":0.9652535123774492,\"primary_metric\":0.5491803278688525,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 3,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":10,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.09016393442622951,\"prmp_test_metric\":0.8032786885245902,\"standard_metrics\":{\"auroc\":0.09016393442622951,\"avg_precision\":0.9306046047705109},\"prmp_metrics\":{\"auroc\":0.8032786885245902,\"avg_precision\":0.992628916361709},\"prmp_delta\":0.7131147540983607,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.09016393442622951,\"avg_precision\":0.9306046047705109,\"primary_metric\":0.09016393442622951,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.8032786885245902,\"avg_precision\":0.992628916361709,\"primary_metric\":0.8032786885245902,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 10,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":21,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.04098360655737705,\"prmp_test_metric\":0.5655737704918034,\"standard_metrics\":{\"auroc\":0.04098360655737705,\"avg_precision\":0.9157399157254938},\"prmp_metrics\":{\"auroc\":0.5655737704918034,\"avg_precision\":0.9819350313896105},\"prmp_delta\":0.5245901639344263,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.04098360655737705,\"avg_precision\":0.9157399157254938,\"primary_metric\":0.04098360655737705,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.5655737704918034,\"avg_precision\":0.9819350313896105,\"primary_metric\":0.5655737704918034,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 21,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":55,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.06557377049180328,\"prmp_test_metric\":0.4098360655737705,\"standard_metrics\":{\"auroc\":0.06557377049180328,\"avg_precision\":0.9253027572555486},\"prmp_metrics\":{\"auroc\":0.4098360655737705,\"avg_precision\":0.9491148666270691},\"prmp_delta\":0.3442622950819672,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.06557377049180328,\"avg_precision\":0.9253027572555486,\"primary_metric\":0.06557377049180328,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.4098360655737705,\"avg_precision\":0.9491148666270691,\"primary_metric\":0.4098360655737705,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 55,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":77,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.09836065573770492,\"prmp_test_metric\":0.09016393442622951,\"standard_metrics\":{\"auroc\":0.09836065573770492,\"avg_precision\":0.9158435916488419},\"prmp_metrics\":{\"auroc\":0.09016393442622951,\"avg_precision\":0.9306046047705109},\"prmp_delta\":-0.008196721311475405,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.09836065573770492,\"avg_precision\":0.9158435916488419,\"primary_metric\":0.09836065573770492,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.09016393442622951,\"avg_precision\":0.9306046047705109,\"primary_metric\":0.09016393442622951,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 77,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":99,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.06557377049180328,\"prmp_test_metric\":0.6229508196721312,\"standard_metrics\":{\"auroc\":0.06557377049180328,\"avg_precision\":0.9177630747158659},\"prmp_metrics\":{\"auroc\":0.6229508196721312,\"avg_precision\":0.9788777481200007},\"prmp_delta\":0.5573770491803279,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.06557377049180328,\"avg_precision\":0.9177630747158659,\"primary_metric\":0.06557377049180328,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.6229508196721312,\"avg_precision\":0.9788777481200007,\"primary_metric\":0.6229508196721312,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 99,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config3_natural_classification\",\"loss_type\":\"BCE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":256,\"description\":\"Natural classification: DNF binary with BCEWithLogitsLoss\"}",
+          "output": "{\"standard_test_metric\":0.7868852459016393,\"prmp_test_metric\":0.26229508196721313,\"standard_metrics\":{\"auroc\":0.7868852459016393,\"avg_precision\":0.9924702687255167},\"prmp_metrics\":{\"auroc\":0.26229508196721313,\"avg_precision\":0.9293621302908159},\"prmp_delta\":-0.5245901639344261,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"auroc\":0.7868852459016393,\"avg_precision\":0.9924702687255167,\"primary_metric\":0.7868852459016393,\"best_val\":0.5,\"num_epochs\":16}",
+          "predict_prmp": "{\"auroc\":0.26229508196721313,\"avg_precision\":0.9293621302908159,\"primary_metric\":0.26229508196721313,\"best_val\":0.5,\"num_epochs\":16,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config3_natural_classification",
+          "metadata_loss_type": "BCE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 256,
+          "metadata_prmp_delta_mean": 0.18158890290037838
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":42,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.2432296872138977,\"prmp_test_metric\":0.31573837995529175,\"standard_metrics\":{\"mae\":0.2432296872138977,\"mse\":0.125213161110878,\"auroc\":0.7605321507760533},\"prmp_metrics\":{\"mae\":0.31573837995529175,\"mse\":0.18366500735282898,\"auroc\":0.4490022172949003},\"prmp_delta\":-0.07250869274139404,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.2432296872138977,\"mse\":0.125213161110878,\"auroc\":0.7605321507760533,\"primary_metric\":0.2432296872138977,\"best_val\":0.10187447816133499,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":0.31573837995529175,\"mse\":0.18366500735282898,\"auroc\":0.4490022172949003,\"primary_metric\":0.31573837995529175,\"best_val\":0.24295447766780853,\"num_epochs\":19,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 42,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":123,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.16525833308696747,\"prmp_test_metric\":0.2471335232257843,\"standard_metrics\":{\"mae\":0.16525833308696747,\"mse\":0.05766109377145767,\"auroc\":0.7450110864745011},\"prmp_metrics\":{\"mae\":0.2471335232257843,\"mse\":0.09179383516311646,\"auroc\":0.43126385809312645},\"prmp_delta\":-0.08187519013881683,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.16525833308696747,\"mse\":0.05766109377145767,\"auroc\":0.7450110864745011,\"primary_metric\":0.16525833308696747,\"best_val\":0.09230752289295197,\"num_epochs\":61}",
+          "predict_prmp": "{\"mae\":0.2471335232257843,\"mse\":0.09179383516311646,\"auroc\":0.43126385809312645,\"primary_metric\":0.2471335232257843,\"best_val\":0.2176649272441864,\"num_epochs\":23,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 123,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":7,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.2670474350452423,\"prmp_test_metric\":0.49120867252349854,\"standard_metrics\":{\"mae\":0.2670474350452423,\"mse\":0.12951989471912384,\"auroc\":0.7427937915742794},\"prmp_metrics\":{\"mae\":0.49120867252349854,\"mse\":0.4395875632762909,\"auroc\":0.573170731707317},\"prmp_delta\":-0.22416123747825623,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.2670474350452423,\"mse\":0.12951989471912384,\"auroc\":0.7427937915742794,\"primary_metric\":0.2670474350452423,\"best_val\":0.11317840963602066,\"num_epochs\":43}",
+          "predict_prmp": "{\"mae\":0.49120867252349854,\"mse\":0.4395875632762909,\"auroc\":0.573170731707317,\"primary_metric\":0.49120867252349854,\"best_val\":0.271587610244751,\"num_epochs\":24,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 7,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":0,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.17584218084812164,\"prmp_test_metric\":0.2286979854106903,\"standard_metrics\":{\"mae\":0.17584218084812164,\"mse\":0.06872151792049408,\"auroc\":0.7849223946784921},\"prmp_metrics\":{\"mae\":0.2286979854106903,\"mse\":0.09380369633436203,\"auroc\":0.5000000000000001},\"prmp_delta\":-0.052855804562568665,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.17584218084812164,\"mse\":0.06872151792049408,\"auroc\":0.7849223946784921,\"primary_metric\":0.17584218084812164,\"best_val\":0.08318673819303513,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":0.2286979854106903,\"mse\":0.09380369633436203,\"auroc\":0.5000000000000001,\"primary_metric\":0.2286979854106903,\"best_val\":0.20286428928375244,\"num_epochs\":18,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 0,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":1,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.15497861802577972,\"prmp_test_metric\":0.2622533142566681,\"standard_metrics\":{\"mae\":0.15497861802577972,\"mse\":0.04988435283303261,\"auroc\":0.7882483370288249},\"prmp_metrics\":{\"mae\":0.2622533142566681,\"mse\":0.09980571269989014,\"auroc\":0.38802660753880264},\"prmp_delta\":-0.10727469623088837,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.15497861802577972,\"mse\":0.04988435283303261,\"auroc\":0.7882483370288249,\"primary_metric\":0.15497861802577972,\"best_val\":0.07981420308351517,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":0.2622533142566681,\"mse\":0.09980571269989014,\"auroc\":0.38802660753880264,\"primary_metric\":0.2622533142566681,\"best_val\":0.2509534955024719,\"num_epochs\":21,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 1,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":2,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.2520553171634674,\"prmp_test_metric\":0.26530420780181885,\"standard_metrics\":{\"mae\":0.2520553171634674,\"mse\":0.11812004446983337,\"auroc\":0.49334811529933487},\"prmp_metrics\":{\"mae\":0.26530420780181885,\"mse\":0.12396726757287979,\"auroc\":0.5631929046563193},\"prmp_delta\":-0.01324889063835144,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.2520553171634674,\"mse\":0.11812004446983337,\"auroc\":0.49334811529933487,\"primary_metric\":0.2520553171634674,\"best_val\":0.23539631068706512,\"num_epochs\":22}",
+          "predict_prmp": "{\"mae\":0.26530420780181885,\"mse\":0.12396726757287979,\"auroc\":0.5631929046563193,\"primary_metric\":0.26530420780181885,\"best_val\":0.22261464595794678,\"num_epochs\":22,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 2,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":3,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.16398347914218903,\"prmp_test_metric\":0.30177101492881775,\"standard_metrics\":{\"mae\":0.16398347914218903,\"mse\":0.061598021537065506,\"auroc\":0.7915742793791575},\"prmp_metrics\":{\"mae\":0.30177101492881775,\"mse\":0.17219579219818115,\"auroc\":0.5144124168514412},\"prmp_delta\":-0.13778753578662872,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.16398347914218903,\"mse\":0.061598021537065506,\"auroc\":0.7915742793791575,\"primary_metric\":0.16398347914218903,\"best_val\":0.07178197056055069,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":0.30177101492881775,\"mse\":0.17219579219818115,\"auroc\":0.5144124168514412,\"primary_metric\":0.30177101492881775,\"best_val\":0.236521378159523,\"num_epochs\":22,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 3,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":10,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.14057599008083344,\"prmp_test_metric\":0.3033042252063751,\"standard_metrics\":{\"mae\":0.14057599008083344,\"mse\":0.047781724482774734,\"auroc\":0.8004434589800443},\"prmp_metrics\":{\"mae\":0.3033042252063751,\"mse\":0.16995713114738464,\"auroc\":0.6019955654101995},\"prmp_delta\":-0.1627282351255417,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.14057599008083344,\"mse\":0.047781724482774734,\"auroc\":0.8004434589800443,\"primary_metric\":0.14057599008083344,\"best_val\":0.07538149505853653,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":0.3033042252063751,\"mse\":0.16995713114738464,\"auroc\":0.6019955654101995,\"primary_metric\":0.3033042252063751,\"best_val\":0.23295792937278748,\"num_epochs\":24,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 10,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":21,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.23405148088932037,\"prmp_test_metric\":0.25433945655822754,\"standard_metrics\":{\"mae\":0.23405148088932037,\"mse\":0.10242009907960892,\"auroc\":0.7815964523281597},\"prmp_metrics\":{\"mae\":0.25433945655822754,\"mse\":0.10288041085004807,\"auroc\":0.44678492239467854},\"prmp_delta\":-0.020287975668907166,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.23405148088932037,\"mse\":0.10242009907960892,\"auroc\":0.7815964523281597,\"primary_metric\":0.23405148088932037,\"best_val\":0.10412994772195816,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":0.25433945655822754,\"mse\":0.10288041085004807,\"auroc\":0.44678492239467854,\"primary_metric\":0.25433945655822754,\"best_val\":0.21403315663337708,\"num_epochs\":21,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 21,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":55,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.18267318606376648,\"prmp_test_metric\":0.3392854332923889,\"standard_metrics\":{\"mae\":0.18267318606376648,\"mse\":0.08049852401018143,\"auroc\":0.7494456762749446},\"prmp_metrics\":{\"mae\":0.3392854332923889,\"mse\":0.1899896264076233,\"auroc\":0.4246119733924612},\"prmp_delta\":-0.15661224722862244,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.18267318606376648,\"mse\":0.08049852401018143,\"auroc\":0.7494456762749446,\"primary_metric\":0.18267318606376648,\"best_val\":0.08967705070972443,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":0.3392854332923889,\"mse\":0.1899896264076233,\"auroc\":0.4246119733924612,\"primary_metric\":0.3392854332923889,\"best_val\":0.27639493346214294,\"num_epochs\":20,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 55,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":77,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.3509109318256378,\"prmp_test_metric\":0.5146863460540771,\"standard_metrics\":{\"mae\":0.3509109318256378,\"mse\":0.23776111006736755,\"auroc\":0.7516629711751663},\"prmp_metrics\":{\"mae\":0.5146863460540771,\"mse\":0.4263972342014313,\"auroc\":0.5787139689578714},\"prmp_delta\":-0.16377541422843933,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.3509109318256378,\"mse\":0.23776111006736755,\"auroc\":0.7516629711751663,\"primary_metric\":0.3509109318256378,\"best_val\":0.12495405226945877,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":0.5146863460540771,\"mse\":0.4263972342014313,\"auroc\":0.5787139689578714,\"primary_metric\":0.5146863460540771,\"best_val\":0.28897568583488464,\"num_epochs\":23,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 77,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":99,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.25060006976127625,\"prmp_test_metric\":0.5027457475662231,\"standard_metrics\":{\"mae\":0.25060006976127625,\"mse\":0.14629009366035461,\"auroc\":0.7439024390243902},\"prmp_metrics\":{\"mae\":0.5027457475662231,\"mse\":0.4019341766834259,\"auroc\":0.5853658536585366},\"prmp_delta\":-0.2521456778049469,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.25060006976127625,\"mse\":0.14629009366035461,\"auroc\":0.7439024390243902,\"primary_metric\":0.25060006976127625,\"best_val\":0.09338994324207306,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":0.5027457475662231,\"mse\":0.4019341766834259,\"auroc\":0.5853658536585366,\"primary_metric\":0.5027457475662231,\"best_val\":0.28308558464050293,\"num_epochs\":25,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 99,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        },
+        {
+          "input": "{\"config_name\":\"config4_softened_regression\",\"loss_type\":\"MSE\",\"target_type\":\"binary\",\"num_classes\":1,\"seed\":256,\"description\":\"Softened regression: DNF fraction with MSELoss\"}",
+          "output": "{\"standard_test_metric\":0.2941350042819977,\"prmp_test_metric\":0.5390081405639648,\"standard_metrics\":{\"mae\":0.2941350042819977,\"mse\":0.16661465167999268,\"auroc\":0.7450110864745011},\"prmp_metrics\":{\"mae\":0.5390081405639648,\"mse\":0.4611745774745941,\"auroc\":0.6352549889135255},\"prmp_delta\":-0.24487313628196716,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "predict_standard": "{\"mae\":0.2941350042819977,\"mse\":0.16661465167999268,\"auroc\":0.7450110864745011,\"primary_metric\":0.2941350042819977,\"best_val\":0.11334942281246185,\"num_epochs\":75}",
+          "predict_prmp": "{\"mae\":0.5390081405639648,\"mse\":0.4611745774745941,\"auroc\":0.6352549889135255,\"primary_metric\":0.5390081405639648,\"best_val\":0.2763552963733673,\"num_epochs\":25,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config4_softened_regression",
+          "metadata_loss_type": "MSE",
+          "metadata_target_type": "binary",
+          "metadata_seed": 256,
+          "metadata_prmp_delta_mean": -0.130010364147333
+        }
+      ]
+    }
+  ]
+}

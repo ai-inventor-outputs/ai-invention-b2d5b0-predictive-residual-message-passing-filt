@@ -1,0 +1,171 @@
+{
+  "metadata": {
+    "experiment": "PRMP vs SAGEConv on rel-avito",
+    "dataset": "rel-avito",
+    "tasks": [
+      "ad-ctr (regression)",
+      "user-visits (classification)"
+    ],
+    "models": [
+      "A_StandardSAGE",
+      "B_PRMP_Full",
+      "C_PRMP_Selective"
+    ],
+    "seeds": [
+      42,
+      123,
+      456
+    ],
+    "hidden_channels": 64,
+    "num_layers": 2,
+    "epochs": 20,
+    "lr": 0.001,
+    "batch_size": 256,
+    "num_neighbors": [
+      64,
+      32
+    ],
+    "r2_diagnostic": {
+      "PhoneRequestsStream__UserID__UserInfo": {
+        "cross_table_r2": 0.001847,
+        "cardinality_mean": 8.058765105115047,
+        "cardinality_x_predictability": 0.0149,
+        "parent_table": "UserInfo",
+        "child_table": "PhoneRequestsStream",
+        "fk_column": "UserID"
+      },
+      "PhoneRequestsStream__AdID__AdsInfo": {
+        "cross_table_r2": 0.000337,
+        "cardinality_mean": 1.1793874668678779,
+        "cardinality_x_predictability": 0.0004,
+        "parent_table": "AdsInfo",
+        "child_table": "PhoneRequestsStream",
+        "fk_column": "AdID"
+      },
+      "VisitStream__UserID__UserInfo": {
+        "cross_table_r2": 0.001051,
+        "cardinality_mean": 89.71674918900462,
+        "cardinality_x_predictability": 0.0943,
+        "parent_table": "UserInfo",
+        "child_table": "VisitStream",
+        "fk_column": "UserID"
+      },
+      "VisitStream__AdID__AdsInfo": {
+        "cross_table_r2": 0.000135,
+        "cardinality_mean": 1.6664257162840894,
+        "cardinality_x_predictability": 0.0002,
+        "parent_table": "AdsInfo",
+        "child_table": "VisitStream",
+        "fk_column": "AdID"
+      },
+      "SearchStream__SearchID__SearchInfo": {
+        "cross_table_r2": 0.000528,
+        "cardinality_mean": 3.6226693994098538,
+        "cardinality_x_predictability": 0.0019,
+        "parent_table": "SearchInfo",
+        "child_table": "SearchStream",
+        "fk_column": "SearchID"
+      },
+      "SearchStream__AdID__AdsInfo": {
+        "cross_table_r2": 0.252625,
+        "cardinality_mean": 3.489904366459713,
+        "cardinality_x_predictability": 0.8816,
+        "parent_table": "AdsInfo",
+        "child_table": "SearchStream",
+        "fk_column": "AdID"
+      },
+      "SearchInfo__UserID__UserInfo": {
+        "cross_table_r2": 0.003941,
+        "cardinality_mean": 35.35468175592878,
+        "cardinality_x_predictability": 0.1393,
+        "parent_table": "UserInfo",
+        "child_table": "SearchInfo",
+        "fk_column": "UserID"
+      },
+      "SearchInfo__LocationID__Location": {
+        "cross_table_r2": 0.00098,
+        "cardinality_mean": 1093.0440044004401,
+        "cardinality_x_predictability": 1.071,
+        "parent_table": "Location",
+        "child_table": "SearchInfo",
+        "fk_column": "LocationID"
+      },
+      "SearchInfo__CategoryID__Category": {
+        "cross_table_r2": 0.000323,
+        "cardinality_mean": 50952.717948717946,
+        "cardinality_x_predictability": 16.4573,
+        "parent_table": "Category",
+        "child_table": "SearchInfo",
+        "fk_column": "CategoryID"
+      },
+      "AdsInfo__LocationID__Location": {
+        "cross_table_r2": 0.500567,
+        "cardinality_mean": 1765.0336009515313,
+        "cardinality_x_predictability": 883.5181,
+        "parent_table": "Location",
+        "child_table": "AdsInfo",
+        "fk_column": "LocationID"
+      },
+      "AdsInfo__CategoryID__Category": {
+        "cross_table_r2": 0.00049,
+        "cardinality_mean": 114625.5,
+        "cardinality_x_predictability": 56.1577,
+        "parent_table": "Category",
+        "child_table": "AdsInfo",
+        "fk_column": "CategoryID"
+      }
+    },
+    "selective_prmp_links": [
+      "AdsInfo__CategoryID__Category",
+      "SearchInfo__CategoryID__Category",
+      "AdsInfo__LocationID__Location"
+    ],
+    "gnn_results": {},
+    "gnn_status": "skipped_or_failed",
+    "diagnostic_correlation": {},
+    "total_time_seconds": 5.0
+  },
+  "datasets": [
+    {
+      "dataset": "rel-avito",
+      "examples": [
+        {
+          "input": "[2061.0, 43.0, 2014.0, 62.0]",
+          "output": "[741197.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "0",
+          "metadata_cross_table_r2": "0.001847",
+          "metadata_cardinality_mean": "8.06",
+          "metadata_card_x_predict": "0.0149",
+          "predict_linear_baseline": "[1078240.9899]",
+          "predict_prmp_residual": "[-337043.9899]"
+        },
+        {
+          "input": "[48490.0, 43.0, 2014.0, 64.0]",
+          "output": "[1464815.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "1",
+          "metadata_cross_table_r2": "0.001847",
+          "metadata_cardinality_mean": "8.06",
+          "metadata_card_x_predict": "0.0149",
+          "predict_linear_baseline": "[1103214.0711]",
+          "predict_prmp_residual": "[361600.9289]"
+        },
+        {
+          "input": "[54958.0, 7.0, 2014.0, 15.0]",
+          "output": "[1469031.0]",
+          "metadata_fk_link": "UserInfo->PhoneRequestsStream",
+          "metadata_link_id": "PhoneRequestsStream__UserID__UserInfo",
+          "metadata_row_index": "2",
+          "metadata_cross_table_r2": "0.001847",
+          "metadata_cardinality_mean": "8.06",
+          "metadata_card_x_predict": "0.0149",
+          "predict_linear_baseline": "[1191029.8366]",
+          "predict_prmp_residual": "[278001.1634]"
+        }
+      ]
+    }
+  ]
+}

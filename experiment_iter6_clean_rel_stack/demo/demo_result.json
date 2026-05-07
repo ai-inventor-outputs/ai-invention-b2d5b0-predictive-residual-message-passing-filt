@@ -1,0 +1,13 @@
+{
+  "id": "exp_id4_it6__opus",
+  "type": "code",
+  "title": "Clean rel-stack PRMP Benchmark with Learned Embeddings (Resolving parent_dim=1 Confound)",
+  "summary": "Demo notebook benchmarking 3 GNN variants (Standard, PRMP, Wide) on a synthetic heterogeneous graph from StackOverflow relational data. Trains on post-votes regression (MAE) and user-engagement classification (AUROC) tasks using pure PyTorch GNN layers. Includes visualization comparing small-scale demo results with full-scale pre-computed results from mini_demo_data.json (13 examples covering 11 FK links and 2 task metrics).",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_6/gen_art/exp_id4_it6__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id4_it6__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id4_it6__opus/method_code_demo.ipynb"
+}

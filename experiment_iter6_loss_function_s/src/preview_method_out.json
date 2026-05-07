@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "method_name": "PRMP Loss Function Swap Experiment on rel-f1",
+    "description": "Controlled experiment: 4 configs x 2 methods x 13 seeds = 104 runs",
+    "configs": [
+      "config1_natural_regression",
+      "config2_binned_classification",
+      "config3_natural_classification"
+    ],
+    "hidden_dim": 128,
+    "num_layers": 2,
+    "seeds": [
+      42,
+      123,
+      7
+    ],
+    "graph_stats": {
+      "drivers": 854,
+      "races": 1079,
+      "constructors": 211,
+      "circuits": 79,
+      "status": 137,
+      "results": 25420,
+      "qualifying": 9155,
+      "driver_standings": 33435,
+      "total_edges": 153846
+    },
+    "analysis": {
+      "deltas_per_config": {
+        "config1_natural_regression": {
+          "mean": 0.987868804198045,
+          "std": 0.8044851198387168
+        },
+        "config2_binned_classification": {
+          "mean": -0.28815628815628813,
+          "std": 0.07362546242579406
+        },
+        "config3_natural_classification": {
+          "mean": 0.18158890290037838,
+          "std": 0.3880042135007229
+        },
+        "config4_softened_regression": {
+          "mean": -0.130010364147333,
+          "std": 0.07732000366369916
+        }
+      },
+      "loss_function_hypothesis": {
+        "regression_loss_configs_delta_mean": 0.428929220025356,
+        "classification_loss_configs_delta_mean": -0.05328369262795491,
+        "t_statistic": 2.7438351916633197,
+        "p_value": 0.008409936021902339,
+        "effect_significant": true,
+        "interpretation": "Reg-loss delta=0.4289, cls-loss delta=-0.0533, p=0.0084"
+      },
+      "target_nature_hypothesis": {
+        "position_target_configs_delta_mean": 0.3498562580208784,
+        "binary_target_configs_delta_mean": 0.025789269376522664,
+        "t_statistic": 1.772255652700569,
+        "p_value": 0.08244502242856926,
+        "effect_significant": true,
+        "interpretation": "Position delta=0.3499, binary delta=0.0258, p=0.0824"
+      },
+      "gradient_routing_analysis": {
+        "per_config_grad_ratios": {}
+      },
+      "conclusion": "Mixed"
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "rel-f1-loss-swap",
+      "examples": [
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":42,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":5.380597114562988,\"prmp_test_metric\":4.6916680335998535,\"standard_metrics\":{\"mae\":5.380597114562988,\"r2\":-1.858994483947754},\"prmp_metrics\":{\"mae\":4.6916680335998535,\"r2\":-1.19...",
+          "predict_standard": "{\"mae\":5.380597114562988,\"r2\":-1.858994483947754,\"primary_metric\":5.380597114562988,\"best_val\":2.9250032901763916,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":4.6916680335998535,\"r2\":-1.1986088752746582,\"primary_metric\":4.6916680335998535,\"best_val\":4.058071136474609,\"num_epochs\":60,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 42,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":123,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":5.547440052032471,\"prmp_test_metric\":4.757712364196777,\"standard_metrics\":{\"mae\":5.547440052032471,\"r2\":-1.921149492263794},\"prmp_metrics\":{\"mae\":4.757712364196777,\"r2\":-1.1975...",
+          "predict_standard": "{\"mae\":5.547440052032471,\"r2\":-1.921149492263794,\"primary_metric\":5.547440052032471,\"best_val\":2.6599245071411133,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":4.757712364196777,\"r2\":-1.1975133419036865,\"primary_metric\":4.757712364196777,\"best_val\":3.9355309009552,\"num_epochs\":77,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 123,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        },
+        {
+          "input": "{\"config_name\":\"config1_natural_regression\",\"loss_type\":\"MAE\",\"target_type\":\"position\",\"num_classes\":1,\"seed\":7,\"description\":\"Natural regression: mean position with L1Loss\"}",
+          "output": "{\"standard_test_metric\":3.9383058547973633,\"prmp_test_metric\":3.975904941558838,\"standard_metrics\":{\"mae\":3.9383058547973633,\"r2\":-0.644733190536499},\"prmp_metrics\":{\"mae\":3.975904941558838,\"r2\":-0.62...",
+          "predict_standard": "{\"mae\":3.9383058547973633,\"r2\":-0.644733190536499,\"primary_metric\":3.9383058547973633,\"best_val\":2.3104896545410156,\"num_epochs\":80}",
+          "predict_prmp": "{\"mae\":3.975904941558838,\"r2\":-0.6247245073318481,\"primary_metric\":3.975904941558838,\"best_val\":3.659684658050537,\"num_epochs\":70,\"gradient_analysis\":{},\"prmp_diagnostics\":{}}",
+          "metadata_config": "config1_natural_regression",
+          "metadata_loss_type": "MAE",
+          "metadata_target_type": "position",
+          "metadata_seed": 7,
+          "metadata_prmp_delta_mean": 0.987868804198045
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "exp_id2_it6__opus",
+  "type": "code",
+  "title": "Unified PRMP Benchmark: 5 Variants \u00d7 5 Seeds \u00d7 3 Tasks on Amazon & F1",
+  "summary": "Demo notebook for the Predictive Residual Message Passing (PRMP) benchmark comparing 5 heterogeneous GNN variants (Standard, PRMP, Wide, Auxiliary MLP, Random Frozen) across 3 relational tasks (Amazon review-rating, F1 result-position, F1 result-dnf). The notebook defines all model architectures (HeteroSAGEConv, PRMPConvLayer with predict-subtract-aggregate), generates a synthetic heterogeneous graph mimicking FK-linked tables, trains demo variants with early stopping, then visualizes pre-computed results from 75 full benchmark runs including performance bar charts, prediction scatter plots, Ridge R\u00b2 embedding diagnostics, and Cohen's d effect size heatmaps. Uses pure PyTorch scatter_mean (no torch_scatter dependency). Mini demo data contains 90 curated examples across 3 datasets plus all statistical analysis metadata.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_6/gen_art/exp_id2_it6__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id2_it6__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id2_it6__opus/method_code_demo.ipynb"
+}

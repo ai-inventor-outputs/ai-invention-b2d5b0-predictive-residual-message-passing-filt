@@ -1,0 +1,390 @@
+{
+  "metadata": {
+    "description": "Clean rel-stack PRMP Benchmark with Learned Embeddings",
+    "dataset": "rel-stack",
+    "num_tables": 7,
+    "num_fk_links": 11,
+    "table_sizes": {
+      "users": 100000,
+      "posts": 100000,
+      "comments": 100000,
+      "badges": 100000,
+      "postLinks": 77337,
+      "postHistory": 100000,
+      "votes": 100000
+    },
+    "training_config": {
+      "embed_dim": 128,
+      "hidden_dim": 128,
+      "num_layers": 2,
+      "dropout": 0.3,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "max_epochs": 200,
+      "patience": 20,
+      "seeds": [
+        42,
+        123,
+        456
+      ]
+    },
+    "parameter_counts": {
+      "Standard": {
+        "total": 88152321,
+        "trainable": 88152321
+      },
+      "PRMP": {
+        "total": 88878849,
+        "trainable": 88878849
+      },
+      "Wide": {
+        "total": 88855417,
+        "trainable": 88855417
+      }
+    },
+    "results_summary": {
+      "post-votes": {
+        "Standard": {
+          "per_seed": [
+            {
+              "mae": 0.115004,
+              "rmse": 0.24345,
+              "r2": 0.800922,
+              "seed": 42,
+              "best_epoch": 62,
+              "train_time_s": 12.3
+            },
+            {
+              "mae": 0.118004,
+              "rmse": 0.248353,
+              "r2": 0.792822,
+              "seed": 123,
+              "best_epoch": 50,
+              "train_time_s": 9.7
+            },
+            {
+              "mae": 0.112654,
+              "rmse": 0.240618,
+              "r2": 0.805527,
+              "seed": 456,
+              "best_epoch": 78,
+              "train_time_s": 13.7
+            }
+          ],
+          "mean_mae": 0.115221,
+          "std_mae": 0.002189
+        },
+        "PRMP": {
+          "per_seed": [
+            {
+              "mae": 0.119864,
+              "rmse": 0.236686,
+              "r2": 0.811831,
+              "seed": 42,
+              "best_epoch": 42,
+              "train_time_s": 11.7
+            },
+            {
+              "mae": 0.111823,
+              "rmse": 0.2335,
+              "r2": 0.816863,
+              "seed": 123,
+              "best_epoch": 61,
+              "train_time_s": 15.3
+            },
+            {
+              "mae": 0.111672,
+              "rmse": 0.230965,
+              "r2": 0.820818,
+              "seed": 456,
+              "best_epoch": 76,
+              "train_time_s": 18.2
+            }
+          ],
+          "mean_mae": 0.114453,
+          "std_mae": 0.003827
+        },
+        "Wide": {
+          "per_seed": [
+            {
+              "mae": 0.109747,
+              "rmse": 0.241522,
+              "r2": 0.804063,
+              "seed": 42,
+              "best_epoch": 67,
+              "train_time_s": 16.1
+            },
+            {
+              "mae": 0.110944,
+              "rmse": 0.241516,
+              "r2": 0.804073,
+              "seed": 123,
+              "best_epoch": 60,
+              "train_time_s": 14.8
+            },
+            {
+              "mae": 0.113073,
+              "rmse": 0.246388,
+              "r2": 0.796087,
+              "seed": 456,
+              "best_epoch": 60,
+              "train_time_s": 14.6
+            }
+          ],
+          "mean_mae": 0.111255,
+          "std_mae": 0.001375
+        },
+        "pairwise_cohens_d": {
+          "Standard_vs_PRMP": 0.2011,
+          "Standard_vs_Wide": 1.7711,
+          "PRMP_vs_Wide": 0.9082
+        }
+      },
+      "user-engagement": {
+        "Standard": {
+          "per_seed": [
+            {
+              "auroc": 0.981505,
+              "seed": 42,
+              "best_epoch": 196,
+              "train_time_s": 26.6
+            },
+            {
+              "auroc": 0.974107,
+              "seed": 123,
+              "best_epoch": 69,
+              "train_time_s": 11.9
+            },
+            {
+              "auroc": 0.981335,
+              "seed": 456,
+              "best_epoch": 197,
+              "train_time_s": 26.5
+            }
+          ],
+          "mean_auroc": 0.978982,
+          "std_auroc": 0.003448
+        },
+        "PRMP": {
+          "per_seed": [
+            {
+              "auroc": 0.973751,
+              "seed": 42,
+              "best_epoch": 70,
+              "train_time_s": 16.5
+            },
+            {
+              "auroc": 0.973701,
+              "seed": 123,
+              "best_epoch": 65,
+              "train_time_s": 15.9
+            },
+            {
+              "auroc": 0.975151,
+              "seed": 456,
+              "best_epoch": 69,
+              "train_time_s": 16.4
+            }
+          ],
+          "mean_auroc": 0.974201,
+          "std_auroc": 0.000672
+        },
+        "Wide": {
+          "per_seed": [
+            {
+              "auroc": 0.969068,
+              "seed": 42,
+              "best_epoch": 11,
+              "train_time_s": 5.7
+            },
+            {
+              "auroc": 0.967737,
+              "seed": 123,
+              "best_epoch": 9,
+              "train_time_s": 5.3
+            },
+            {
+              "auroc": 0.970814,
+              "seed": 456,
+              "best_epoch": 13,
+              "train_time_s": 6.0
+            }
+          ],
+          "mean_auroc": 0.969206,
+          "std_auroc": 0.00126
+        },
+        "pairwise_cohens_d": {
+          "Standard_vs_PRMP": 1.5716,
+          "Standard_vs_Wide": 3.0749,
+          "PRMP_vs_Wide": 4.0387
+        }
+      }
+    },
+    "embedding_r2_summary": {
+      "badges__UserId__users": {
+        "raw_feature_r2": 0.0,
+        "Standard_mean": 0.0128,
+        "PRMP_mean": 0.0128,
+        "Wide_mean": 0.0128
+      },
+      "comments__PostId__posts": {
+        "raw_feature_r2": null,
+        "Standard_mean": 0.013,
+        "PRMP_mean": 0.013,
+        "Wide_mean": 0.013
+      },
+      "comments__UserId__users": {
+        "raw_feature_r2": null,
+        "Standard_mean": 0.0128,
+        "PRMP_mean": 0.0129,
+        "Wide_mean": 0.0129
+      },
+      "postLinks__PostId__posts": {
+        "raw_feature_r2": 0.0,
+        "Standard_mean": 0.0128,
+        "PRMP_mean": 0.0128,
+        "Wide_mean": 0.0129
+      },
+      "postLinks__RelatedPostId__posts": {
+        "raw_feature_r2": 0.000214,
+        "Standard_mean": 0.0126,
+        "PRMP_mean": 0.0126,
+        "Wide_mean": 0.0126
+      },
+      "postHistory__PostId__posts": {
+        "raw_feature_r2": 0.009703,
+        "Standard_mean": 0.013,
+        "PRMP_mean": 0.013,
+        "Wide_mean": 0.013
+      },
+      "postHistory__UserId__users": {
+        "raw_feature_r2": 0.0,
+        "Standard_mean": 0.0128,
+        "PRMP_mean": 0.0128,
+        "Wide_mean": 0.0128
+      },
+      "votes__PostId__posts": {
+        "raw_feature_r2": 0.002809,
+        "Standard_mean": 0.0127,
+        "PRMP_mean": 0.0127,
+        "Wide_mean": 0.0128
+      },
+      "votes__UserId__users": {
+        "raw_feature_r2": 1.0,
+        "Standard_mean": 0.0629,
+        "PRMP_mean": 0.0628,
+        "Wide_mean": 0.0627
+      },
+      "posts__OwnerUserId__users": {
+        "raw_feature_r2": 0.0,
+        "Standard_mean": 0.013,
+        "PRMP_mean": 0.013,
+        "Wide_mean": 0.013
+      },
+      "posts__ParentId__posts": {
+        "raw_feature_r2": 1.0,
+        "Standard_mean": 0.0127,
+        "PRMP_mean": 0.0127,
+        "Wide_mean": 0.0127
+      }
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "rel-stack-benchmark",
+      "examples": [
+        {
+          "input": "{\"fk_link\": \"badges__UserId__users\", \"child_table\": \"badges\", \"parent_table\": \"users\", \"fkey_col\": \"UserId\", \"cardinality_mean\": 3.27, \"coverage\": 0.555}",
+          "output": "{\"raw_feature_r2\": 0.0, \"description\": \"FK badges.UserId -> users, card=3.27, cov=0.555\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.012802, \"embedding_r2_per_task\": {\"post-votes\": 0.012788, \"user-engagement\": 0.012816}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.012786, \"embedding_r2_per_task\": {\"post-votes\": 0.012787, \"user-engagement\": 0.012785}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.012778, \"embedding_r2_per_task\": {\"post-votes\": 0.012784, \"user-engagement\": 0.012773}}"
+        },
+        {
+          "input": "{\"fk_link\": \"comments__PostId__posts\", \"child_table\": \"comments\", \"parent_table\": \"posts\", \"fkey_col\": \"PostId\", \"cardinality_mean\": 3.33, \"coverage\": 0.562}",
+          "output": "{\"raw_feature_r2\": null, \"description\": \"FK comments.PostId -> posts, card=3.33, cov=0.562\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.012962, \"embedding_r2_per_task\": {\"post-votes\": 0.012963, \"user-engagement\": 0.012961}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.012962, \"embedding_r2_per_task\": {\"post-votes\": 0.012962, \"user-engagement\": 0.012962}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.012963, \"embedding_r2_per_task\": {\"post-votes\": 0.012962, \"user-engagement\": 0.012963}}"
+        },
+        {
+          "input": "{\"fk_link\": \"comments__UserId__users\", \"child_table\": \"comments\", \"parent_table\": \"users\", \"fkey_col\": \"UserId\", \"cardinality_mean\": 11.5, \"coverage\": 0.208}",
+          "output": "{\"raw_feature_r2\": null, \"description\": \"FK comments.UserId -> users, card=11.50, cov=0.208\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.012848, \"embedding_r2_per_task\": {\"post-votes\": 0.012859, \"user-engagement\": 0.012837}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.012861, \"embedding_r2_per_task\": {\"post-votes\": 0.01286, \"user-engagement\": 0.012861}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.012869, \"embedding_r2_per_task\": {\"post-votes\": 0.012864, \"user-engagement\": 0.012875}}"
+        },
+        {
+          "input": "{\"fk_link\": \"postLinks__PostId__posts\", \"child_table\": \"postLinks\", \"parent_table\": \"posts\", \"fkey_col\": \"PostId\", \"cardinality_mean\": 1.62, \"coverage\": 0.113}",
+          "output": "{\"raw_feature_r2\": 0.0, \"description\": \"FK postLinks.PostId -> posts, card=1.62, cov=0.113\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.012836, \"embedding_r2_per_task\": {\"post-votes\": 0.012848, \"user-engagement\": 0.012824}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.012849, \"embedding_r2_per_task\": {\"post-votes\": 0.012849, \"user-engagement\": 0.01285}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.012858, \"embedding_r2_per_task\": {\"post-votes\": 0.012852, \"user-engagement\": 0.012864}}"
+        },
+        {
+          "input": "{\"fk_link\": \"postLinks__RelatedPostId__posts\", \"child_table\": \"postLinks\", \"parent_table\": \"posts\", \"fkey_col\": \"RelatedPostId\", \"cardinality_mean\": 3.04, \"coverage\": 0.074}",
+          "output": "{\"raw_feature_r2\": 0.000214, \"description\": \"FK postLinks.RelatedPostId -> posts, card=3.04, cov=0.074\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.012612, \"embedding_r2_per_task\": {\"post-votes\": 0.01261, \"user-engagement\": 0.012614}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.012609, \"embedding_r2_per_task\": {\"post-votes\": 0.012609, \"user-engagement\": 0.01261}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.012609, \"embedding_r2_per_task\": {\"post-votes\": 0.012609, \"user-engagement\": 0.01261}}"
+        },
+        {
+          "input": "{\"fk_link\": \"postHistory__PostId__posts\", \"child_table\": \"postHistory\", \"parent_table\": \"posts\", \"fkey_col\": \"PostId\", \"cardinality_mean\": 3.52, \"coverage\": 1.0}",
+          "output": "{\"raw_feature_r2\": 0.009703, \"description\": \"FK postHistory.PostId -> posts, card=3.52, cov=1.000\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.013025, \"embedding_r2_per_task\": {\"post-votes\": 0.013018, \"user-engagement\": 0.013033}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.013017, \"embedding_r2_per_task\": {\"post-votes\": 0.013018, \"user-engagement\": 0.013016}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.013008, \"embedding_r2_per_task\": {\"post-votes\": 0.013014, \"user-engagement\": 0.013002}}"
+        },
+        {
+          "input": "{\"fk_link\": \"postHistory__UserId__users\", \"child_table\": \"postHistory\", \"parent_table\": \"users\", \"fkey_col\": \"UserId\", \"cardinality_mean\": 12.95, \"coverage\": 0.333}",
+          "output": "{\"raw_feature_r2\": 0.0, \"description\": \"FK postHistory.UserId -> users, card=12.95, cov=0.333\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.012808, \"embedding_r2_per_task\": {\"post-votes\": 0.012815, \"user-engagement\": 0.012801}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.012814, \"embedding_r2_per_task\": {\"post-votes\": 0.012814, \"user-engagement\": 0.012815}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.012817, \"embedding_r2_per_task\": {\"post-votes\": 0.012815, \"user-engagement\": 0.012819}}"
+        },
+        {
+          "input": "{\"fk_link\": \"votes__PostId__posts\", \"child_table\": \"votes\", \"parent_table\": \"posts\", \"fkey_col\": \"PostId\", \"cardinality_mean\": 4.34, \"coverage\": 0.829}",
+          "output": "{\"raw_feature_r2\": 0.002809, \"description\": \"FK votes.PostId -> posts, card=4.34, cov=0.829\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.012739, \"embedding_r2_per_task\": {\"post-votes\": 0.012748, \"user-engagement\": 0.01273}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.012748, \"embedding_r2_per_task\": {\"post-votes\": 0.012748, \"user-engagement\": 0.012749}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.012754, \"embedding_r2_per_task\": {\"post-votes\": 0.01275, \"user-engagement\": 0.012758}}"
+        },
+        {
+          "input": "{\"fk_link\": \"votes__UserId__users\", \"child_table\": \"votes\", \"parent_table\": \"users\", \"fkey_col\": \"UserId\", \"cardinality_mean\": 1.99, \"coverage\": 0.01}",
+          "output": "{\"raw_feature_r2\": 1.0, \"description\": \"FK votes.UserId -> users, card=1.99, cov=0.010\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.062864, \"embedding_r2_per_task\": {\"post-votes\": 0.062788, \"user-engagement\": 0.062941}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.062777, \"embedding_r2_per_task\": {\"post-votes\": 0.062783, \"user-engagement\": 0.062772}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.062733, \"embedding_r2_per_task\": {\"post-votes\": 0.062759, \"user-engagement\": 0.062707}}"
+        },
+        {
+          "input": "{\"fk_link\": \"posts__OwnerUserId__users\", \"child_table\": \"posts\", \"parent_table\": \"users\", \"fkey_col\": \"OwnerUserId\", \"cardinality_mean\": 3.9, \"coverage\": 0.33}",
+          "output": "{\"raw_feature_r2\": 0.0, \"description\": \"FK posts.OwnerUserId -> users, card=3.90, cov=0.330\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.012984, \"embedding_r2_per_task\": {\"post-votes\": 0.012998, \"user-engagement\": 0.012971}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.013, \"embedding_r2_per_task\": {\"post-votes\": 0.012999, \"user-engagement\": 0.013001}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.013004, \"embedding_r2_per_task\": {\"post-votes\": 0.013001, \"user-engagement\": 0.013007}}"
+        },
+        {
+          "input": "{\"fk_link\": \"posts__ParentId__posts\", \"child_table\": \"posts\", \"parent_table\": \"posts\", \"fkey_col\": \"ParentId\", \"cardinality_mean\": 1.45, \"coverage\": 0.346}",
+          "output": "{\"raw_feature_r2\": 1.0, \"description\": \"FK posts.ParentId -> posts, card=1.45, cov=0.346\"}",
+          "predict_Standard": "{\"embedding_r2_mean\": 0.01274, \"embedding_r2_per_task\": {\"post-votes\": 0.012732, \"user-engagement\": 0.012748}}",
+          "predict_PRMP": "{\"embedding_r2_mean\": 0.012732, \"embedding_r2_per_task\": {\"post-votes\": 0.012732, \"user-engagement\": 0.012732}}",
+          "predict_Wide": "{\"embedding_r2_mean\": 0.012727, \"embedding_r2_per_task\": {\"post-votes\": 0.012731, \"user-engagement\": 0.012723}}"
+        },
+        {
+          "input": "{\"task\": \"post-votes\", \"type\": \"regression\", \"metric\": \"MAE\", \"target_node_type\": \"posts\"}",
+          "output": "{\"description\": \"Task post-votes (regression, MAE)\"}",
+          "predict_Standard": "{\"mean_mae\": 0.115221, \"std_mae\": 0.002189, \"per_seed\": [0.115004, 0.118004, 0.112654]}",
+          "predict_PRMP": "{\"mean_mae\": 0.114453, \"std_mae\": 0.003827, \"per_seed\": [0.119864, 0.111823, 0.111672]}",
+          "predict_Wide": "{\"mean_mae\": 0.111255, \"std_mae\": 0.001375, \"per_seed\": [0.109747, 0.110944, 0.113073]}"
+        },
+        {
+          "input": "{\"task\": \"user-engagement\", \"type\": \"classification\", \"metric\": \"AUROC\", \"target_node_type\": \"users\"}",
+          "output": "{\"description\": \"Task user-engagement (classification, AUROC)\"}",
+          "predict_Standard": "{\"mean_auroc\": 0.978982, \"std_auroc\": 0.003448, \"per_seed\": [0.981505, 0.974107, 0.981335]}",
+          "predict_PRMP": "{\"mean_auroc\": 0.974201, \"std_auroc\": 0.000672, \"per_seed\": [0.973751, 0.973701, 0.975151]}",
+          "predict_Wide": "{\"mean_auroc\": 0.969206, \"std_auroc\": 0.00126, \"per_seed\": [0.969068, 0.967737, 0.970814]}"
+        }
+      ]
+    }
+  ]
+}

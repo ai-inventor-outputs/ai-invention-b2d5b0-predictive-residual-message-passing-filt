@@ -1,0 +1,13 @@
+{
+  "id": "exp_id1_it6__opus",
+  "type": "code",
+  "title": "PRMP vs Standard HeteroSAGE on RelBench rel-avito ad-ctr (Pure PyTorch)",
+  "summary": "Demo notebook comparing Predictive Residual Message Passing (PRMP) against Standard and Wide HeteroSAGE on a synthetic heterogeneous graph mimicking the rel-avito ad-ctr schema. Defines pure PyTorch GNN layers (BipartiteSAGEConv, PRMPSAGEConv), builds 3 model variants, trains on synthetic data, then visualizes pre-computed full-scale results (200K nodes, 3 seeds) including RMSE comparison, embedding-space R\u00b2, Cohen's d effect sizes, and cardinality\u00d7R\u00b2 regime analysis. Mini demo data contains 55 diverse examples across all 11 FK links with full experiment metadata.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_6/gen_art/exp_id1_it6__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id1_it6__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id1_it6__opus/method_code_demo.ipynb"
+}

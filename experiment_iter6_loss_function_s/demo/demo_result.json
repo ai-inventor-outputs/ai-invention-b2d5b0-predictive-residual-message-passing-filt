@@ -1,0 +1,13 @@
+{
+  "id": "exp_id3_it6__opus",
+  "type": "code",
+  "title": "Loss Function Swap Experiment: Isolating Task-Type Effect on PRMP via rel-f1 Controlled Comparison",
+  "summary": "Demo notebook for the PRMP Loss Function Swap Experiment comparing Standard GNN vs PRMP on an F1 heterogeneous graph. The notebook downloads Ergast F1 CSV data, builds a heterogeneous PyTorch Geometric graph, and trains models on 4 task configurations (natural regression/MAE, binned classification/CE, natural classification/BCE, softened regression/MSE). It runs a live small-scale demo (1 seed, 10 epochs) and visualizes pre-computed full results (13 seeds, 80 epochs) showing PRMP improvement deltas per config and hypothesis test results. Mini demo data contains 12 diverse examples (3 per config) from the full 52-example output.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_6/gen_art/exp_id3_it6__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it6__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it6__opus/method_code_demo.ipynb"
+}
