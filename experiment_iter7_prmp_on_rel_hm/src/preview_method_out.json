@@ -1,0 +1,161 @@
+{
+  "metadata": {
+    "experiment": "PRMP_rel_hm_5th_dataset",
+    "dataset": "rel-hm",
+    "schema": {
+      "tables": [
+        "customer",
+        "article",
+        "transaction"
+      ],
+      "fk_links": [
+        {
+          "parent": "customer",
+          "child": "transaction",
+          "cardinality_mean": 4.518344478583047
+        },
+        {
+          "parent": "article",
+          "child": "transaction",
+          "cardinality_mean": 10.014521055530519
+        }
+      ]
+    },
+    "architecture": {
+      "hidden_dim": 128,
+      "num_layers": 2,
+      "lr": 0.001,
+      "epochs": 200,
+      "patience": 20,
+      "seeds": [
+        42,
+        123,
+        456
+      ],
+      "batch_size": 1024
+    },
+    "results_by_task": {
+      "user-churn": {
+        "metric": "AUROC",
+        "task_type": "classification",
+        "standard": {
+          "mean": 0.7943000707799308,
+          "std": 0.0018893739746210535,
+          "per_seed": [
+            0.7956820062254476,
+            0.7930764953720526,
+            0.7971995419472733
+          ]
+        },
+        "prmp": {
+          "mean": 0.7984959157796074,
+          "std": 0.00300987474508411,
+          "per_seed": [
+            0.7984819069453613,
+            0.8027156916746132,
+            0.8007678669539384
+          ]
+        },
+        "wide": {
+          "mean": 0.7932150854649153,
+          "std": 0.0038801365957704024,
+          "per_seed": [
+            0.792361525583768,
+            0.7872122081039559,
+            0.7975748661692887
+          ]
+        }
+      },
+      "item-sales": {
+        "metric": "MAE",
+        "task_type": "regression",
+        "standard": {
+          "mean": 0.38903058171272276,
+          "std": 0.007776505311838495,
+          "per_seed": [
+            0.38845914602279663,
+            0.4004324674606323,
+            0.39463454484939575
+          ]
+        },
+        "prmp": {
+          "mean": 0.38820557594299315,
+          "std": 0.005460817494169649,
+          "per_seed": [
+            0.3885595500469208,
+            0.3918931186199188,
+            0.386285662651062
+          ]
+        },
+        "wide": {
+          "mean": 0.38565213084220884,
+          "std": 0.010456813040402866,
+          "per_seed": [
+            0.3839085102081299,
+            0.369280070066452,
+            0.4001118242740631
+          ]
+        }
+      }
+    },
+    "r2_analysis": {
+      "article_to_transaction": {
+        "feature_ridge_r2": 0.070792,
+        "ridge_r2": -0.003139,
+        "prmp_mlp_r2": -0.061273
+      },
+      "customer_to_transaction": {
+        "feature_ridge_r2": 0.00849,
+        "ridge_r2": -0.00339,
+        "prmp_mlp_r2": -0.116485
+      }
+    },
+    "param_counts": {
+      "standard_128": 34095105,
+      "standard_128_non_emb": 273025,
+      "prmp_128": 34162689,
+      "prmp_128_non_emb": 340609,
+      "wide_matched": 38395009,
+      "wide_matched_non_emb": 345169,
+      "wide_dim": 144
+    },
+    "relative_improvement": {
+      "user-churn_prmp_vs_standard": "+0.53%",
+      "item-sales_prmp_vs_standard": "+0.21%"
+    },
+    "runtime_seconds": 238.6
+  },
+  "datasets": [
+    {
+      "dataset": "rel_hm_fashion",
+      "examples": [
+        {
+          "input": "{\"parent_table\": \"customer\", \"child_table\": \"transaction\", \"fk_column\": \"customer_id\", \"parent_feature_columns\": [\"FN\", \"Active\", \"club_member_status\", \"fashion_news_frequency\", \"age\"], \"child_feature...",
+          "output": "{\"num_unique_parents\": 119904, \"num_children_total\": 500000, \"mean_cardinality\": 4.17, \"median_cardinality\": 3.0, \"max_cardinality\": 169, \"std_cardinality\": 4.4495, \"p95_cardinality\": 12.0, \"cardinali...",
+          "metadata_fold": 0,
+          "metadata_parent_table": "customer",
+          "metadata_child_table": "transaction",
+          "metadata_fk_column": "customer_id",
+          "metadata_task_type": "fk_cardinality_and_feature_alignment",
+          "metadata_supplementary_file": "supplementary_customer_transaction_aligned_features.parquet",
+          "predict_standard": "{\"user-churn\": {\"mean\": 0.7943000707799308, \"std\": 0.0018893739746210535, \"per_seed\": [0.7956820062254476, 0.7930764953720526, 0.7971995419472733, 0.7919466283930943, 0.7935956819617859]}, \"item-sales...",
+          "predict_prmp": "{\"user-churn\": {\"mean\": 0.7984959157796074, \"std\": 0.00300987474508411, \"per_seed\": [0.7984819069453613, 0.8027156916746132, 0.8007678669539384, 0.7944361284834703, 0.7960779848406543]}, \"item-sales\":...",
+          "predict_wide": "{\"user-churn\": {\"mean\": 0.7932150854649153, \"std\": 0.0038801365957704024, \"per_seed\": [0.792361525583768, 0.7872122081039559, 0.7975748661692887, 0.7916007345512824, 0.7973260929162812]}, \"item-sales\"..."
+        },
+        {
+          "input": "{\"parent_table\": \"article\", \"child_table\": \"transaction\", \"fk_column\": \"article_id\", \"parent_feature_columns\": [\"product_type_no\", \"product_type_name\", \"product_group_name\", \"graphical_appearance_no\",...",
+          "output": "{\"num_unique_parents\": 24942, \"num_children_total\": 500000, \"mean_cardinality\": 20.0465, \"median_cardinality\": 6.0, \"max_cardinality\": 1241, \"std_cardinality\": 48.6948, \"p95_cardinality\": 84.0, \"cardi...",
+          "metadata_fold": 0,
+          "metadata_parent_table": "article",
+          "metadata_child_table": "transaction",
+          "metadata_fk_column": "article_id",
+          "metadata_task_type": "fk_cardinality_and_feature_alignment",
+          "metadata_supplementary_file": "supplementary_article_transaction_aligned_features.parquet",
+          "predict_standard": "{\"user-churn\": {\"mean\": 0.7943000707799308, \"std\": 0.0018893739746210535, \"per_seed\": [0.7956820062254476, 0.7930764953720526, 0.7971995419472733, 0.7919466283930943, 0.7935956819617859]}, \"item-sales...",
+          "predict_prmp": "{\"user-churn\": {\"mean\": 0.7984959157796074, \"std\": 0.00300987474508411, \"per_seed\": [0.7984819069453613, 0.8027156916746132, 0.8007678669539384, 0.7944361284834703, 0.7960779848406543]}, \"item-sales\":...",
+          "predict_wide": "{\"user-churn\": {\"mean\": 0.7932150854649153, \"std\": 0.0038801365957704024, \"per_seed\": [0.792361525583768, 0.7872122081039559, 0.7975748661692887, 0.7916007345512824, 0.7973260929162812]}, \"item-sales\"..."
+        }
+      ]
+    }
+  ]
+}

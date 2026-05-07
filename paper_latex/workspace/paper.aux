@@ -1,0 +1,115 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{Fey2024}
+\citation{Robinson2024}
+\citation{Hamilton2017,Velickovic2018}
+\citation{Alon2021,Topping2022}
+\citation{Chen2025}
+\citation{Wang2025}
+\citation{Yuan2025}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:introduction}{{1}{1}{Introduction}{section.1}{}}
+\citation{Rao1999}
+\citation{Lotter2017}
+\citation{Rao1999}
+\citation{Fey2024}
+\citation{Robinson2024}
+\citation{Chen2025}
+\citation{Wang2025}
+\citation{Yuan2025}
+\@writefile{toc}{\contentsline {paragraph}{Summary of Contributions.}{2}{section*.1}\protected@file@percent }
+\citation{Rao1999}
+\citation{Lotter2017}
+\citation{Salvatori2022}
+\citation{Salvatori2022}
+\citation{Alon2021}
+\citation{Topping2022}
+\citation{Hamilton2017,Schlichtkrull2018}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{3}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{3}{Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Relational Deep Learning}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Predictive Coding and Residual Architectures}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Over-Squashing in GNNs}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methods}{3}{section.3}\protected@file@percent }
+\newlabel{sec:methods}{{3}{3}{Methods}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Preliminaries}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{eq:standard_mp}{{1}{4}{Preliminaries}{equation.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Predictive Residual Message Passing}{4}{subsection.3.2}\protected@file@percent }
+\newlabel{eq:prediction}{{2}{4}{Predictive Residual Message Passing}{equation.3.2}{}}
+\newlabel{eq:residual}{{3}{4}{Predictive Residual Message Passing}{equation.3.3}{}}
+\newlabel{eq:prmp_agg}{{4}{4}{Predictive Residual Message Passing}{equation.3.4}{}}
+\newlabel{eq:prmp_update}{{5}{4}{Predictive Residual Message Passing}{equation.3.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{Design decisions.}{4}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Computational overhead.}{4}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Cross-Table Predictability Diagnostic}{4}{subsection.3.3}\protected@file@percent }
+\citation{Robinson2024}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Overview of Predictive Residual Message Passing (PRMP) compared to standard aggregation. Left: Standard message passing aggregates raw child-node features via mean pooling. Right: PRMP adds a prediction MLP that generates expected child features from the parent representation; only the prediction residuals (surprises) are aggregated. The prediction MLP final layer is zero-initialized so that PRMP degrades gracefully to standard aggregation at the start of training.}}{5}{figure.1}\protected@file@percent }
+\newlabel{fig:architecture}{{1}{5}{Overview of Predictive Residual Message Passing (PRMP) compared to standard aggregation. Left: Standard message passing aggregates raw child-node features via mean pooling. Right: PRMP adds a prediction MLP that generates expected child features from the parent representation; only the prediction residuals (surprises) are aggregated. The prediction MLP final layer is zero-initialized so that PRMP degrades gracefully to standard aggregation at the start of training}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{5}{section.4}\protected@file@percent }
+\newlabel{sec:experiments}{{4}{5}{Experiments}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Experimental Setup}{5}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Datasets.}{5}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Tasks.}{5}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Baselines and controls.}{5}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Ablation variants.}{6}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Main Results}{6}{subsection.4.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces PRMP vs.\ Standard aggregation across 8 RelBench tasks. Cohen's $d$ is positive when PRMP outperforms Standard. Bold indicates the largest effect per task type.}}{6}{table.1}\protected@file@percent }
+\newlabel{tab:main_results}{{1}{6}{PRMP vs.\ Standard aggregation across 8 RelBench tasks. Cohen's $d$ is positive when PRMP outperforms Standard. Bold indicates the largest effect per task type}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Parameter-Matched Controls}{6}{subsection.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Random-effects meta-analysis (DerSimonian--Laird) of PRMP versus standard aggregation across 8 independent RelBench tasks from 5 datasets. Effect sizes are Cohen's $d$ (positive favors PRMP). Tasks are grouped by type: regression (top 5) and classification (bottom 3). The pooled estimate (diamond) is $d = 0.24$ (95\% CI: [$-$0.37, 0.84], $p = 0.44$). Regression tasks show a consistently stronger PRMP benefit (pooled $d = 0.33$) than classification tasks (pooled $d = 0.09$).}}{7}{figure.2}\protected@file@percent }
+\newlabel{fig:forest_plot}{{2}{7}{Random-effects meta-analysis (DerSimonian--Laird) of PRMP versus standard aggregation across 8 independent RelBench tasks from 5 datasets. Effect sizes are Cohen's $d$ (positive favors PRMP). Tasks are grouped by type: regression (top 5) and classification (bottom 3). The pooled estimate (diamond) is $d = 0.24$ (95\% CI: [$-$0.37, 0.84], $p = 0.44$). Regression tasks show a consistently stronger PRMP benefit (pooled $d = 0.33$) than classification tasks (pooled $d = 0.09$)}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces RMSE comparison of five GNN variants with matched parameter counts on Amazon Video Games (10K reviews, 3 seeds). PRMP (550K params) significantly outperforms all controls: Standard (284K), Wide SAGEConv (553K), Auxiliary MLP (550K), and Skip-Residual (415K). Cohen's $d$ values against PRMP range from $-5.5$ to $-8.5$, demonstrating that the predict-subtract mechanism provides genuine benefit beyond extra parameters or architectural alternatives. Error bars show standard deviation across seeds.}}{8}{figure.3}\protected@file@percent }
+\newlabel{fig:param_matched}{{3}{8}{RMSE comparison of five GNN variants with matched parameter counts on Amazon Video Games (10K reviews, 3 seeds). PRMP (550K params) significantly outperforms all controls: Standard (284K), Wide SAGEConv (553K), Auxiliary MLP (550K), and Skip-Residual (415K). Cohen's $d$ values against PRMP range from $-5.5$ to $-8.5$, demonstrating that the predict-subtract mechanism provides genuine benefit beyond extra parameters or architectural alternatives. Error bars show standard deviation across seeds}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Task-Type Analysis}{9}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:task_type}{{4.4}{9}{Task-Type Analysis}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Embedding-Space Predictability Analysis}{9}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:embedding}{{4.5}{9}{Embedding-Space Predictability Analysis}{subsection.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces PRMP improvement ($\Delta $ = Standard metric $-$ PRMP metric, positive favors PRMP) across four loss function configurations on the F1 dataset (13 seeds each). Regression losses (MAE, MSE) yield mean PRMP improvement of $+0.43$ while classification losses (CE, BCE) yield $-0.05$ (two-sample $t$-test: $t = 2.74$, $p = 0.008$). The result demonstrates that the loss function, not the target variable nature, mediates PRMP's effectiveness.}}{10}{figure.4}\protected@file@percent }
+\newlabel{fig:loss_swap}{{4}{10}{PRMP improvement ($\Delta $ = Standard metric $-$ PRMP metric, positive favors PRMP) across four loss function configurations on the F1 dataset (13 seeds each). Regression losses (MAE, MSE) yield mean PRMP improvement of $+0.43$ while classification losses (CE, BCE) yield $-0.05$ (two-sample $t$-test: $t = 2.74$, $p = 0.008$). The result demonstrates that the loss function, not the target variable nature, mediates PRMP's effectiveness}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Cross-table predictability (Ridge $R^2$) measured in raw features versus learned GNN embeddings during training on Amazon Video Games. Raw-feature $R^2$ is near zero for both FK links (dashed lines), but embedding-space $R^2$ rises substantially during training, reaching 0.44 for product-to-review and 0.69 for customer-to-review. This embedding predictability gap demonstrates that GNNs learn cross-table structure invisible to static feature diagnostics.}}{10}{figure.5}\protected@file@percent }
+\newlabel{fig:embedding_pred}{{5}{10}{Cross-table predictability (Ridge $R^2$) measured in raw features versus learned GNN embeddings during training on Amazon Video Games. Raw-feature $R^2$ is near zero for both FK links (dashed lines), but embedding-space $R^2$ rises substantially during training, reaching 0.44 for product-to-review and 0.69 for customer-to-review. This embedding predictability gap demonstrates that GNNs learn cross-table structure invisible to static feature diagnostics}{figure.5}{}}
+\citation{Chen2025}
+\citation{Wang2025}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Ablation Studies}{11}{subsection.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Learned vs.\ random predictions.}{11}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Subtraction vs.\ concatenation.}{11}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Gradient-detached predictions.}{11}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{11}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{11}{Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}When Does PRMP Help?}{11}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Limitations}{11}{subsection.5.2}\protected@file@percent }
+\citation{Rao1999}
+\citation{Chen2025}
+\citation{Wang2025}
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{Alon2021}{{1}{2021}{{Alon and Yahav}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Connection to Predictive Coding Theory}{12}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{12}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{12}{Conclusion}{section.6}{}}
+\bibcite{Chen2025}{{2}{2025}{{Chen et~al.}}{{Chen, Kanatsoulis, and Leskovec}}}
+\bibcite{Fey2024}{{3}{2024}{{Fey et~al.}}{{Fey, Hu, Huang, Lenssen, Ranjan, Robinson, Ying, You, and Leskovec}}}
+\bibcite{Hamilton2017}{{4}{2017}{{Hamilton et~al.}}{{Hamilton, Ying, and Leskovec}}}
+\bibcite{Lotter2017}{{5}{2017}{{Lotter et~al.}}{{Lotter, Kreiman, and Cox}}}
+\bibcite{Rao1999}{{6}{1999}{{Rao and Ballard}}{{}}}
+\bibcite{Robinson2024}{{7}{2024}{{Robinson et~al.}}{{Robinson, Ranjan, Hu, Huang, Han, Dobles, Fey, Lenssen, Yuan, Zhang, He, and Leskovec}}}
+\bibcite{Salvatori2022}{{8}{2022}{{Salvatori et~al.}}{{Salvatori, Pinchetti, Millidge, Song, Bogacz, and Lukasiewicz}}}
+\bibcite{Schlichtkrull2018}{{9}{2018}{{Schlichtkrull et~al.}}{{Schlichtkrull, Kipf, Bloem, van~den Berg, Titov, and Welling}}}
+\bibcite{Topping2022}{{10}{2022}{{Topping et~al.}}{{Topping, Giovanni, Chamberlain, Dong, and Bronstein}}}
+\bibcite{Velickovic2018}{{11}{2018}{{Velickovic et~al.}}{{Velickovic, Cucurull, Casanova, Romero, Li{\`o}, and Bengio}}}
+\bibcite{Wang2025}{{12}{2025}{{Wang et~al.}}{{Wang, Wang, Gan, Wang, Yang, Wipf, and Zhang}}}
+\bibcite{Yuan2025}{{13}{2025}{{Yuan et~al.}}{{Yuan, Zhang, He, Nitta, Hu, Wang, Shah, Huang, Stojanovic, Krumholz, Lenssen, Leskovec, and Fey}}}
+\gdef \@abspage@last{13}

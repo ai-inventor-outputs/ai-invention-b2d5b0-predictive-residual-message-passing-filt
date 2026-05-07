@@ -1,0 +1,329 @@
+{
+  "metadata": {
+    "method_name": "PRMP_Gradient_Detach_Ablation",
+    "description": "Tests whether PRMP benefit requires end-to-end gradient flow through the prediction MLP, or operates as a structural skip-connection. 4 variants × 3 seeds × 2 datasets.",
+    "variants": {
+      "A_Standard": "Baseline SAGEConv with mean aggregation, no prediction mechanism",
+      "B_Full_PRMP": "Full PRMP with end-to-end gradient flow through pred_mlp",
+      "C_Detached_PRMP": "PRMP with detached prediction (pred_mlp output .detach()), no direct gradient through predictions",
+      "D_Frozen_PRMP": "PRMP with frozen random pred_mlp (Xavier init, requires_grad=False)"
+    },
+    "hyperparameters": {
+      "hidden_dim": 128,
+      "num_layers": 2,
+      "dropout": 0.3,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "max_epochs": 200,
+      "patience": 20,
+      "seeds": [
+        42,
+        123,
+        456
+      ]
+    },
+    "results_summary": {
+      "amazon": {
+        "variant_metrics": {
+          "A_Standard": {
+            "mean_mae": 0.473314,
+            "std_mae": 0.002486,
+            "seeds_mae": [
+              0.476188,
+              0.47363,
+              0.470123
+            ],
+            "mean_rmse": 0.673103,
+            "std_rmse": 0.000628,
+            "mean_r2": 0.654752,
+            "final_pred_r2": [
+              null,
+              null,
+              null
+            ],
+            "final_pred_var": [
+              null,
+              null,
+              null
+            ],
+            "final_residual_var": [
+              null,
+              null,
+              null
+            ]
+          },
+          "B_Full_PRMP": {
+            "mean_mae": 0.474499,
+            "std_mae": 0.002976,
+            "seeds_mae": [
+              0.470505,
+              0.475345,
+              0.477646
+            ],
+            "mean_rmse": 0.676259,
+            "std_rmse": 0.003024,
+            "mean_r2": 0.651499,
+            "final_pred_r2": [
+              -1.5394361912985652,
+              -1.501243957626988,
+              -1.7898345085500056
+            ],
+            "final_pred_var": [
+              0.00468235113658011,
+              0.0039253379218280315,
+              0.0038624443695880473
+            ],
+            "final_residual_var": [
+              0.06548505462706089,
+              0.07424605637788773,
+              0.08558695577085018
+            ]
+          },
+          "C_Detached_PRMP": {
+            "mean_mae": 0.465792,
+            "std_mae": 0.0049,
+            "seeds_mae": [
+              0.463444,
+              0.461319,
+              0.472612
+            ],
+            "mean_rmse": 0.671166,
+            "std_rmse": 0.003418,
+            "mean_r2": 0.656728,
+            "final_pred_r2": [
+              -1.4525941706080703,
+              -1.4425941132537115,
+              -1.6497012147598258
+            ],
+            "final_pred_var": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "final_residual_var": [
+              0.06087473779916763,
+              0.0679186787456274,
+              0.07734352722764015
+            ]
+          },
+          "D_Frozen_PRMP": {
+            "mean_mae": 0.473408,
+            "std_mae": 0.002918,
+            "seeds_mae": [
+              0.477488,
+              0.471906,
+              0.47083
+            ],
+            "mean_rmse": 0.675817,
+            "std_rmse": 0.00126,
+            "mean_r2": 0.651961,
+            "final_pred_r2": [
+              -6.399699746758925,
+              -6.418237818531866,
+              -5.807031240663895
+            ],
+            "final_pred_var": [
+              0.1751384735107422,
+              0.1765282042324543,
+              0.1522670593112707
+            ],
+            "final_residual_var": [
+              0.2559381164610386,
+              0.26278022304177284,
+              0.22139939293265343
+            ]
+          }
+        },
+        "improvements_vs_baseline_pct": {
+          "B_Full_PRMP": -0.25,
+          "C_Detached_PRMP": 1.59,
+          "D_Frozen_PRMP": -0.02
+        },
+        "cohens_d": {
+          "A_vs_B_Full_PRMP": -0.3529,
+          "A_vs_C_Detached_PRMP": 1.5807,
+          "A_vs_D_Frozen_PRMP": -0.0284,
+          "B_Full_PRMP_vs_C_Detached_PRMP": 1.7537,
+          "B_Full_PRMP_vs_D_Frozen_PRMP": 0.3021,
+          "C_Detached_PRMP_vs_D_Frozen_PRMP": -1.542
+        },
+        "interpretation": "B ≈ C >> D: Prediction quality matters but not gradient flow → 'representation structure'"
+      },
+      "f1": {
+        "variant_metrics": {
+          "A_Standard": {
+            "mean_mae": 3.675756,
+            "std_mae": 0.349491,
+            "seeds_mae": [
+              3.848752,
+              3.990219,
+              3.188296
+            ],
+            "mean_rmse": 4.271153,
+            "std_rmse": 0.42465,
+            "mean_r2": -0.360709,
+            "final_pred_r2": [
+              null,
+              null,
+              null
+            ],
+            "final_pred_var": [
+              null,
+              null,
+              null
+            ],
+            "final_residual_var": [
+              null,
+              null,
+              null
+            ]
+          },
+          "B_Full_PRMP": {
+            "mean_mae": 3.387184,
+            "std_mae": 0.191307,
+            "seeds_mae": [
+              3.122099,
+              3.566575,
+              3.472879
+            ],
+            "mean_rmse": 3.950846,
+            "std_rmse": 0.269586,
+            "mean_r2": -0.158246,
+            "final_pred_r2": [
+              -1.6399849648661955,
+              -1.2786821399428518,
+              -1.8898926178452005
+            ],
+            "final_pred_var": [
+              0.0031982136133592576,
+              0.0026455125072970985,
+              0.0024316097260452807
+            ],
+            "final_residual_var": [
+              0.6869515080004931,
+              0.6929504588246346,
+              0.7275252006947994
+            ]
+          },
+          "C_Detached_PRMP": {
+            "mean_mae": 3.263361,
+            "std_mae": 0.079955,
+            "seeds_mae": [
+              3.246451,
+              3.174993,
+              3.36864
+            ],
+            "mean_rmse": 3.785936,
+            "std_rmse": 0.06468,
+            "mean_r2": -0.058953,
+            "final_pred_r2": [
+              -1.4278607762369249,
+              -1.3735853430720513,
+              -1.8157741693557963
+            ],
+            "final_pred_var": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "final_residual_var": [
+              0.6073788106441498,
+              0.6041771605610847,
+              0.6499700099229813
+            ]
+          },
+          "D_Frozen_PRMP": {
+            "mean_mae": 2.989649,
+            "std_mae": 0.199898,
+            "seeds_mae": [
+              3.266077,
+              2.800158,
+              2.902711
+            ],
+            "mean_rmse": 3.564566,
+            "std_rmse": 0.25554,
+            "mean_r2": 0.056715,
+            "final_pred_r2": [
+              -2.4422348161200937,
+              -2.8626984318752275,
+              -2.954933001974603
+            ],
+            "final_pred_var": [
+              0.11740669189020991,
+              0.13009451599791647,
+              0.13897910425439478
+            ],
+            "final_residual_var": [
+              1.0163265384733677,
+              0.7620473768562078,
+              0.7330671004951
+            ]
+          }
+        },
+        "improvements_vs_baseline_pct": {
+          "B_Full_PRMP": 7.85,
+          "C_Detached_PRMP": 11.22,
+          "D_Frozen_PRMP": 18.67
+        },
+        "cohens_d": {
+          "A_vs_B_Full_PRMP": 0.8363,
+          "A_vs_C_Detached_PRMP": 1.3282,
+          "A_vs_D_Frozen_PRMP": 1.9677,
+          "B_Full_PRMP_vs_C_Detached_PRMP": 0.6896,
+          "B_Full_PRMP_vs_D_Frozen_PRMP": 1.659,
+          "C_Detached_PRMP_vs_D_Frozen_PRMP": 1.468
+        },
+        "interpretation": "Mixed pattern: B=3.3872, C=3.2634, D=2.9896"
+      }
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "gradient_detach_ablation",
+      "examples": [
+        {
+          "input": "{\"dataset\": \"amazon\", \"variant\": \"A_Standard\", \"seed\": 42, \"hidden_dim\": 128, \"num_layers\": 2, \"dropout\": 0.3, \"lr\": 0.001, \"max_epochs\": 200, \"patience\": 20}",
+          "output": "{\"test_mae\": 0.476188, \"test_rmse\": 0.673862, \"test_r2\": 0.653973, \"best_epoch\": 193, \"train_time_s\": 5.6, \"param_total\": 268673, \"param_trainable\": 268673, \"final_pred_r2\": null, \"final_pred_var\": nu...",
+          "metadata_dataset": "amazon",
+          "metadata_variant": "A_Standard",
+          "metadata_seed": 42,
+          "metadata_test_mae": 0.476188,
+          "metadata_test_rmse": 0.673862,
+          "metadata_best_epoch": 193,
+          "predict_A_Standard": "0.473314",
+          "predict_B_Full_PRMP": "0.474499",
+          "predict_C_Detached_PRMP": "0.465792",
+          "predict_D_Frozen_PRMP": "0.473408"
+        },
+        {
+          "input": "{\"dataset\": \"amazon\", \"variant\": \"A_Standard\", \"seed\": 123, \"hidden_dim\": 128, \"num_layers\": 2, \"dropout\": 0.3, \"lr\": 0.001, \"max_epochs\": 200, \"patience\": 20}",
+          "output": "{\"test_mae\": 0.47363, \"test_rmse\": 0.672325, \"test_r2\": 0.65555, \"best_epoch\": 187, \"train_time_s\": 5.1, \"param_total\": 268673, \"param_trainable\": 268673, \"final_pred_r2\": null, \"final_pred_var\": null...",
+          "metadata_dataset": "amazon",
+          "metadata_variant": "A_Standard",
+          "metadata_seed": 123,
+          "metadata_test_mae": 0.47363,
+          "metadata_test_rmse": 0.672325,
+          "metadata_best_epoch": 187,
+          "predict_A_Standard": "0.473314",
+          "predict_B_Full_PRMP": "0.474499",
+          "predict_C_Detached_PRMP": "0.465792",
+          "predict_D_Frozen_PRMP": "0.473408"
+        },
+        {
+          "input": "{\"dataset\": \"amazon\", \"variant\": \"A_Standard\", \"seed\": 456, \"hidden_dim\": 128, \"num_layers\": 2, \"dropout\": 0.3, \"lr\": 0.001, \"max_epochs\": 200, \"patience\": 20}",
+          "output": "{\"test_mae\": 0.470123, \"test_rmse\": 0.673122, \"test_r2\": 0.654733, \"best_epoch\": 198, \"train_time_s\": 4.8, \"param_total\": 268673, \"param_trainable\": 268673, \"final_pred_r2\": null, \"final_pred_var\": nu...",
+          "metadata_dataset": "amazon",
+          "metadata_variant": "A_Standard",
+          "metadata_seed": 456,
+          "metadata_test_mae": 0.470123,
+          "metadata_test_rmse": 0.673122,
+          "metadata_best_epoch": 198,
+          "predict_A_Standard": "0.473314",
+          "predict_B_Full_PRMP": "0.474499",
+          "predict_C_Detached_PRMP": "0.465792",
+          "predict_D_Frozen_PRMP": "0.473408"
+        }
+      ]
+    }
+  ]
+}

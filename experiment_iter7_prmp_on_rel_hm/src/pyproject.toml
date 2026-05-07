@@ -1,0 +1,22 @@
+[project]
+name = "exp-id4-it7-prmp-rel-hm"
+version = "1.0.0"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "datasets==4.7.0",
+    "joblib==1.5.3",
+    "loguru==0.7.3",
+    "numpy==2.2.6",
+    "pandas==2.3.3",
+    "pyarrow==23.0.1",
+    "scikit-learn==1.7.2",
+    "scipy==1.15.3",
+    "torch==2.5.1",
+    "torch-geometric==2.7.0",
+    "torch-scatter==2.1.2",
+    "torch-sparse==0.6.18",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.backends._legacy:_Backend"

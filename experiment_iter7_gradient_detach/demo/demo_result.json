@@ -1,0 +1,13 @@
+{
+  "id": "exp_id3_it7__opus",
+  "type": "code",
+  "title": "Gradient-Detached Prediction Ablation: Testing Whether PRMP Needs End-to-End Gradient Flow",
+  "summary": "Demonstrates the Predictive Residual Message Passing (PRMP) gradient-flow ablation experiment. The notebook implements 4 GNN variants in pure PyTorch (Standard SAGEConv, Full PRMP, Detached PRMP, Frozen PRMP), trains them on a synthetic heterogeneous graph, then loads and visualizes full experiment results from Amazon Video Games and F1 datasets. Includes MAE comparison bar charts, learning curve plots, and Cohen's d effect size analysis. Key finding: PRMP benefit is primarily structural (skip-connection), not dependent on learned predictions via end-to-end gradient flow. Data: 87 curated examples covering 24 run-level results, 61 learning curve points, and 2 cross-variant analyses.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_7/gen_art/exp_id3_it7__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it7__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id3_it7__opus/method_code_demo.ipynb"
+}

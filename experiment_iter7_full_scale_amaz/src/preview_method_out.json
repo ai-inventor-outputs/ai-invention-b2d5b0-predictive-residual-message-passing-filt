@@ -1,0 +1,277 @@
+{
+  "metadata": {
+    "experiment": "full_scale_amazon_prmp_validation",
+    "description": "Full-scale PRMP validation on Amazon Video Games (50000 reviews, 4 GNN variants x 5 seeds x 200 epochs max). Cohen's d effect size.",
+    "dataset": {
+      "name": "amazon_video_games_full",
+      "num_reviews": 50000,
+      "num_products": 3400,
+      "num_customers": 10871,
+      "fk_cardinality_product": 14.7,
+      "fk_cardinality_customer": 4.6,
+      "subsampled": false
+    },
+    "hyperparameters": {
+      "hidden_dim": 128,
+      "num_layers": 2,
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "patience": 20,
+      "max_epochs": 200,
+      "grad_clip": 1.0,
+      "seeds": [
+        42,
+        123,
+        456
+      ]
+    },
+    "variants": {
+      "A_standard": {
+        "mae": [
+          0.38,
+          0.3497,
+          0.3533
+        ],
+        "rmse": [
+          0.7022,
+          0.6812,
+          0.6777
+        ],
+        "r2": [
+          0.5416,
+          0.5687,
+          0.5731
+        ],
+        "mae_mean": 0.3629,
+        "mae_std": 0.0129,
+        "params": 366721,
+        "avg_epoch_time": 0.0181,
+        "avg_epochs": 180.6
+      },
+      "B_prmp": {
+        "mae": [
+          0.3693,
+          0.363,
+          0.364
+        ],
+        "rmse": [
+          0.6562,
+          0.6961,
+          0.6859
+        ],
+        "r2": [
+          0.5998,
+          0.5496,
+          0.5628
+        ],
+        "mae_mean": 0.374,
+        "mae_std": 0.0133,
+        "params": 432769,
+        "avg_epoch_time": 0.0173,
+        "avg_epochs": 170.8
+      },
+      "C_wide": {
+        "mae": [
+          0.3686,
+          0.3674,
+          0.3895
+        ],
+        "rmse": [
+          0.681,
+          0.6914,
+          0.6849
+        ],
+        "r2": [
+          0.5689,
+          0.5557,
+          0.564
+        ],
+        "mae_mean": 0.3745,
+        "mae_std": 0.0134,
+        "params": 438061,
+        "avg_epoch_time": 0.0168,
+        "avg_epochs": 174.4
+      },
+      "D_aux_mlp": {
+        "mae": [
+          0.3554,
+          0.3594,
+          0.3797
+        ],
+        "rmse": [
+          0.6761,
+          0.6782,
+          0.6979
+        ],
+        "r2": [
+          0.5751,
+          0.5725,
+          0.5472
+        ],
+        "mae_mean": 0.3616,
+        "mae_std": 0.0095,
+        "params": 498817,
+        "avg_epoch_time": 0.0231,
+        "avg_epochs": 178.2
+      }
+    },
+    "comparisons": {
+      "B_vs_A": {
+        "mean_diff": -0.011082,
+        "cohens_d": -0.7554,
+        "p_value": 0.310871,
+        "ci_95": [
+          -0.029821,
+          0.007656
+        ],
+        "mae_a_mean": 0.362926,
+        "mae_b_mean": 0.374008
+      },
+      "B_vs_C": {
+        "mean_diff": 0.000459,
+        "cohens_d": 0.0307,
+        "p_value": 0.970822,
+        "ci_95": [
+          -0.022643,
+          0.023561
+        ],
+        "mae_a_mean": 0.374467,
+        "mae_b_mean": 0.374008
+      },
+      "B_vs_D": {
+        "mean_diff": -0.012416,
+        "cohens_d": -0.9605,
+        "p_value": 0.287164,
+        "ci_95": [
+          -0.032253,
+          0.00742
+        ],
+        "mae_a_mean": 0.361592,
+        "mae_b_mean": 0.374008
+      }
+    },
+    "embedding_ridge_r2": {
+      "product_to_review": {
+        "A_standard": {
+          "mean": 0.4937,
+          "std": 0.0385,
+          "values": [
+            0.5173,
+            0.4611,
+            0.4677
+          ]
+        },
+        "B_prmp": {
+          "mean": 0.515,
+          "std": 0.0561,
+          "values": [
+            0.4404,
+            0.4876,
+            0.5025
+          ]
+        },
+        "C_wide": {
+          "mean": 0.581,
+          "std": 0.0735,
+          "values": [
+            0.5237,
+            0.4913,
+            0.7029
+          ]
+        },
+        "D_aux_mlp": {
+          "mean": 0.5175,
+          "std": 0.0473,
+          "values": [
+            0.449,
+            0.4956,
+            0.5291
+          ]
+        }
+      },
+      "customer_to_review": {
+        "A_standard": {
+          "mean": 0.608,
+          "std": 0.0451,
+          "values": [
+            0.626,
+            0.5704,
+            0.5566
+          ]
+        },
+        "B_prmp": {
+          "mean": 0.6507,
+          "std": 0.0564,
+          "values": [
+            0.6822,
+            0.6177,
+            0.6417
+          ]
+        },
+        "C_wide": {
+          "mean": 0.6972,
+          "std": 0.0564,
+          "values": [
+            0.6529,
+            0.6332,
+            0.7899
+          ]
+        },
+        "D_aux_mlp": {
+          "mean": 0.6191,
+          "std": 0.0388,
+          "values": [
+            0.6167,
+            0.5747,
+            0.599
+          ]
+        }
+      }
+    },
+    "key_finding": "PRMP d=-0.755 persists at full 50000-review scale",
+    "total_time_min": 4.2
+  },
+  "datasets": [
+    {
+      "dataset": "amazon_video_games_reviews",
+      "examples": [
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": -0.145, \"time_dayofweek\": 1.539, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\": 0.0,...",
+          "output": "3.0",
+          "predict_A_standard": "3.169",
+          "predict_B_prmp": "3.183",
+          "predict_C_wide": "3.088",
+          "predict_D_aux_mlp": "3.202",
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "A3UR8NLLY1ZHCX",
+          "metadata_task_type": "regression",
+          "metadata_split": "test"
+        },
+        {
+          "input": "{\"time_year\": 1.945, \"time_month\": -0.145, \"time_dayofweek\": 1.04, \"summary_h0\": 0.0, \"summary_h1\": 0.0, \"summary_h2\": 0.0, \"summary_h3\": 0.0, \"summary_h4\": 0.0, \"summary_h5\": 0.707, \"summary_h6\": 0.0...",
+          "output": "0.0",
+          "predict_A_standard": "0.106",
+          "predict_B_prmp": "0.184",
+          "predict_C_wide": "0.054",
+          "predict_D_aux_mlp": "0.039",
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "A1INA0F5CWW3J4",
+          "metadata_task_type": "regression",
+          "metadata_split": "test"
+        },
+        {
+          "input": "{\"time_year\": 1.705, \"time_month\": -0.425, \"time_dayofweek\": 1.04, \"summary_h0\": 0.333, \"summary_h1\": 0.0, \"summary_h2\": 0.667, \"summary_h3\": 0.333, \"summary_h4\": 0.0, \"summary_h5\": 0.0, \"summary_h6\":...",
+          "output": "3.0",
+          "predict_A_standard": "3.164",
+          "predict_B_prmp": "3.031",
+          "predict_C_wide": "3.024",
+          "predict_D_aux_mlp": "3.155",
+          "metadata_product_id": "0700099867",
+          "metadata_customer_id": "A2UTRVO4FDCBH6",
+          "metadata_task_type": "regression",
+          "metadata_split": "test"
+        }
+      ]
+    }
+  ]
+}

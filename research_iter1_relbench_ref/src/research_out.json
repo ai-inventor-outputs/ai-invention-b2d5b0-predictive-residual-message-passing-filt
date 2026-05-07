@@ -1,0 +1,337 @@
+{
+  "title": "RelBench Ref",
+  "summary": "Comprehensive reference for RelBench v1/v2 covering all 7 v1 datasets with complete FK schemas (51 total FK links extracted from source code), all 30 v1 benchmark tasks (12 classification, 9 regression, 9 recommendation) with types/metrics/splits, SOTA results from GNN baselines (GraphSAGE AUROC/MAE/MAP), RelGNN (27/30 SOTA, up to 25% improvement), Griffin (cross-attention + hierarchical aggregation), DBFormer (Transformer-based hypergraph), ContextGNN (344% improvement on recommendation), and KumoRFM (2-8% zero-shot gains). Includes complete relbench Python API patterns for data loading, PyG graph construction, and GNN training. Identifies high-cardinality FK links most relevant to the PRMP hypothesis.",
+  "answer": "## Comprehensive RelBench v1/v2 Reference\n\n### 1. Dataset Inventory\n\nRelBench v1 contains 7 datasets spanning 51 tables, 103.4M rows, 489 columns, and 30 tasks [1, 2]. The datasets are:\n\n- **rel-amazon** (E-commerce): 3 tables (product with 506K rows, customer with 1.85M rows, review with 21.9M rows), 15M total rows, 15 cols, 7 tasks. Star schema with review as central fact table linking customer and product [1, 3]. Time range: 1996-06-25 to 2018-09-28, val_timestamp=2014-01-21, test_timestamp=2016-01-01.\n- **rel-avito** (E-commerce): 8 tables (UserInfo, AdsInfo, Category, Location, SearchInfo, SearchStream, VisitStream, PhoneRequestsStream), 20.7M rows, 42 cols, 4 tasks. Complex multi-path schema with UserInfo and AdsInfo as hub entities connected through SearchStream, VisitStream, PhoneRequestsStream [4].\n- **rel-event** (Social): 5 tables (users, events, event_attendees, event_interest, user_friends), 41.3M rows, 128 cols, 3 tasks. Social graph with self-referential user_friends table where both FKs point to users [5].\n- **rel-f1** (Sports): 9 tables (circuits, drivers, constructors, races, results, standings, constructor_results, constructor_standings, qualifying), 74K rows, 67 cols, 3 tasks. Complex star-snowflake with results and qualifying as hub nodes with 3 FKs each (race, driver, constructor) [6].\n- **rel-hm** (E-commerce): 3 tables (article, customer, transactions), 16.7M rows, 37 cols, 3 tasks. Simple star schema: transactions links customer and article [7].\n- **rel-stack** (Social): 7 tables (users, posts, comments, badges, postLinks, postHistory, votes), 4.2M rows, 52 cols, 5 tasks. Complex hub-spoke with self-referential posts.ParentId and dual hubs (users + posts) [8]. Val_timestamp=2019-01-01, test_timestamp=2021-01-01.\n- **rel-trial** (Medical): 15 tables (studies as central hub, plus outcomes, outcome_analyses, drop_withdrawals, reported_event_totals, designs, eligibilities, interventions, conditions, facilities, sponsors, and 4 junction tables), 5.4M rows, 140 cols, 5 tasks [9].\n\nRelBench v2 (January 2026) adds 4 more datasets: rel-salt (ERP, 4 tables, 4.3M rows), rel-arxiv (scholarly, 6 tables, 2.1M rows), rel-ratebeer (consumer, 13 tables, 13.8M rows), rel-mimic (clinical, 6 tables, 2.4M rows), bringing the total to 11 datasets and 70 tasks [10].\n\n### 2. Complete FK Link Catalog\n\nI extracted 51 FK links across all 7 v1 datasets directly from the relbench source code [3, 4, 5, 6, 7, 8, 9]:\n\n**rel-amazon (2 FK links):** review.customer_id→customer (estimated ~11.8 reviews/customer), review.product_id→product (estimated ~43.3 reviews/product) [3].\n\n**rel-avito (10-11 FK links):** AdsInfo.LocationID→Location, AdsInfo.CategoryID→Category, SearchInfo.UserID→UserInfo, SearchInfo.LocationID→Location, SearchInfo.CategoryID→Category, SearchStream.SearchID→SearchInfo, SearchStream.AdID→AdsInfo, VisitStream.UserID→UserInfo, VisitStream.AdID→AdsInfo, PhoneRequestsStream.UserID→UserInfo, PhoneRequestsStream.AdID→AdsInfo. AdsInfo is a bridge node with 2 FKs; SearchInfo is a hub node with 3 FKs [4].\n\n**rel-event (6-7 FK links):** events.user_id→users, event_attendees.event→events, event_attendees.user_id→users, event_interest.event→events, event_interest.user→users, user_friends.user→users, user_friends.friend→users. user_friends is self-referential with both FKs to users [5].\n\n**rel-f1 (11 FK links):** races.circuitId→circuits, results.raceId→races, results.driverId→drivers, results.constructorId→constructors, standings.raceId→races, standings.driverId→drivers, constructor_results.raceId→races, constructor_results.constructorId→constructors, constructor_standings.raceId→races, constructor_standings.constructorId→constructors, qualifying.raceId→races, qualifying.driverId→drivers, qualifying.constructorId→constructors. results and qualifying are HUB nodes with 3 FKs each — ideal for RelGNN's atomic routes [6].\n\n**rel-hm (2 FK links):** transactions.customer_id→customer, transactions.article_id→article [7].\n\n**rel-stack (11 FK links):** posts.OwnerUserId→users, posts.ParentId→posts (self-referential), comments.UserId→users, comments.PostId→posts, badges.UserId→users, postLinks.PostId→posts, postLinks.RelatedPostId→posts, postHistory.PostId→posts, postHistory.UserId→users, votes.PostId→posts, votes.UserId→users [8].\n\n**rel-trial (12-15 FK links):** outcomes.nct_id→studies, outcome_analyses.nct_id→studies, outcome_analyses.outcome_id→outcomes, drop_withdrawals.nct_id→studies, reported_event_totals.nct_id→studies, designs.nct_id→studies, eligibilities.nct_id→studies, interventions_studies.nct_id→studies, interventions_studies.intervention_id→interventions, conditions_studies.nct_id→studies, conditions_studies.condition_id→conditions, facilities_studies.nct_id→studies, facilities_studies.facility_id→facilities, sponsors_studies.nct_id→studies, sponsors_studies.sponsor_id→sponsors [9].\n\nFK cardinalities can be computed programmatically: `db.table_dict[child_table].df.groupby(fk_col).size().describe()` [2].\n\n### 3. Task Inventory\n\nAll 30 v1 tasks divide into three types [1, 2]:\n\n**Entity Classification (12 tasks, metric=AUROC):** rel-amazon user-churn (4.7M train rows), rel-amazon item-churn (2.6M), rel-avito user-clicks (59K), rel-avito user-visits (87K), rel-event user-repeat (3.8K), rel-event user-ignore (19K), rel-f1 driver-dnf (11K), rel-f1 driver-top3 (1.4K), rel-hm user-churn (3.9M), rel-stack user-engagement (1.4M), rel-stack user-badge (3.4M), rel-trial study-outcome (12K) [1].\n\n**Entity Regression (9 tasks, metric=MAE):** rel-amazon user-ltv (4.7M), rel-amazon item-ltv (2.7M), rel-avito ad-ctr (5.1K), rel-event user-attendance (19K), rel-f1 driver-position (7.5K), rel-hm item-sales (5.5M), rel-stack post-votes (2.5M), rel-trial study-adverse (43K), rel-trial site-success (151K) [1].\n\n**Recommendation (9 tasks, metric=MAP@K):** rel-amazon user-item-purchase (5.1M), rel-amazon user-item-rate (3.7M), rel-amazon user-item-review (2.3M), rel-avito user-ad-visit (87K), rel-hm user-item-purchase (3.9M), rel-stack user-post-comment (21K), rel-stack post-post-related (5.9K), rel-trial condition-sponsor-run (37K), rel-trial site-sponsor-run (669K) [1].\n\n**V2 adds 40 new tasks** including 23 autocomplete tasks (predicting masked column values) and 17 forecasting tasks across the 4 new datasets [10].\n\n**Temporal splits:** Data is split temporally. Models train on rows up to val_timestamp, validate between val/test timestamps, test after test_timestamp. Temporal neighbor sampling ensures all nodes within sampled subgraphs appear before the seed time to prevent data leakage [1].\n\n### 4. Benchmark Results\n\n**Entity Classification (AUROC, higher is better)** [11]: GraphSAGE (RDL) averages 75.83 across 12 tasks vs LightGBM's 63.69. Per-task: rel-amazon user-churn LightGBM=52.22 / RDL=70.42, item-churn 62.54/82.81, rel-stack user-engagement 63.39/90.59, user-badge 63.43/88.86, rel-trial study-outcome 70.09/68.60 (LightGBM wins here), rel-f1 driver-dnf 68.85/72.62, driver-top3 73.93/75.54, rel-hm user-churn 55.21/69.88, rel-event user-repeat 68.04/76.89, user-ignore 79.93/81.62, rel-avito user-visits 53.05/66.20, user-clicks 53.60/65.90 [11].\n\n**Entity Regression (MAE, lower is better)** [11]: GraphSAGE improves over LightGBM on most tasks. Per-task: rel-amazon user-ltv 16.783/14.313, item-ltv 60.569/50.053, rel-stack post-votes 0.068/0.065, rel-trial study-adverse 44.011/44.473 (LightGBM wins), site-success 0.425/0.400, rel-f1 driver-position 4.170/4.022, rel-hm item-sales 0.076/0.056, rel-event user-attendance 0.264/0.258, rel-avito ad-ctr 0.041/0.041 (tie) [11].\n\n**Recommendation (MAP%, higher is better)** [12]: ContextGNN achieves 9.23% average test MAP vs GraphSAGE's 2.08% and LightGBM's 2.01%. Per-task test MAP: rel-amazon user-item-purchase LightGBM=0.16/GraphSAGE=0.74/NBFNet=2.06/ContextGNN=2.93, user-item-rate 0.17/0.87/1.24/2.25, user-item-review 0.09/0.47/1.57/1.63, rel-hm user-item-purchase 0.38/0.80/2.81/2.93, rel-stack user-post-comment 0.04/0.11/12.72/13.34, rel-trial condition-sponsor-run 4.82/2.89/11.36/11.65, site-sponsor-run 8.40/10.70/19.06/28.02 [12].\n\n**RelGNN (ICML 2025)** [13, 14]: Surpasses all baselines on 27 of 30 tasks with up to 25% improvement. Entity classification: outperforms on 10 of 12 tasks. Entity regression: outperforms on 8 of 9 tasks. Recommendation: performs better or equal on all 9 tasks. Larger improvements correlate with more complex FK structure (e.g., rel-f1 > rel-amazon, rel-hm). Exact per-task numerical values are stored in external .tex files not accessible from the HTML paper version [13]. The RelGNN code is publicly available and can be run via commands like `python relgnn_task_node.py --dataset rel-amazon --task user-churn` [14].\n\n**V2 benchmark results** [10]: Autocomplete binary AUROC: rel-avito searchinfo-isuserloggedon=73.00, searchstream-click=55.92; rel-trial eligibilities-adult=93.73, eligibilities-child=87.25, studies-has_dmc=75.72. Autocomplete multiclass accuracy: rel-salt item-plant=99.46%, item-shippoint=98.39%, sales-office=99.88%; rel-stack badges-class=82.83%. Entity binary AUROC: rel-arxiv paper-citation=82.50, rel-ratebeer beer-churn=78.67, user-churn=94.27, brewer-dormant=80.51. Recommendation MAP: rel-arxiv paper-paper-cocitation=35.39, rel-f1 driver-circuit-compete=76.18, rel-ratebeer user-beer-favorite=1.89, user-beer-liked=1.46, user-place-liked=1.85 [10].\n\n**KumoRFM** [16]: Zero-shot outperforms supervised learning by 2-8% on RelBench; fine-tuned adds 10-30% boost. Graph-transformer-based architecture with in-context learning. Orders of magnitude faster than conventional supervised training [16].\n\n### 5. Architecture Summaries\n\n**GraphSAGE Baseline (RDL default)** [17, 19]: Encodes each table row into initial node embeddings using PyTorch Frame's ResNet tabular model. Performs temporal-aware subgraph sampling. Uses heterogeneous GraphSAGE: per-edge-type SAGEConv with configurable aggregation (default mean within edge type) and HeteroConv with sum aggregation across edge types. Forward pass: conv → batch_norm → relu per layer. Key limitation: uniform aggregation treats all neighbors equally regardless of relevance [17].\n\n**RelGNN (ICML 2025)** [13]: Composite message passing along 'atomic routes' — simple paths between node types enabling single-hop information exchange grounded in FK relationships. For bridge nodes (2 FKs), creates direct (source → intermediate → destination) paths. For hub nodes (3+ FKs), induces latent second-order clique structures. FUSE operation: FUSE(h_mid, h_src) = W1*h_mid + W2*h_src. Aggregation formula: m_(dst,mid,src) = AGGR(h_dst, {FUSE(h_mid, h_src)}). Eliminates redundant back-and-forth message passing [13].\n\n**Griffin (2025)** [15]: Graph-centric RDB foundation model using cross-attention for row aggregation: v_i^l = Attention_l(Q=MLP_l(u_i, t), K=m_i, V=x_i). Hierarchical aggregation: mean within each relation type, max across relation types. Pretrained on 200+ single-table datasets (~10M rows, 150M+ nodes) with masked cell completion. Unpretrained version outperforms all other models in average rank [15].\n\n**DBFormer (2024)** [18]: Transformer architecture for relational databases as two-level multi-relational hypergraphs. Intra-relational: Transformer Encoder applies self-attention over each tuple's attributes, preserving attribute-level structure. Inter-relational: cross-attention Ct(ti,tj) = attn(Q=ti, K=tj, V=tj) for FK-linked tuple pairs. Full layer: FNN+Norm → AtSum → AtAttn → CtCross-Attn → TtTrans-Encoder. Best average rank 1.95 on classification across CTU benchmark datasets (NOT RelBench v1 — uses different benchmark) [18].\n\n**ContextGNN (2024)** [12]: Beyond two-tower recommendation models, combining GNN-based collaborative filtering with contextual component. Achieves 344% improvement over two-tower baselines and 20% over NBFNet. Average test MAP 9.23% vs GraphSAGE 2.08% on RelBench recommendation tasks [12].\n\n### 6. Python API Reference\n\n**Installation:** `pip install relbench` (basic) or `pip install relbench[full]` (with PyTorch dependencies) [2].\n\n**Loading data** [2]:\n```python\nfrom relbench.datasets import get_dataset\nfrom relbench.tasks import get_task\ndataset = get_dataset('rel-amazon', download=True)\ndb = dataset.get_db()  # Database object\ntask = get_task('rel-amazon', 'user-churn', download=True)\ntrain_table = task.get_table('train')\n```\n\n**Database API** [2, 3]: `db.table_dict` is Dict[str, Table] mapping table name to Table object. Each Table has `df` (pandas DataFrame), `pkey_col`, `time_col`, and `fkey_col_to_pkey_table` dict mapping FK columns to parent table names.\n\n**Graph construction** [2, 17, 19]:\n```python\nfrom relbench.modeling.graph import make_pkey_fkey_graph\ndata, col_stats_dict = make_pkey_fkey_graph(db, col_to_stype_dict, text_embedder_cfg, cache_dir)\n# Returns: data = PyG HeteroData (nodes=table rows, edges=FK links)\n```\n\n**Model architecture** [17]: HeteroGraphSAGE builds layers using HeteroConv wrapping per-edge-type SAGEConv((channels, channels), channels, aggr=aggr) with HeteroConv({...}, aggr='sum'). Each layer: conv → batch_norm → relu.\n\n**Training** [19]: Uses PyG NeighborLoader with temporal sampling, get_node_train_table_input for input nodes, standard PyTorch training loop with task.evaluate(pred) for standardized evaluation.\n\n### 7. PRMP-Relevant Analysis\n\n**Current aggregation approaches:** GraphSAGE baseline uses mean/sum with no selectivity [17]. RelGNN uses attention-weighted FUSE along atomic routes but still aggregates all messages [13]. Griffin uses cross-attention with hierarchical mean-then-max [15]. DBFormer uses cross-attention with attention-weighted summation [18].\n\n**High-cardinality FK links where PRMP could have most impact** [3, 6, 8]: review→product (~43 reviews/product) in rel-amazon, votes→posts in rel-stack, event_attendees→events in rel-event, facilities_studies→studies in rel-trial, transactions→article in rel-hm. These are joins where mean aggregation dilutes signal from informative neighbors.\n\n**Schema complexity ranking** [3, 4, 5, 6, 7, 8, 9]: Simple star (rel-amazon 2 FKs, rel-hm 2 FKs), medium (rel-event 6-7 FKs, rel-avito 10-11 FKs), complex hub-spoke (rel-stack 11 FKs with self-refs, rel-f1 11 FKs with 3-FK hubs, rel-trial 12-15 FKs with junction tables).\n\n**Key observation:** RelGNN reports larger improvements on datasets with more complex FK structure (rel-f1) compared to simple schemas (rel-amazon, rel-hm) [13]. This suggests complex schemas have more room for aggregation improvements — directly relevant to the PRMP hypothesis.\n\n**Contradicting evidence:** DBFormer achieves strong results on CTU benchmarks but was NOT evaluated on RelBench v1 tasks, so direct comparison with RelGNN/Griffin is not available [18]. KumoRFM claims are from company publications without independent verification [16].\n\n**Confidence levels:** HIGH for dataset schemas, FK links, task definitions, and API patterns (extracted directly from source code) [3, 4, 5, 6, 7, 8, 9]. MEDIUM for exact numerical results (obtained from secondary papers, not all methods compared side-by-side) [11, 12]. LOW for RelGNN per-task numbers (confirmed claims but exact values locked in external .tex files) [13].",
+  "sources": [
+    {"index": 1, "url": "https://arxiv.org/html/2407.20060v1", "title": "RelBench: A Benchmark for Deep Learning on Relational Databases (NeurIPS 2024)", "summary": "Primary RelBench paper with all 7 dataset statistics (Table 1), 30 task definitions (Table 2), temporal split methodology, and baseline GNN vs data scientist comparison."},
+    {"index": 2, "url": "https://relbench.stanford.edu/start/", "title": "RelBench Quick Start Guide", "summary": "Official API documentation showing dataset loading with get_dataset(), task access with get_task(), graph construction with make_pkey_fkey_graph, and evaluation patterns."},
+    {"index": 3, "url": "https://raw.githubusercontent.com/snap-stanford/relbench/main/relbench/datasets/amazon.py", "title": "RelBench Amazon Dataset Source Code", "summary": "Exact FK definitions: review table has customer_id→customer and product_id→product FKs. Star schema with review as central fact table."},
+    {"index": 4, "url": "https://raw.githubusercontent.com/snap-stanford/relbench/main/relbench/datasets/avito.py", "title": "RelBench Avito Dataset Source Code", "summary": "8 tables with 10-11 FK links. Complex multi-path schema with UserInfo and AdsInfo as hubs connected through SearchStream, VisitStream, PhoneRequestsStream."},
+    {"index": 5, "url": "https://raw.githubusercontent.com/snap-stanford/relbench/main/relbench/datasets/event.py", "title": "RelBench Event Dataset Source Code", "summary": "5 tables with 6-7 FK links including self-referential user_friends (both FKs to users). Bridge tables connect users and events."},
+    {"index": 6, "url": "https://raw.githubusercontent.com/snap-stanford/relbench/main/relbench/datasets/f1.py", "title": "RelBench F1 Dataset Source Code", "summary": "9 tables with 11 FK links. results and qualifying are hub nodes with 3 FKs each (race, driver, constructor) — ideal for atomic routes."},
+    {"index": 7, "url": "https://raw.githubusercontent.com/snap-stanford/relbench/main/relbench/datasets/hm.py", "title": "RelBench H&M Dataset Source Code", "summary": "3 tables with 2 FK links. Simple star schema: transactions→customer and transactions→article."},
+    {"index": 8, "url": "https://raw.githubusercontent.com/snap-stanford/relbench/main/relbench/datasets/stack.py", "title": "RelBench Stack Dataset Source Code", "summary": "7 tables with 11 FK links. Self-referential posts.ParentId, postLinks with both FKs to posts. Users and posts as dual hubs."},
+    {"index": 9, "url": "https://raw.githubusercontent.com/snap-stanford/relbench/main/relbench/datasets/trial.py", "title": "RelBench Trial Dataset Source Code", "summary": "15 tables with 12-15 FK links. Studies as central hub with 4 junction tables for many-to-many relationships."},
+    {"index": 10, "url": "https://arxiv.org/html/2602.12606v1", "title": "RelBench v2: A Large-Scale Benchmark and Repository for Relational Data", "summary": "4 new datasets (rel-salt, rel-arxiv, rel-ratebeer, rel-mimic), 40 new tasks including autocomplete tasks, v2 benchmark results with exact numerical values."},
+    {"index": 11, "url": "https://arxiv.org/html/2411.11829v1", "title": "Tackling Prediction Tasks in Relational Databases with LLMs", "summary": "Tables 1-2 with exact AUROC and MAE values for LightGBM and RDL (GraphSAGE) baselines across all 21 entity-level RelBench v1 tasks."},
+    {"index": 12, "url": "https://arxiv.org/html/2411.19513v1", "title": "ContextGNN: Beyond Two-Tower Recommendation Systems", "summary": "Table 2 with exact test MAP% values for 7 recommendation tasks comparing LightGBM, GraphSAGE, NBFNet, and ContextGNN."},
+    {"index": 13, "url": "https://arxiv.org/html/2502.06784v2", "title": "RelGNN: Composite Message Passing for Relational Deep Learning (ICML 2025)", "summary": "Atomic routes formulation, FUSE operation, composite message passing. SOTA on 27/30 tasks with up to 25% improvement. Larger gains on complex FK structures."},
+    {"index": 14, "url": "https://github.com/snap-stanford/RelGNN", "title": "RelGNN GitHub Repository", "summary": "Code repository for RelGNN with installation instructions and usage examples for entity and recommendation tasks."},
+    {"index": 15, "url": "https://arxiv.org/html/2505.05568v1", "title": "Griffin: Graph-Centric RDB Foundation Model", "summary": "Cross-attention architecture, hierarchical mean-then-max aggregation, pretraining on 200+ datasets. Outperforms all models in average rank."},
+    {"index": 16, "url": "https://kumo.ai/research/kumo_relational_foundation_model.pdf", "title": "KumoRFM: A Foundation Model for In-Context Learning on Relational Data", "summary": "Zero-shot outperforms supervised by 2-8% on RelBench; fine-tuned adds 10-30% boost. Graph-transformer architecture."},
+    {"index": 17, "url": "https://raw.githubusercontent.com/snap-stanford/relbench/main/relbench/modeling/nn.py", "title": "RelBench Modeling Neural Network Module", "summary": "HeteroGraphSAGE implementation: HeteroConv wrapping per-edge-type SAGEConv with sum cross-edge aggregation. HeteroEncoder for PyTorch Frame feature encoding."},
+    {"index": 18, "url": "https://arxiv.org/html/2412.05218v1", "title": "Transformers Meet Relational Databases (DBFormer)", "summary": "DBFormer architecture with Transformer self-attention over attributes, cross-attention for FK links, two-level hypergraph representation. Best avg rank 1.95 on CTU benchmarks."},
+    {"index": 19, "url": "https://raw.githubusercontent.com/snap-stanford/relbench/main/examples/gnn_entity.py", "title": "RelBench GNN Entity Training Example", "summary": "Complete training script showing make_pkey_fkey_graph usage, NeighborLoader setup, training loop, and evaluation code."}
+  ],
+  "follow_up_questions": [
+    "What are the exact per-task numerical results for RelGNN vs GraphSAGE on all 30 tasks? (Requires downloading the PDF and extracting Tables 1-3 with their external .tex data.)",
+    "What are the actual join cardinalities (mean, median, max children per parent) for each FK link across all 7 datasets? (Can be computed programmatically using db.table_dict[child].df.groupby(fk_col).size().describe())",
+    "How does the PRMP residual passing mechanism compare architecturally to Griffin's hierarchical mean-then-max aggregation and RelGNN's attention-weighted FUSE — are they complementary or redundant approaches to the same aggregation selectivity problem?"
+  ],
+  "detailed_data": {
+    "dataset_schemas": {
+      "rel-amazon": {
+        "domain": "E-commerce (Amazon book products)",
+        "num_tables": 3,
+        "total_rows": 15000713,
+        "total_columns": 15,
+        "num_v1_tasks": 7,
+        "time_range": "1996-06-25 to 2018-09-28",
+        "val_timestamp": "2014-01-21",
+        "test_timestamp": "2016-01-01",
+        "tables": {
+          "product": {"pkey": "product_id", "time_col": null, "fkeys": {}, "approx_rows": "506K"},
+          "customer": {"pkey": "customer_id", "time_col": null, "fkeys": {}, "approx_rows": "1.85M"},
+          "review": {"pkey": null, "time_col": "review_time", "fkeys": {"customer_id": "customer", "product_id": "product"}, "approx_rows": "21.9M"}
+        },
+        "schema_pattern": "Star schema with review as central fact table linking customer and product"
+      },
+      "rel-avito": {
+        "domain": "E-commerce (Russian classifieds platform)",
+        "num_tables": 8,
+        "total_rows": 20679117,
+        "total_columns": 42,
+        "num_v1_tasks": 4,
+        "tables": {
+          "UserInfo": {"pkey": "UserID", "time_col": null, "fkeys": {}},
+          "AdsInfo": {"pkey": "AdID", "time_col": null, "fkeys": {"LocationID": "Location", "CategoryID": "Category"}},
+          "Category": {"pkey": "CategoryID", "time_col": null, "fkeys": {}},
+          "Location": {"pkey": "LocationID", "time_col": null, "fkeys": {}},
+          "SearchInfo": {"pkey": "SearchID", "time_col": "SearchDate", "fkeys": {"UserID": "UserInfo", "LocationID": "Location", "CategoryID": "Category"}},
+          "SearchStream": {"pkey": null, "time_col": "SearchDate", "fkeys": {"SearchID": "SearchInfo", "AdID": "AdsInfo"}},
+          "VisitStream": {"pkey": null, "time_col": "ViewDate", "fkeys": {"UserID": "UserInfo", "AdID": "AdsInfo"}},
+          "PhoneRequestsStream": {"pkey": null, "time_col": "PhoneRequestDate", "fkeys": {"UserID": "UserInfo", "AdID": "AdsInfo"}}
+        },
+        "schema_pattern": "Complex multi-path schema with UserInfo and AdsInfo as hub entities"
+      },
+      "rel-event": {
+        "domain": "Social (Event-based social network)",
+        "num_tables": 5,
+        "total_rows": 41328337,
+        "total_columns": 128,
+        "num_v1_tasks": 3,
+        "tables": {
+          "users": {"pkey": "user_id", "time_col": "joinedAt", "fkeys": {}},
+          "events": {"pkey": "event_id", "time_col": "start_time", "fkeys": {"user_id": "users"}},
+          "event_attendees": {"pkey": null, "time_col": "start_time", "fkeys": {"event": "events", "user_id": "users"}},
+          "event_interest": {"pkey": null, "time_col": "timestamp", "fkeys": {"event": "events", "user": "users"}},
+          "user_friends": {"pkey": null, "time_col": null, "fkeys": {"user": "users", "friend": "users"}}
+        },
+        "schema_pattern": "Social graph with self-referential user_friends"
+      },
+      "rel-f1": {
+        "domain": "Sports (Formula 1 racing since 1950)",
+        "num_tables": 9,
+        "total_rows": 74063,
+        "total_columns": 67,
+        "num_v1_tasks": 3,
+        "tables": {
+          "circuits": {"pkey": "circuitId", "time_col": null, "fkeys": {}},
+          "drivers": {"pkey": "driverId", "time_col": null, "fkeys": {}},
+          "constructors": {"pkey": "constructorId", "time_col": null, "fkeys": {}},
+          "races": {"pkey": "raceId", "time_col": "date", "fkeys": {"circuitId": "circuits"}},
+          "results": {"pkey": "resultId", "time_col": "date", "fkeys": {"raceId": "races", "driverId": "drivers", "constructorId": "constructors"}},
+          "standings": {"pkey": "driverStandingsId", "time_col": "date", "fkeys": {"raceId": "races", "driverId": "drivers"}},
+          "constructor_results": {"pkey": "constructorResultsId", "time_col": "date", "fkeys": {"raceId": "races", "constructorId": "constructors"}},
+          "constructor_standings": {"pkey": "constructorStandingsId", "time_col": "date", "fkeys": {"raceId": "races", "constructorId": "constructors"}},
+          "qualifying": {"pkey": "qualifyId", "time_col": "date", "fkeys": {"raceId": "races", "driverId": "drivers", "constructorId": "constructors"}}
+        },
+        "schema_pattern": "Complex star-snowflake with 3-FK hub nodes (results, qualifying)"
+      },
+      "rel-hm": {
+        "domain": "E-commerce (H&M fashion retail)",
+        "num_tables": 3,
+        "total_rows": 16664809,
+        "total_columns": 37,
+        "num_v1_tasks": 3,
+        "tables": {
+          "article": {"pkey": "article_id", "time_col": null, "fkeys": {}},
+          "customer": {"pkey": "customer_id", "time_col": null, "fkeys": {}},
+          "transactions": {"pkey": null, "time_col": "t_dat", "fkeys": {"customer_id": "customer", "article_id": "article"}}
+        },
+        "schema_pattern": "Simple star schema: transactions links customer and article"
+      },
+      "rel-stack": {
+        "domain": "Social (Stack Exchange Q&A platform)",
+        "num_tables": 7,
+        "total_rows": 4247264,
+        "total_columns": 52,
+        "num_v1_tasks": 5,
+        "val_timestamp": "2019-01-01",
+        "test_timestamp": "2021-01-01",
+        "tables": {
+          "users": {"pkey": "Id", "time_col": "CreationDate", "fkeys": {}},
+          "posts": {"pkey": "Id", "time_col": "CreationDate", "fkeys": {"OwnerUserId": "users", "ParentId": "posts"}},
+          "comments": {"pkey": "Id", "time_col": "CreationDate", "fkeys": {"UserId": "users", "PostId": "posts"}},
+          "badges": {"pkey": "Id", "time_col": "Date", "fkeys": {"UserId": "users"}},
+          "postLinks": {"pkey": "Id", "time_col": "CreationDate", "fkeys": {"PostId": "posts", "RelatedPostId": "posts"}},
+          "postHistory": {"pkey": "Id", "time_col": "CreationDate", "fkeys": {"PostId": "posts", "UserId": "users"}},
+          "votes": {"pkey": "Id", "time_col": "CreationDate", "fkeys": {"PostId": "posts", "UserId": "users"}}
+        },
+        "schema_pattern": "Complex hub-spoke with self-referential posts and dual hubs"
+      },
+      "rel-trial": {
+        "domain": "Medical (Clinical trials from ClinicalTrials.gov)",
+        "num_tables": 15,
+        "total_rows": 5434924,
+        "total_columns": 140,
+        "num_v1_tasks": 5,
+        "tables": {
+          "studies": {"pkey": "nct_id", "time_col": "start_date", "fkeys": {}},
+          "outcomes": {"pkey": "id", "time_col": "date", "fkeys": {"nct_id": "studies"}},
+          "outcome_analyses": {"pkey": "id", "time_col": "date", "fkeys": {"nct_id": "studies", "outcome_id": "outcomes"}},
+          "drop_withdrawals": {"pkey": "id", "time_col": "date", "fkeys": {"nct_id": "studies"}},
+          "reported_event_totals": {"pkey": "id", "time_col": "date", "fkeys": {"nct_id": "studies"}},
+          "designs": {"pkey": "id", "time_col": "date", "fkeys": {"nct_id": "studies"}},
+          "eligibilities": {"pkey": "id", "time_col": "date", "fkeys": {"nct_id": "studies"}},
+          "interventions": {"pkey": "intervention_id", "time_col": null, "fkeys": {}},
+          "conditions": {"pkey": "condition_id", "time_col": null, "fkeys": {}},
+          "facilities": {"pkey": "facility_id", "time_col": null, "fkeys": {}},
+          "sponsors": {"pkey": "sponsor_id", "time_col": null, "fkeys": {}},
+          "interventions_studies": {"pkey": "id", "time_col": "date", "fkeys": {"nct_id": "studies", "intervention_id": "interventions"}},
+          "conditions_studies": {"pkey": "id", "time_col": "date", "fkeys": {"nct_id": "studies", "condition_id": "conditions"}},
+          "facilities_studies": {"pkey": "id", "time_col": "date", "fkeys": {"nct_id": "studies", "facility_id": "facilities"}},
+          "sponsors_studies": {"pkey": "id", "time_col": "date", "fkeys": {"nct_id": "studies", "sponsor_id": "sponsors"}}
+        },
+        "schema_pattern": "Large star schema with studies as central hub and 4 junction tables"
+      }
+    },
+    "fk_link_catalog": {
+      "total_fk_links": 51,
+      "by_dataset": {
+        "rel-amazon": [
+          {"child_table": "review", "fk_column": "customer_id", "parent_table": "customer", "estimated_cardinality": "high (~11.8 avg)"},
+          {"child_table": "review", "fk_column": "product_id", "parent_table": "product", "estimated_cardinality": "high (~43.3 avg)"}
+        ],
+        "rel-avito": [
+          {"child_table": "AdsInfo", "fk_column": "LocationID", "parent_table": "Location"},
+          {"child_table": "AdsInfo", "fk_column": "CategoryID", "parent_table": "Category"},
+          {"child_table": "SearchInfo", "fk_column": "UserID", "parent_table": "UserInfo"},
+          {"child_table": "SearchInfo", "fk_column": "LocationID", "parent_table": "Location"},
+          {"child_table": "SearchInfo", "fk_column": "CategoryID", "parent_table": "Category"},
+          {"child_table": "SearchStream", "fk_column": "SearchID", "parent_table": "SearchInfo"},
+          {"child_table": "SearchStream", "fk_column": "AdID", "parent_table": "AdsInfo"},
+          {"child_table": "VisitStream", "fk_column": "UserID", "parent_table": "UserInfo"},
+          {"child_table": "VisitStream", "fk_column": "AdID", "parent_table": "AdsInfo"},
+          {"child_table": "PhoneRequestsStream", "fk_column": "UserID", "parent_table": "UserInfo"},
+          {"child_table": "PhoneRequestsStream", "fk_column": "AdID", "parent_table": "AdsInfo"}
+        ],
+        "rel-event": [
+          {"child_table": "events", "fk_column": "user_id", "parent_table": "users"},
+          {"child_table": "event_attendees", "fk_column": "event", "parent_table": "events"},
+          {"child_table": "event_attendees", "fk_column": "user_id", "parent_table": "users"},
+          {"child_table": "event_interest", "fk_column": "event", "parent_table": "events"},
+          {"child_table": "event_interest", "fk_column": "user", "parent_table": "users"},
+          {"child_table": "user_friends", "fk_column": "user", "parent_table": "users"},
+          {"child_table": "user_friends", "fk_column": "friend", "parent_table": "users"}
+        ],
+        "rel-f1": [
+          {"child_table": "races", "fk_column": "circuitId", "parent_table": "circuits"},
+          {"child_table": "results", "fk_column": "raceId", "parent_table": "races"},
+          {"child_table": "results", "fk_column": "driverId", "parent_table": "drivers"},
+          {"child_table": "results", "fk_column": "constructorId", "parent_table": "constructors"},
+          {"child_table": "standings", "fk_column": "raceId", "parent_table": "races"},
+          {"child_table": "standings", "fk_column": "driverId", "parent_table": "drivers"},
+          {"child_table": "constructor_results", "fk_column": "raceId", "parent_table": "races"},
+          {"child_table": "constructor_results", "fk_column": "constructorId", "parent_table": "constructors"},
+          {"child_table": "constructor_standings", "fk_column": "raceId", "parent_table": "races"},
+          {"child_table": "constructor_standings", "fk_column": "constructorId", "parent_table": "constructors"},
+          {"child_table": "qualifying", "fk_column": "raceId", "parent_table": "races"},
+          {"child_table": "qualifying", "fk_column": "driverId", "parent_table": "drivers"},
+          {"child_table": "qualifying", "fk_column": "constructorId", "parent_table": "constructors"}
+        ],
+        "rel-hm": [
+          {"child_table": "transactions", "fk_column": "customer_id", "parent_table": "customer"},
+          {"child_table": "transactions", "fk_column": "article_id", "parent_table": "article"}
+        ],
+        "rel-stack": [
+          {"child_table": "posts", "fk_column": "OwnerUserId", "parent_table": "users"},
+          {"child_table": "posts", "fk_column": "ParentId", "parent_table": "posts"},
+          {"child_table": "comments", "fk_column": "UserId", "parent_table": "users"},
+          {"child_table": "comments", "fk_column": "PostId", "parent_table": "posts"},
+          {"child_table": "badges", "fk_column": "UserId", "parent_table": "users"},
+          {"child_table": "postLinks", "fk_column": "PostId", "parent_table": "posts"},
+          {"child_table": "postLinks", "fk_column": "RelatedPostId", "parent_table": "posts"},
+          {"child_table": "postHistory", "fk_column": "PostId", "parent_table": "posts"},
+          {"child_table": "postHistory", "fk_column": "UserId", "parent_table": "users"},
+          {"child_table": "votes", "fk_column": "PostId", "parent_table": "posts"},
+          {"child_table": "votes", "fk_column": "UserId", "parent_table": "users"}
+        ],
+        "rel-trial": [
+          {"child_table": "outcomes", "fk_column": "nct_id", "parent_table": "studies"},
+          {"child_table": "outcome_analyses", "fk_column": "nct_id", "parent_table": "studies"},
+          {"child_table": "outcome_analyses", "fk_column": "outcome_id", "parent_table": "outcomes"},
+          {"child_table": "drop_withdrawals", "fk_column": "nct_id", "parent_table": "studies"},
+          {"child_table": "reported_event_totals", "fk_column": "nct_id", "parent_table": "studies"},
+          {"child_table": "designs", "fk_column": "nct_id", "parent_table": "studies"},
+          {"child_table": "eligibilities", "fk_column": "nct_id", "parent_table": "studies"},
+          {"child_table": "interventions_studies", "fk_column": "nct_id", "parent_table": "studies"},
+          {"child_table": "interventions_studies", "fk_column": "intervention_id", "parent_table": "interventions"},
+          {"child_table": "conditions_studies", "fk_column": "nct_id", "parent_table": "studies"},
+          {"child_table": "conditions_studies", "fk_column": "condition_id", "parent_table": "conditions"},
+          {"child_table": "facilities_studies", "fk_column": "nct_id", "parent_table": "studies"},
+          {"child_table": "facilities_studies", "fk_column": "facility_id", "parent_table": "facilities"},
+          {"child_table": "sponsors_studies", "fk_column": "nct_id", "parent_table": "studies"},
+          {"child_table": "sponsors_studies", "fk_column": "sponsor_id", "parent_table": "sponsors"}
+        ]
+      },
+      "cardinality_computation_code": "db.table_dict[child_table].df.groupby(fk_col).size().describe()"
+    },
+    "benchmark_results": {
+      "entity_classification_auroc": {
+        "rel-amazon_user-churn": {"LightGBM": 52.22, "RDL_GraphSAGE": 70.42},
+        "rel-amazon_item-churn": {"LightGBM": 62.54, "RDL_GraphSAGE": 82.81},
+        "rel-stack_user-engagement": {"LightGBM": 63.39, "RDL_GraphSAGE": 90.59},
+        "rel-stack_user-badge": {"LightGBM": 63.43, "RDL_GraphSAGE": 88.86},
+        "rel-trial_study-outcome": {"LightGBM": 70.09, "RDL_GraphSAGE": 68.60},
+        "rel-f1_driver-dnf": {"LightGBM": 68.85, "RDL_GraphSAGE": 72.62},
+        "rel-f1_driver-top3": {"LightGBM": 73.93, "RDL_GraphSAGE": 75.54},
+        "rel-hm_user-churn": {"LightGBM": 55.21, "RDL_GraphSAGE": 69.88},
+        "rel-event_user-repeat": {"LightGBM": 68.04, "RDL_GraphSAGE": 76.89},
+        "rel-event_user-ignore": {"LightGBM": 79.93, "RDL_GraphSAGE": 81.62},
+        "rel-avito_user-visits": {"LightGBM": 53.05, "RDL_GraphSAGE": 66.20},
+        "rel-avito_user-clicks": {"LightGBM": 53.60, "RDL_GraphSAGE": 65.90}
+      },
+      "entity_regression_mae": {
+        "rel-amazon_user-ltv": {"LightGBM": 16.783, "RDL_GraphSAGE": 14.313},
+        "rel-amazon_item-ltv": {"LightGBM": 60.569, "RDL_GraphSAGE": 50.053},
+        "rel-stack_post-votes": {"LightGBM": 0.068, "RDL_GraphSAGE": 0.065},
+        "rel-trial_study-adverse": {"LightGBM": 44.011, "RDL_GraphSAGE": 44.473},
+        "rel-trial_site-success": {"LightGBM": 0.425, "RDL_GraphSAGE": 0.400},
+        "rel-f1_driver-position": {"LightGBM": 4.170, "RDL_GraphSAGE": 4.022},
+        "rel-hm_item-sales": {"LightGBM": 0.076, "RDL_GraphSAGE": 0.056},
+        "rel-event_user-attendance": {"LightGBM": 0.264, "RDL_GraphSAGE": 0.258},
+        "rel-avito_ad-ctr": {"LightGBM": 0.041, "RDL_GraphSAGE": 0.041}
+      },
+      "recommendation_map_test": {
+        "rel-amazon_user-item-purchase": {"LightGBM": 0.16, "GraphSAGE": 0.74, "NBFNet": 2.06, "ContextGNN": 2.93},
+        "rel-amazon_user-item-rate": {"LightGBM": 0.17, "GraphSAGE": 0.87, "NBFNet": 1.24, "ContextGNN": 2.25},
+        "rel-amazon_user-item-review": {"LightGBM": 0.09, "GraphSAGE": 0.47, "NBFNet": 1.57, "ContextGNN": 1.63},
+        "rel-hm_user-item-purchase": {"LightGBM": 0.38, "GraphSAGE": 0.80, "NBFNet": 2.81, "ContextGNN": 2.93},
+        "rel-stack_user-post-comment": {"LightGBM": 0.04, "GraphSAGE": 0.11, "NBFNet": 12.72, "ContextGNN": 13.34},
+        "rel-trial_condition-sponsor-run": {"LightGBM": 4.82, "GraphSAGE": 2.89, "NBFNet": 11.36, "ContextGNN": 11.65},
+        "rel-trial_site-sponsor-run": {"LightGBM": 8.40, "GraphSAGE": 10.70, "NBFNet": 19.06, "ContextGNN": 28.02}
+      }
+    },
+    "api_reference": {
+      "installation": "pip install relbench[full]",
+      "load_dataset": "from relbench.datasets import get_dataset; dataset = get_dataset('rel-amazon', download=True)",
+      "get_database": "db = dataset.get_db()",
+      "load_task": "from relbench.tasks import get_task; task = get_task('rel-amazon', 'user-churn', download=True)",
+      "get_tables": "train_table = task.get_table('train'); val_table = task.get_table('val'); test_table = task.get_table('test')",
+      "access_dataframe": "db.table_dict['review'].df",
+      "access_fkeys": "db.table_dict['review'].fkey_col_to_pkey_table",
+      "build_graph": "from relbench.modeling.graph import make_pkey_fkey_graph; data, col_stats_dict = make_pkey_fkey_graph(db, col_to_stype_dict, text_embedder_cfg, cache_dir)",
+      "model_architecture": "HeteroGraphSAGE: HeteroConv({edge_type: SAGEConv((ch, ch), ch, aggr=aggr)}, aggr='sum') per layer with batch_norm + relu",
+      "evaluate": "task.evaluate(test_pred)",
+      "compute_cardinality": "db.table_dict[child_table].df.groupby(fk_col).size().describe()"
+    },
+    "architecture_details": {
+      "graphsage_baseline": {
+        "within_edge_type_aggr": "SAGEConv with aggr parameter (default mean)",
+        "cross_edge_type_aggr": "HeteroConv with aggr='sum'",
+        "limitation": "Uniform aggregation treats all neighbors equally"
+      },
+      "relgnn": {
+        "formula": "m_(dst,mid,src) = AGGR(h_dst, {FUSE(h_mid, h_src)})",
+        "fuse": "FUSE(h_mid, h_src) = W1*h_mid + W2*h_src",
+        "advantage": "Single-step composite messages along FK paths avoid redundancy",
+        "performance": "SOTA on 27/30 tasks, up to 25% improvement"
+      },
+      "griffin": {
+        "cross_attention": "v_i^l = Attention_l(Q=MLP_l(u_i, t), K=m_i, V=x_i)",
+        "intra_relation": "Mean aggregation within each relation type",
+        "inter_relation": "Max aggregation across relation types",
+        "pretraining": "200+ single-table datasets, masked cell completion"
+      },
+      "dbformer": {
+        "tuple_transform": "Transformer Encoder self-attention over attributes",
+        "cross_attention": "Ct(ti,tj) = attn(Q=ti, K=tj, V=tj)",
+        "benchmark": "CTU datasets (NOT RelBench v1)",
+        "best_rank": 1.95
+      },
+      "contextgnn": {
+        "approach": "Beyond two-tower: GNN collaborative filtering + contextual component",
+        "avg_test_map": 9.23,
+        "vs_graphsage": "344% improvement over two-tower baselines"
+      }
+    },
+    "prmp_analysis": {
+      "high_cardinality_candidates": [
+        {"dataset": "rel-amazon", "link": "review->product", "est_cardinality": "~43 avg", "reason": "Mean aggregation dilutes informative reviews"},
+        {"dataset": "rel-amazon", "link": "review->customer", "est_cardinality": "~12 avg", "reason": "Moderate-high cardinality"},
+        {"dataset": "rel-stack", "link": "votes->posts", "est_cardinality": "high for popular posts", "reason": "Skewed distribution"},
+        {"dataset": "rel-stack", "link": "comments->posts", "est_cardinality": "variable", "reason": "Some posts get many comments"},
+        {"dataset": "rel-event", "link": "event_attendees->events", "est_cardinality": "high", "reason": "Large fan-out"},
+        {"dataset": "rel-trial", "link": "facilities_studies->studies", "est_cardinality": "medium-high", "reason": "Multi-site trials"},
+        {"dataset": "rel-hm", "link": "transactions->article", "est_cardinality": "variable", "reason": "Popular items have many transactions"}
+      ],
+      "complexity_ranking": {
+        "simple_star": ["rel-amazon (2 FKs)", "rel-hm (2 FKs)"],
+        "medium": ["rel-event (6-7 FKs)", "rel-avito (10-11 FKs)"],
+        "complex_hub_spoke": ["rel-stack (11 FKs, self-refs)", "rel-f1 (11 FKs, 3-FK hubs)", "rel-trial (12-15 FKs, junctions)"]
+      },
+      "key_observation": "RelGNN reports larger improvements on complex FK structures (rel-f1) vs simple schemas (rel-amazon, rel-hm), suggesting complex schemas have more room for aggregation improvements"
+    }
+  }
+}

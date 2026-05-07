@@ -1,0 +1,13 @@
+{
+  "id": "exp_id4_it7__opus",
+  "type": "code",
+  "title": "PRMP on rel-hm: 5th Dataset Evidence (user-churn + item-sales)",
+  "summary": "Demo notebook for the PRMP (Predictive Residual Message Passing) experiment on the H&M Fashion relational dataset. Generates a synthetic heterogeneous graph with 3 node types (customer, article, transaction) and 2 FK edge types. Compares 3 GNN variants (Standard, PRMP, Wide control) on user-churn classification (AUROC) and item-sales regression (MAE). Includes Ridge R\u00b2 analysis for FK links and visualization comparing demo results against full-scale reference values from mini_demo_data.json.",
+  "original_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/3_invention_loop/iter_7/gen_art/exp_id4_it7__opus",
+  "demo_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id4_it7__opus",
+  "out_expected_files": {
+    "notebook": "code_demo.ipynb",
+    "mini_data_file": "mini_demo_data.json"
+  },
+  "notebook_path": "/ai-inventor/aii_pipeline/runs/run__prmp_residual_passing_aju/4_gen_paper_repo/exp_id4_it7__opus/method_code_demo.ipynb"
+}
